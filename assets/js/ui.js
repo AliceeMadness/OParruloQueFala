@@ -1,4 +1,5 @@
-import { bestScore, recordScore } from "./store.js";
+import { celebrate, duckOf } from "./ducks.js";
+import { activeProfile, bestScore, recordScore } from "./store.js";
 
 export function el(tag, props = {}, ...children) {
   const node = document.createElement(tag);
@@ -20,19 +21,22 @@ export function backLink(href, text) {
   return el("a", { class: "back", href }, `← ${text}`);
 }
 
+// The player's duck swims along the bar as the lesson moves on.
 export function progressBar(done, total) {
   const percent = total ? Math.round((done / total) * 100) : 0;
   return el(
     "div",
     {
       class: "progress",
+      style: `--percent: ${percent}%`,
       role: "progressbar",
       "aria-valuenow": percent,
       "aria-valuemin": 0,
       "aria-valuemax": 100,
       "aria-label": "Progreso da lección",
     },
-    el("div", { style: `width: ${percent}%` })
+    el("div", { class: "progress-fill" }),
+    el("img", { class: "progress-duck", src: duckOf(activeProfile()), alt: "" })
   );
 }
 
@@ -67,7 +71,7 @@ export function wordTable(rows) {
 export function avatar(profile) {
   return el("img", {
     class: "avatar",
-    src: "assets/img/parrulo.svg",
+    src: profile.duck,
     alt: "",
     style: `background: ${profile.color}`,
   });
@@ -145,20 +149,25 @@ export function findLesson(mode, groupId, lessonId) {
 }
 
 function verdict(percent) {
-  if (percent === 100) return "Perfecto! Parabéns!";
-  if (percent >= 80) return "Moi ben!";
-  if (percent >= 50) return "Vas ben, segue así.";
-  return "Ánimo, repetir axuda moito.";
+  if (percent === 100) return "Perfecto! Es un parrulo de ouro!";
+  if (percent >= 80) return "Moi ben! Cuac de satisfacción.";
+  if (percent >= 50) return "Vas ben, segue nadando.";
+  return "Ánimo: os parrulos tamén aprenden a nadar pouco a pouco.";
 }
+
+export const SUCCESS = 80;
 
 export function finishPanel({ key, total, failed, failedRows, backHref, backText, nextHref, restart }) {
   const percent = total ? Math.round(((total - failed) / total) * 100) : 100;
   if (key) recordScore(key, percent);
+  const success = percent >= SUCCESS;
+  if (success) celebrate(percent === 100);
   const next = nextHref ? el("a", { class: "button", href: nextHref }, "Seguinte lección") : null;
   const again = el("button", { class: `button${next ? " secondary" : ""}`, type: "button", onclick: restart }, "Repetir");
   const panel = el(
     "div",
-    { class: "panel" },
+    { class: `panel finish${success ? " success" : ""}` },
+    el("img", { class: "finish-duck", src: duckOf(activeProfile()), alt: "" }),
     el("p", { class: "prompt-label" }, "Lección rematada"),
     el("p", { class: "prompt" }, `${percent}% á primeira. ${verdict(percent)}`),
     failedRows && failedRows.length

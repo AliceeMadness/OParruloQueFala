@@ -446,3 +446,209 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 .clue:hover { background: var(--surface-2); }
 .clue.active { background: var(--highlight); font-weight: 600; }
 .clue.solved { color: var(--muted); text-decoration: line-through; }
+
+/* Ducks ---------------------------------------------------------------------- */
+
+:root { --water: #8fcfe6; --water-deep: #5fb2d3; --bubble: #ffffff; }
+
+@media (prefers-color-scheme: dark) {
+  :root { --water: #1f4d61; --water-deep: #173b4b; --bubble: #29333a; }
+}
+
+.brand img { transition: transform .2s; }
+.brand:hover img { animation: waddle .5s ease-in-out 2; }
+
+.bubble {
+  position: relative;
+  margin: 0;
+  padding: .5rem .9rem;
+  background: var(--bubble);
+  color: var(--text);
+  border: 2px solid var(--duck);
+  border-radius: 16px;
+  font-family: var(--serif);
+  font-weight: 700;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .08);
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: var(--bubble);
+  border: solid var(--duck);
+  border-width: 0 2px 2px 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Welcome */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: radial-gradient(circle at 50% 60%, var(--water) 0 30%, var(--bg) 70%);
+  cursor: pointer;
+  transition: opacity .5s;
+}
+
+.splash.leaving { opacity: 0; }
+
+.splash-duck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  animation: pop-in .7s cubic-bezier(.3, 1.6, .5, 1) both;
+}
+
+.splash-duck img { width: min(55vw, 240px); animation: waddle .6s ease-in-out .7s 3; }
+.splash-duck .bubble { font-size: clamp(1.4rem, 6vw, 2.4rem); animation: pop-in .5s cubic-bezier(.3, 1.6, .5, 1) .5s both; }
+.splash-quack { margin: 0; color: var(--muted); font-style: italic; animation: fade-in .4s 1.1s both; }
+
+/* Home */
+.talking-wrap {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  max-width: 13rem;
+}
+
+.talking-wrap .bubble { font-size: .95rem; text-align: center; }
+
+.talking-duck {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  animation: bob 3s ease-in-out infinite;
+}
+
+.talking-duck img { display: block; width: clamp(80px, 18vw, 130px); height: auto; }
+.talking-duck.hop img { animation: hop .45s ease-out; }
+
+@media (max-width: 560px) {
+  .hero { flex-direction: column; text-align: center; }
+  .hero .lead { margin-inline: auto; }
+}
+
+.mode-card { transition: transform .15s, box-shadow .15s; }
+.mode-card:hover { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 6px 0 var(--surface-2); }
+
+/* Profiles */
+.profile-option { transition: transform .15s; }
+.profile-option:hover { transform: translateY(-3px); }
+.profile-option:hover .avatar { animation: waddle .5s ease-in-out 2; }
+
+/* A duck swims along the progress bar */
+.progress { position: relative; overflow: visible; margin-top: 1.4rem; }
+.progress > .progress-fill { width: var(--percent); border-radius: inherit; }
+
+.progress-duck {
+  position: absolute;
+  top: -1.5rem;
+  left: calc(var(--percent) - 1rem);
+  width: 2.2rem;
+  height: 2.2rem;
+  transition: left .3s;
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+/* End of a lesson */
+.finish { position: relative; text-align: left; }
+.finish-duck { float: right; width: clamp(64px, 18vw, 100px); margin: 0 0 .5rem 1rem; }
+.finish.success .finish-duck { animation: hop .6s ease-out 3; }
+.finish .actions { clear: both; }
+
+.duck-party { position: fixed; inset: 0; z-index: 90; overflow: hidden; pointer-events: none; }
+
+.falling-duck {
+  position: absolute;
+  top: 0;
+  height: auto;
+  animation-name: fall;
+  animation-timing-function: cubic-bezier(.4, 0, .7, 1);
+  animation-fill-mode: both;
+}
+
+.quack {
+  position: absolute;
+  padding: .2rem .6rem;
+  background: var(--duck);
+  color: #1c2b33;
+  border-radius: 999px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.3rem;
+  animation: quack 1.6s ease-out both;
+}
+
+.duck-parade {
+  position: absolute;
+  bottom: .5rem;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: .4rem;
+  animation: parade 5s linear .3s both;
+}
+
+.duck-parade img { width: 38px; animation: waddle .4s ease-in-out infinite; }
+.duck-parade img.mother { width: 72px; }
+.duck-parade img:nth-child(even) { animation-delay: .2s; }
+
+/* Pond at the bottom of every page */
+.pond {
+  position: relative;
+  height: 70px;
+  margin-top: 2rem;
+  overflow: hidden;
+  background: linear-gradient(var(--water), var(--water-deep));
+}
+
+.pond::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 200%;
+  height: 20px;
+  background: radial-gradient(circle at 20px 0, var(--bg) 14px, transparent 15px) 0 0 / 40px 20px repeat-x;
+  animation: waves 6s linear infinite;
+}
+
+.swimmer {
+  position: absolute;
+  top: 6px;
+  width: 52px;
+  clip-path: inset(0 0 22% 0);
+  animation: swim 38s linear infinite, bob 2.2s ease-in-out infinite;
+}
+
+.swimmer:nth-child(2) { width: 44px; animation-delay: -9s, -.5s; }
+.swimmer:nth-child(3) { width: 44px; animation-delay: -19s, -1s; }
+.swimmer:nth-child(4) { width: 44px; animation-delay: -28s, -1.5s; }
+
+@keyframes waddle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-14px) rotate(-6deg); } }
+@keyframes pop-in { from { transform: scale(.2) translateY(60px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fall { from { transform: translateY(-20vh) rotate(0); } to { transform: translateY(115vh) rotate(var(--spin)); } }
+@keyframes quack { 0% { transform: scale(0); opacity: 0; } 25% { transform: scale(1.15); opacity: 1; } 70% { opacity: 1; } 100% { transform: translateY(-30px); opacity: 0; } }
+@keyframes parade { from { transform: translateX(-60vw); } to { transform: translateX(110vw); } }
+@keyframes waves { to { transform: translateX(-40px); } }
+@keyframes swim { from { left: -60px; } to { left: 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

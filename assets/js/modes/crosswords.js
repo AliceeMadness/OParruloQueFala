@@ -1,3 +1,4 @@
+import { celebrate } from "../ducks.js";
 import { crosswordState, saveCrossword } from "../store.js";
 import { gridLetter } from "../text.js";
 import { backLink, el, focusSoon } from "../ui.js";
@@ -104,6 +105,7 @@ export function crosswordView(puzzles, id) {
 
   function checkFinished() {
     if ([...solution].every(([key, letter]) => letters[key] === letter)) {
+      if (!solved) celebrate(true);
       solved = true;
       persist();
       message.replaceChildren(el(

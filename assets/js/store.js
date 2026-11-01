@@ -7,9 +7,9 @@ const KEY_BEFORE_PROFILES = "oparrulo.v1";
 const PUSH_DELAY_MS = 1500;
 
 export const PROFILES = [
-  { id: "alice", name: "Alice", color: "#bfe3f2" },
-  { id: "raquel", name: "Raquel", color: "#f7c9d9" },
-  { id: "marina", name: "Marina", color: "#c5e8c9" },
+  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg" },
+  { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg" },
+  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg" },
 ];
 
 function load() {

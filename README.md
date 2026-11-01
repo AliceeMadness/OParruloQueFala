@@ -88,7 +88,7 @@ Renaming a lesson changes its address, which resets its saved progress.
 
 ## Adding a profile
 
-Add the profile to `PROFILES` in `assets/js/store.js` and to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
+Draw its duck as `assets/img/pato-<id>.svg`, starting from one of the existing ducks so it keeps the same look. Add the profile, with that image as `duck`, to `PROFILES` in `assets/js/store.js`, and add it to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
 
 ## How sync works
 

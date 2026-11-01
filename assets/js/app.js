@@ -1,3 +1,4 @@
+import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
@@ -43,7 +44,7 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
     el(
       "div",
       { class: "hero" },
-      el("img", { src: "assets/img/parrulo.svg", alt: "" }),
+      talkingDuck(),
       el(
         "div",
         {},
@@ -171,6 +172,7 @@ function render(site) {
 }
 
 async function main() {
+  showSplash();
   try {
     const [vocabulary, verbData, grammar, crosswords] = await Promise.all(
       ["vocabulary", "verbs", "grammar", "crosswords"].map(fetchJson)
