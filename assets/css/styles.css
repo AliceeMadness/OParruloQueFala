@@ -606,38 +606,6 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 .duck-parade img.mother { width: 72px; }
 .duck-parade img:nth-child(even) { animation-delay: .2s; }
 
-/* Pond at the bottom of every page */
-.pond {
-  position: relative;
-  height: 70px;
-  margin-top: 2rem;
-  overflow: hidden;
-  background: linear-gradient(var(--water), var(--water-deep));
-}
-
-.pond::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  width: 200%;
-  height: 20px;
-  background: radial-gradient(circle at 20px 0, var(--bg) 14px, transparent 15px) 0 0 / 40px 20px repeat-x;
-  animation: waves 6s linear infinite;
-}
-
-.swimmer {
-  position: absolute;
-  top: 6px;
-  width: 52px;
-  clip-path: inset(0 0 22% 0);
-  animation: swim 38s linear infinite, bob 2.2s ease-in-out infinite;
-}
-
-.swimmer:nth-child(2) { width: 44px; animation-delay: -9s, -.5s; }
-.swimmer:nth-child(3) { width: 44px; animation-delay: -19s, -1s; }
-.swimmer:nth-child(4) { width: 44px; animation-delay: -28s, -1.5s; }
-
 @keyframes waddle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
 @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
 @keyframes hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-14px) rotate(-6deg); } }
@@ -646,9 +614,24 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 @keyframes fall { from { transform: translateY(-20vh) rotate(0); } to { transform: translateY(115vh) rotate(var(--spin)); } }
 @keyframes quack { 0% { transform: scale(0); opacity: 0; } 25% { transform: scale(1.15); opacity: 1; } 70% { opacity: 1; } 100% { transform: translateY(-30px); opacity: 0; } }
 @keyframes parade { from { transform: translateX(-60vw); } to { transform: translateX(110vw); } }
-@keyframes waves { to { transform: translateX(-40px); } }
-@keyframes swim { from { left: -60px; } to { left: 100%; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* My collection */
+.button.collect[aria-pressed="true"] { border-color: var(--good); color: var(--good); }
+
+.collection-table td:last-child { width: 1%; text-align: right; }
+
+.remove {
+  padding: .1rem .5rem;
+  background: none;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.remove:hover { color: var(--bad); border-color: var(--bad); }

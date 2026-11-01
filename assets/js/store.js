@@ -35,7 +35,7 @@ function saveLocally() {
 }
 
 function emptyProgress() {
-  return { lessons: {}, mistakes: {}, mistakesAt: 0, crosswords: {} };
+  return { lessons: {}, mistakes: {}, mistakesAt: 0, collection: {}, collectionAt: 0, crosswords: {} };
 }
 
 function progressOf(id) {
@@ -172,6 +172,30 @@ export function clearMistake(word) {
 
 export function mistakes() {
   return Object.entries(progress().mistakes).map(([es, gl]) => ({ es, gl }));
+}
+
+export function inCollection(word) {
+  return word.es in progress().collection;
+}
+
+export function addToCollection(word) {
+  const current = progress();
+  current.collection[word.es] = word.gl;
+  current.collectionAt = Date.now();
+  save();
+}
+
+export function removeFromCollection(word) {
+  const current = progress();
+  if (word.es in current.collection) {
+    delete current.collection[word.es];
+    current.collectionAt = Date.now();
+    save();
+  }
+}
+
+export function collection() {
+  return Object.entries(progress().collection).map(([es, gl]) => ({ es, gl }));
 }
 
 export function crosswordState(id) {

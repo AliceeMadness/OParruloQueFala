@@ -2,8 +2,8 @@ import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
-import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
-import { activeProfile, bestScore, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, selectProfile, startSync } from "./store.js";
+import { collectionStudyView, collectionView, reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
+import { activeProfile, bestScore, collection, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, selectProfile, startSync } from "./store.js";
 import { avatar, catalogueView, el } from "./ui.js";
 
 const app = document.getElementById("app");
@@ -37,6 +37,7 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
     el("span", { class: "count" }, `${done} de ${total} completados`)
   );
   const pending = mistakes().length;
+  const saved = collection().length;
 
   return el(
     "div",
@@ -61,7 +62,14 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
       card("#/encrucillados", "Encrucillados", "Para os máis atrevidos: 20 retos con palabras novas.", {
         done: crosswords.filter((puzzle) => crosswordState(puzzle.id).done).length,
         total: crosswords.length,
-      })
+      }),
+      el(
+        "a",
+        { class: "mode-card", href: "#/coleccion" },
+        el("h2", {}, "A miña colección"),
+        el("p", {}, "As palabras que gardaches porque aínda non as sabes, para estudalas cando queiras."),
+        el("span", { class: "count" }, `${saved} ${saved === 1 ? "palabra" : "palabras"}`)
+      )
     ),
     pending
       ? el(
@@ -143,6 +151,7 @@ function route(site, parts) {
   if (!activeProfile() || section === "perfil") return profileView(site);
   if (!section) return homeView(site);
   if (section === "repaso") return reviewView();
+  if (section === "coleccion") return first === "estudar" ? collectionStudyView() : first ? null : collectionView();
   if (section === "vocabulario") {
     return first ? vocabularyLessonView(site.vocabulary, first, second) : catalogueView(site.vocabulary);
   }

@@ -1,5 +1,5 @@
-import { addMistake, clearMistake, mistakes } from "../store.js";
-import { checkAnswer } from "../text.js";
+import { addMistake, addToCollection, clearMistake, collection, inCollection, mistakes, removeFromCollection } from "../store.js";
+import { checkAnswer, shuffled } from "../text.js";
 import { answerInput, backLink, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
 
 const NOTES = {
@@ -15,6 +15,23 @@ export function vocabularyMode(themes) {
     groups: themes,
     describe: (lesson) => `${lesson.words.length} palabras`,
   };
+}
+
+// Adds a word the player doesn't know yet to their collection, or takes it out.
+function collectionButton(word) {
+  const button = el("button", { class: "button secondary collect", type: "button" });
+  function draw() {
+    const added = inCollection(word);
+    button.textContent = added ? "✓ Na miña colección" : "Engadir á miña colección";
+    button.setAttribute("aria-pressed", String(added));
+  }
+  button.addEventListener("click", () => {
+    if (inCollection(word)) removeFromCollection(word);
+    else addToCollection(word);
+    draw();
+  });
+  draw();
+  return button;
 }
 
 // Words answered wrong come back at the end of the queue until they are right.
@@ -96,7 +113,7 @@ function runWords(container, { words, title, key, backHref, backText, nextHref, 
         el("p", { class: "prompt", lang: "es" }, word.es),
         input,
         feedback,
-        el("div", { class: "actions" }, check)
+        el("div", { class: "actions" }, check, collectionButton(word))
       )
     );
     focusSoon(input);
@@ -167,4 +184,68 @@ export function reviewView() {
   }
   start();
   return el("div", { class: "narrow" }, backLink("#/", "Volver ao inicio"), container);
+}
+
+const STUDY_SIZE = 20;
+
+export function collectionView() {
+  const view = el("div", { class: "narrow" });
+
+  function draw() {
+    const words = collection();
+    if (!words.length) {
+      replace(
+        view,
+        el("h1", {}, "A miña colección"),
+        el("p", { class: "lead" }, "Aínda non gardaches ningunha palabra. No vocabulario, preme «Engadir á miña colección» nas palabras que non saibas, e aparecerán aquí para estudalas."),
+        el("a", { class: "button", href: "#/vocabulario" }, "Ir ao vocabulario")
+      );
+      return;
+    }
+    replace(
+      view,
+      el("h1", {}, "A miña colección"),
+      el("p", { class: "lead" }, `Tes ${words.length} ${words.length === 1 ? "palabra gardada" : "palabras gardadas"}. Estúdaas de ${STUDY_SIZE} en ${STUDY_SIZE}, en orde aleatoria. Quedan na colección ata que as quites.`),
+      el("div", { class: "actions" }, el("a", { class: "button", href: "#/coleccion/estudar" }, "Estudar a colección")),
+      el("table", { class: "word-table collection-table" }, el("tbody", {}, ...words.map((word) => el(
+        "tr",
+        {},
+        el("td", {}, word.es),
+        el("td", { lang: "gl" }, word.gl.join(" / ")),
+        el("td", {}, el("button", {
+          class: "remove",
+          type: "button",
+          title: "Quitar da colección",
+          "aria-label": `Quitar «${word.es}» da colección`,
+          onclick() {
+            removeFromCollection(word);
+            draw();
+          },
+        }, "✕"))
+      ))))
+    );
+  }
+
+  draw();
+  return view;
+}
+
+export function collectionStudyView() {
+  const container = el("div", {});
+  function start() {
+    const words = collection();
+    if (!words.length) {
+      location.hash = "#/coleccion";
+      return;
+    }
+    runWords(container, {
+      words: shuffled(words).slice(0, STUDY_SIZE),
+      title: "Estuda a túa colección",
+      backHref: "#/coleccion",
+      backText: "Volver á colección",
+      restart: start,
+    });
+  }
+  start();
+  return el("div", { class: "narrow" }, backLink("#/coleccion", "Volver á colección"), container);
 }

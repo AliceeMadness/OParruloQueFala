@@ -13,6 +13,7 @@ A free website for Spanish speakers to learn Galician through short games.
 | **Gramática** | 298 sentences in 37 lessons | Choose the word that fills the gap. A wrong answer explains the rule. Every sentence shows its Spanish translation. |
 | **Encrucillados** | 20 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
+| **A miña colección** | Words you save | While doing vocabulary, press *Engadir á miña colección* on any word you don't know. Each profile has its own collection, studied 20 random words at a time, and words stay until you remove them. |
 
 Scores are colour-coded in the lesson lists: green for 100%, yellow from 70%, orange from 50% and red below that.
 
@@ -25,7 +26,7 @@ The Galician content was written with AI assistance and checked against a spelli
 Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile has its own progress, which follows it to any device.
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
-- **Playing on several devices:** progress is combined. Each lesson keeps its best score, while each crossword and the review list keep their most recent version.
+- **Playing on several devices:** progress is combined. Each lesson keeps its best score, while each crossword, the review list and the collection keep their most recent version.
 - **No passwords:** anyone with access to the site can open any profile and change its progress. Store only game progress in it, never personal data.
 
 ## How it's built

@@ -37,10 +37,13 @@ export function mergeProgress(local, remote) {
     if ((puzzle.updatedAt ?? 0) > (crosswords[id]?.updatedAt ?? 0)) crosswords[id] = puzzle;
   }
   const remoteIsNewer = (remote.mistakesAt ?? 0) > (local.mistakesAt ?? 0);
+  const remoteCollectionIsNewer = (remote.collectionAt ?? 0) > (local.collectionAt ?? 0);
   return {
     lessons,
     crosswords,
     mistakes: remoteIsNewer ? remote.mistakes : local.mistakes,
     mistakesAt: remoteIsNewer ? remote.mistakesAt : local.mistakesAt,
+    collection: (remoteCollectionIsNewer ? remote.collection : local.collection) ?? {},
+    collectionAt: remoteCollectionIsNewer ? remote.collectionAt : local.collectionAt ?? 0,
   };
 }
