@@ -90,6 +90,33 @@ Renaming a lesson changes its address, which resets its saved progress.
 
 Add the profile to `PROFILES` in `assets/js/store.js` and to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
 
+## How sync works
+
+The browser talks directly to the Firestore REST API, with no server or SDK in between. `assets/js/store.js` decides when to sync and `assets/js/sync.js` makes the requests. The site uses the Firebase project `oparrulo-cd79d`.
+
+**What is stored:** each profile is one document, `profiles/<id>` (for example `profiles/alice`), with a single text field, `progress`. That field holds the profile's scores, review list and crosswords as JSON. A copy is also kept in the browser's `localStorage`, which is what lets the site work offline.
+
+**When progress is downloaded:**
+
+- When the site opens.
+- When a profile is chosen.
+- When the player returns to the tab.
+- When the connection comes back.
+
+The page waits up to 4 seconds for the download on opening or choosing a profile, then continues with the browser's copy. If the reply arrives later, it is merged and the page redraws, unless a lesson or the review is in progress.
+
+**When progress is uploaded:**
+
+- 1.5 seconds after a change, so that several quick changes become one upload.
+- Straight away when there is a pending change and the player leaves the tab or page, or switches profile.
+- After a download, if this device has something the database lacks.
+
+Each upload reads the latest version from the database first and merges it, so that it doesn't overwrite what another device saved in the meantime. This isn't an atomic transaction, so two devices uploading at the same moment could still lose a change from one of them.
+
+**What the rules allow:** `firestore.rules` only allows reading, creating and updating the documents of the three known profiles. A document can only contain the `progress` field, as text of fewer than 300,000 characters. Listing or deleting profiles and accessing anything else is refused.
+
+The rules live in the Firebase console, so editing `firestore.rules` in this repository doesn't change them until they are pasted there and published.
+
 ## Setting up the database
 
 The project is already connected to a database. To use your own, for example in a fork:
