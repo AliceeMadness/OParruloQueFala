@@ -1,0 +1,279 @@
+// «PALABRA = pista». Los acentos no se escriben en la cuadrícula; la Ñ sí cuenta como letra.
+// Del 1 al 8 las pistas van en castellano; del 9 al 14 mezcladas; del 15 al 20 en gallego.
+
+# 1 | O primeiro voo
+CASA = Edificio onde se vive
+CAN = Perro
+SOL = Astro que nos dá luz
+MAR = Gran masa de auga salgada
+PAI = Padre
+NAI = Madre
+LUA = Satélite da Terra
+OLLO = Serve para ver
+PAN = Faise con fariña e cómese a diario
+
+# 2 | Na mesa
+AUGA = Líquido que bebemos
+LEITE = Bebida branca da vaca
+OVO = Pono a galiña
+QUEIXO = Queso
+PEIXE = Pescado
+VIÑO = Bebida feita de uva
+SAL = Condimento branco e salgado
+MAZA = Manzana
+CEA = Última comida do día
+
+# 3 | Na casa
+PORTA = Por ela éntrase na casa
+FIESTRA = Ventana
+CADEIRA = Silla
+MESA = Moble con patas para comer
+CAMA = Moble para durmir
+COCIÑA = Onde se prepara a comida
+TELLADO = Tejado
+CHAVE = Abre a pechadura
+ESPELLO = Devolve a túa imaxe
+CHAN = Suelo
+
+# 4 | A familia
+IRMAN = Hermano
+FILLA = Hija
+AVOA = Abuela
+NETO = Nieto
+TIA = Irmá do teu pai
+CURMAN = Primo
+NENO = Niño
+SOGRO = Pai da túa parella
+MOZA = Novia
+PARENTE = Familiar
+
+# 5 | Animais
+GATO = Felino da casa
+VACA = Dá leite
+COELLO = Conejo
+GALIÑA = Gallina
+RAPOSO = Zorro
+PARRULO = Ave que nos dá nome
+OVELLA = Oveja
+PORCO = Cerdo
+LOBO = Cánido salvaxe
+CABALO = Caballo
+FORMIGA = Hormiga
+
+# 6 | Cores e formas
+BRANCO = Blanco
+VERMELLO = Rojo
+AMARELO = Amarillo
+AZUL = Cor do ceo
+LARANXA = Naranja
+ESCURO = Oscuro
+GRANDE = De moito tamaño
+PEQUENO = De pouco tamaño
+LONGO = Largo
+CURTO = Corto
+ANCHO = O contrario de estreito
+
+# 7 | Corpo humano
+CABEZA = Vai sobre os ombreiros
+BRAZO = Vai do ombreiro á man
+PERNA = Pierna
+ORELLA = Serve para oír
+DENTE = Serve para morder
+LINGUA = Órgano do gusto
+PEITO = Pecho
+COSTAS = Espalda
+XEONLLO = Rodilla
+NARIZ = Serve para cheirar
+DEDO = A man ten cinco
+
+# 8 | O tempo que fai
+CHUVIA = Lluvia
+VENTO = Viento
+NUBE = Branca ou gris, no ceo
+NEVE = Nieve
+NEBOA = Niebla
+FRIO = Sensación do inverno
+CALOR = Sensación do verán
+TRONO = Trueno
+SEMANA = Sete días
+VERAN = Estación máis cálida
+INVERNO = Estación máis fría
+OUTONO = Estación en que caen as follas
+
+# 9 | Froitas e hortas
+PEXEGO = Melocotón
+AMORODO = Fresa
+CEREIXA = Froita pequena e vermella, de rabo longo
+AMEIXA = Froita e tamén molusco
+CENORIA = Zanahoria
+PEMENTO = Os de Padrón, uns pican e outros non
+CEBOLA = Fai chorar ao cortala
+ALLO = Ajo
+GRELOS = Verdura típica do lacón
+CHICHARO = Guisante
+FABA = Legume grande e branco
+MILLO = Maíz
+
+# 10 | Pola cidade
+RUA = Calle
+PRAZA = Espazo aberto entre rúas
+PONTE = Permite cruzar un río (feminino en galego)
+IGREXA = Iglesia
+CONCELLO = Ayuntamiento
+TENDA = Lugar onde mercar
+ESTRADA = Carretera
+DEREITA = O contrario de esquerda
+ESQUERDA = O contrario de dereita
+PRETO = Cerca
+LONXE = Lejos
+BILLETE = Hai que mercalo para o tren
+
+# 11 | Mar e peixes
+POLBO = Á feira é típico de Galicia
+LURA = Calamar
+SARDIÑA = Pez típico de San Xoán
+XURELO = Jurel
+MEXILLON = Mejillón
+VIEIRA = Cuncha do peregrino
+PERCEBE = Marisco das rochas da Costa da Morte
+PORTO = Onde atracan os barcos
+ONDA = Ola
+MAREA = Sube e baixa dúas veces ao día
+PRAIA = Playa
+GAIVOTA = Ave do mar
+
+# 12 | Árbores e plantas
+CARBALLO = Roble
+CASTIÑEIRO = Castaño
+PIÑEIRO = Pino
+BIDUEIRO = Abedul
+SALGUEIRO = Sauce
+FREIXO = Fresno
+TOXO = Arbusto con espiñas e flor amarela
+XESTA = Arbusto de flor amarela
+FENTO = Helecho
+SILVA = Zarza
+ARBORE = Planta con tronco (feminino en galego)
+POLA = Rama
+
+# 13 | Aves e bichos
+ANDURIÑA = Golondrina
+PARDAL = Gorrión
+CURUXA = Lechuza
+CORVO = Ave negra
+PEGA = Urraca
+BOLBORETA = Mariposa
+ABELLA = Produce mel
+AVESPA = Avispa
+LESMA = Babosa
+MIÑOCA = Lombriz
+ESQUIO = Ardilla
+OURIZO = Erizo
+TOUPA = Topo
+
+# 14 | Sentimentos
+MORRIÑA = Nostalxia galega
+SOIDADE = Soledad
+TRISTURA = Tristeza
+ALEGRIA = Gran contento
+VERGOÑA = Vergüenza
+NOXO = Asco
+MEDO = Miedo
+AGARIMO = Cariño
+BICO = Beso
+APERTA = Abrazo
+ENVEXA = Envidia
+AMIZADE = Relación entre amigos
+
+# 15 | Ceos e meteoros
+ORBALLO = Chuvia miúda e mol
+BRETEMA = Néboa, sobre todo a do mar
+TREBOADA = Tormenta con lóstregos e tronos
+LOSTREGO = Luz súbita no ceo durante a treboada
+SARABIA = Pedras de xeo que caen do ceo
+XEADA = Capa de xeo que cobre o campo no inverno
+BATEGA = Chuvia forte e curta
+NORDES = Vento frío do nordeste
+LUSCOFUSCO = Hora en que xa non é día e aínda non é noite
+SOLPOR = Momento en que o sol se esconde
+ALBA = Primeira luz do día
+POALLA = Chuvia moi fina
+
+# 16 | O traballo no campo
+SACHO = Ferramenta para cavar a terra
+FOUCE = Ferramenta curva para segar herba
+GADAÑA = Fouce de mango longo
+ANGAZO = Apaña a herba ou as follas
+LEIRA = Terreo cultivable
+HORREO = Construción sobre pés onde se garda o millo
+MUIÑO = Alí móese o gran
+COLLEITA = Recollida do que se plantou
+VENDIMA = Recollida da uva
+CORTE = Lugar onde dormen as vacas
+ESTERCO = Abono de orixe animal
+CENTEO = Cereal de pan escuro
+PALLA = Talo seco do cereal
+
+# 17 | Vivir en Galicia
+QUEIMADA = Bebida de augardente que arde mentres se recita o conxuro
+MEIGA = Muller con poderes máxicos
+GAITA = Instrumento de fol típico
+MUIÑEIRA = Baile tradicional
+ROMARIA = Festa relixiosa e popular
+CRUCEIRO = Cruz de pedra nos camiños
+PAZO = Casa señorial
+CASTRO = Poboado antigo circular
+LAREIRA = Lugar da casa onde arde o lume
+LACON = Prato típico do entroido, con grelos
+FILLOA = Doce fino e redondo, típico do entroido
+ENTROIDO = Festa de máscaras antes da Coresma
+ZOCO = Calzado de madeira
+
+# 18 | Xente con carácter
+LARPEIRO = Gústanlle moito os doces
+LACAZAN = Non lle gusta nada traballar
+TOLO = Perdeu o xuízo
+PARVO = Pouco listo
+TEIMUDO = Non cambia de opinión aínda que non teña razón
+PAILAN = Persoa rústica, de pouca cultura
+AGARRADO = Non lle gusta gastar
+VALENTE = Non ten medo
+COVARDE = Ten medo de todo
+FALADOR = Non deixa de falar
+MENTIREIRO = Nunca di a verdade
+ESMOLEIRO = Vive pedindo polas portas
+LANGRAN = Vago e sen ganas de nada
+
+# 19 | Palabras que soan ben
+AGASALLO = Algo que se dá sen pedir nada a cambio
+RECUNCHO = Lugar pequeno e apartado
+FALADOIRO = Xuntanza de xente para conversar
+REXOUBA = Conversa sobre as vidas alleas
+LERIA = Cousa sen importancia, ou broma
+TROULA = Festa moi animada
+ESMORGA = Saída de festa ata moi tarde, e título de Blanco Amor
+MUXICA = Pequeno anaco de lume que salta
+BOCEXO = Xesto de abrir a boca por sono
+CALAFRIO = Tremor repentino do corpo
+BAGOA = Pinga que sae do ollo cando choras
+ESBIRRO = Saída súbita de aire polo nariz
+SOIDADE = Estado de quen está só
+TREBELLO = Obxecto ou ferramenta para unha tarefa
+
+# 20 | O gran parrulo
+SAUDADE = Sentimento de faltar algo ou alguén, primo da morriña
+ORZAMENTO = Previsión de gastos e ingresos
+TESTEMUÑA = Persoa que viu o que pasou
+FERVENZA = Salto de auga nun río
+CANTIL = Costa rochosa alta e vertical
+OUTEIRO = Monte pequeno
+CHAIRA = Terreo plano e extenso
+ENCORO = Auga retida por un muro nun río
+REGATO = Corrente pequena de auga
+ANZOL = Gancho para pescar
+PEIRAO = Lugar do porto onde atracan os barcos
+PREAMAR = Punto máis alto da marea
+BAIXAMAR = Punto máis baixo da marea
+XOANIÑA = Insecto vermello con puntos negros
+ESTRUGA = Planta que pica ao tocala
+ALOUMIÑO = Xesto de agarimo coa man

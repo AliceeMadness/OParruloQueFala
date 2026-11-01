@@ -1,0 +1,687 @@
+// Formato: «# Grupo | nivel», «## Lección», «> texto de introducción» y luego
+// «Frase con ___ | respuesta correcta | opción falsa | [otra falsa] | Explicación»
+// y en la línea siguiente «= Traducción al castellano de la frase completa»
+
+# Colocar os pronomes | 1
+## O pronome vai detrás do verbo
+> En galego, o pronome átono vai normalmente detrás do verbo e unido a el: «Vinte», non «Te vin». Nunca comeza unha frase.
+___ Antía. | Chámome | Me chamo | Unha frase afirmativa non pode comezar por pronome átono: únese detrás do verbo.
+= Me llamo Antía.
+___ moito, miña nai. | Quérote | Te quero | Sen nada que o atraia, o pronome vai detrás do verbo: «quérote».
+= Te quiero mucho, madre mía.
+Onte ___ na rúa. | vinte | te vin | «Onte» non atrae o pronome, así que segue detrás do verbo: «vinte».
+= Ayer te vi en la calle.
+Ela ___ a verdade. | díxome | me dixo | Un suxeito como «ela» non atrae o pronome: «Ela díxome».
+= Ella me dijo la verdad.
+O meu pai ___ un libro. | deume | me deu | O suxeito diante non cambia nada: o pronome segue detrás, «deume».
+= Mi padre me dio un libro.
+Os nenos ___ todos os días. | saúdanme | me saúdan | Frase afirmativa simple: pronome detrás do verbo.
+= Los niños me saludan todos los días.
+___ ti mañá, por favor. | Chámame | Me chama | Co imperativo afirmativo o pronome vai sempre detrás: «chámame».
+= Llámame tú mañana, por favor.
+Mañá ___ á estación. | lévote | te levo | «Mañá» é un adverbio que non atrae o pronome: «lévote».
+= Mañana te llevo a la estación.
+## Cando a negación o atrae
+> As palabras negativas (non, nunca, ninguén, nada, tampouco...) atraen o pronome, que pasa a ir diante do verbo.
+Non ___ onte. | te vin | vinte | «Non» atrae o pronome: colócase entre «non» e o verbo.
+= No te vi ayer.
+Nunca ___ a verdade. | me dis | dísme | «Nunca» é negativo e coloca o pronome diante do verbo.
+= Nunca me dices la verdad.
+Ninguén ___ esta mañá. | me chamou | chamoume | «Ninguén» é un suxeito negativo: atrae o pronome.
+= Nadie me llamó esta mañana.
+Tampouco ___ a película. | me gustou | gustoume | «Tampouco» é negativo: pronome diante.
+= Tampoco me gustó la película.
+Nada ___ tanto como isto. | me gusta | gústame | «Nada» é unha palabra negativa e atrae o pronome.
+= Nada me gusta tanto como esto.
+Non ___ moito. | o coñezo | coñézoo | Tras «non», o pronome vai diante, tamén «o, a, os, as».
+= No lo conozco mucho.
+Nin ___ nin me saudou. | me viu | viume | «Nin» tamén é negación: pronome diante.
+= Ni me vio ni me saludó.
+Aínda non ___ o libro. | me deu | deume | «Non» manda: o pronome vai diante do verbo.
+= Todavía no me dio el libro.
+## Subordinadas e interrogativas
+> As oracións subordinadas e as que comezan por palabra interrogativa ou exclamativa (que, quen, onde, cando...) tamén adiantan o pronome.
+Quero que ___ mañá. | me axudes | axúdesme | Tras «que» subordinante, o pronome vai diante do verbo.
+= Quiero que me ayudes mañana.
+Cando ___ , avísame. | te levantes | levántaste | «Cando» introduce subordinada: pronome diante.
+= Cuando te levantes, avísame.
+Que ___ o médico? | che dixo | díxoche | «Que» interrogativo atrae o pronome.
+= ¿Qué te dijo el médico?
+Quen ___ a noticia? | che deu | deuche | «Quen» interrogativo atrae o pronome.
+= ¿Quién te dio la noticia?
+Onde ___ as chaves? | me deixaches | deixáchesme | «Onde» atrae o pronome.
+= ¿Dónde me dejaste las llaves?
+Se ___ , saúdame. | me ves | vésme | «Se» condicional introduce subordinada: pronome diante.
+= Si me ves, salúdame.
+Que ben ___ este caldo! | me sabe | sabeme | Nas exclamativas con «que» o pronome adiántase.
+= ¡Qué bien me sabe este caldo!
+Por que non ___ onte? | me chamaches | chamáchesme | Interrogativa e negación: dobre motivo para adiantalo.
+= ¿Por qué no me llamaste ayer?
+## Adverbios e indefinidos que o atraen
+> Algúns adverbios (xa, tamén, aínda, só, mesmo, quizais...) e os indefinidos (alguén, todos, algo...) atraen o pronome.
+Xa ___ dixen. | cho | te | «Xa» atrae o pronome; «che + o» contráese en «cho».
+= Ya te lo dije.
+Tamén ___ o teu amigo. | me gusta | gústame | «Tamén» atrae o pronome: «Tamén me gusta».
+= También me gusta tu amigo.
+Alguén ___ pola fiestra. | te viu | viute | «Alguén» é un indefinido e atrae o pronome.
+= Alguien te vio por la ventana.
+Todos ___ moito. | te queremos | querémoste | «Todos» é un indefinido en posición de suxeito: pronome diante.
+= Todos te queremos mucho.
+Só ___ unha cousa. | che pido | pídoche | «Só» é un dos adverbios que atraen o pronome.
+= Solo te pido una cosa.
+Quizais ___ mañá. | me chame | chámeme | «Quizais» atrae o pronome e pide subxuntivo.
+= Quizá me llame mañana.
+Oxalá ___ axudar. | te poida | poidate | «Oxalá» expresa desexo e atrae o pronome.
+= Ojalá pueda ayudarte.
+Mesmo ___ a chave. | me deu | deume | «Mesmo», co sentido de «incluso», atrae o pronome.
+= Incluso me dio la llave.
+## O gran dilema: te ou che
+> «Te» é complemento directo (a quen vexo: véxote). «Che» é indirecto (a quen lle dou algo: dóuche). Non se poden intercambiar.
+Non ___ vin onte. | te | che | Ver a alguén: ti es o que se ve (directo), por iso «te».
+= No te vi ayer.
+Non ___ dei o libro. | che | te | O que se dá é o libro; ti recíbelo (indirecto), por iso «che».
+= No te di el libro.
+Non ___ digo nada. | che | te | «Nada» é o que se di; a ti dígocho: indirecto, «che».
+= No te digo nada.
+Non ___ coñezo. | te | che | Coñecer a alguén: complemento directo, «te».
+= No te conozco.
+Non ___ gusta o caldo? | che | te | «Gustar» leva indirecto: «gústache», nunca «gústate».
+= ¿No te gusta el caldo?
+Dóe___ a cabeza? | che | te | «Doer» leva indirecto: «dóeche».
+= ¿Te duele la cabeza?
+Escríbo___ unha carta. | che | te | O que se escribe é a carta; ti recíbela: «escríboche».
+= Te escribo una carta.
+Agardo___ na praza. | te | che | Agardar a alguén: directo, «agárdote».
+= Te espero en la plaza.
+Quero dar___ un regalo. | che | te | O que se dá é o regalo; ti recíbelo: «darche».
+= Quiero darte un regalo.
+Vou chamar___ á noite. | te | che | Chamar a alguén: directo, «chamarte».
+= Voy a llamarte por la noche.
+## Lle, o ou a
+> «O, a, os, as» son directos; «lle, lles» son indirectos. En galego non hai leísmo: «lle» nunca substitúe un directo.
+A María, ___ onte na rúa. | vina | vinlle | Ver a María: complemento directo feminino, «vina».
+= A María la vi ayer en la calle.
+Ao meu irmán, ___ unha carta. | escribinlle | escribino | O que se escribe é a carta: a el, indirecto, «lle».
+= A mi hermano le escribí una carta.
+Non ___ dixen nada. | lle | o | «Nada» é o que se di; a el: «lle».
+= No le dije nada.
+Non ___ vin a el. | o | lle | A el vino: directo, «o». Dicir «lle vin» sería leísmo.
+= No lo vi a él.
+Ás nenas, ___ un conto. | conteilles | contéinas | O que se conta é o conto; a elas, indirecto plural: «lles».
+= A las niñas les conté un cuento.
+Aos meus pais, ___ a casa. | ensineilles | ensineinos | A casa é o que se ensina; a eles, «lles».
+= A mis padres les enseñé la casa.
+Busquei o gato e ___ no xardín. | atopeino | atopeille | O gato é o que se atopa: directo, «o».
+= Busqué al gato y lo encontré en el jardín.
+A ti e a min ___ a verdade. | dixéronnos | dixéronos | «Nos» únese a «dixeron»: escríbese «dixéronnos».
+= A ti y a mí nos dijeron la verdad.
+## As formas -lo, -la
+> Se o verbo remata en -r ou -s, o pronome «o, a, os, as» toma a forma «-lo, -la, -los, -las» e esa consoante desaparece.
+Vou ___ agora mesmo. (coller o libro) | collelo | coller o | Tras -r, «o» pasa a «-lo» e o r cae: «collelo».
+= Voy a cogerlo ahora mismo.
+Tes que ___ hoxe. (facer iso) | facelo | facer o | Infinitivo + «o»: «facelo».
+= Tienes que hacerlo hoy.
+Queres ___ (mercar a casa) | mercala | mercar a | Infinitivo + «a»: «mercala».
+= ¿Quieres comprarla?
+Ti ___ (bebes a auga) | bébela | bebes a | Tras -s, «a» pasa a «-la»: «bébela», con til de esdrúxula.
+= Tú la bebes.
+Nós ___ (comemos o pan) | comémolo | comemos o | Tras -mos, «o» é «-lo»: «comémolo».
+= Nosotros lo comemos.
+Ti ___ onte (viches a película) | víchela | viches a | «Viches» + «a»: o s cae e queda «víchela».
+= Tú la viste ayer.
+Nós ___ (vemos os nenos) | vémolos | vemos os | «Vemos» + «os»: «vémolos».
+= Nosotros los vemos.
+Vós ___ (lavades a roupa) | lavádela | lavades a | «Lavades» + «a»: «lavádela».
+= Vosotros la laváis.
+## As formas -no, -na
+> Se o verbo remata en ditongo, o pronome é «-no, -na, -nos, -nas»: «viuno». Tras -n, queda un só n: «vírono».
+El ___ (viu o coche) | viuno | viuo | Tras o ditongo de «viu», aparece «-no».
+= Él lo vio.
+Ela ___ (mercou a casa) | mercouna | mercoua | Tras ditongo: «-na». Forma correcta: «mercouna».
+= Ella la compró.
+O neno ___ (comeu o doce) | comeuno | comeuo | «Comeu» remata en ditongo: «comeuno».
+= El niño lo comió.
+Eles ___ (viron o rato) | vírono | viron o | Tras -n: «vírono». Leva til por ser esdrúxula.
+= Ellos lo vieron.
+Elas ___ (colleron a chave) | collérona | colleronna | Tras -n mantense un só n: «collérona».
+= Ellas la cogieron.
+Ela ___ (vai buscar o neno) | vaino buscar | vaio buscar | «Vai» remata en ditongo: «vaino buscar».
+= Ella va a buscarlo.
+A policía ___ (detivo o ladrón) | detívoo | detivono | «Detivo» remata en vogal: «detívoo», sen cambio do pronome.
+= La policía lo detuvo.
+Ela ___ (fixo o traballo) | fíxoo | fixono | «Fixo» remata en vogal simple: «fíxoo».
+= Ella lo hizo.
+## Dous pronomes xuntos
+> Dous pronomes fúndense: me + o = mo, che + o = cho, lle + o = llo, nos + o = nolo, vos + o = volo, lles + o = llelo.
+Deu___. (o libro, a min) | mo | meo | «Me + o» fúndese en «mo»: «deumo».
+= Me lo dio.
+Deu___. (o libro, a ti) | cho | teo | «Che + o» fúndese en «cho»: «deucho».
+= Te lo dio.
+Deu___. (o libro, a el) | llo | lleo | «Lle + o» fúndese en «llo»: «deullo».
+= Se lo dio a él.
+Deu___. (o libro, a nós) | nolo | noso | «Nos + o» dá «nolo»: «deunolo».
+= Nos lo dio.
+Deu___. (o libro, a vós) | volo | voso | «Vos + o» dá «volo»: «deuvolo».
+= Os lo dio.
+Deu___. (o libro, a eles) | llelo | llo | «Lles + o» dá «llelo», que non se debe confundir con «llo», de «lle + o».
+= Se lo dio a ellos.
+Xa ___ dei a ti. (as chaves) | chas | chos | «Che + as» fúndese en «chas» (feminino plural).
+= Ya te las di a ti.
+Non ___ digas a ninguén. (iso, a min) | mo | o | A negación adianta o conxunto «me + o» = «mo».
+= No me lo digas a nadie.
+## Con perífrases e infinitivos
+> Coas perífrases, o pronome adoita ir tras o infinitivo, ou diante do auxiliar se algo o atrae (como «non»).
+Non ___ axudar hoxe. | te podo | podo te | Con negación, o pronome sobe diante do auxiliar.
+= No puedo ayudarte hoy.
+Quero ___ mañá. | verte | te ver | Sen nada que o atraia, o pronome vai tras o infinitivo: «verte».
+= Quiero verte mañana.
+Teño que ___ unha cousa. | contarche | te contar | O que se conta é «unha cousa»: é indirecto, por iso «che» e non «te».
+= Tengo que contarte una cosa.
+Vou ___ agora. | chamarte | che chamar | Chamar a alguén é directo: «te». A forma correcta é «chamarte».
+= Voy a llamarte ahora.
+Antes de ___ , dúchate. | deitarte | deitarche | Deitarse leva directo: «deitarte».
+= Antes de acostarte, dúchate.
+Quero ___ a verdade. | dicirche | dicirte | Dicir algo a alguén é indirecto: «che».
+= Quiero decirte la verdad.
+Non ___ dicir nada. | che podo | podo che | Con «non», o pronome adiántase: «non che podo dicir».
+= No puedo decirte nada.
+Estou ___ unha carta. | escribíndoche | escribindote | Xerundio + «che» con til: «escribíndoche».
+= Estoy escribiéndote una carta.
+
+# Artigos e contraccións | 1
+## Artigos e contraccións con a
+> O artigo é o, a, os, as. Coa preposición «a» contráese: a + o = ao, a + a = á, a + os = aos, a + as = ás.
+Vou ___ praia. | á | a | A + a = «á», con til: «Vou á praia».
+= Voy a la playa.
+Vou ___ mercado. | ao | a o | A + o escríbese xunto: «ao».
+= Voy al mercado.
+Dálle o libro ___ nena. | á | a | A + a = «á».
+= Dale el libro a la niña.
+Falei ___ meus pais. | aos | os | A + os = «aos».
+= Les hablé a mis padres.
+Fun ___ festas de Vigo. | ás | as | A + as = «ás».
+= Fui a las fiestas de Vigo.
+Son ___ tres en punto. | as | ás | Para dicir a hora con «son» non hai preposición: «son as tres».
+= Son las tres en punto.
+Saio ___ tres en punto. | ás | as | Para indicar cando se fai algo si hai preposición: «ás tres».
+= Salgo a las tres en punto.
+___ casa é grande. | A | Á | Aquí é suxeito: só artigo, sen til.
+= La casa es grande.
+## Con en e de
+> Con «en» e «de» tamén se contrae: no, na, nos, nas; do, da, dos, das.
+Vivo ___ cidade. | na | en a | En + a = «na».
+= Vivo en la ciudad.
+Estou ___ parque. | no | en o | En + o = «no».
+= Estoy en el parque.
+Veño ___ praia. | da | de a | De + a = «da».
+= Vengo de la playa.
+A casa ___ meu pai. | do | de o | De + o = «do».
+= La casa de mi padre.
+Os xoguetes ___ nenas. | das | de as | De + as = «das».
+= Los juguetes de las niñas.
+Hai moita xente ___ rúas. | nas | en as | En + as = «nas».
+= Hay mucha gente en las calles.
+Veñen ___ montes. | dos | de os | De + os = «dos».
+= Vienen de los montes.
+Teño a chave ___ peto. | no | en o | En + o = «no».
+= Tengo la llave en el bolsillo.
+## Con con e por
+> «Con» tamén se contrae: co, coa, cos, coas. E «por»: polo, pola, polos, polas.
+Falo ___ neno. | co | con o | Con + o = «co».
+= Hablo con el niño.
+Vou ___ miña nai. | coa | con a | Con + a = «coa».
+= Voy con mi madre.
+Xogo ___ amigos. | cos | con os | Con + os = «cos».
+= Juego con los amigos.
+Saio ___ amigas. | coas | con as | Con + as = «coas».
+= Salgo con las amigas.
+Paso ___ ponte. | pola | por a | Por + a = «pola».
+= Paso por el puente.
+Camiño ___ parque. | polo | por o | Por + o = «polo».
+= Camino por el parque.
+Pasamos ___ rúas vellas. | polas | por as | Por + as = «polas».
+= Pasamos por las calles viejas.
+Pregunta ___ teus pais. | polos | por os | Por + os = «polos».
+= Pregunta por tus padres.
+## Artigos indeterminados e contraccións
+> Un, unha, uns, unhas. Contráense con en (nun, nunha), de (dun, dunha) e con (cun, cunha).
+Vivo ___ cidade grande. | nunha | en unha | En + unha = «nunha».
+= Vivo en una ciudad grande.
+Veño ___ pobo pequeno. | dun | de un | De + un = «dun».
+= Vengo de un pueblo pequeño.
+Falei ___ amiga. | cunha | con unha | Con + unha = «cunha».
+= Hablé con una amiga.
+Durmo ___ cama moi dura. | nunha | en unha | En + unha = «nunha».
+= Duermo en una cama muy dura.
+Estiven ___ home moi amable. | cun | con un | Con + un = «cun».
+= Estuve con un hombre muy amable.
+Son ___ aldea de Lugo. | dunha | de unha | De + unha = «dunha».
+= Soy de una aldea de Lugo.
+Merquei ___ libro novo. | un | unha | «Libro» é masculino: «un libro».
+= Compré un libro nuevo.
+Quero ___ peras. | unhas | uns | «Peras» é feminino plural: «unhas peras».
+= Quiero unas peras.
+## Demostrativos
+> Este, ese, aquel (e femininos e plurais). Neutros: isto, iso, aquilo. E contraccións: neste, deste, naquel, daquel...
+___ é a miña casa. | Esta | Este | «Casa» é feminino: «esta».
+= Esta es mi casa.
+Que é ___? | isto | este | Se non sabes que é, usa o neutro: «isto».
+= ¿Qué es esto?
+Dáme ___ (o que tes na man). | iso | ese | Neutro de proximidade ao oínte: «iso».
+= Dame eso.
+Vivo ___ casa. | nesta | en esta | En + esta = «nesta».
+= Vivo en esta casa.
+Veño ___ cidade. | desa | de esa | De + esa = «desa».
+= Vengo de esa ciudad.
+Lembras ___ día? | aquel | aquilo | «Día» é substantivo masculino: «aquel día».
+= ¿Recuerdas aquel día?
+___ que dixeches é mentira. | Iso | Ese | «Iso» é neutro e encaixa cando non hai substantivo.
+= Eso que dijiste es mentira.
+Ninguén vive ___ vella casa. | naquela | en aquela | En + aquela = «naquela».
+= Nadie vive en aquella vieja casa.
+
+# Xénero e número | 2
+## Palabras que cambian de xénero
+> Moitas palabras teñen xénero distinto en galego e en castelán. Hai que aprendelas de memoria.
+___ leite está frío. | O | A | «Leite» é masculino: «o leite».
+= La leche está fría.
+___ sal está na mesa. | O | A | «Sal» é masculino: «o sal».
+= La sal está en la mesa.
+___ mel é doce. | O | A | «Mel» é masculino: «o mel».
+= La miel es dulce.
+___ nariz doe. | O | A | «Nariz» é masculino: «o nariz».
+= Me duele la nariz.
+___ sangue é vermello. | O | A | «Sangue» é masculino: «o sangue».
+= La sangre es roja.
+___ dor é moi forte. | A | O | «Dor» é feminino: «a dor».
+= El dolor es muy fuerte.
+___ calor é insoportable. | A | O | «Calor» é feminino: «a calor».
+= El calor es insoportable.
+___ árbore é moi alta. | A | O | «Árbore» é feminino: «a árbore».
+= El árbol es muy alto.
+## Máis xéneros que enganan
+> Outro grupo que confunde: a ponte, a cor, a orixe, a análise, o costume, o cárcere...
+___ ponte é vella. | A | O | «Ponte» é feminino: «a ponte».
+= El puente es viejo.
+___ cor é moi bonita. | A | O | «Cor» é feminino: «a cor».
+= El color es muy bonito.
+___ costume é antigo. | O | A | «Costume» é masculino: «o costume».
+= La costumbre es antigua.
+___ orixe é descoñecida. | A | O | «Orixe» é feminino: «a orixe».
+= El origen es desconocido.
+___ análise foi boa. | A | O | «Análise» é feminino: «a análise».
+= El análisis fue bueno.
+___ cárcere está lonxe. | O | A | «Cárcere» é masculino: «o cárcere».
+= La cárcel está lejos.
+___ suor corre pola testa. | A | O | «Suor» é feminino: «a suor».
+= El sudor corre por la frente.
+___ fin de semana foi longa. | A | O | «Fin» é feminino: «a fin de semana».
+= El fin de semana fue largo.
+## Plurais con -l e -n
+> As palabras en -l adoitan facer -is (animal: animais; papel: papeis; azul: azuis). As palabras en -n engaden -s (can: cans).
+Hai moitos ___ na granxa. (animal) | animais | animales | -al fai -ais: «animais».
+= Hay muchos animales en la granja.
+Compro dous ___ (papel) | papeis | papeles | -el fai -eis: «papeis».
+= Compro dos papeles.
+Teño os ollos ___ (azul) | azuis | azules | -ul fai -uis: «azuis».
+= Tengo los ojos azules.
+Estes exames son ___ (fácil) | fáciles | fáceis | As palabras graves en -il fan -iles: «fáciles».
+= Estos exámenes son fáciles.
+Teño tres ___ (can) | cans | canes | -n suma só -s: «cans».
+= Tengo tres perros.
+Pasan moitos ___ pola estrada. (camión) | camións | camiones | -n suma -s: «camións».
+= Pasan muchos camiones por la carretera.
+Os ___ son fortes. (mozo) | mozos | mozoes | Vogal + s: «mozos».
+= Los chicos son fuertes.
+Merquei uns ___ (pantalón) | pantalóns | pantalones | -n suma -s: «pantalóns».
+= Compré unos pantalones.
+## Outros plurais
+> As palabras en -z cambian a -ces (vez: veces). As agudas en -s suman -es (mes: meses). As graves en -s non cambian (lapis).
+Fun tres ___ (vez) | veces | vezs | -z fai -ces: «veces».
+= Fui tres veces.
+Apaga as ___ (luz) | luces | luzes | -z fai -ces: «luces».
+= Apaga las luces.
+Pasaron dous ___ (mes) | meses | mes | Aguda en -s: suma -es: «meses».
+= Pasaron dos meses.
+Teño dous ___ (lapis) | lapis | lapises | Grave en -s: non cambia: «lapis».
+= Tengo dos lápices.
+Os ___ son vermellos. (autobús) | autobuses | autobús | Aguda en -s: suma -es: «autobuses».
+= Los autobuses son rojos.
+Vin dúas ___ (nai) | nais | naies | Tras vogal ou ditongo: -s: «nais».
+= Vi a dos madres.
+Comín tres ___ (noz) | noces | nozes | -z fai -ces: «noces».
+= Comí tres nueces.
+Os ___ cantan. (rapaz) | rapaces | rapazes | -z fai -ces: «rapaces».
+= Los chicos cantan.
+## Femininos
+> Terminacións típicas: -án dá -á (irmá) ou -ana; -ón dá -oa (leoa) ou -ona; -o dá -a; -or dá -ora.
+Ela é a miña ___ (irmán) | irmá | irmana | «Irmán» forma o feminino en -á: «irmá».
+= Ella es mi hermana.
+A ___ dorme. (león) | leoa | leona | -ón dá -oa en bastantes palabras: «leoa».
+= La leona duerme.
+A ___ fala moito. (avó) | avoa | avá | «Avó» dá «avoa».
+= La abuela habla mucho.
+A ___ fuxiu da policía. (ladrón) | ladroa | ladrona | «Ladrón» dá «ladroa».
+= La ladrona huyó de la policía.
+A nena é moi ___ (bo) | boa | bona | «Bo» dá «boa».
+= La niña es muy buena.
+A rapaza está ___ (san) | sa | sana | «San» dá «sa».
+= La chica está sana.
+A profesora é ___ (galego) | galega | galego | -o dá -a: «galega».
+= La profesora es gallega.
+Esta rapaza é ___ (novo) | nova | noviña | -o dá -a: «nova».
+= Esta chica es joven.
+## Posesivos
+> Meu/miña, teu/túa, seu/súa, noso/nosa, voso/vosa. Normalmente levan artigo diante: a miña casa.
+Esta é ___ casa. (eu) | a miña | miña | O posesivo adoita ir con artigo: «a miña casa».
+= Esta es mi casa.
+Onde está ___ coche? (ti) | o teu | teu | Artigo + posesivo: «o teu coche».
+= ¿Dónde está tu coche?
+___ nai é mestra. (ti) | A túa | A teu | O feminino de «teu» é «túa».
+= Tu madre es maestra.
+Ela ten ___ casa. (ela) | a súa | a seu | O feminino de «seu» é «súa».
+= Ella tiene su casa.
+Estes son ___ libros. (nós) | os nosos | noso | Plural con artigo: «os nosos».
+= Estos son nuestros libros.
+Esta é ___ filla. (vós) | a vosa | a vos | O feminino de «voso» é «vosa».
+= Esta es vuestra hija.
+Son ___ fillos. (eu) | os meus | os miños | O masculino plural de «meu» é «meus».
+= Son mis hijos.
+___ amigas chegaron. (eu) | As miñas | As meus | Feminino plural: «as miñas».
+= Mis amigas llegaron.
+## Numerais con xénero
+> Dous/dúas teñen forma feminina, tamén nos seus compostos: vinte e dúas, douscentas, trescentas.
+Teño ___ irmás. | dúas | dous | Con feminino, «dúas».
+= Tengo dos hermanas.
+Merquei ___ libros. | dous | dúas | Con masculino, «dous».
+= Compré dos libros.
+Hai ___ nenas na clase. (22) | vinte e dúas | vinte e dous | Feminino tamén nos compostos.
+= Hay veintidós niñas en la clase.
+Levo ___ persoas no autobús. (200) | douscentas | douscentos | As centenas concordan: «douscentas persoas».
+= Llevo doscientas personas en el autobús.
+Ten ___ anos. (32) | trinta e dous | trinta e dúas | «Anos» é masculino.
+= Tiene treinta y dos años.
+Custa ___ euros. (300) | trescentos | trescentas | «Euros» é masculino.
+= Cuesta trescientos euros.
+Pasaron ___ horas. | dúas | dous | «Hora» é feminino.
+= Pasaron dos horas.
+Comín ___ mazás. | dúas | dous | «Mazá» é feminino.
+= Comí dos manzanas.
+
+# Os tempos verbais | 2
+## Non hai tempos compostos
+> En galego non hai tempos compostos con «haber» de uso normal: o castelán «he comido» dise «comín».
+Hoxe ___ tarde. | erguinme | hei erguido | Con «hoxe» tamén se usa o pretérito simple.
+= Hoy me he levantado tarde.
+Xa ___ a cea. | fixen | hei feito | Non hai «hei feito»: dise «fixen».
+= Ya he hecho la cena.
+Nunca ___ a Roma. | fun | hei ido | «Nunca fun», sen auxiliar.
+= Nunca he ido a Roma.
+Este ano ___ moito. | traballei | hei traballado | Pretérito simple aínda que o ano non rematase.
+= Este año he trabajado mucho.
+Aínda non ___ o libro. | lin | hei lido | «Aínda non lin».
+= Todavía no he leído el libro.
+___ moito esta semana? | Choveu | Ha chovido | Pregúntase co pretérito simple.
+= ¿Ha llovido mucho esta semana?
+Xa ___ a película? | viches | has visto | «Viches» en vez de «has visto».
+= ¿Ya has visto la película?
+Nunca ___ tanto. | rin | hei rido | «Rin»: pretérito simple de «rir».
+= Nunca he reído tanto.
+## Pretérito e copretérito
+> O pretérito conta feitos rematados (onte comín). O copretérito describe hábitos ou situacións pasadas (de neno comía moito).
+Onte ___ pan. | merquei | mercaba | Feito puntual de onte: pretérito.
+= Ayer compré pan.
+De neno ___ na aldea. | vivía | vivín | Situación duradeira do pasado: copretérito.
+= De niño vivía en la aldea.
+Cando era novo, ___ moito. | lía | lin | Hábito pasado: copretérito.
+= Cuando era joven, leía mucho.
+Ese día ___ de casa cedo. | saín | saía | Un día concreto: pretérito.
+= Ese día salí de casa temprano.
+Todos os veráns ___ á praia. | iamos | fomos | «Todos os veráns»: hábito, copretérito.
+= Todos los veranos íbamos a la playa.
+Mentres ti ___ , eu lavaba. | cociñabas | cociñaches | Accións simultáneas en curso: copretérito.
+= Mientras tú cocinabas, yo lavaba.
+A semana pasada ___ a Vigo. | fun | ía | Acción rematada: pretérito.
+= La semana pasada fui a Vigo.
+Antes ___ moita xente aquí. | había | houbo | Descrición do pasado: copretérito.
+= Antes había mucha gente aquí.
+## Futuro e perífrases
+> O futuro fórmase co infinitivo (falarei). Para plans próximos, «ir + infinitivo» sen preposición: vou comer.
+Mañá ___ o bus. | collerei | collín | «Mañá» pide futuro.
+= Mañana cogeré el bus.
+Agora ___ comer. | vou | vou a | «Ir + infinitivo» vai sen «a»: «vou comer».
+= Ahora voy a comer.
+Que ___ ti mañá? | farás | facerás | «Facer» é irregular en futuro: «farás».
+= ¿Qué harás tú mañana?
+Eu ___ a verdade. | direi | dicirei | «Dicir» fai «direi».
+= Yo diré la verdad.
+Onde ___ os libros? | porás | poñerás | «Poñer» fai «porás».
+= ¿Dónde pondrás los libros?
+Mañá ___ chover. | vai | vai a | Sen preposición: «vai chover».
+= Mañana va a llover.
+Non ___ tempo. | terei | tiverei | «Ter» en futuro é regular: «terei».
+= No tendré tiempo.
+Nós ___ cedo. | sairemos | saíremos | «Saír» perde o til en futuro: «sairemos».
+= Nosotros saldremos temprano.
+## Estar a + infinitivo
+> O normal para accións en curso é «estar a + infinitivo» ou «estar + xerundio», como en «estou a comer» ou «estou comendo».
+Agora ___ comer. | estou a | estou de | A perífrase é «estar a» + infinitivo.
+= Ahora estoy comiendo.
+Que ___ facer? | estás a | estás de | «Estás a facer».
+= ¿Qué estás haciendo?
+Os nenos ___ xogar. | están a | están en | «Están a xogar».
+= Los niños están jugando.
+Ela está ___ agora. | durmindo | durmiendo | O xerundio galego é «durmindo», con -indo.
+= Ella está durmiendo ahora.
+Nós ___ falar. | estamos a | estamos de | «Estamos a falar».
+= Estamos hablando.
+Chove e eu ___ correndo. | estou | son | Con acción en curso, «estar».
+= Llueve y yo estoy corriendo.
+Estamos ___ na praia. | paseando | paseiando | «Pasear» fai «paseando».
+= Estamos paseando por la playa.
+Estou ___ a cea. | a preparar | de preparar | «Estou a preparar a cea».
+= Estoy preparando la cena.
+## Ter que, haber de, hai que
+> «Ter que» é obriga. «Hai que» é obriga xeral. «Haber de» expresa futuro, intención ou probabilidade. «Cómpre» significa que algo fai falta.
+___ que estudar para o exame. | Teño | Hei | Obriga persoal: «teño que».
+= Tengo que estudiar para el examen.
+___ que traballar para vivir. | Hai | Ten | Obriga xeral e impersoal: «hai que».
+= Hay que trabajar para vivir.
+___ ir mañá, prometo. | Hei de | Hai que | Intención persoal: «hei de».
+= He de ir mañana, lo prometo.
+___ ter coidado na estrada. | Cómpre | Compra | «Cómpre» significa «fai falta». «Compra» é outra palabra.
+= Hace falta tener cuidado en la carretera.
+Ti ___ vir á festa. | tes que | hai que | Obriga túa: «tes que».
+= Tú tienes que venir a la fiesta.
+___ moita xente na rúa. | Hai | Ten | «Hai» expresa existencia.
+= Hay mucha gente en la calle.
+Xa ___ de chegar. | han | hai | Probabilidade con «haber de»: «han de chegar».
+= Ya deben de estar llegando.
+Non ___ que dicilo. | hai | ten | Impersoal: «non hai que dicilo».
+= No hay que decirlo.
+
+# Subxuntivo e infinitivo conxugado | 3
+## Subxuntivo en presente
+> Fórmase desde a primeira persoa do presente: falo: fale; digo: diga. Aparece con desexos, dúbidas e «que» subordinante.
+Quero que ___ mañá. (vir) | veñas | vés | Con «querer que» úsase subxuntivo.
+= Quiero que vengas mañana.
+Oxalá ___ mañá. (chover) | chova | chove | «Oxalá» pide subxuntivo.
+= Ojalá llueva mañana.
+Cando ___ , chámame. (chegar) | chegues | chegas | «Cando» con valor de futuro pide subxuntivo.
+= Cuando llegues, llámame.
+Espero que ___ boa sorte. (ter) | teñas | tes | Desexo: subxuntivo. Base «teño»: «teñas».
+= Espero que tengas buena suerte.
+Talvez ___ tarde. (ser) | sexa | é | «Talvez» pide subxuntivo: «sexa».
+= Tal vez sea tarde.
+É mellor que ___ agora. (facer) | fagas | fas | «É mellor que» pide subxuntivo. «Fago»: «fagas».
+= Es mejor que lo hagas ahora.
+Non creo que ___ verdade. (ser) | sexa | é | Negación de opinión: subxuntivo.
+= No creo que sea verdad.
+Dubido que ___ a tempo. (chegar) | cheguen | chegan | «Dubidar» pide subxuntivo.
+= Dudo que lleguen a tiempo.
+## Infinitivo conxugado: para que serve
+> O galego conxuga o infinitivo: falar, falares, falar, falarmos, falardes, falaren. Serve cando se quere marcar quen fai a acción.
+Fíxeno para ti ___ feliz. | seres | ser | Suxeito explícito «ti»: «seres».
+= Lo hice para que tú fueses feliz.
+Ao ___ nós, xa non estaban. | chegarmos | chegar | Suxeito «nós»: «chegarmos».
+= Al llegar nosotros, ya no estaban.
+Antes de ___ vós, limpade. | saírdes | saír | Suxeito «vós»: «saírdes».
+= Antes de salir vosotros, limpiad.
+Para ___ eles, teñen que estudar. | aprenderen | aprender | Suxeito «eles»: «aprenderen».
+= Para aprender ellos, tienen que estudiar.
+Por ___ ti tan novo, pagas menos. | seres | ser | Causa con suxeito «ti»: «seres».
+= Por ser tú tan joven, pagas menos.
+Sen ___ nós nada, marcharon. | sabermos | saber | Suxeito «nós»: «sabermos».
+= Sin saber nosotros nada, se marcharon.
+Ata ___ vós, non comezamos. | virdes | vir | Suxeito «vós» con «ata»: «virdes».
+= Hasta que vengáis vosotros, no empezamos.
+Ao ___ elas, saudamos. | chegaren | chegar | Suxeito «elas»: «chegaren».
+= Al llegar ellas, saludamos.
+## Infinitivo ou subxuntivo
+> Se o suxeito é o mesmo, úsase infinitivo simple. Se cambia, infinitivo conxugado ou subxuntivo con «que».
+Quero ___ (eu) o tren. | coller | collas | Mesmo suxeito («eu quero» e «eu collo»): infinitivo.
+= Quiero coger el tren.
+Quero que ti ___ o tren. | collas | coller | Suxeitos distintos: subxuntivo.
+= Quiero que tú cojas el tren.
+Vou para ___ (eu) axudar. | poder | poidan | Mesmo suxeito: infinitivo.
+= Voy para poder ayudar.
+Trouxen o libro para ___ ler (ti). | poderes | poder | Cambia o suxeito: infinitivo conxugado.
+= Traje el libro para que puedas leerlo.
+Vinde para ___ (vós) ver. | poderdes | poder | Suxeito «vós»: «poderdes».
+= Venid para poder ver.
+Espero ___ (eu) cedo. | chegar | chegues | Mesmo suxeito: infinitivo.
+= Espero llegar temprano.
+Espero que ___ cedo. (ti) | chegues | chegar | Suxeito distinto: subxuntivo.
+= Espero que llegues temprano.
+Antes de ___ (eles), comeron. | marcharen | marchar | Suxeito expreso plural: «marcharen».
+= Antes de marcharse ellos, comieron.
+
+# Pronomes tónicos e comparacións | 3
+## Comigo, contigo, connosco
+> Con preposición, os pronomes tónicos son: comigo, contigo, con el/ela, connosco, convosco, con eles/elas, consigo.
+Ven ___ ao cine. | comigo | con eu | «Con + eu» é «comigo».
+= Ven conmigo al cine.
+Vou ___ a Vigo. | contigo | con ti | «Con + ti» é «contigo».
+= Voy contigo a Vigo.
+Xantas ___ hoxe? | connosco | con nós | «Con + nós» é «connosco».
+= ¿Comes con nosotros hoy?
+Quero falar ___ todos. | convosco | con vós | «Con + vós» é «convosco».
+= Quiero hablar con todos vosotros.
+Levou o paraugas ___ | consigo | con el mesmo | Reflexivo: «consigo».
+= Se llevó el paraguas consigo.
+Isto é para ___ | min | eu | Tras preposición: «min», non «eu».
+= Esto es para mí.
+Falan de ___ | ti | te | Forma tónica tras preposición: «ti».
+= Hablan de ti.
+Confío en ___ | ti | che | Forma tónica: «en ti».
+= Confío en ti.
+## Comparacións
+> Máis alto ca min, tan alto coma ti. «Ca» e «coma» acompañan pronomes tónicos e substantivos; «que» e «como» úsanse tamén.
+O meu irmán é máis alto ___ min. | ca | de | Comparativo: «máis... ca».
+= Mi hermano es más alto que yo.
+Es tan alto ___ teu pai. | coma o | que | Igualdade: «tan... coma».
+= Eres tan alto como tu padre.
+Corre máis ___ o vento. | ca | de | «Máis ca».
+= Corre más que el viento.
+Ela é ___ ca min. | maior | máis grande | Forma culta e habitual: «maior».
+= Ella es mayor que yo.
+Este viño é ___ ca aquel. | mellor | máis bo | «Máis bo» non se usa: «mellor».
+= Este vino es mejor que aquel.
+Este café é ___ ca o outro. | peor | máis malo | «Máis malo» evítase: «peor».
+= Este café es peor que el otro.
+Traballa tanto ___ ti. | coma | ca | Igualdade con «tanto»: «coma».
+= Trabaja tanto como tú.
+Ti es ___ o raposo. | coma | ca | Semellanza: «coma».
+= Tú eres como el zorro.
+## Negación e indefinidos
+> «Ninguén» refírese a persoas, «nada» a cousas, «ningún/ningunha» acompaña un substantivo e «nin» une negacións. Unha negación tras o verbo require «non» diante.
+___ veu á festa. | Ninguén | Non | «Ninguén» refírese a persoas.
+= Nadie vino a la fiesta.
+Non vin a ___ | ninguén | nada | Persoas: «ninguén».
+= No vi a nadie.
+Non comín ___ | nada | ninguén | Cousas: «nada».
+= No comí nada.
+Non teño ___ libro. | ningún | ningunha | «Libro» é masculino: «ningún».
+= No tengo ningún libro.
+Non hai ___ rapaza aquí. | ningunha | ningún | «Rapaza» é feminino: «ningunha».
+= No hay ninguna chica aquí.
+Non quero café ___ té. | nin | ni | A forma galega é «nin».
+= No quiero café ni té.
+___ o sei, nin me importa. | Non | Ningún | Comeza con negación verbal: «Non o sei».
+= No lo sé, ni me importa.
+Algunha ___ , veño. | vez | veces | «Algunha vez», en singular.
+= Alguna vez, vengo.
+## Hora, clima e expresións feitas
+> Pequenas construcións habituais que difiren do castelán: teño fame, fai frío, que hora é...
+___ moita fame. | Teño | Estou | Sensación do corpo: «ter fame».
+= Tengo mucha hambre.
+Hoxe ___ moito frío. | fai | hai | Clima: «facer»: «fai frío».
+= Hoy hace mucho frío.
+Cantos anos ___? | tes | eres | Idade: con «ter».
+= ¿Cuántos años tienes?
+Que hora ___? | é | son | «Que hora é?» en singular.
+= ¿Qué hora es?
+___ as sete da tarde. | Son | É | Plural, agás coa unha: «son as sete».
+= Son las siete de la tarde.
+___ a unha. | É | Son | Singular: «é a unha».
+= Es la una.
+Chego ___ unha da tarde. | á | a | A + a: «á unha».
+= Llego a la una de la tarde.
+A que ___ comeza a clase? | hora | tempo | Pregúntase «a que hora».
+= ¿A qué hora empieza la clase?
+
+# Ortografía e tiles | 3
+## Tiles que cambian o sentido
+> Algúns pares diferéncianse por un til: é/e, dá/da, vén/ven, nós/nos, vós/vos, só/so, máis/mais.
+Ela ___ a miña irmá. | é | e | Verbo ser: «é».
+= Ella es mi hermana.
+Pan ___ queixo. | e | é | Conxunción copulativa: «e», sen til.
+= Pan y queso.
+A nai ___ un bico. | dá | da | Verbo dar: «dá».
+= La madre da un beso.
+A casa ___ miña nai. | da | dá | Contracción de + a: «da».
+= La casa de mi madre.
+___ somos de aquí. | Nós | Nos | Pronome tónico suxeito: «nós».
+= Nosotros somos de aquí.
+Isto é para ___ | nós | nos | Tras preposición vai o tónico, con til: «para nós».
+= Esto es para nosotros.
+Quero ___ pan. | máis | mais | Cantidade: «máis».
+= Quiero más pan.
+Quero ir, ___ non podo. | mais | máis | Conxunción adversativa: «mais».
+= Quiero ir, pero no puedo.
+## Tiles: pares con verbo
+> Outros pares habituais: pór/por, vén/ven, sé/se, té/te, cómpre/compre, fóra/fora.
+El ___ de Lugo. | vén | ven | Verbo «vir» en 3.ª persoa: «vén».
+= Él viene de Lugo.
+___ aquí, por favor. | Ven | Vén | Imperativo de «vir»: «ven», sen til.
+= Ven aquí, por favor.
+Estás ___ na casa? | só | so | Adxectivo: «só».
+= ¿Estás solo en casa?
+___ hai que estudar. | Só | So | Adverbio: «só».
+= Solo hay que estudiar.
+Sae ___ da casa. | fóra | fora | Adverbio de lugar: «fóra».
+= Sal fuera de casa.
+Pasa ___ a miña casa. | por | pór | Preposición: «por».
+= Pasa por mi casa.
+Hai que ___ a mesa. | pór | por | Infinitivo alternativo de «poñer»: «pór».
+= Hay que poner la mesa.
+Toma un ___ quente. | té | te | Bebida: «té».
+= Toma un té caliente.
+## Letras galegas: x, ñ, ll, z
+> O galego escribe «x» onde o castelán usa j ou g suave; «z» ante a, o, u; «c» ante e, i.
+Hoxe é ___ (jueves) | xoves | joves | Son da x galega: «xoves».
+= Hoy es jueves.
+Falo ___ (gallego) | galego | gallego | Escríbese cun só l: «galego».
+= Hablo gallego.
+Quero ___ (agua) | auga | agua | «Auga», con u antes de g.
+= Quiero agua.
+Quero unha ___ (cerveza) | cervexa | cerveza | Con x: «cervexa».
+= Quiero una cerveza.
+Vou á ___ (playa) | praia | playa | En galego é «praia», con «pr» e «i».
+= Voy a la playa.
+A ___ (gente) é boa. | xente | gente | Con x: «xente».
+= La gente es buena.
+Fago ___ (viaje) | viaxe | viaje | Con x: «viaxe».
+= Hago un viaje.
+Comín ___ (jamón) | xamón | jamón | Con x: «xamón».
+= Comí jamón.

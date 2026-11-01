@@ -1,0 +1,132 @@
+// Cada tema: «# Título | nivel | tiempos». Cada línea: «Nombre del grupo: verbos».
+// build.py crea una lección por cada grupo y tiempo.
+// Tiempos: presente, preterito, copreterito, futuro, condicional, subxuntivo, infinitivo
+
+# Os imprescindibles | 1 | presente, preterito, copreterito, futuro
+Ser, estar e ter: ser, estar, ter
+Ir e vir: ir, vir, haber
+Facer e dicir: facer, dicir, poder
+Poñer, querer e saber: poñer, querer, saber
+Dar e ver: dar, ver, oír
+
+# Presentarse e falar | 1 | presente, preterito
+Falar e escoitar: falar, escoitar, preguntar
+Vivir e coñecer: vivir, coñecer, chamar
+Entender e responder: entender, responder, repetir
+
+# A rutina diaria | 1 | presente, preterito, futuro
+Pola mañá: despertar, erguer, almorzar
+Durante o día: traballar, estudar, xantar
+Pola noite: cear, ler, durmir
+Hábitos: levar, tomar, vestir
+
+# Comer e beber | 1 | presente, preterito, copreterito
+Na mesa: comer, beber, merendar
+No restaurante: pedir, pagar, servir
+Con fame: probar, gustar, deixar
+
+# A cociña | 2 | presente, preterito, futuro, subxuntivo
+Preparar a comida: cociñar, preparar, cortar
+Ao lume: ferver, asar, fritir
+Mesturar: mesturar, engadir, quentar
+Conservar: gardar, encher, cocer
+
+# A casa e as tarefas | 2 | presente, preterito, copreterito, futuro
+Limpeza: lavar, limpar, varrer
+Roupa e pratos: fregar, tender, coser
+Orde: ordenar, colgar, tirar
+Arranxos: amañar, pegar, romper
+
+# De compras | 2 | presente, preterito, futuro, condicional
+Na tenda: mercar, vender, gastar
+O diñeiro: aforrar, gañar, perder
+Escoller: escoller, buscar, atopar
+Encargos: encher, cargar, sacar
+
+# Moverse pola cidade | 2 | presente, preterito, copreterito, futuro
+Andar: camiñar, pasear, correr
+En coche: conducir, aparcar, parar
+Xirar e cruzar: cruzar, xirar, seguir
+Entrar e saír: entrar, saír, subir
+Chegar: chegar, quedar, agardar
+
+# As viaxes | 2 | presente, preterito, futuro, condicional
+Preparativos: viaxar, reservar, alugar
+En ruta: visitar, levar, traer
+Pasar e navegar: pasar, cruzar, navegar
+Equipaxe: meter, coller, enviar
+
+# Sentimentos | 2 | presente, preterito, copreterito, condicional, subxuntivo
+Amar e odiar: amar, odiar, desexar
+Emocións: chorar, rir, sufrir
+Sentir: sentir, temer, soñar
+Agarimo: bicar, abrazar, apertar
+
+# A mente | 2 | presente, preterito, copreterito, condicional
+Pensar e lembrar: pensar, lembrar, esquecer
+Crer e comprender: crer, parecer, comprender
+Decidir: decidir, elixir, permitir
+Descubrir: descubrir, aprender, coñecer
+
+# A escola | 2 | presente, preterito, futuro, subxuntivo
+Aprender: aprender, estudar, ensinar
+Escribir: escribir, ler, debuxar
+Explicar: explicar, contar, traducir
+Na clase: asistir, repetir, dividir
+
+# O traballo | 3 | presente, preterito, futuro, condicional, subxuntivo
+Na oficina: traballar, organizar, presentar
+Comezar e rematar: comezar, rematar, cambiar
+Colaborar: axudar, compartir, dirixir
+Diñeiro e deberes: decidir, recibir, producir
+
+# O campo | 3 | presente, preterito, copreterito, futuro
+Sementar: plantar, regar, sementar
+A terra: sachar, coller, cortar
+Os animais: coidar, levar, gardar
+As estacións: medrar, crecer, nacer
+
+# O mar | 3 | presente, preterito, copreterito, condicional
+Pescar: pescar, navegar, coller
+Nadar: nadar, saltar, mover
+Temporal: romper, afogar, fuxir
+
+# Deporte e xogos | 3 | presente, preterito, futuro, condicional
+Xogar: xogar, gañar, perder
+Adestrar: adestrar, correr, saltar
+Competir: vencer, loitar, defender
+
+# Arte e música | 3 | presente, preterito, copreterito, subxuntivo
+Música: cantar, bailar, tocar
+Pintar: pintar, debuxar, gravar
+Crear: producir, construír, tecer
+
+# A tecnoloxía | 3 | presente, preterito, futuro, condicional
+Ordenador: programar, imprimir, descargar
+Móbil: chamar, enviar, recibir
+Máquinas: acender, apagar, usar
+
+# Saúde e corpo | 3 | presente, preterito, copreterito, subxuntivo
+No médico: curar, ferir, medir
+Medrar: nacer, crecer, envellecer
+Vida e morte: vivir, morrer, cubrir
+
+# Relacións sociais | 3 | presente, preterito, condicional, subxuntivo, infinitivo
+Saudar: saudar, acompañar, presentar
+Axudar: axudar, agradecer, ofrecer
+Discutir: discutir, insistir, mentir
+Casar: casar, unir, merecer
+
+# Sociedade e política | 4 | presente, preterito, condicional, subxuntivo, infinitivo
+Votar: votar, gobernar, mandar
+Loitar: loitar, defender, vencer
+Existir: existir, aparecer, desaparecer
+Reducir: reducir, producir, dividir
+
+# Os irregulares a fondo | 4 | condicional, subxuntivo, infinitivo
+Os máis usados: ser, estar, ter
+Movemento: ir, vir, saír
+Facer e dicir: facer, dicir, poñer
+Saber e poder: saber, poder, querer
+Outros irregulares: dar, ver, ler
+Os máis difíciles: traer, caer, valer
