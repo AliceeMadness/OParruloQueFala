@@ -280,6 +280,80 @@ ___ que dixeches é mentira. | Iso | Ese | «Iso» é neutro e encaixa cando non
 Ninguén vive ___ vella casa. | naquela | en aquela | En + aquela = «naquela».
 = Nadie vive en aquella vieja casa.
 
+# Primeiros pasos | 1
+## Ser ou estar
+> «Ser» indica como é algo ou de onde vén. «Estar» indica onde está ou como se atopa neste momento.
+A miña casa ___ moi grande. | é | está | Como é a casa: característica, «ser».
+= Mi casa es muy grande.
+Ela ___ de Lugo. | é | está | A orixe exprésase con «ser».
+= Ella es de Lugo.
+Hoxe ___ moi cansa. | estou | son | Como me atopo agora: «estar».
+= Hoy estoy muy cansada.
+A porta ___ aberta. | está | é | Estado neste momento: «estar».
+= La puerta está abierta.
+O meu pai ___ médico. | é | está | A profesión exprésase con «ser».
+= Mi padre es médico.
+Vigo ___ en Galicia. | está | é | A situación dun lugar exprésase con «estar».
+= Vigo está en Galicia.
+As chaves ___ na mesa. | están | son | Onde se atopan: «estar».
+= Las llaves están en la mesa.
+Nós ___ galegos. | somos | estamos | A orixe exprésase con «ser».
+= Nosotros somos gallegos.
+## Palabras para preguntar
+> As preguntas comezan por palabras como que, quen, onde, cando, como, cal, canto ou por que.
+___ te chamas? | Como | Que | Para preguntar o nome úsase «como».
+= ¿Cómo te llamas?
+___ vives? | Onde | Cando | Pregunta polo lugar: «onde».
+= ¿Dónde vives?
+___ anos tes? | Cantos | Cales | Pregunta pola cantidade, en masculino plural: «cantos».
+= ¿Cuántos años tienes?
+___ é ese home? | Quen | Que | Pregunta por unha persoa: «quen».
+= ¿Quién es ese hombre?
+___ chegas? | Cando | Onde | Pregunta polo tempo: «cando».
+= ¿Cuándo llegas?
+___ queres, café ou té? | Cal | Quen | Para escoller entre varias cousas: «cal».
+= ¿Cuál quieres, café o té?
+Que ___ agora? | fas | fais | «Facer» en segunda persoa é «fas».
+= ¿Qué haces ahora?
+___ non vés? | Por que | Porque | Para preguntar o motivo escríbese separado: «por que».
+= ¿Por qué no vienes?
+## O verbo gustar
+> «Gustar» concorda co que gusta, e o pronome indica a quen lle gusta: gústame o café, gústanme as mazás.
+___ o café. | Gústame | Gusto | Quen gusta é o café; a min, «me»: «gústame».
+= Me gusta el café.
+___ as mazás. | Gústanme | Gústame | «Mazás» é plural: o verbo vai en plural, «gústanme».
+= Me gustan las manzanas.
+A ela ___ bailar. | gústalle | gústaa | «Gustar» leva indirecto: «lle», non «a».
+= A ella le gusta bailar.
+Non ___ o peixe. | me gusta | gústame | A negación adianta o pronome.
+= No me gusta el pescado.
+A nós ___ a praia. | gústanos | gustámonos | «A praia» é a que gusta, en singular: «gústanos».
+= A nosotros nos gusta la playa.
+Gústa___ o viño? | che | te | «Gustar» leva indirecto: «gústache».
+= ¿Te gusta el vino?
+Aos nenos ___ xogar. | gústalles | gústalle | «Aos nenos» é plural: «lles».
+= A los niños les gusta jugar.
+Non ___ as verzas. | me gustan | me gusta | «As verzas» é plural: «gustan».
+= No me gustan las berzas.
+## Preposicións básicas
+> «A» indica destino, «en» lugar, «de» orixe e «para» finalidade ou destinatario.
+Vou ___ Santiago. | a | en | Destino: «a».
+= Voy a Santiago.
+Vivo ___ Ourense. | en | a | Lugar onde se está: «en».
+= Vivo en Ourense.
+Son ___ Pontevedra. | de | en | Orixe: «de».
+= Soy de Pontevedra.
+Este regalo é ___ ti. | para | por | Destinatario: «para».
+= Este regalo es para ti.
+Viaxo ___ tren. | en | a | Medio de transporte: «en».
+= Viajo en tren.
+Vou ___ pé. | a | en | A expresión é «a pé».
+= Voy a pie.
+Falo ___ teléfono. | por | en | A expresión é «por teléfono».
+= Hablo por teléfono.
+Estudo ___ aprender. | para | de | Finalidade: «para».
+= Estudio para aprender.
+
 # Xénero e número | 2
 ## Palabras que cambian de xénero
 > Moitas palabras teñen xénero distinto en galego e en castelán. Hai que aprendelas de memoria.
@@ -500,6 +574,98 @@ Xa ___ de chegar. | han | hai | Probabilidade con «haber de»: «han de chegar�
 Non ___ que dicilo. | hai | ten | Impersoal: «non hai que dicilo».
 = No hay que decirlo.
 
+# Verbos e conectores | 2
+## O imperativo
+> Para ti: fala, come, abre. Para vós: falade, comede, abride. A orde negativa usa o subxuntivo: non fales.
+___ aquí, Antía! | Ven | Vén | Imperativo de «vir»: «ven», sen til.
+= ¡Ven aquí, Antía!
+___ a porta, nenos. | Abride | Abrir | Orde para vós: «abride».
+= Abrid la puerta, niños.
+___ máis amodo, por favor. (ti) | Fala | Falas | Orde para ti: «fala».
+= Habla más despacio, por favor.
+___ a mesa, rapaces. | Poñede | Poñer | Orde para vós: «poñede».
+= Poned la mesa, chicos.
+___ o que queiras. (ti) | Fai | Fas | Imperativo de «facer»: «fai».
+= Haz lo que quieras.
+Non ___ iso. (ti) | digas | di | A orde negativa usa o subxuntivo: «non digas».
+= No digas eso.
+Non ___ tarde. (vós) | cheguedes | chegade | A orde negativa usa o subxuntivo: «non cheguedes».
+= No lleguéis tarde.
+___ o libro. (ti, a min) | Dáme | Dásme | Imperativo de «dar» con pronome: «dáme».
+= Dame el libro.
+## Sen pronome de máis
+> O galego non usa o pronome en moitos casos en que o castelán si: morreu, marchou, caeu, comín todo, lavo as mans.
+O can ___ onte. | morreu | morreuse | «Morrer» non leva pronome.
+= El perro se murió ayer.
+Ela ___ moi cedo. | marchou | marchouse | «Marchar» non leva pronome.
+= Ella se marchó muy temprano.
+O neno ___ da cadeira. | caeu | caeuse | «Caer» non leva pronome.
+= El niño se cayó de la silla.
+___ todo o caldo. | Comín | Comínme | «Comer» non leva pronome.
+= Me comí todo el caldo.
+___ as mans antes de comer. | Lavo | Lávome | Coas partes do corpo non se usa pronome: «lavo as mans».
+= Me lavo las manos antes de comer.
+Hoxe ___ na casa. | quedei | quedeime | «Quedar» neste sentido non leva pronome.
+= Hoy me he quedado en casa.
+___ moito coa película. | Rin | Rinme | «Rir» non leva pronome.
+= Me reí mucho con la película.
+Onte ___ todo o viño. | bebín | bebinme | «Beber» non leva pronome.
+= Ayer me bebí todo el vino.
+## Unir ideas
+> Porque indica a causa, mais opón, se pon unha condición, aínda que indica un obstáculo e así que unha consecuencia.
+Non vou ___ estou canso. | porque | por que | A causa, nunha resposta, escríbese xunto: «porque».
+= No voy porque estoy cansado.
+___ chova, saio á rúa. | Aínda que | Porque | Obstáculo que non impide a acción: «aínda que».
+= Aunque llueva, salgo a la calle.
+___ estudas, aprobarás. | Se | Si | A conxunción de condición é «se». «Si» é afirmación.
+= Si estudias, aprobarás.
+Saio cedo ___ chegar a tempo. | para | porque | Finalidade seguida de infinitivo: «para».
+= Salgo temprano para llegar a tiempo.
+Ven ___ poidas. | cando | onde | Indica o momento: «cando».
+= Ven cuando puedas.
+Tes fame, ___ come algo. | así que | aínda que | Consecuencia: «así que».
+= Tienes hambre, así que come algo.
+Nin come ___ bebe. | nin | ou | A negación repítese: «nin... nin».
+= Ni come ni bebe.
+Queres café ___ té? | ou | e | Para escoller: «ou».
+= ¿Quieres café o té?
+## Falar do tempo
+> «Hai» indica canto tempo pasou, «dentro de» canto falta, «desde» o comezo e «ata» o final.
+Cheguei ___ tres días. | hai | dentro de | Tempo pasado: «hai».
+= Llegué hace tres días.
+Volvo ___ unha hora. | dentro de | hai | Tempo que falta: «dentro de».
+= Vuelvo dentro de una hora.
+Traballo ___ as nove. | desde | ata | Comezo: «desde».
+= Trabajo desde las nueve.
+Estudo ___ as dez. | ata | desde | Final: «ata».
+= Estudio hasta las diez.
+Vou á praia ___ verán. | no | ao | Estación do ano: «en + o» = «no».
+= Voy a la playa en verano.
+___ dous anos en Vigo. | Levo | Son | Tempo que dura algo: «levar».
+= Llevo dos años en Vigo.
+Nacín ___ maio. | en | a | Co mes úsase «en».
+= Nací en mayo.
+___ luns traballo. | O | No | Cos días da semana úsase o artigo: «o luns».
+= El lunes trabajo.
+## Perífrases con preposición
+> Algunhas perífrases levan preposición fixa: acabar de, comezar a, deixar de, volver a, haber de, ter que.
+Acabo ___ chegar. | de | a | A perífrase é «acabar de».
+= Acabo de llegar.
+Comezou ___ chover. | a | de | A perífrase é «comezar a».
+= Empezó a llover.
+Deixei ___ fumar. | de | a | A perífrase é «deixar de».
+= Dejé de fumar.
+Volvín ___ ler o libro. | a | de | A perífrase é «volver a».
+= Volví a leer el libro.
+Teño ___ ir. | que | de | A perífrase é «ter que».
+= Tengo que ir.
+Hei ___ facelo mañá. | de | que | A perífrase é «haber de».
+= He de hacerlo mañana.
+Estou ___ comer. | a | de | A perífrase é «estar a».
+= Estoy comiendo.
+Púxenme ___ traballar. | a | de | A perífrase é «poñerse a».
+= Me puse a trabajar.
+
 # Subxuntivo e infinitivo conxugado | 3
 ## Subxuntivo en presente
 > Fórmase desde a primeira persoa do presente: falo: fale; digo: diga. Aparece con desexos, dúbidas e «que» subordinante.
@@ -685,3 +851,59 @@ Fago ___ (viaje) | viaxe | viaje | Con x: «viaxe».
 = Hago un viaje.
 Comín ___ (jamón) | xamón | jamón | Con x: «xamón».
 = Comí jamón.
+
+# Galego a fondo | 4
+## O dativo de solidariedade
+> Moi propio do galego: «che» ou «vos» implica o oínte na conversa, sen ser complemento de nada. Non se traduce ao castelán.
+A nena ___ moi lista. | éche | ete | Implica o oínte: «che», nunca «te».
+= La niña es muy lista.
+Isto ___ así. | éche | ete | Expresión moi habitual: «isto éche así».
+= Esto es así.
+O neno non ___ come nada. | che | te | Coa negación, o «che» adiántase.
+= El niño no come nada.
+Hoxe ___ moito frío. | fáiche | faite | Implica o oínte: «fáiche frío».
+= Hoy hace mucho frío.
+Iso non ___ é verdade. | che | te | Coa negación, o «che» adiántase.
+= Eso no es verdad.
+Este rapaz ___ moi listo. (a vós) | évos | ésvos | Dirixíndose a varias persoas: «vos», con «é».
+= Este chico es muy listo.
+Aquí ___ moita xente. | háche | haite | «Hai» + «che» dá «háche».
+= Aquí hay mucha gente.
+Mañá ___ festa. | éche | ete | Implica o oínte: «éche festa».
+= Mañana es fiesta.
+## Futuro e condicional
+> O futuro tamén indica probabilidade no presente: serán as dez. O condicional serve para desexos, consellos e condicións.
+Agora ___ as once. (probablemente) | serán | sexan | Probabilidade no presente: futuro.
+= Ahora serán las once.
+Ela ___ uns trinta anos. (probablemente) | terá | teña | Probabilidade no presente: futuro.
+= Ella tendrá unos treinta años.
+Quen ___ a estas horas? | será | sexa | Dúbida sobre o presente: futuro.
+= ¿Quién será a estas horas?
+___ falar contigo. | Gustaríame | Gustaríasme | Desexo cortés: condicional con «me».
+= Me gustaría hablar contigo.
+___ descansar máis. (ti) | Deberías | Debeses | Consello: condicional.
+= Deberías descansar más.
+Se tivese cartos, ___ unha casa. | mercaría | mercase | Consecuencia dunha condición: condicional.
+= Si tuviera dinero, compraría una casa.
+Eu no teu lugar non ___ nada. | diría | digo | Situación imaxinada: condicional.
+= Yo en tu lugar no diría nada.
+Daquela ___ vinte anos. (probablemente) | tería | teña | Probabilidade no pasado: condicional.
+= Entonces tendría veinte años.
+## O antepretérito
+> Tempo simple para o que xa pasara antes doutra cousa: falara. Equivale ao castelán «había hablado».
+Cando cheguei, xa ___ o tren. | saíra | saíu | Pasou antes de chegar: antepretérito.
+= Cuando llegué, ya había salido el tren.
+Non sabía que ti ___ a Roma. | foras | has ido | Forma simple de «ir»: «foras».
+= No sabía que habías ido a Roma.
+Díxome que xa o ___ | lera | había lido | Non se usa «haber»: «lera».
+= Me dijo que ya lo había leído.
+Cando volvín, ela xa ___ | marchara | ha marchado | Non se usa «haber»: «marchara».
+= Cuando volví, ella ya se había marchado.
+Antes de vir, xa ___ na casa. (eu) | comera | hei comido | Forma simple: «comera».
+= Antes de venir, ya había comido en casa.
+Contoume o que lle ___ o médico. | dixera | dixo | Pasou antes de contalo: «dixera».
+= Me contó lo que le había dicho el médico.
+Nunca ___ tanta xente. (eu) | vira | vía | Experiencia anterior a un momento pasado: «vira».
+= Nunca había visto tanta gente.
+Cando saín, xa ___ a chover. | comezara | comezase | Pasou antes de saír: «comezara».
+= Cuando salí, ya había empezado a llover.

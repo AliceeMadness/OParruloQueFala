@@ -1,4 +1,4 @@
-import { dailyPanel } from "./daily.js";
+import { dailyListView, drawDailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
@@ -8,6 +8,8 @@ import { activeProfile, bestScore, collection, completedBy, crosswordState, isSy
 import { avatar, catalogueView, el } from "./ui.js";
 
 const app = document.getElementById("app");
+const progressPanel = document.getElementById("panel-progress");
+const dailyPanel = document.getElementById("panel-daily");
 const PULL_LIMIT_MS = 4000;
 
 // Relative URLs, because GitHub Pages serves the site under /OParruloQueFala/.
@@ -39,7 +41,8 @@ function percentLabel(done, total) {
   return `${Math.floor((done * 100) / total)}%`;
 }
 
-function standingsPanel(site) {
+// Returns the function that redraws the bars, so they can follow each saved lesson.
+function buildProgressPanel(site) {
   const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
   const crosswordIds = site.crosswords.map((puzzle) => puzzle.id);
   const total = lessonKeys.length + crosswordIds.length;
@@ -71,9 +74,8 @@ function standingsPanel(site) {
     }));
   }
 
-  draw();
-  refreshOtherProfiles().then(draw);
-  return el("aside", { class: "side-panel" }, el("h2", {}, "Progreso total"), list);
+  progressPanel.replaceChildren(el("h2", {}, "Progreso total"), list);
+  return draw;
 }
 
 function homeView(site) {
@@ -90,11 +92,7 @@ function homeView(site) {
 
   return el(
     "div",
-    { class: "home-layout" },
-    standingsPanel(site),
-    el(
-    "div",
-    { class: "home-main" },
+    {},
     el(
       "div",
       { class: "hero" },
@@ -112,7 +110,7 @@ function homeView(site) {
       card("#/vocabulario", "Vocabulario", "Escribe en galego as palabras que che damos en castelán.", countDone(vocabulary)),
       card("#/verbos", "Verbos", "Conxuga as seis persoas dos verbos, por temas e tempos.", countDone(verbs)),
       card("#/gramatica", "Gramática", "Completa frases e aprende, por fin, onde van os pronomes.", countDone(grammar)),
-      card("#/encrucillados", "Encrucillados", "Para os máis atrevidos: 20 retos con palabras novas.", {
+      card("#/encrucillados", "Encrucillados", `Para os máis atrevidos: ${crosswords.length} retos con palabras novas.`, {
         done: crosswords.filter((puzzle) => crosswordState(puzzle.id).done).length,
         total: crosswords.length,
       }),
@@ -132,8 +130,6 @@ function homeView(site) {
           el("a", { class: "button", href: "#/repaso" }, "Repasar")
         )
       : null
-    ),
-    dailyPanel(site.daily)
   );
 }
 
@@ -155,6 +151,7 @@ function profileView(site) {
           async onclick() {
             selectProfile(profile.id);
             await pullWithLimit();
+            refreshPanels(site);
             if (location.hash.startsWith("#/perfil")) location.hash = "#/";
             else render(site);
           },
@@ -185,10 +182,25 @@ function pullWithLimit() {
   return Promise.race([pullProgress(), new Promise((resolve) => setTimeout(resolve, PULL_LIMIT_MS))]);
 }
 
-// Lessons in progress keep their state, so only pages without one are redrawn.
+// Lessons in progress and typed searches keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && parts[0] !== "repaso";
+  return parts.length <= 1 && parts[0] !== "repaso" && parts[0] !== "palabras-do-dia";
+}
+
+function updatePanels(site) {
+  const visible = Boolean(activeProfile());
+  progressPanel.hidden = !visible;
+  dailyPanel.hidden = !visible;
+  if (visible) {
+    site.drawProgress();
+    drawDailyPanel(dailyPanel, site.daily);
+  }
+}
+
+function refreshPanels(site) {
+  updatePanels(site);
+  refreshOtherProfiles().then(() => updatePanels(site));
 }
 
 function notFoundView() {
@@ -206,6 +218,7 @@ function route(site, parts) {
   if (!activeProfile() || section === "perfil") return profileView(site);
   if (!section) return homeView(site);
   if (section === "repaso") return reviewView();
+  if (section === "palabras-do-dia") return dailyListView(site.daily);
   if (section === "coleccion") return first === "estudar" ? collectionStudyView() : first ? null : collectionView();
   if (section === "vocabulario") {
     return first ? vocabularyLessonView(site.vocabulary, first, second) : catalogueView(site.vocabulary);
@@ -227,6 +240,7 @@ function render(site) {
   const view = route(site, parts) ?? notFoundView();
   app.replaceChildren(view);
   updateProfileChip();
+  updatePanels(site);
   window.scrollTo(0, 0);
   for (const link of document.querySelectorAll(".site-header nav a")) {
     if (link.getAttribute("href") === `#/${parts[0]}`) link.setAttribute("aria-current", "page");
@@ -249,15 +263,22 @@ async function main() {
       crosswords,
       daily,
     };
+    site.drawProgress = buildProgressPanel(site);
     window.addEventListener("hashchange", () => render(site));
     startSync({
       onProgressChange() {
+        updatePanels(site);
         if (isSafeToRedraw()) render(site);
       },
       onSyncChange: updateProfileChip,
+      onSaved: () => updatePanels(site),
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && activeProfile()) refreshPanels(site);
     });
     await pullWithLimit();
     render(site);
+    if (activeProfile()) refreshPanels(site);
   } catch (error) {
     console.error(error);
     app.replaceChildren(el(

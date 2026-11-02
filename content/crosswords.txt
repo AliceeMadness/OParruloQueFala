@@ -1,7 +1,8 @@
 // «PALABRA = pista». Los acentos no se escriben en la cuadrícula; la Ñ sí cuenta como letra.
-// Del 1 al 8 las pistas van en castellano; del 9 al 14 mezcladas; del 15 al 20 en gallego.
+// Cabecera: «# Número | Título | nivel» (1 doado, 2 medio, 3 difícil). El número identifica el
+// crucigrama y su progreso guardado: no lo cambies. Los nuevos llevan el siguiente número libre.
 
-# 1 | O primeiro voo
+# 1 | O primeiro voo | 1
 CASA = Edificio onde se vive
 CAN = Perro
 SOL = Astro que nos dá luz
@@ -12,7 +13,7 @@ LUA = Satélite da Terra
 OLLO = Serve para ver
 PAN = Faise con fariña e cómese a diario
 
-# 2 | Na mesa
+# 2 | Na mesa | 1
 AUGA = Líquido que bebemos
 LEITE = Bebida branca da vaca
 OVO = Pono a galiña
@@ -23,7 +24,7 @@ SAL = Condimento branco e salgado
 MAZA = Manzana
 CEA = Última comida do día
 
-# 3 | Na casa
+# 3 | Na casa | 1
 PORTA = Por ela éntrase na casa
 FIESTRA = Ventana
 CADEIRA = Silla
@@ -35,7 +36,7 @@ CHAVE = Abre a pechadura
 ESPELLO = Devolve a túa imaxe
 CHAN = Suelo
 
-# 4 | A familia
+# 4 | A familia | 1
 IRMAN = Hermano
 FILLA = Hija
 AVOA = Abuela
@@ -47,7 +48,7 @@ SOGRO = Pai da túa parella
 MOZA = Novia
 PARENTE = Familiar
 
-# 5 | Animais
+# 5 | Animais | 1
 GATO = Felino da casa
 VACA = Dá leite
 COELLO = Conejo
@@ -60,7 +61,7 @@ LOBO = Cánido salvaxe
 CABALO = Caballo
 FORMIGA = Hormiga
 
-# 6 | Cores e formas
+# 6 | Cores e formas | 1
 BRANCO = Blanco
 VERMELLO = Rojo
 AMARELO = Amarillo
@@ -73,7 +74,7 @@ LONGO = Largo
 CURTO = Corto
 ANCHO = O contrario de estreito
 
-# 7 | Corpo humano
+# 7 | Corpo humano | 1
 CABEZA = Vai sobre os ombreiros
 BRAZO = Vai do ombreiro á man
 PERNA = Pierna
@@ -86,7 +87,7 @@ XEONLLO = Rodilla
 NARIZ = Serve para cheirar
 DEDO = A man ten cinco
 
-# 8 | O tempo que fai
+# 8 | O tempo que fai | 1
 CHUVIA = Lluvia
 VENTO = Viento
 NUBE = Branca ou gris, no ceo
@@ -100,7 +101,7 @@ VERAN = Estación máis cálida
 INVERNO = Estación máis fría
 OUTONO = Estación en que caen as follas
 
-# 9 | Froitas e hortas
+# 9 | Froitas e hortas | 2
 PEXEGO = Melocotón
 AMORODO = Fresa
 CEREIXA = Froita pequena e vermella, de rabo longo
@@ -114,7 +115,7 @@ CHICHARO = Guisante
 FABA = Legume grande e branco
 MILLO = Maíz
 
-# 10 | Pola cidade
+# 10 | Pola cidade | 2
 RUA = Calle
 PRAZA = Espazo aberto entre rúas
 PONTE = Permite cruzar un río (feminino en galego)
@@ -128,7 +129,7 @@ PRETO = Cerca
 LONXE = Lejos
 BILLETE = Hai que mercalo para o tren
 
-# 11 | Mar e peixes
+# 11 | Mar e peixes | 2
 POLBO = Á feira é típico de Galicia
 LURA = Calamar
 SARDIÑA = Pez típico de San Xoán
@@ -142,7 +143,7 @@ MAREA = Sube e baixa dúas veces ao día
 PRAIA = Playa
 GAIVOTA = Ave do mar
 
-# 12 | Árbores e plantas
+# 12 | Árbores e plantas | 2
 CARBALLO = Roble
 CASTIÑEIRO = Castaño
 PIÑEIRO = Pino
@@ -156,7 +157,7 @@ SILVA = Zarza
 ARBORE = Planta con tronco (feminino en galego)
 POLA = Rama
 
-# 13 | Aves e bichos
+# 13 | Aves e bichos | 2
 ANDURIÑA = Golondrina
 PARDAL = Gorrión
 CURUXA = Lechuza
@@ -171,7 +172,7 @@ ESQUIO = Ardilla
 OURIZO = Erizo
 TOUPA = Topo
 
-# 14 | Sentimentos
+# 14 | Sentimentos | 2
 MORRIÑA = Nostalxia galega
 SOIDADE = Soledad
 TRISTURA = Tristeza
@@ -185,7 +186,7 @@ APERTA = Abrazo
 ENVEXA = Envidia
 AMIZADE = Relación entre amigos
 
-# 15 | Ceos e meteoros
+# 15 | Ceos e meteoros | 3
 ORBALLO = Chuvia miúda e mol
 BRETEMA = Néboa, sobre todo a do mar
 TREBOADA = Tormenta con lóstregos e tronos
@@ -199,7 +200,7 @@ SOLPOR = Momento en que o sol se esconde
 ALBA = Primeira luz do día
 POALLA = Chuvia moi fina
 
-# 16 | O traballo no campo
+# 16 | O traballo no campo | 3
 SACHO = Ferramenta para cavar a terra
 FOUCE = Ferramenta curva para segar herba
 GADAÑA = Fouce de mango longo
@@ -214,7 +215,7 @@ ESTERCO = Abono de orixe animal
 CENTEO = Cereal de pan escuro
 PALLA = Talo seco do cereal
 
-# 17 | Vivir en Galicia
+# 17 | Vivir en Galicia | 3
 QUEIMADA = Bebida de augardente que arde mentres se recita o conxuro
 MEIGA = Muller con poderes máxicos
 GAITA = Instrumento de fol típico
@@ -229,7 +230,7 @@ FILLOA = Doce fino e redondo, típico do entroido
 ENTROIDO = Festa de máscaras antes da Coresma
 ZOCO = Calzado de madeira
 
-# 18 | Xente con carácter
+# 18 | Xente con carácter | 3
 LARPEIRO = Gústanlle moito os doces
 LACAZAN = Non lle gusta nada traballar
 TOLO = Perdeu o xuízo
@@ -244,7 +245,7 @@ MENTIREIRO = Nunca di a verdade
 ESMOLEIRO = Vive pedindo polas portas
 LANGRAN = Vago e sen ganas de nada
 
-# 19 | Palabras que soan ben
+# 19 | Palabras que soan ben | 3
 AGASALLO = Algo que se dá sen pedir nada a cambio
 RECUNCHO = Lugar pequeno e apartado
 FALADOIRO = Xuntanza de xente para conversar
@@ -260,7 +261,7 @@ ESBIRRO = Saída súbita de aire polo nariz
 SOIDADE = Estado de quen está só
 TREBELLO = Obxecto ou ferramenta para unha tarefa
 
-# 20 | O gran parrulo
+# 20 | O gran parrulo | 3
 SAUDADE = Sentimento de faltar algo ou alguén, primo da morriña
 ORZAMENTO = Previsión de gastos e ingresos
 TESTEMUÑA = Persoa que viu o que pasou
@@ -277,3 +278,547 @@ BAIXAMAR = Punto máis baixo da marea
 XOANIÑA = Insecto vermello con puntos negros
 ESTRUGA = Planta que pica ao tocala
 ALOUMIÑO = Xesto de agarimo coa man
+
+# 21 | Na escola | 1
+LIBRO = Ten follas e lese
+LAPIS = Lápiz
+CADERNO = Cuaderno
+GOMA = Borra o que escribiches
+CLASE = Lugar onde se aprende
+NOTA = Cualificación dun exame
+REGRA = Regla
+EXAME = Examen
+PAPEL = Folla para escribir
+MESTRA = Maestra
+
+# 22 | A roupa | 1
+SAIA = Falda
+CAMISA = Prenda con botóns
+ZAPATO = Calzado
+LUVAS = Guantes
+BOTA = Calzado alto
+PETO = Bolsillo
+XERSEI = Jersey
+CINTO = Cinturón
+ABRIGO = Prenda para o inverno
+GORRA = Cobre a cabeza
+
+# 23 | Os números | 1
+TRES = Dous máis un
+CATRO = Cuatro
+SETE = Siete
+OITO = Ocho
+NOVE = Nueve
+DEZ = Diez
+ONCE = Dez máis un
+DOCE = Unha ducia
+VINTE = Veinte
+CEN = Cien
+MIL = Dez veces cen
+TRINTA = Treinta
+
+# 24 | Días e meses | 1
+LUNS = Lunes
+XOVES = Jueves
+VENRES = Viernes
+MARZO = Terceiro mes do ano
+MAIO = Mayo
+XUÑO = Junio
+XULLO = Julio
+AGOSTO = Oitavo mes do ano
+HOXE = Hoy
+ONTE = Ayer
+NOITE = Noche
+
+# 25 | Os cubertos | 1
+CULLER = Cuchara
+GARFO = Tenedor
+COITELO = Cuchillo
+PRATO = Plato
+VASO = Serve para beber
+POTA = Olla
+TIXOLA = Sartén
+FORNO = Horno
+CUNCA = Taza
+NEVEIRA = Nevera
+
+# 26 | De viaxe | 1
+COCHE = Vehículo de catro rodas
+TREN = Vai pola vía
+BARCO = Navega polo mar
+AVION = Voa polo ceo
+MOTO = Ten dúas rodas e motor
+TAXI = Coche que se paga por viaxe
+RODA = Rueda
+BILLETE = Hai que mercalo para viaxar
+VIAXE = Viaje
+PORTO = Onde atracan os barcos
+
+# 27 | Tempo libre | 1
+XOGO = Juego
+BAILE = Música e movemento
+FOTO = Imaxe feita cunha cámara
+CONTO = Cuento
+FESTA = Fiesta
+PRAIA = Playa
+CANCION = Canción
+PASEO = Camiñada tranquila
+TEATRO = Obras sobre un escenario
+PELOTA = Bola para xogar
+
+# 28 | Oficios | 2
+PANADEIRO = Panadero
+CARTEIRO = Cartero
+MARIÑEIRO = Marinero
+XASTRE = Sastre
+FERREIRO = Herrero
+ALBANEL = Albañil
+AVOGADO = Abogado
+XUIZ = Juez
+PINTOR = Pinta cadros ou paredes
+COCIÑEIRO = Prepara a comida nun restaurante
+MESTRE = Ensina nunha escola
+
+# 29 | Verbos do día a día | 2
+MERCAR = Comprar
+LEMBRAR = Recordar
+AGARDAR = Esperar
+ATOPAR = Encontrar
+ESCOLLER = Elegir
+REMATAR = Terminar
+COMEZAR = Empezar
+MEDRAR = Crecer
+AMAÑAR = Arreglar
+FALAR = Hablar
+DURMIR = Dormir
+COLLER = Coger
+
+# 30 | Polos recunchos da casa | 2
+FAIADO = Parte máis alta da casa
+ADEGA = Lugar fresco onde se garda o viño
+LAREIRA = Lugar da casa onde se fai lume
+ANDEL = Estante
+VASOIRA = Escoba
+BILLA = Grifo
+TOALLA = Serve para secarse
+ALMOFADA = Almohada
+SABA = Sábana
+LIXO = Basura
+CALDEIRO = Cubo
+
+# 31 | Polo monte | 2
+CUME = Parte máis alta do monte
+VAL = Terreo entre montañas
+COVA = Cueva
+FONTE = Fuente
+PEDRA = Piedra
+LAGOA = Laguna
+BOSQUE = Terreo cheo de árbores
+TERRA = Planeta onde vivimos
+AREA = Arena
+ILLA = Isla
+LAMA = Barro
+CARREIRO = Sendero
+
+# 32 | Sabores e comidas | 2
+AMARGO = Sabor do café sen azucre
+ACEDO = Sabor do limón
+SALGADO = Salado
+FAME = Hambre
+SEDE = Sed
+SOBREMESA = Postre
+ALMORZO = Desayuno
+MERENDA = Merienda
+XANTAR = Comida do mediodía
+CALDO = Sopa típica galega
+FARIÑA = Harina
+MANTEIGA = Mantequilla
+
+# 33 | Contrarios | 2
+BAIXO = O contrario de alto
+DELGADO = O contrario de gordo
+VELLO = O contrario de novo
+CHEO = O contrario de baleiro
+BALEIRO = O contrario de cheo
+QUENTE = O contrario de frío
+BRANDO = O contrario de duro
+PECHADO = O contrario de aberto
+DOADO = O contrario de difícil
+LIXEIRO = O contrario de pesado
+ESTREITO = O contrario de ancho
+
+# 34 | Festas e música | 2
+PANDEIRETA = Instrumento redondo que se toca coa man
+FRAUTA = Flauta
+TAMBOR = Instrumento que se toca con baquetas
+GAITEIRO = Quen toca a gaita
+VERBENA = Festa nocturna ao aire libre
+MAGOSTO = Festa en que se asan castañas
+NADAL = Navidad
+ANINOVO = Año Nuevo
+REIS = Reyes
+ORQUESTRA = Grupo grande de músicos
+FOLIADA = Festa con música e baile
+
+# 35 | Bichos e bestas | 3
+TEIXUGO = Mamífero nocturno de fociño branco e negro
+LONTRA = Mamífero que vive nos ríos e nada moi ben
+DONICELA = Mamífero pequeno, delgado e áxil, de pelo pardo
+MORCEGO = Mamífero voador que sae de noite
+MOUCHO = Ave nocturna pequena de ollos grandes
+RULA = Ave parecida á pomba, máis pequena
+CEGOÑA = Ave grande que fai o niño en sitios altos
+SAPOCONCHO = Réptil de andar lento que leva unha cuncha
+XABARIL = Porco salvaxe do monte
+CASCUDA = Insecto escuro que anda polas cociñas
+SALTON = Insecto verde que brinca moito
+CARRACHA = Bicho pequeno que chupa o sangue dos cans
+VAGALUME = Insecto que dá luz de noite
+
+# 36 | O corpo a fondo | 3
+NOCELLO = Articulación entre a perna e o pé
+COBADO = Articulación do medio do brazo
+EMBIGO = Marca redonda no medio da barriga
+PESCOZO = Une a cabeza co tronco
+MEIXELA = Parte carnosa da cara, baixo os ollos
+BEIZO = Cada unha das partes carnosas que pechan a boca
+CELLA = Liña de pelo sobre o ollo
+PALPEBRA = Pel que cobre e protexe o ollo
+OMBREIRO = Onde se une o brazo co tronco
+GORXA = Parte interior do pescozo
+COXA = Parte da perna entre o cadril e o xeonllo
+CADRIL = Onde se une a perna co tronco
+RIL = Órgano que limpa o sangue
+FIGADO = Órgano grande que produce a bile
+
+# 37 | Verbos con carácter | 3
+RABUÑAR = Facer feridas coas uñas
+RAÑAR = Pasar as uñas pola pel
+TUSIR = Botar o aire de golpe pola boca
+ESBIRRAR = Botar o aire de golpe polo nariz
+BOCEXAR = Abrir moito a boca por sono
+ASUBIAR = Facer un son agudo cos beizos
+BERRAR = Falar en voz moi alta
+ROSMAR = Queixarse entre dentes
+SALOUCAR = Chorar con espasmos
+AXEXAR = Observar sen ser visto
+ALBISCAR = Ver algo de lonxe e con dificultade
+ACOUGAR = Volver á calma
+ESMAGAR = Apertar algo ata desfacelo
+ESTRAGAR = Facer que algo se poña mal
+
+# 38 | Palabras pequenas | 3
+ARESTORA = Neste mesmo momento
+DECONTADO = Sen perder tempo
+ADOITO = Moitas veces
+DAQUELA = Nese momento do pasado
+NAMENTRES = Durante o tempo en que pasa algo
+POREN = Palabra que introduce unha oposición
+ABONDO = En cantidade suficiente
+SEICA = Indica que algo parece certo
+AMODO = Lentamente, sen presa
+AXIÑA = En pouco tempo
+ANTONTE = O día anterior a onte
+VELAI = Indica algo que está á vista
+ACOLA = Nun lugar afastado
+CEDO = Antes da hora normal
+
+# 39 | Pedra, auga e luz | 3
+SEIXO = Pedra branca e moi dura
+CROIO = Pedra redonda e lisa que levou a auga
+PENEDO = Pedra moi grande
+BULLEIRO = Terreo cheo de lama
+POZA = Auga parada nun buraco do chan
+ENSEADA = Entrada pequena do mar na costa
+AREAL = Praia ou terreo cuberto de area
+ESCUMA = Burbullas brancas que fai a auga
+RAIOLA = Luz do sol que aparece entre as nubes
+ABRENTE = Primeira luz da mañá
+LANDRA = Froito do carballo
+ACIVRO = Arbusto de follas con espiñas e froitos vermellos
+SABUGUEIRO = Arbusto de flores brancas e froitos negros
+AMIEIRO = Árbore típica das beiras dos ríos
+
+# 40 | O parrulo sabio | 3
+MONLLO = Conxunto de cousas que caben nunha man
+FEIXE = Conxunto de cousas atadas
+MOREA = Conxunto de cousas unhas enriba das outras
+ANACO = Parte pequena de algo
+CHISCO = Cantidade moi pequena
+PINGA = Porción pequena e redonda dun líquido
+RESTRA = Fila de allos ou cebolas atados
+CACHARELA = Lume grande ao aire libre
+CINSA = Po que queda despois de arder
+FOLGO = Aire que se bota ao respirar
+XEITO = Modo de facer algo
+TEIMUDO = Non cambia de opinión
+ESPELIDO = Listo e rápido para entender
+FALANGUEIRO = Quen fala moito e con gusto
+RAÑICAS = Persoa á que lle custa moito gastar
+ROSMON = Persoa que sempre se está queixando
+
+# 41 | As froitas | 1
+PERA = Froita verde con forma de campá
+UVA = Con ela faise o viño
+LARANXA = Naranja
+LIMON = Froita amarela e moi aceda
+FIGO = Higo
+MELON = Froita grande e doce de verán
+PLATANO = Froita amarela e longa
+SANDIA = Froita grande, verde por fóra e vermella por dentro
+MAZA = Manzana
+CEREIXA = Cereza
+
+# 42 | Na horta | 1
+TOMATE = Hortaliza vermella para as ensaladas
+PATACA = Patata
+NABO = Raíz branca que se come
+LEITUGA = Lechuga
+CABAZA = Calabaza
+CEBOLA = Cebolla
+ALLO = Ajo
+MILLO = Maíz
+FABA = Haba
+PEMENTO = Pimiento
+
+# 43 | Que beber e que doce | 1
+CAFE = Bebida escura que quita o sono
+ZUME = Zumo
+CERVEXA = Cerveza
+SIDRA = Bebida feita de mazá
+CHOCOLATE = Doce escuro feito con cacao
+MEL = Miel
+AZUCRE = Azúcar
+XEADO = Helado
+AUGA = Agua
+VIÑO = Vino
+
+# 44 | Pola rúa | 1
+SEMAFORO = Luz que regula o tráfico
+BANCO = Lugar onde se garda o diñeiro
+BAR = Lugar onde tomar algo
+HOTEL = Lugar onde durmir nunha viaxe
+MUSEO = Lugar onde ver obras de arte
+CINE = Lugar onde ver películas
+PARQUE = Lugar con árbores para pasear
+ESCOLA = Escuela
+FARMACIA = Lugar onde mercar medicinas
+MERCADO = Lugar onde se vende comida
+
+# 45 | Saúdos e persoas | 1
+OLA = Hola
+ADEUS = Adiós
+GRAZAS = Gracias
+PERDON = Perdón
+BENVIDA = Bienvenida
+FAVOR = Dise antes de pedir algo: por...
+TARDE = Vai despois do mediodía
+ELA = Ella
+ELES = Ellos
+NON = No
+
+# 46 | Os mobles | 1
+SOFA = Asento longo para varias persoas
+ARMARIO = Moble para gardar a roupa
+BUTACA = Sillón
+CAIXON = Cajón
+LAMPADA = Lámpara
+CORTINA = Tela que cobre a fiestra
+ALFOMBRA = Tela grande que cobre o chan
+MANTA = Cobre a cama no inverno
+CADRO = Pintura colgada na parede
+ALMOFADA = Almohada
+
+# 47 | Na granxa | 1
+POLO = Pollo
+GALO = Canta pola mañá
+BURRO = Animal de orellas longas que leva cargas
+TOURO = Toro
+PATO = Ave que nada, tamén chamada parrulo
+CABRA = Animal que dá leite e sobe aos montes
+PEIXE = Vive na auga
+PAXARO = Pájaro
+AÑO = Cordero
+OVELLA = Oveja
+
+# 48 | Mar e barcos | 2
+REDE = Serve para pescar moitos peixes
+ANCORA = Suxeita o barco ao fondo
+VELA = Tela que recolle o vento nun barco
+REMO = Pau para mover unha barca
+LONXA = Lugar onde se vende o peixe
+MARISCO = Ameixas, nécoras e outros animais do mar
+BARCA = Barco pequeno
+FARO = Torre con luz na costa
+CUNCHA = Concha
+MARIÑEIRO = Traballa no mar
+NAUFRAXIO = Afundimento dun barco
+
+# 49 | Saúde | 2
+FEBRE = Fiebre
+TOSE = Tos
+DOR = Dolor
+FERIDA = Herida
+PASTILLA = Medicina que se traga
+VACINA = Vacuna
+XAROPE = Jarabe
+MEDICO = Persoa que cura
+CATARRO = Resfriado
+GRIPE = Enfermidade con febre do inverno
+CICATRIZ = Marca que deixa unha ferida
+
+# 50 | Xogos e deporte | 2
+GOL = Balón dentro da portería
+EQUIPO = Grupo de xogadores
+ARBITRO = Fai cumprir as regras nun partido
+ADESTRADOR = Entrenador
+CAMPION = Campeón
+MEDALLA = Premio que se colga ao pescozo
+PARTIDO = Enfrontamento entre dous equipos
+NATACION = Deporte na auga
+XADREZ = Ajedrez
+DADOS = Cubos con números para xogar
+VITORIA = Victoria
+EMPATE = Resultado igual para os dous
+
+# 51 | Os cartos | 2
+PREZO = Precio
+MOEDA = Moneda
+TARXETA = Tarjeta
+DESCONTO = Descuento
+REBAIXAS = Rebajas
+CLIENTE = Quen merca nunha tenda
+CAIXA = Onde se paga nunha tenda
+DEBEDA = Deuda
+AFORRO = Ahorro
+IMPOSTO = Impuesto
+FACTURA = Documento co que hai que pagar
+SOLDO = Sueldo
+
+# 52 | Tecnoloxía | 2
+MOBIL = Móvil
+PANTALLA = Onde se ven as imaxes
+TECLADO = Serve para escribir no ordenador
+FICHEIRO = Archivo
+CARTAFOL = Carpeta
+LIGAZON = Enlace
+CONTRASINAL = Contraseña
+IMPRESORA = Pasa o texto ao papel
+ORDENADOR = Máquina para traballar con datos
+RATO = Ratón, o animal e o do ordenador
+CABLE = Fío que leva a electricidade
+ENCHUFE = Conecta os aparellos á luz
+
+# 53 | Sociedade | 2
+ALCALDE = Persoa que goberna un concello
+LEI = Norma aprobada no parlamento
+VOTO = Elección nunhas eleccións
+GOBERNO = Dirixe un país
+REI = Rey
+RAIÑA = Reina
+GUERRA = O contrario da paz
+PAZ = Sen guerra
+LIBERDADE = Libertad
+XUSTIZA = Justicia
+CARCERE = Cárcel
+TESTEMUÑA = Testigo
+
+# 54 | Arte e patrimonio | 2
+POEMA = Obra en verso
+LENDA = Leyenda
+ESCULTURA = Figura de pedra ou madeira
+MOSTEIRO = Monasterio
+CASTELO = Castillo
+CAMPA = Campana
+TORRE = Construción alta e estreita
+MURALLA = Muro que rodea unha cidade
+CATEDRAL = Igrexa principal dunha diocese
+VERSO = Cada liña dun poema
+REFRAN = Refrán
+CADRO = Pintura enmarcada
+
+# 55 | Verbos do corazón | 3
+ALOUMIÑAR = Tocar con tenrura
+ANOXAR = Causar enfado
+MAGOAR = Causar dor ou pena
+ATURAR = Soportar algo molesto
+NAMORAR = Facer sentir amor
+AGOCHAR = Pór algo onde non se ve
+ENXERGAR = Conseguir ver algo que está lonxe
+ENXUGAR = Quitar a humidade
+ESCACHAR = Facer anacos algo
+CHOUTAR = Golpear algo co pé
+BRINCAR = Dar saltos
+TRABAR = Apertar cos dentes
+LAMBER = Pasar a lingua por riba
+
+# 56 | Xente de todo tipo | 3
+PAILAN = Persoa rústica e de pouca cultura
+BABECO = Persoa inxenua e pouco espelida
+TRAPALLEIRO = Quen fai as cousas mal e sen coidado
+MENCIÑEIRA = Muller que cura con remedios tradicionais
+ESMOLEIRO = Persoa que vive pedindo polas portas
+AFILLADO = Persoa á que alguén apadriña
+ORFO = Persoa á que se lle morreron os pais
+XENRO = Home casado coa filla de alguén
+NORA = Muller casada co fillo de alguén
+CURMAN = Fillo dun tío ou dunha tía
+XEMELGO = Cada un dos irmáns nados no mesmo parto
+ALBANEL = Persoa que constrúe casas e muros
+
+# 57 | Froitos e plantas | 3
+AMORODO = Froito pequeno e vermello con sementes por fóra
+ABELA = Froito seco pequeno e redondo
+COGOMELO = Fungo con pé e sombreiro
+PEXEGO = Froita de pel aveludada e óso grande
+CHICHARO = Legume pequeno, redondo e verde
+FEIXON = Legume en forma de ril
+ESTRUGA = Planta que pica ao tocala
+LOUREIRO = Árbore de follas usadas para cociñar
+OLIVEIRA = Árbore que dá o aceite
+NOZ = Froito seco de casca dura e arrugada
+SALGUEIRO = Árbore de ramas caídas preto da auga
+FREIXO = Árbore de madeira clara e flexible
+
+# 58 | Mar fondo | 3
+ROBALIZA = Peixe de carne branca e moi apreciada
+LONGUEIRON = Molusco de cuncha longa e estreita
+CENTOLA = Crustáceo grande de patas longas
+PESCADA = Peixe longo moi consumido
+CHOCO = Animal mariño parecido á lura, máis ancho
+NECORA = Crustáceo pequeno de patas azuladas
+MEXILLON = Molusco de cuncha negra que vive nas rochas
+PEIRAO = Parte do porto onde atracan os barcos
+BAIXAMAR = Punto máis baixo da marea
+OSTRA = Molusco que pode dar perlas
+ENSEADA = Entrada pequena do mar na costa
+ESCUMA = Burbullas brancas que fai a auga
+
+# 59 | Tempo e hora | 3
+ORBALLAR = Chover moi miúdo
+BABUXA = Chuvia fina que apenas molla
+BATEGA = Chuvia forte e de pouca duración
+NORDES = Vento frío e seco
+ABRENTE = Primeira luz da mañá
+LUSCOFUSCO = Hora en que xa non é día nin noite
+POALLA = Chuvia moi fina
+LOSTREGO = Luz súbita nunha tempestade
+ANTONTE = O día anterior a onte
+PASADOMAÑA = Dentro de dous días
+MEDIANOITE = As doce da noite
+XEADA = Capa de xeo sobre o campo
+
+# 60 | A casa de antes | 3
+LAREIRA = Lugar da casa onde se fai lume
+PALLEIRO = Morea de palla
+CABAZO = Construción onde se garda o millo
+ZOCO = Calzado con sola de madeira
+FOUCE = Ferramenta curva para segar
+MACHADA = Ferramenta para cortar leña
+RESTRA = Fila de allos ou cebolas atados
+CINSA = Po que queda despois de arder
+POTE = Recipiente de ferro para cociñar ao lume
+CUNCA = Recipiente pequeno sen asa para beber
+MANTELO = Prenda que protexe a roupa da cintura para abaixo
+ADEGA = Lugar fresco onde se garda o viño
+CHAVE = Peza de metal que abre as portas

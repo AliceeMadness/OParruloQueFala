@@ -53,6 +53,7 @@ let pushTimer = null;
 let syncFailed = false;
 let onProgressChange = () => {};
 let onSyncChange = () => {};
+let onSaved = () => {};
 
 function setSyncFailed(value) {
   if (syncFailed !== value) {
@@ -95,6 +96,7 @@ function schedulePush() {
 
 function save() {
   saveLocally();
+  onSaved();
   schedulePush();
 }
 
@@ -118,7 +120,7 @@ export async function pullProgress() {
 }
 
 export function startSync(callbacks) {
-  ({ onProgressChange, onSyncChange } = callbacks);
+  ({ onProgressChange, onSyncChange, onSaved } = callbacks);
   if (!syncEnabled) return;
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") pushPendingNow();

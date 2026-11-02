@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>O Parrulo que Fala</title>
   <meta name="description" content="Aprende galego xogando: vocabulario, verbos, gramática e encrucillados.">
+  <meta name="theme-color" content="#1f5f7a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Parrulo">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="icon" href="assets/img/parrulo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="assets/js/app.js"></script>
@@ -26,8 +31,12 @@
       <a id="profile-chip" class="profile-chip" href="#/perfil" title="Cambiar de perfil" hidden></a>
     </div>
   </header>
-  <main id="app" tabindex="-1">
-    <p class="loading">Cargando…</p>
+  <main class="page-layout">
+    <aside id="panel-progress" class="side-panel" hidden></aside>
+    <div id="app" tabindex="-1">
+      <p class="loading">Cargando…</p>
+    </div>
+    <aside id="panel-daily" class="side-panel daily-panel" hidden></aside>
   </main>
   <noscript><p class="loading">Esta web precisa JavaScript para funcionar.</p></noscript>
 </body>

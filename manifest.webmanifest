@@ -1,0 +1,17 @@
+{
+  "name": "O Parrulo que Fala",
+  "short_name": "Parrulo",
+  "description": "Aprende galego xogando: vocabulario, verbos, gramática e encrucillados.",
+  "lang": "gl",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f3ea",
+  "theme_color": "#1f5f7a",
+  "icons": [
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

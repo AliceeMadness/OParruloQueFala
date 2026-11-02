@@ -96,8 +96,8 @@ function lessonKey(mode, group, lesson) {
 export function catalogueView(mode) {
   const groups = mode.groups.map((group) => {
     const total = group.lessons.length;
-    const done = group.lessons.filter((l) => bestScore(lessonKey(mode, group, l)) !== undefined).length;
-    return { group, total, done };
+    const scores = group.lessons.map((l) => bestScore(lessonKey(mode, group, l))).filter((score) => score !== undefined);
+    return { group, total, done: scores.length, worst: Math.min(...scores) };
   });
   const firstOpen = groups.find(({ total, done }) => done < total);
 
@@ -106,15 +106,15 @@ export function catalogueView(mode) {
     {},
     el("h1", {}, mode.title),
     el("p", { class: "lead" }, mode.intro),
-    ...groups.map(({ group, total, done }) =>
+    ...groups.map(({ group, total, done, worst }) =>
       el(
         "details",
-        { class: "group", open: firstOpen && firstOpen.group === group },
+        { class: `group${done === total ? ` group-done${scoreClass(worst)}` : ""}`, open: firstOpen && firstOpen.group === group },
         el(
           "summary",
           {},
           el("h2", {}, group.title),
-          el("span", { class: "level" }, LEVELS[group.level]),
+          el("span", { class: `level level-${group.level}` }, LEVELS[group.level]),
           el("span", { class: "group-progress" }, `${done} de ${total}`)
         ),
         el(

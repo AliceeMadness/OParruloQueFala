@@ -10,14 +10,14 @@ A free website for Spanish speakers to learn Galician through short games.
 |---|---|---|
 | **Vocabulario** | 1,531 words in 82 lessons | Type the Galician word for a Spanish one. Lessons have 20 words at most and go from easiest to hardest, grouped by theme. |
 | **Verbos** | 203 verbs in 337 lessons | Conjugate the six persons of a verb, by theme and tense. |
-| **Gramática** | 298 sentences in 37 lessons | Choose the word that fills the gap. A wrong answer explains the rule. Every sentence shows its Spanish translation. |
-| **Encrucillados** | 20 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
+| **Gramática** | 394 sentences in 49 lessons | Choose the word that fills the gap. A wrong answer explains the rule. Every sentence shows its Spanish translation. |
+| **Encrucillados** | 60 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
 | **A miña colección** | Words you save | While doing vocabulary, press *Engadir á miña colección* on any word you don't know. Each profile has its own collection, studied 20 random words at a time, and words stay until you remove them. |
 
-The home page also has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day.
+Every page has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day.
 
-Scores are colour-coded in the lesson lists: green for 100%, yellow from 70%, orange from 50% and red below that.
+Scores are colour-coded in the lesson lists: green for 100%, yellow from 70%, orange from 50% and red below that. When every lesson in a group is done, the group takes the colour of its lowest score.
 
 The interface, titles and rules are in Galician. Spanish appears only where an exercise needs it: words to translate, verb meanings, sentence translations and some crossword clues.
 
@@ -46,6 +46,7 @@ content/           Lessons in plain text: edit these
 data/              JSON generated from content/: do not edit by hand
 tools/build.py     Checks content/ and generates data/
 firestore.rules    Access rules for the database
+manifest.webmanifest  Name and icons used when the site is installed as an app
 .nojekyll          Tells GitHub Pages not to process the files
 ```
 
@@ -83,8 +84,8 @@ The local site uses the same database as the published one, so anything you do i
 | `content/verbs/verbs.txt` | `falar = hablar`. Regular verbs conjugate automatically. For irregular tenses, add `\| presente: eu, ti, el, nós, vós, eles`. |
 | `content/verbs/lessons.txt` | `# Theme \| level \| tenses`, then `Group name: verb, verb, verb`. Each group and tense becomes a lesson. |
 | `content/grammar.txt` | `# Group \| level`, then `## Lesson`, then `> Rule`, then `Sentence with ___ \| right \| wrong \| [wrong] \| Explanation`, followed by `= Spanish translation` on the next line. |
-| `content/crosswords.txt` | `# Number \| Title`, then `WORD = Clue`. The grid is generated automatically. |
-| `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. Every fifth day shows an expression. |
+| `content/crosswords.txt` | `# Number \| Title \| level` (1 easy, 2 medium, 3 hard), then `WORD = Clue`. The grid is generated automatically. Never renumber a crossword, because the number identifies its saved progress. |
+| `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. Every fifth day shows an expression. Entries come out in a fixed random order set by `tools/build.py`, counting from `FIRST_DAY` in `assets/js/daily.js`, so adding entries to the file reorders the ones still hidden and can change those already shown. |
 
 Levels go from 1 to 4, and themes must be in ascending order. Lines starting with `//` are comments.
 
@@ -135,6 +136,14 @@ The project is already connected to a database. To use your own, for example in 
    ```
 
 If `SYNC_URL` is empty, the site still works, but progress stays in each browser. The address isn't a secret: `firestore.rules` is what controls access.
+
+## Installing it as an app
+
+The site can be installed on a phone, and installed copies load the published site, so every push to `main` reaches them without reinstalling.
+
+- **iPhone:** open the site in Safari, tap **Share**, then **Add to Home Screen**.
+- **Android:** open the site in Chrome, open the menu, then tap **Install app** or **Add to Home screen**.
+- **Android APK:** generate it from the published address at https://www.pwabuilder.com. Keep the signing key it provides, because later versions must be signed with the same key.
 
 ## Publishing
 

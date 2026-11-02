@@ -26,7 +26,6 @@ TENSES = {
     "infinitivo": "Infinitivo conxugado",
 }
 PERSONS = ["eu", "ti", "el/ela", "nós", "vós", "eles/elas"]
-EXPECTED_CROSSWORDS = 20
 
 
 class ContentError(Exception):
@@ -252,6 +251,10 @@ def build_grammar():
 
 # Daily word ------------------------------------------------------------------
 
+# The list opens with this expression on its first day.
+FIRST_EXPRESSION = "vaites, vaites!"
+
+
 def build_daily():
     sections = {"Palabras": [], "Expresións": []}
     current = None
@@ -270,7 +273,13 @@ def build_daily():
             raise ContentError(f"daily.txt: repetido {sorted(repeated)}")
         # The file is grouped by topic; a fixed shuffle mixes the topics from day to day.
         random.Random("daily").shuffle(entries)
-    return {"words": sections["Palabras"], "expressions": sections["Expresións"]}
+    expressions = sections["Expresións"]
+    first = next((entry for entry in expressions if entry["gl"] == FIRST_EXPRESSION), None)
+    if first is None:
+        raise ContentError(f"daily.txt: falta la primera expresión, {FIRST_EXPRESSION}")
+    expressions.remove(first)
+    expressions.insert(0, first)
+    return {"words": sections["Palabras"], "expressions": expressions}
 
 
 # Crosswords ------------------------------------------------------------------
@@ -373,8 +382,8 @@ def build_crosswords():
     puzzles = []
     for number, line in lines_of(CONTENT / "crosswords.txt"):
         if line.startswith("# "):
-            position, title = [part.strip() for part in line[2:].split("|")]
-            puzzles.append({"id": f"encrucillado-{position}", "number": int(position), "title": title, "clues": {}})
+            position, title, level = [part.strip() for part in line[2:].split("|")]
+            puzzles.append({"id": f"encrucillado-{position}", "number": int(position), "title": title, "level": int(level), "clues": {}})
         else:
             word, clue = line.split(" = ", 1)
             letters = grid_letters(word.strip())
@@ -382,8 +391,11 @@ def build_crosswords():
                 raise ContentError(f"crosswords.txt:{number}: palabra repetida {letters}")
             puzzles[-1]["clues"][letters] = clue.strip()
 
-    if len(puzzles) != EXPECTED_CROSSWORDS:
-        raise ContentError(f"hay {len(puzzles)} crucigramas, se esperaban {EXPECTED_CROSSWORDS}")
+    numbers = [puzzle["number"] for puzzle in puzzles]
+    if len(set(numbers)) != len(numbers):
+        raise ContentError("crosswords.txt: número de crucigrama repetido")
+    if any(puzzle["level"] not in (1, 2, 3) for puzzle in puzzles):
+        raise ContentError("crosswords.txt: el nivel debe ser 1, 2 o 3")
 
     result = []
     for puzzle in puzzles:
@@ -404,7 +416,7 @@ def build_crosswords():
             })
         entries.sort(key=lambda entry: (not entry["across"], entry["number"]))
         result.append({
-            "id": puzzle["id"], "number": puzzle["number"], "title": puzzle["title"],
+            "id": puzzle["id"], "number": puzzle["number"], "title": puzzle["title"], "level": puzzle["level"],
             "rows": rows, "cols": cols, "entries": entries,
         })
     return result

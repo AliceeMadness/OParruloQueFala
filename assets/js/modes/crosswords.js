@@ -1,38 +1,46 @@
 import { celebrate } from "../ducks.js";
 import { crosswordState, saveCrossword } from "../store.js";
 import { gridLetter } from "../text.js";
-import { backLink, el, focusSoon } from "../ui.js";
+import { backLink, el, focusSoon, LEVELS } from "../ui.js";
 
-function difficulty(number) {
-  if (number <= 8) return "Doado";
-  if (number <= 14) return "Media";
-  return "Difícil";
-}
+const GROUP_TITLES = { 1: "Encrucillados doados", 2: "Encrucillados medios", 3: "Encrucillados difíciles" };
 
 export function crosswordListView(puzzles) {
+  const groups = [1, 2, 3].map((level) => {
+    const members = puzzles.filter((puzzle) => puzzle.level === level);
+    return { level, members, done: members.filter((puzzle) => crosswordState(puzzle.id).done).length };
+  });
+  const firstOpen = groups.find(({ members, done }) => done < members.length);
+
   return el(
     "div",
     {},
     el("h1", {}, "Encrucillados"),
-    el("p", { class: "lead" }, "Para os máis atrevidos: 20 encrucillados, de máis doado a máis difícil. Serven para descubrir palabras novas, e as pistas van cada vez máis en galego."),
-    el(
-      "div",
-      { class: "lesson-grid", style: "padding: 0" },
-      ...puzzles.map((puzzle) => {
-        const { done } = crosswordState(puzzle.id);
-        return el(
-          "a",
-          { class: `lesson-link${done ? " done" : ""}`, href: `#/encrucillados/${puzzle.id}` },
-          el(
-            "span",
-            {},
-            `${puzzle.number}. ${puzzle.title}`,
-            el("small", {}, `${difficulty(puzzle.number)} · ${puzzle.entries.length} palabras`)
-          ),
-          done ? el("span", { class: "score" }, "✓") : null
-        );
-      })
-    )
+    el("p", { class: "lead" }, `Para os máis atrevidos: ${puzzles.length} encrucillados, de máis doado a máis difícil. Serven para descubrir palabras novas, e as pistas van cada vez máis en galego.`),
+    ...groups.map(({ level, members, done }) => el(
+      "details",
+      { class: `group${done === members.length ? " group-done" : ""}`, open: firstOpen?.level === level },
+      el(
+        "summary",
+        {},
+        el("h2", {}, GROUP_TITLES[level]),
+        el("span", { class: `level level-${level}` }, LEVELS[level]),
+        el("span", { class: "group-progress" }, `${done} de ${members.length}`)
+      ),
+      el(
+        "div",
+        { class: "lesson-grid" },
+        ...members.map((puzzle) => {
+          const solved = crosswordState(puzzle.id).done;
+          return el(
+            "a",
+            { class: `lesson-link${solved ? " done" : ""}`, href: `#/encrucillados/${puzzle.id}` },
+            el("span", {}, `${puzzle.number}. ${puzzle.title}`, el("small", {}, `${puzzle.entries.length} palabras`)),
+            solved ? el("span", { class: "score" }, "✓") : null
+          );
+        })
+      )
+    ))
   );
 }
 
