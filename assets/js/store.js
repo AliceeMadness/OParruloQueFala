@@ -7,9 +7,9 @@ const KEY_BEFORE_PROFILES = "oparrulo.v1";
 const PUSH_DELAY_MS = 1500;
 
 export const PROFILES = [
-  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg" },
-  { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg" },
-  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg" },
+  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m" },
+  { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f" },
+  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f" },
 ];
 
 function load() {
@@ -35,7 +35,17 @@ function saveLocally() {
 }
 
 function emptyProgress() {
-  return { lessons: {}, mistakes: {}, mistakesAt: 0, collection: {}, collectionAt: 0, crosswords: {} };
+  return {
+    lessons: {},
+    mistakes: {},
+    mistakesAt: 0,
+    collection: {},
+    collectionAt: 0,
+    crosswords: {},
+    details: { description: "", favoriteWord: "" },
+    detailsAt: 0,
+    achievements: null,
+  };
 }
 
 function progressOf(id) {
@@ -222,6 +232,29 @@ export function removeFromCollection(word) {
 
 export function collection() {
   return Object.entries(progress().collection).map(([es, gl]) => ({ es, gl }));
+}
+
+export function profileDetails() {
+  return progress().details;
+}
+
+export function saveProfileDetails(details) {
+  const current = progress();
+  current.details = details;
+  current.detailsAt = Date.now();
+  save();
+}
+
+// Null until the profile's first check, which records what it had already reached.
+export function earnedAchievements() {
+  return progress().achievements;
+}
+
+export function addEarnedAchievements(ids) {
+  const current = progress();
+  current.achievements = { ...current.achievements };
+  for (const id of ids) current.achievements[id] = Date.now();
+  save();
 }
 
 export function crosswordState(id) {

@@ -2,7 +2,7 @@
 
 A free website for Spanish speakers to learn Galician through short games.
 
-**Play it at https://aliceemadness.github.io/OParruloQueFala/** (requires GitHub Pages to be enabled, see [Publishing](#publishing)).
+**Play it at https://aliceemadness.github.io/OParruloQueFala/**, or [install it on your phone](#installing-it-as-an-app).
 
 ## What's inside
 
@@ -15,7 +15,9 @@ A free website for Spanish speakers to learn Galician through short games.
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
 | **A miña colección** | Words you save | While doing vocabulary, press *Engadir á miña colección* on any word you don't know. Each profile has its own collection, studied 20 random words at a time, and words stay until you remove them. |
 
-Every page has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day.
+Every page has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
+
+The profile picture at the top right opens a menu with **Perfil** (progress, description and favourite word), **Logros** (achievements) and **Cambiar de perfil**.
 
 Scores are colour-coded in the lesson lists: green for 100%, yellow from 70%, orange from 50% and red below that. When every lesson in a group is done, the group takes the colour of its lowest score.
 
@@ -28,7 +30,7 @@ The Galician content was written with AI assistance and checked against a spelli
 Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile has its own progress, which follows it to any device.
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
-- **Playing on several devices:** progress is combined. Each lesson keeps its best score, while each crossword, the review list and the collection keep their most recent version.
+- **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, and each crossword, the review list, the collection and the profile details keep their most recent version.
 - **No passwords:** anyone with access to the site can open any profile and change its progress. Store only game progress in it, never personal data.
 
 ## How it's built
@@ -41,6 +43,8 @@ assets/            Styles, images and JavaScript
   js/config.js     Address of the progress database
   js/store.js      Profiles and saved progress
   js/sync.js       Communication with the database
+  js/daily.js      Daily word panel and list
+  js/achievements.js  Achievements and their pop-ups
   js/modes/        One file per game mode
 content/           Lessons in plain text: edit these
 data/              JSON generated from content/: do not edit by hand
@@ -85,11 +89,32 @@ The local site uses the same database as the published one, so anything you do i
 | `content/verbs/lessons.txt` | `# Theme \| level \| tenses`, then `Group name: verb, verb, verb`. Each group and tense becomes a lesson. |
 | `content/grammar.txt` | `# Group \| level`, then `## Lesson`, then `> Rule`, then `Sentence with ___ \| right \| wrong \| [wrong] \| Explanation`, followed by `= Spanish translation` on the next line. |
 | `content/crosswords.txt` | `# Number \| Title \| level` (1 easy, 2 medium, 3 hard), then `WORD = Clue`. The grid is generated automatically. Never renumber a crossword, because the number identifies its saved progress. |
-| `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. Every fifth day shows an expression. Entries come out in a fixed random order set by `tools/build.py`, counting from `FIRST_DAY` in `assets/js/daily.js`, so adding entries to the file reorders the ones still hidden and can change those already shown. |
+| `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. See [Daily words](#daily-words) before adding entries. |
 
 Levels go from 1 to 4, and themes must be in ascending order. Lines starting with `//` are comments.
 
 Renaming a lesson changes its address, which resets its saved progress.
+
+## Achievements
+
+There are 33 achievements, defined in `assets/js/achievements.js`. Those not yet earned appear faded in **Logros**, and those earned have a rainbow border. Earning one shows a pop-up at the top of the page.
+
+- **What counts:** a lesson counts once it is finished, whatever its score, and a crossword once it is solved.
+- **Permanent:** an achievement stays earned even if adding lessons later lowers a percentage, or if words leave the collection.
+- **First check:** the first time a profile is checked, whatever it had already reached is recorded without any pop-ups.
+- **Epic achievement:** "Cando sae o Galego 2??" requires a score of 100% in every lesson and every crossword solved.
+- **Titles by profile:** the `gender` of each profile in `PROFILES` decides the grammatical form of titles such as "Sabio" or "Sabia" and "Rei" or "Raíña".
+- **Grammar and crosswords:** "Sabio" requires the advanced level, and "Rei" or "Raíña" requires the whole section.
+
+## Daily words
+
+The list has 300 words and 51 expressions, and one new entry is unlocked each day, starting on 2 November 2026 (`FIRST_DAY` in `assets/js/daily.js`).
+
+- **Order:** `tools/build.py` shuffles each list in a fixed random order, and `FIRST_EXPRESSION` in the same file comes first. The first day shows that expression, and then every fifth day shows an expression and the rest show words. When the expressions run out, only words follow.
+- **Duration:** every day brings something new for 351 days. After that the sequence starts again, with everything already unlocked.
+- **Who sees what:** unlocking depends only on the date, so all profiles see the same entries. It uses the device's clock, so changing the clock changes what appears.
+- **Hidden entries:** the page doesn't show them, but they are in the public file `data/daily.json`, so this hides them from players rather than protecting them.
+- **Adding entries:** this changes the shuffled order of the whole list, including entries already shown. To avoid that, `tools/build.py` would first need changing to keep the published order.
 
 ## Adding a profile
 
@@ -99,7 +124,7 @@ Draw its duck as `assets/img/pato-<id>.svg`, starting from one of the existing d
 
 The browser talks directly to the Firestore REST API, with no server or SDK in between. `assets/js/store.js` decides when to sync and `assets/js/sync.js` makes the requests. The site uses the Firebase project `oparrulo-cd79d`.
 
-**What is stored:** each profile is one document, `profiles/<id>` (for example `profiles/alice`), with a single text field, `progress`. That field holds the profile's scores, review list and crosswords as JSON. A copy is also kept in the browser's `localStorage`, which is what lets the site work offline.
+**What is stored:** each profile is one document, `profiles/<id>` (for example `profiles/alice`), with a single text field, `progress`. That field holds the profile's scores, review list, collection, crosswords, description, favourite word and achievements as JSON. A copy is also kept in the browser's `localStorage`, which is what lets the site work offline.
 
 **When progress is downloaded:**
 
@@ -139,11 +164,46 @@ If `SYNC_URL` is empty, the site still works, but progress stays in each browser
 
 ## Installing it as an app
 
-The site can be installed on a phone, and installed copies load the published site, so every push to `main` reaches them without reinstalling.
+The site can be installed on a phone as a progressive web app (PWA), using the name and icons in `manifest.webmanifest`. An Android APK can also be generated from it. All of them load the published site and share the same progress for each profile.
 
-- **iPhone:** open the site in Safari, tap **Share**, then **Add to Home Screen**.
-- **Android:** open the site in Chrome, open the menu, then tap **Install app** or **Add to Home screen**.
-- **Android APK:** generate it from the published address at https://www.pwabuilder.com. Keep the signing key it provides, because later versions must be signed with the same key.
+| Option | Works on | Cost | Drawback |
+|---|---|---|---|
+| **PWA** | iPhone and Android | Free | Installed from the browser rather than from a store |
+| **APK** | Android only | Free | Requires allowing installs from unknown sources |
+| **App Store** | iPhone only | About $99 a year | Requires a developer account and Apple's review. Not set up |
+
+iPhones can't install APK files, so the PWA is the way to install it on an iPhone.
+
+### Installing the PWA
+
+To share the app, send the site's address. There is no file to send.
+
+- **iPhone:** open the site in **Safari**, tap **Share**, then **Add to Home Screen**.
+- **Android:** open the site in **Chrome**, open the ⋮ menu, then tap **Install app** or **Add to Home screen**.
+
+To pick up a new icon or name, remove the installed copy and add it again.
+
+### Generating the APK
+
+The APK is generated from the published site, so the manifest must be on GitHub Pages first.
+
+1. Go to https://www.pwabuilder.com and enter the site's address.
+2. Choose **Package For Stores**, then **Android**, and download the ZIP.
+3. Keep the signing key from the ZIP somewhere safe and **outside this repository**, which is public. Later versions must be signed with the same key, or they can't be installed over the previous one.
+4. Send the APK to the phone and open it, allowing installs from that source when Android asks.
+
+PWABuilder's warning about a missing service worker is a recommendation related to offline use.
+
+To remove the address bar from the APK, Android requires a verification file at the root of the domain, `aliceemadness.github.io/.well-known/assetlinks.json`. It can't live in this repository, because the site is served from `/OParruloQueFala/`. It needs a separate public repository named `AliceeMadness.github.io`, containing the `assetlinks.json` file from the ZIP. Until then the APK works, with the bar showing.
+
+### Updates
+
+Every push to `main` reaches the PWA and the APK without reinstalling. It isn't instant: GitHub Pages takes about a minute to publish, the phone may keep the previous version for up to 10 minutes, and an open app has to be closed and reopened. A new APK is only needed to change the app's own icon or name.
+
+### Limitations
+
+- **No offline start:** the app needs a connection to open, because there is no service worker yet. If one is added, it must check for new versions first, or phones could stay on an old version.
+- **Testing:** the manifest and icons are published and were checked as files, but installation hasn't been tested on real phones yet.
 
 ## Publishing
 

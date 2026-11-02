@@ -28,7 +28,14 @@
         <a href="#/encrucillados">Encrucillados</a>
         <a href="#/coleccion">A miña colección</a>
       </nav>
-      <a id="profile-chip" class="profile-chip" href="#/perfil" title="Cambiar de perfil" hidden></a>
+      <div class="profile-menu">
+        <button id="profile-chip" class="profile-chip" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown" title="Menú do perfil" hidden></button>
+        <div id="profile-dropdown" class="profile-dropdown" hidden>
+          <a href="#/perfil">Perfil</a>
+          <a href="#/logros">Logros</a>
+          <a href="#/cambiar-perfil">Cambiar de perfil</a>
+        </div>
+      </div>
     </div>
   </header>
   <main class="page-layout">
@@ -38,6 +45,7 @@
     </div>
     <aside id="panel-daily" class="side-panel daily-panel" hidden></aside>
   </main>
+  <div id="achievement-toasts" class="achievement-toasts" role="status" aria-live="polite"></div>
   <noscript><p class="loading">Esta web precisa JavaScript para funcionar.</p></noscript>
 </body>
 </html>

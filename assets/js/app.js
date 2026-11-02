@@ -1,7 +1,9 @@
+import { achievementsView, buildAchievements, checkAchievements } from "./achievements.js";
 import { dailyListView, drawDailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
+import { profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView, reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
 import { activeProfile, bestScore, collection, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
@@ -43,9 +45,7 @@ function percentLabel(done, total) {
 
 // Returns the function that redraws the bars, so they can follow each saved lesson.
 function buildProgressPanel(site) {
-  const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
-  const crosswordIds = site.crosswords.map((puzzle) => puzzle.id);
-  const total = lessonKeys.length + crosswordIds.length;
+  const { lessonKeys, crosswordIds, total } = site.activities;
   const list = el("ul", { class: "standings" });
 
   function draw() {
@@ -133,7 +133,7 @@ function homeView(site) {
   );
 }
 
-function profileView(site) {
+function chooseProfileView(site) {
   const active = activeProfile();
   return el(
     "div",
@@ -152,7 +152,8 @@ function profileView(site) {
             selectProfile(profile.id);
             await pullWithLimit();
             refreshPanels(site);
-            if (location.hash.startsWith("#/perfil")) location.hash = "#/";
+            checkAchievements(site);
+            if (location.hash.startsWith("#/cambiar-perfil")) location.hash = "#/";
             else render(site);
           },
         },
@@ -161,6 +162,28 @@ function profileView(site) {
       ))
     )
   );
+}
+
+function closeProfileMenu() {
+  document.getElementById("profile-dropdown").hidden = true;
+  document.getElementById("profile-chip").setAttribute("aria-expanded", "false");
+}
+
+function setUpProfileMenu() {
+  const chip = document.getElementById("profile-chip");
+  const dropdown = document.getElementById("profile-dropdown");
+  chip.addEventListener("click", (event) => {
+    event.stopPropagation();
+    dropdown.hidden = !dropdown.hidden;
+    chip.setAttribute("aria-expanded", String(!dropdown.hidden));
+  });
+  document.addEventListener("click", closeProfileMenu);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !dropdown.hidden) {
+      closeProfileMenu();
+      chip.focus();
+    }
+  });
 }
 
 function updateProfileChip() {
@@ -185,7 +208,7 @@ function pullWithLimit() {
 // Lessons in progress and typed searches keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && parts[0] !== "repaso" && parts[0] !== "palabras-do-dia";
+  return parts.length <= 1 && !["repaso", "palabras-do-dia", "perfil"].includes(parts[0]);
 }
 
 function updatePanels(site) {
@@ -215,8 +238,13 @@ function notFoundView() {
 
 function route(site, parts) {
   const [section, first, second] = parts;
-  if (!activeProfile() || section === "perfil") return profileView(site);
+  if (!activeProfile() || section === "cambiar-perfil") return chooseProfileView(site);
   if (!section) return homeView(site);
+  if (section === "perfil") {
+    const { lessonKeys, crosswordIds, total } = site.activities;
+    return profilePageView(site, { done: completedBy(activeProfile().id, lessonKeys, crosswordIds) ?? 0, total });
+  }
+  if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
   if (section === "palabras-do-dia") return dailyListView(site.daily);
   if (section === "coleccion") return first === "estudar" ? collectionStudyView() : first ? null : collectionView();
@@ -236,6 +264,7 @@ function route(site, parts) {
 }
 
 function render(site) {
+  closeProfileMenu();
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   const view = route(site, parts) ?? notFoundView();
   app.replaceChildren(view);
@@ -263,15 +292,24 @@ async function main() {
       crosswords,
       daily,
     };
+    const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
+    const crosswordIds = crosswords.map((puzzle) => puzzle.id);
+    site.activities = { lessonKeys, crosswordIds, total: lessonKeys.length + crosswordIds.length };
+    site.achievements = buildAchievements(site);
     site.drawProgress = buildProgressPanel(site);
+    setUpProfileMenu();
     window.addEventListener("hashchange", () => render(site));
     startSync({
       onProgressChange() {
         updatePanels(site);
+        checkAchievements(site);
         if (isSafeToRedraw()) render(site);
       },
       onSyncChange: updateProfileChip,
-      onSaved: () => updatePanels(site),
+      onSaved() {
+        updatePanels(site);
+        checkAchievements(site);
+      },
     });
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "visible" && activeProfile()) refreshPanels(site);
@@ -279,6 +317,7 @@ async function main() {
     await pullWithLimit();
     render(site);
     if (activeProfile()) refreshPanels(site);
+    checkAchievements(site);
   } catch (error) {
     console.error(error);
     app.replaceChildren(el(
