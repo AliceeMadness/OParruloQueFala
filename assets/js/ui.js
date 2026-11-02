@@ -1,5 +1,5 @@
 import { celebrate, duckOf } from "./ducks.js";
-import { activeProfile, bestScore, recordScore } from "./store.js";
+import { activeProfile, addToCollection, bestScore, inCollection, recordScore, removeFromCollection } from "./store.js";
 
 export function el(tag, props = {}, ...children) {
   const node = document.createElement(tag);
@@ -188,4 +188,27 @@ export function finishPanel({ key, total, failed, failedRows, backHref, backText
 // Swaps the content of a container, used by every lesson as it moves on.
 export function replace(container, ...nodes) {
   container.replaceChildren(...nodes.filter(Boolean));
+}
+
+// Saves something the player doesn't know yet in their collection, or takes it out.
+export function collectButton(kind, id, value, { small = false } = {}) {
+  const button = el("button", { class: small ? "collect-mini" : "button secondary collect", type: "button" });
+  function draw() {
+    const added = inCollection(kind, id);
+    button.setAttribute("aria-pressed", String(added));
+    if (small) {
+      button.textContent = added ? "✓" : "+";
+      button.title = added ? "Quitar da miña colección" : "Engadir á miña colección";
+      button.setAttribute("aria-label", button.title);
+    } else {
+      button.textContent = added ? "✓ Na miña colección" : "Engadir á miña colección";
+    }
+  }
+  button.addEventListener("click", () => {
+    if (inCollection(kind, id)) removeFromCollection(kind, id);
+    else addToCollection(kind, id, value);
+    draw();
+  });
+  draw();
+  return button;
 }

@@ -40,6 +40,8 @@ function emptyProgress() {
     mistakes: {},
     mistakesAt: 0,
     collection: {},
+    collectionVerbs: {},
+    collectionGrammar: {},
     collectionAt: 0,
     crosswords: {},
     details: { description: "", favoriteWord: "" },
@@ -210,28 +212,39 @@ export function mistakes() {
   return Object.entries(progress().mistakes).map(([es, gl]) => ({ es, gl }));
 }
 
-export function inCollection(word) {
-  return word.es in progress().collection;
+// Vocabulary stays in `collection`, where it was saved before verbs and grammar joined.
+const COLLECTION_FIELDS = { words: "collection", verbs: "collectionVerbs", grammar: "collectionGrammar" };
+
+function collectionOf(kind) {
+  return progress()[COLLECTION_FIELDS[kind]];
 }
 
-export function addToCollection(word) {
-  const current = progress();
-  current.collection[word.es] = word.gl;
-  current.collectionAt = Date.now();
+export function inCollection(kind, id) {
+  return id in collectionOf(kind);
+}
+
+export function addToCollection(kind, id, value) {
+  collectionOf(kind)[id] = value;
+  progress().collectionAt = Date.now();
   save();
 }
 
-export function removeFromCollection(word) {
-  const current = progress();
-  if (word.es in current.collection) {
-    delete current.collection[word.es];
-    current.collectionAt = Date.now();
+export function removeFromCollection(kind, id) {
+  const saved = collectionOf(kind);
+  if (id in saved) {
+    delete saved[id];
+    progress().collectionAt = Date.now();
     save();
   }
 }
 
-export function collection() {
-  return Object.entries(progress().collection).map(([es, gl]) => ({ es, gl }));
+// Returns [{ id, value }], oldest first.
+export function collection(kind) {
+  return Object.entries(collectionOf(kind)).map(([id, value]) => ({ id, value }));
+}
+
+export function collectionSize() {
+  return Object.keys(COLLECTION_FIELDS).reduce((total, kind) => total + collection(kind).length, 0);
 }
 
 export function profileDetails() {

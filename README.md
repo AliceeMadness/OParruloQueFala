@@ -10,10 +10,10 @@ A free website for Spanish speakers to learn Galician through short games.
 |---|---|---|
 | **Vocabulario** | 1,531 words in 82 lessons | Type the Galician word for a Spanish one. Lessons have 20 words at most and go from easiest to hardest, grouped by theme. |
 | **Verbos** | 203 verbs in 337 lessons | Conjugate the six persons of a verb, by theme and tense. |
-| **Gramática** | 394 sentences in 49 lessons | Choose the word that fills the gap. A wrong answer explains the rule. Every sentence shows its Spanish translation. |
+| **Gramática** | 394 sentences in 49 lessons | Fill the gap by choosing the word (easy mode) or typing it (hard mode). A wrong answer explains the rule. Every sentence shows its Spanish translation. |
 | **Encrucillados** | 60 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
-| **A miña colección** | Words you save | While doing vocabulary, press *Engadir á miña colección* on any word you don't know. Each profile has its own collection, studied 20 random words at a time, and words stay until you remove them. |
+| **A miña colección** | What you save | Save what you don't know yet: vocabulary words and grammar sentences with *Engadir á miña colección*, and single verb forms with the *+* next to each person. The collection has a section for each, studied 20 random items at a time, and items stay until you remove them. Each profile has its own. |
 
 Every page has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
 

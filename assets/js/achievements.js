@@ -1,4 +1,4 @@
-import { addEarnedAchievements, activeProfile, bestScore, collection, crosswordState, earnedAchievements } from "./store.js";
+import { addEarnedAchievements, activeProfile, bestScore, collectionSize, crosswordState, earnedAchievements } from "./store.js";
 import { el } from "./ui.js";
 
 const TOAST_MS = 5000;
@@ -105,8 +105,8 @@ export function buildAchievements(site) {
     {
       title: "A miña colección",
       items: [
-        { id: "coleccion-1", title: "Gústame esta palabra", description: "Engade unha palabra á túa colección.", reached: () => collection().length >= 1 },
-        { id: "coleccion-100", title: "Esta última si que non a sabía", description: "Ten 100 palabras na túa colección.", reached: () => collection().length >= 100 },
+        { id: "coleccion-1", title: "Gústame esta palabra", description: "Engade unha palabra á túa colección.", reached: () => collectionSize() >= 1 },
+        { id: "coleccion-100", title: "Esta última si que non a sabía", description: "Ten 100 palabras na túa colección.", reached: () => collectionSize() >= 100 },
       ],
     },
     {

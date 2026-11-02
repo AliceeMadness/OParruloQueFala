@@ -47,6 +47,8 @@ export function mergeProgress(local, remote) {
     mistakes: remoteIsNewer ? remote.mistakes : local.mistakes,
     mistakesAt: remoteIsNewer ? remote.mistakesAt : local.mistakesAt,
     collection: (remoteCollectionIsNewer ? remote.collection : local.collection) ?? {},
+    collectionVerbs: (remoteCollectionIsNewer ? remote.collectionVerbs : local.collectionVerbs) ?? {},
+    collectionGrammar: (remoteCollectionIsNewer ? remote.collectionGrammar : local.collectionGrammar) ?? {},
     collectionAt: remoteCollectionIsNewer ? remote.collectionAt : local.collectionAt ?? 0,
     details: (remoteDetailsAreNewer ? remote.details : local.details) ?? { description: "", favoriteWord: "" },
     detailsAt: (remoteDetailsAreNewer ? remote.detailsAt : local.detailsAt) ?? 0,

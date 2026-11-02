@@ -1,5 +1,5 @@
 import { checkAnswer } from "../text.js";
-import { answerInput, backLink, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
+import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
 
 export function verbsMode(data) {
   return {
@@ -9,6 +9,11 @@ export function verbsMode(data) {
     groups: data.themes,
     describe: (lesson) => data.tenses[lesson.tense],
   };
+}
+
+// A single form, so the player can save just the persons they get wrong.
+export function verbFormId(name, tense, index) {
+  return `${name}/${tense}/${index}`;
 }
 
 export function verbLessonView(mode, data, groupId, lessonId) {
@@ -55,10 +60,17 @@ export function verbLessonView(mode, data, groupId, lessonId) {
       }));
       const rows = el("div", { class: "conjugation" });
       const fixes = forms.map(() => null);
+      const collects = forms.map((form, index) => collectButton(
+        "verbs",
+        verbFormId(name, lesson.tense, index),
+        { verb: name, es: verb.es, tense: tenseName, person: data.persons[index], form },
+        { small: true }
+      ));
       function drawRows() {
         rows.replaceChildren(...data.persons.flatMap((person, index) => [
           el("label", { htmlFor: `person-${index}`, lang: "gl" }, person),
           inputs[index],
+          collects[index],
           fixes[index],
         ]).filter(Boolean));
       }

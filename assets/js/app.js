@@ -5,8 +5,9 @@ import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
-import { collectionStudyView, collectionView, reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
-import { activeProfile, bestScore, collection, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
+import { collectionStudyView, collectionView } from "./modes/collection.js";
+import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
+import { activeProfile, bestScore, collectionSize, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
 import { avatar, catalogueView, el } from "./ui.js";
 
 const app = document.getElementById("app");
@@ -88,7 +89,7 @@ function homeView(site) {
     el("span", { class: "count" }, `${done} de ${total} completados`)
   );
   const pending = mistakes().length;
-  const saved = collection().length;
+  const saved = collectionSize();
 
   return el(
     "div",
@@ -118,7 +119,7 @@ function homeView(site) {
         "a",
         { class: "mode-card", href: "#/coleccion" },
         el("h2", {}, "A miña colección"),
-        el("p", {}, "As palabras que gardaches porque aínda non as sabes, para estudalas cando queiras."),
+        el("p", {}, "As palabras, formas verbais e frases que gardaches porque aínda non as sabes, para estudalas cando queiras."),
         el("span", { class: "count" }, `${saved} ${saved === 1 ? "palabra" : "palabras"}`)
       )
     ),
@@ -247,7 +248,11 @@ function route(site, parts) {
   if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
   if (section === "palabras-do-dia") return dailyListView(site.daily);
-  if (section === "coleccion") return first === "estudar" ? collectionStudyView() : first ? null : collectionView();
+  if (section === "coleccion") {
+    // "estudar" is the address the collection had when it only held vocabulary.
+    if (first === "estudar") return collectionStudyView("vocabulario");
+    return first ? collectionStudyView(first, second) : collectionView();
+  }
   if (section === "vocabulario") {
     return first ? vocabularyLessonView(site.vocabulary, first, second) : catalogueView(site.vocabulary);
   }

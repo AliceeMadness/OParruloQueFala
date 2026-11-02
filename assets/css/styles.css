@@ -336,7 +336,7 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 
 .conjugation {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content 1fr auto;
   align-items: center;
   gap: .5rem .75rem;
 }
@@ -904,3 +904,37 @@ button.profile-chip {
 @media (prefers-reduced-motion: reduce) {
   .achievement-toast { animation: none; }
 }
+
+/* Collection buttons in verbs */
+.collect-mini {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.collect-mini:hover { border-color: var(--accent); }
+.collect-mini[aria-pressed="true"] { border-color: var(--good); color: var(--good); }
+
+.prompt input.gap-input {
+  display: inline-block;
+  width: 7em;
+  padding: .1rem .4rem;
+  font-size: .8em;
+  vertical-align: baseline;
+}
+
+.modes { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1rem; }
+.modes > div { display: flex; flex-direction: column; gap: .3rem; }
+.modes small { color: var(--muted); }
+
+/* My collection */
+.collection-section { margin-top: 2rem; }
+.collection-section .actions { margin-top: .5rem; }
+.collection-section > h2 { display: flex; align-items: baseline; gap: .6rem; }
+.collection-section > h2 small { color: var(--muted); font-family: system-ui, sans-serif; font-size: .9rem; font-weight: 400; }
