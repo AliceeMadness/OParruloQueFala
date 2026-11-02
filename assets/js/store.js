@@ -4,6 +4,7 @@ import { mergeProgress, readRemote, syncEnabled, writeRemote } from "./sync.js";
 
 const KEY = "oparrulo.v2";
 const KEY_BEFORE_PROFILES = "oparrulo.v1";
+const DEVICE_KEY = "oparrulo.device";
 const PUSH_DELAY_MS = 1500;
 
 export const PROFILES = [
@@ -26,6 +27,22 @@ function load() {
 
 const state = load();
 
+// Play time is counted per device and added up, so two devices never overwrite each other's.
+function deviceId() {
+  try {
+    let id = localStorage.getItem(DEVICE_KEY);
+    if (!id) {
+      id = Math.random().toString(36).slice(2, 12);
+      localStorage.setItem(DEVICE_KEY, id);
+    }
+    return id;
+  } catch {
+    return "this-device";
+  }
+}
+
+const DEVICE = deviceId();
+
 function saveLocally() {
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
@@ -47,6 +64,7 @@ function emptyProgress() {
     details: { description: "", favoriteWord: "" },
     detailsAt: 0,
     achievements: null,
+    playTime: {},
   };
 }
 
@@ -268,6 +286,16 @@ export function addEarnedAchievements(ids) {
   current.achievements = { ...current.achievements };
   for (const id of ids) current.achievements[id] = Date.now();
   save();
+}
+
+export function addPlayTime(ms) {
+  const { playTime } = progress();
+  playTime[DEVICE] = (playTime[DEVICE] ?? 0) + ms;
+  save();
+}
+
+export function totalPlayTime() {
+  return Object.values(progress().playTime).reduce((total, ms) => total + ms, 0);
 }
 
 export function crosswordState(id) {

@@ -1,5 +1,6 @@
 import { achievementCounts } from "../achievements.js";
-import { activeProfile, profileDetails, saveProfileDetails } from "../store.js";
+import { formatPlayTime } from "../playtime.js";
+import { activeProfile, profileDetails, saveProfileDetails, totalPlayTime } from "../store.js";
 import { avatar, el } from "../ui.js";
 
 export function profilePageView(site, { done, total }) {
@@ -56,7 +57,13 @@ export function profilePageView(site, { done, total }) {
         },
         el("div", { style: `width: ${(done * 100) / total}%` })
       ),
-      el("p", {}, el("a", { href: "#/logros" }, `Logros: ${achievements.done} de ${achievements.total}`))
+      el("p", {}, el("a", { href: "#/logros" }, `Logros: ${achievements.done} de ${achievements.total}`)),
+      el(
+        "p",
+        { title: "Só conta o tempo facendo exercicios, non o tempo coa web aberta" },
+        "Tempo facendo exercicios: ",
+        el("strong", {}, formatPlayTime(totalPlayTime()))
+      )
     ),
     el(
       "div",

@@ -31,6 +31,7 @@ Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
 - **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, and each crossword, the review list, the collection and the profile details keep their most recent version.
+- **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
 - **No passwords:** anyone with access to the site can open any profile and change its progress. Store only game progress in it, never personal data.
 
 ## How it's built

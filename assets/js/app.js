@@ -7,6 +7,7 @@ import { profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView } from "./modes/collection.js";
 import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
+import { startPlayTimer } from "./playtime.js";
 import { activeProfile, bestScore, collectionSize, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
 import { avatar, catalogueView, el } from "./ui.js";
 
@@ -304,6 +305,7 @@ async function main() {
     site.drawProgress = buildProgressPanel(site);
     setUpProfileMenu();
     window.addEventListener("hashchange", () => render(site));
+    startPlayTimer();
     startSync({
       onProgressChange() {
         updatePanels(site);
