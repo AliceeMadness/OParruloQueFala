@@ -1,0 +1,376 @@
+// Palabra del día. Cada línea: «galego | definición en galego | traducción al castellano».
+// Conviene elegir palabras que se parezcan poco al castellano.
+
+# Palabras
+// Animais
+xoaniña | Insecto pequeno e redondo, vermello con puntos negros | mariquita
+bolboreta | Insecto de catro ás grandes e cores vivas | mariposa
+vagalume | Insecto que dá luz de noite | luciérnaga
+parrulo | Ave de pico ancho e patas curtas que nada nas lagoas | pato
+sapoconcho | Réptil de andar lento que leva unha cuncha ás costas | tortuga
+raposo | Animal salvaxe de rabo longo e fama de astuto | zorro
+xabaril | Porco salvaxe do monte | jabalí
+teixugo | Mamífero nocturno de fociño branco e negro que vive en covas | tejón
+lontra | Mamífero de pelo escuro que vive nos ríos e nada moi ben | nutria
+esquío | Animal pequeno de rabo peludo que sobe ás árbores | ardilla
+ourizo | Animal pequeno cuberto de púas | erizo
+toupa | Animal pequeno e case cego que escava galerías baixo terra | topo
+morcego | Mamífero voador que sae de noite | murciélago
+donicela | Mamífero pequeno, delgado e áxil, de pelo pardo | comadreja
+curuxa | Ave nocturna de cara branca que caza ratos | lechuza
+moucho | Ave nocturna pequena de ollos grandes | mochuelo
+pega | Ave branca e negra á que lle gustan as cousas brillantes | urraca
+anduriña | Ave de rabo en forquita que volve na primavera | golondrina
+pardal | Ave pequena e parda moi común nas vilas | gorrión
+rula | Ave parecida á pomba, máis pequena | tórtola
+cegoña | Ave grande de patas longas que fai o niño en sitios altos | cigüeña
+papuxa | Ave moi pequena que come insectos | curruca
+pita | Femia do galo | gallina
+bácoro | Cría do porco | cochinillo
+año | Cría da ovella | cordero
+becerro | Cría da vaca | ternero
+can | Animal doméstico que ladra | perro
+lesma | Animal brando e sen cuncha que deixa un rastro ao andar | babosa
+miñoca | Verme que vive baixo terra | lombriz
+cascuda | Insecto escuro e nocturno que anda polas cociñas | cucaracha
+saltón | Insecto verde de patas longas que brinca moito | saltamontes
+carracha | Bicho pequeno que chupa o sangue dos cans | garrapata
+// Mar
+polbo | Animal mariño de oito brazos | pulpo
+lura | Animal mariño de dez brazos que bota tinta | calamar
+choco | Animal mariño parecido á lura, de corpo máis ancho | sepia
+robaliza | Peixe de carne branca e moi apreciada | lubina
+pescada | Peixe longo de carne branca moi consumido | merluza
+ameixa | Molusco de dúas cunchas que vive na area | almeja
+longueirón | Molusco de cuncha longa e estreita | navaja
+peirao | Parte do porto onde atracan os barcos | muelle
+cantil | Costa alta de rocha cortada en vertical | acantilado
+anzol | Gancho pequeno para pescar | anzuelo
+// Tempo atmosférico
+orballo | Chuvia moi miúda e mol | llovizna
+poalla | Chuvia moi fina, case po de auga | llovizna fina
+babuxa | Chuvia moi fina que apenas molla | calabobos
+bátega | Chuvia forte e de pouca duración | chaparrón
+treboada | Tempestade con tronos e lóstregos | tormenta
+lóstrego | Luz súbita que cruza o ceo nunha tempestade | relámpago
+brétema | Néboa, sobre todo a que vén do mar | bruma
+sarabia | Pedras de xeo que caen do ceo | granizo
+raiola | Luz do sol que aparece entre as nubes | rayo de sol
+nordés | Vento frío e seco que sopra do norte e do leste | viento del nordeste
+luscofusco | Hora en que xa non é día e aínda non é noite | crepúsculo
+solpor | Momento en que o sol se esconde | ocaso
+abrente | Primeira luz da mañá | amanecer
+vaga | Movemento de auga que levanta o mar | ola
+arco da vella | Faixa de cores que aparece no ceo despois de chover | arcoíris
+// Plantas
+carballo | Árbore grande e forte que dá landras | roble
+castiñeiro | Árbore que dá ourizos con castañas dentro | castaño
+bidueiro | Árbore de tronco branco | abedul
+salgueiro | Árbore de ramas caídas que vive preto da auga | sauce
+amieiro | Árbore típica das beiras dos ríos | aliso
+freixo | Árbore de madeira clara e flexible | fresno
+acivro | Arbusto de follas con espiñas e froitos vermellos | acebo
+sabugueiro | Arbusto de flores brancas e froitos negros | saúco
+landra | Froito do carballo | bellota
+toxo | Arbusto de espiñas e flores amarelas moi común no monte | tojo
+xesta | Arbusto de flor amarela usado antes para facer vasoiras | retama
+uz | Arbusto baixo do monte de flores pequenas | brezo
+fento | Planta de follas longas que nace en lugares húmidos e sombríos | helecho
+estruga | Planta que pica ao tocala | ortiga
+silva | Planta de espiñas que dá amoras | zarza
+amorodo | Froito pequeno, vermello e doce con sementes por fóra | fresa
+pexego | Froita redonda de pel aveludada e óso grande | melocotón
+abelá | Froito seco pequeno e redondo | avellana
+cenoria | Raíz laranxa que se come | zanahoria
+cogomelo | Fungo con pé e sombreiro | seta
+leituga | Verdura de follas verdes para as ensaladas | lechuga
+millo | Cereal de grans amarelos nunha espiga grande | maíz
+chícharo | Legume pequeno, redondo e verde | guisante
+feixón | Legume en forma de ril, branco, negro ou pinto | judía
+póla | Parte da árbore que sae do tronco | rama
+// Comida e cociña
+cachelos | Patacas cocidas que acompañan o polbo ou o lacón | patatas cocidas
+filloa | Doce fino e redondo, típico do entroido | crep gallego
+sobremesa | O que se come ao rematar a comida | postre
+almorzo | Primeira comida do día | desayuno
+culler | Utensilio para tomar a sopa | cuchara
+garfo | Utensilio con dentes para pinchar a comida | tenedor
+coitelo | Utensilio con folla afiada para cortar | cuchillo
+tixola | Recipiente plano con mango para fritir | sartén
+pota | Recipiente fondo para cociñar | olla
+cunca | Recipiente pequeno sen asa para beber | taza
+billa | Peza que abre e pecha o paso da auga | grifo
+xerra | Recipiente con asa para servir líquidos | jarra
+// Corpo
+xeonllo | Articulación do medio da perna | rodilla
+nocello | Articulación entre a perna e o pé | tobillo
+cóbado | Articulación do medio do brazo | codo
+pescozo | Parte do corpo que une a cabeza co tronco | cuello
+meixela | Parte carnosa da cara, baixo os ollos | mejilla
+beizo | Cada unha das dúas partes carnosas que pechan a boca | labio
+cella | Liña de pelo sobre o ollo | ceja
+pálpebra | Pel que cobre e protexe o ollo | párpado
+ombreiro | Parte do corpo onde se une o brazo co tronco | hombro
+cachola | Modo familiar de nomear a cabeza | cabeza
+gorxa | Parte interior do pescozo | garganta
+coxa | Parte da perna entre o cadril e o xeonllo | muslo
+cadril | Parte do corpo onde se une a perna co tronco | cadera
+ril | Órgano que limpa o sangue | riñón
+bágoa | Pinga que sae do ollo cando choras | lágrima
+cuspe | Líquido que hai dentro da boca | saliva
+// Casa e obxectos
+fiestra | Abertura na parede para entrar a luz | ventana
+xanela | Abertura na parede para mirar fóra e entrar o aire | ventana
+cadeira | Moble con respaldo para sentar | silla
+andel | Táboa da parede para pór libros ou cousas | estante
+vasoira | Utensilio para varrer o chan | escoba
+lixo | Cousas que se tiran porque non serven | basura
+caldeiro | Recipiente con asa para levar auga | cubo
+lareira | Lugar da casa onde se fai lume | hogar
+faiado | Parte máis alta da casa, baixo o tellado | desván
+adega | Lugar fresco onde se garda o viño | bodega
+chave | Peza de metal que abre as portas | llave
+pechadura | Mecanismo das portas que se abre cunha chave | cerradura
+luvas | Prendas que cobren as mans | guantes
+peto | Bolsa pequena da roupa | bolsillo
+saia | Prenda feminina que cae desde a cintura | falda
+xersei | Prenda de la para o frío | jersey
+zoco | Calzado con sola de madeira | zueco
+lentes | Dous cristais con armazón para ver mellor | gafas
+tesoiras | Ferramenta de dúas follas para cortar | tijeras
+trebello | Obxecto ou ferramenta que serve para algo | utensilio
+ligazón | Unión entre dúas cousas | enlace
+ficheiro | Conxunto de datos gardados nun ordenador | archivo
+cartafol | Funda de cartón para gardar papeis | carpeta
+encerado | Taboleiro da aula onde se escribe con xiz | pizarra
+xiz | Barra branca para escribir no taboleiro | tiza
+// Campo
+leira | Terreo pequeno para cultivar | finca
+eido | Terreo que rodea a casa ou que se traballa | terreno
+sacho | Ferramenta para cavar a terra | azada
+fouce | Ferramenta curva para segar | hoz
+angazo | Ferramenta con dentes para recoller a herba | rastrillo
+machada | Ferramenta para cortar leña | hacha
+colleita | Recollida dos froitos da terra | cosecha
+cabazo | Construción con ventilación onde se garda o millo | hórreo
+corte | Lugar onde dorme o gando | establo
+palleiro | Morea de palla ou lugar onde se garda | pajar
+outeiro | Monte pequeno | colina
+chaira | Terreo plano e extenso | llanura
+regato | Corrente pequena de auga | arroyo
+fervenza | Salto de auga nun río | cascada
+encoro | Auga retida por un muro nun río | embalse
+bulleiro | Terreo cheo de lama | lodazal
+lama | Terra mollada e branda | barro
+poza | Auga parada nun buraco do chan | charco
+seixo | Pedra branca e moi dura | guijarro
+croio | Pedra redonda e lisa que levou a auga | canto rodado
+penedo | Pedra moi grande | peñasco
+carreiro | Camiño estreito no monte | sendero
+// Lume e cantidades
+lume | Calor e chamas de algo que arde | fuego
+muxica | Anaco pequeno de lume que salta | chispa
+faísca | Partícula acesa que salta do lume | chispa
+fume | O que sae cando algo arde | humo
+cinsa | Po que queda despois de arder | ceniza
+cacharela | Lume grande que se fai ao aire libre | hoguera
+chisco | Cantidade moi pequena | pizca
+anaco | Parte pequena de algo | trozo
+monllo | Conxunto de cousas que caben nunha man | manojo
+feixe | Conxunto de cousas atadas | haz
+pinga | Porción pequena e redonda dun líquido | gota
+morea | Conxunto de cousas unhas enriba das outras | montón
+ducia | Conxunto de doce unidades | docena
+// Xente
+rapaz | Persoa nova, de pouca idade | chico
+neno | Persoa de poucos anos | niño
+cativo | Neno pequeno; tamén, de pouco tamaño | crío
+mozo | Persoa nova; tamén, a parella de alguén | novio
+curmán | Fillo dun tío ou dunha tía | primo
+xenro | Home casado coa filla de alguén | yerno
+afillado | Persoa á que alguén apadriña | ahijado
+orfo | Persoa á que se lle morreron os pais | huérfano
+xuíz | Persoa que decide nun xuízo | juez
+xornalista | Persoa que escribe ou conta as noticias | periodista
+adestrador | Persoa que prepara un equipo deportivo | entrenador
+meiga | Muller con poderes máxicos | bruja
+menciñeira | Muller que cura con remedios tradicionais | curandera
+esmoleiro | Persoa que vive pedindo polas portas | mendigo
+// Carácter
+larpeiro | A quen lle gustan moito as cousas doces | goloso
+lacazán | A quen non lle gusta traballar | vago
+langrán | Persoa moi preguiceira e sen ganas de nada | holgazán
+preguiceiro | Que evita facer esforzos | perezoso
+pailán | Persoa rústica e de pouca cultura | paleto
+parvo | Pouco listo | tonto
+babeco | Persoa inxenua e pouco espelida | bobalicón
+tolo | Que perdeu o xuízo | loco
+rañicas | Persoa á que lle custa moito gastar | tacaño
+agarrado | Que non quere gastar nada | tacaño
+fachendoso | Que presume moito de si mesmo | presumido
+rosmón | Persoa que sempre se está queixando entre dentes | gruñón
+teimudo | Que non cambia de opinión | terco
+trapalleiro | Quen fai as cousas mal e sen coidado | chapucero
+espelido | Listo e rápido para entender | espabilado
+falangueiro | Quen fala moito e con gusto | hablador
+ledo | Contento, de bo humor | alegre
+famento | Que ten moita gana de comer | hambriento
+// Calidades
+doado | Que non custa traballo | fácil
+maino | Suave e tranquilo | apacible
+mol | Que cede ao apertalo | blando
+baleiro | Sen nada dentro | vacío
+cheo | Que non lle cabe nada máis | lleno
+longo | De moita lonxitude | largo
+vermello | Da cor do sangue | rojo
+louro | De cabelo amarelo | rubio
+quente | De temperatura alta | caliente
+preto | A pouca distancia | cerca
+lonxe | A moita distancia | lejos
+// Sentimentos e ideas
+morriña | Tristeza por estar lonxe da terra | morriña
+saudade | Sentimento de faltar algo ou alguén | añoranza
+agarimo | Sentimento de tenrura cara a alguén | cariño
+aloumiño | Xesto de agarimo coa man | caricia
+aperta | Xesto de rodear a alguén cos brazos | abrazo
+bico | Xesto de tocar a alguén cos beizos en sinal de agarimo | beso
+ledicia | Sentimento de estar contento | alegría
+soidade | Estado de quen está só | soledad
+noxo | Sensación desagradable ante algo repugnante | asco
+envexa | Pena polo que teñen os demais | envidia
+rexouba | Conversa sobre as vidas alleas | cotilleo
+leria | Conversa sen importancia, ou broma | broma
+faladoiro | Xuntanza de xente para conversar | tertulia
+troula | Festa moi animada | juerga
+esmorga | Saída de festa ata moi tarde | parranda
+foliada | Festa popular con música e baile | fiesta popular
+magosto | Festa do outono en que se asan castañas | fiesta de la castaña
+entroido | Festa de máscaras antes da Coresma | carnaval
+agasallo | Algo que se dá sen pedir nada a cambio | regalo
+recuncho | Lugar pequeno e apartado | rincón
+xeito | Modo de facer algo | manera
+folgo | Aire que se bota ao respirar | aliento
+folga | Paro no traballo para reclamar algo | huelga
+// Verbos
+falar | Dicir palabras | hablar
+mercar | Conseguir algo pagando | comprar
+agardar | Quedar nun sitio ata que chegue algo ou alguén | esperar
+atopar | Dar con algo que se buscaba | encontrar
+lembrar | Traer algo á memoria | recordar
+escoller | Quedar cunha cousa entre varias | elegir
+rematar | Chegar ao final de algo | terminar
+comezar | Dar principio a algo | empezar
+medrar | Facerse máis grande | crecer
+amañar | Facer que algo volva funcionar | arreglar
+estragar | Facer que algo se poña mal | estropear
+escachar | Facer anacos algo | romper
+esmagar | Apertar algo ata desfacelo | aplastar
+agochar | Pór algo onde non se ve | esconder
+axexar | Observar sen ser visto | acechar
+albiscar | Ver algo de lonxe e con dificultade | atisbar
+enxergar | Conseguir ver algo que está lonxe | divisar
+brincar | Dar saltos | saltar
+choutar | Golpear algo co pé | patear
+rabuñar | Facer feridas coas uñas | arañar
+rañar | Pasar as uñas pola pel | rascar
+tusir | Botar o aire de golpe pola boca | toser
+esbirrar | Botar o aire de golpe polo nariz | estornudar
+bocexar | Abrir moito a boca por sono | bostezar
+asubiar | Facer un son agudo cos beizos | silbar
+berrar | Falar en voz moi alta | gritar
+rosmar | Queixarse entre dentes | refunfuñar
+saloucar | Chorar con espasmos | sollozar
+cheirar | Percibir os olores | oler
+trabar | Apertar cos dentes | morder
+acougar | Volver á calma | sosegarse
+magoar | Causar dor ou pena | lastimar
+anoxar | Causar enfado | enojar
+aturar | Soportar algo molesto | aguantar
+aloumiñar | Tocar con tenrura | acariciar
+enxugar | Quitar a humidade | secar
+xantar | Comer ao mediodía | almorzar
+almorzar | Comer pola mañá | desayunar
+erguerse | Saír da cama | levantarse
+deitarse | Meterse na cama | acostarse
+orballar | Chover moi miúdo | lloviznar
+// Palabras pequenas
+amodo | Lentamente, sen presa | despacio
+amodiño | Moi lentamente e con coidado | despacito
+axiña | En pouco tempo | pronto
+cedo | Antes da hora normal | temprano
+seica | Indica que algo parece certo | al parecer
+disque | Indica que algo se conta, pero non é seguro | dicen que
+abofé | Indica que algo é certo de verdade | ciertamente
+arestora | Neste mesmo momento | ahora mismo
+decontado | Sen perder tempo | inmediatamente
+adoito | Moitas veces | a menudo
+daquela | Nese momento do pasado | entonces
+namentres | Durante o tempo en que pasa algo | mientras
+porén | Palabra que introduce unha oposición | sin embargo
+abondo | En cantidade suficiente | bastante
+velaí | Indica algo que está á vista | ahí está
+velaquí | Indica algo que está moi preto | aquí está
+acolá | Nun lugar afastado | allá
+rente | Moi preto, tocando | a ras de
+antonte | O día anterior a onte | anteayer
+onte | O día anterior a hoxe | ayer
+hoxe | Este mesmo día | hoy
+aínda | Ata este momento | todavía
+enriba | Na parte superior | encima
+
+# Expresións
+// Modos de facer
+ao chou | Sen escoller nin pensar, deixándoo á sorte | al azar
+á toa | Sen rumbo nin finalidade | a la deriva
+a esgalla | En grande abundancia | a montones
+a cachón | En moita cantidade, coma a auga que sae con forza | a raudales
+a eito | Sen parar nin escoller, todo seguido | sin parar
+a fume de carozo | Facer algo con moita presa e sen o coidado necesario | a toda prisa
+ás agachadas | Sen que ninguén o vexa | a escondidas
+ás apalpadelas | Tocando para orientarse, sen poder ver | a tientas
+ás toupas | Sen ver nada, coma quen avanza ás cegas | a ciegas
+ás carreiras | Con moita presa | a la carrera
+de socato | Sen ninguén o agardar | de repente
+de cando en vez | Unhas poucas veces, non sempre | de vez en cuando
+a cotío | Todos os días, de maneira habitual | a diario
+polo miúdo | Con todo detalle | al detalle
+en troques | Sérvenos para contrapor unha cousa a outra | en cambio
+ao lusco e fusco | Na hora en que empeza a escurecer | al anochecer
+// Expresións do día a día
+madía leva! | Dise para confirmar algo que é evidente | ¡ya lo creo!
+malo será! | Dise para mostrar confianza en que algo sairá ben | ¡mal se tiene que dar!
+manda truco! | Mostra sorpresa ou admiración | ¡manda narices!
+e logo? | Pregunta polo motivo de algo | ¿y eso?
+xa che digo | Dise para reforzar o que outra persoa acaba de contar | ya te digo
+imos indo | Resposta habitual cando che preguntan como estás | vamos tirando
+vaites, vaites! | Mostra sorpresa ante algo que se acaba de descubrir | ¡vaya, vaya!
+si, home, si! | Dise con ironía cando non se cre o que outro di | ¡sí, hombre, sí!
+meu rei! | Modo cariñoso de dirixirse a alguén | ¡cariño!
+carafio! | Exclamación de sorpresa ou enfado, sen chegar a ser unha ofensa | ¡caramba!
+arre demo! | Mostra sorpresa ou rexeitamento | ¡anda ya!
+deus cho pague | Modo tradicional de dar as grazas | Dios te lo pague
+deus nos colla confesados | Dise cando se teme que algo vai saír mal | que Dios nos pille confesados
+déixate de lerias | Pídelle a alguén que fale en serio | déjate de tonterías
+vai rañala! | Modo pouco cortés de mandar a alguén a outro sitio | ¡vete a paseo!
+// Frases feitas
+estar a velas vir | Quedar sen nada, ou mirar sen poder facer nada | quedarse a verlas venir
+facer as beiras | Intentar conquistar a alguén | tirar los tejos
+darlle á lingua | Falar moito e sen parar | darle a la lengua
+darlle ao dente | Comer con ganas | darle al diente
+non ter nin chisco | Non ter absolutamente nada de algo | no tener ni pizca
+quedar cheo coma un ovo | Quedar moi farto despois de comer | quedarse lleno como un huevo
+ser un fervellasverzas | Dise de quen non para quieto e fai moitas cousas sen rematalas | ser un culo inquieto
+máis vello ca andar a pé | Dise de algo moi antigo | más viejo que andar a pie
+non dar pau á auga | Non traballar nada | no dar palo al agua
+a Deus dar | En enorme cantidade, sobre todo falando da chuvia | a mares
+// Refráns
+habelas, hainas | Dise das meigas: aínda que non creas nelas, existen | haberlas, haylas
+polo San Xoán, a sardiña molla o pan | No verán as sardiñas están no seu mellor momento | por San Juan, la sardina moja el pan
+polos Santos, neve nos altos | A comezos de novembro xa pode nevar nos montes | por Todos los Santos, nieve en los altos
+ano de neves, ano de bens | Moita neve no inverno anuncia boa colleita | año de nieves, año de bienes
+de grao en grao enche a galiña o papo | Con pequenos esforzos conséguense grandes cousas | grano a grano llena la gallina el buche
+galiña vella fai bo caldo | A experiencia ten moito valor | gallina vieja hace buen caldo
+a todo porco chégalle o seu San Martiño | Máis tarde ou máis cedo, cada quen recibe o que merece | a cada cerdo le llega su San Martín
+polo pan baila o can | Por interese, faise calquera cousa | por el pan baila el perro
+quen ten cu ten medo | Calquera pode ter medo, é o normal | quien tiene culo tiene miedo
+máis vale un toma ca dous che darei | Mellor algo seguro ca unha promesa | más vale pájaro en mano

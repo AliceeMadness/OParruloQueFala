@@ -250,6 +250,29 @@ def build_grammar():
     return groups
 
 
+# Daily word ------------------------------------------------------------------
+
+def build_daily():
+    sections = {"Palabras": [], "Expresións": []}
+    current = None
+    for number, line in lines_of(CONTENT / "daily.txt"):
+        if line.startswith("# "):
+            current = sections[line[2:].strip()]
+            continue
+        parts = [part.strip() for part in line.split("|")]
+        if len(parts) != 3 or not all(parts):
+            raise ContentError(f"daily.txt:{number}: se esperaba «galego | definición | traducción»")
+        current.append({"gl": parts[0], "def": parts[1], "es": parts[2]})
+    for entries in sections.values():
+        terms = [entry["gl"] for entry in entries]
+        repeated = {term for term in terms if terms.count(term) > 1}
+        if repeated:
+            raise ContentError(f"daily.txt: repetido {sorted(repeated)}")
+        # The file is grouped by topic; a fixed shuffle mixes the topics from day to day.
+        random.Random("daily").shuffle(entries)
+    return {"words": sections["Palabras"], "expressions": sections["Expresións"]}
+
+
 # Crosswords ------------------------------------------------------------------
 
 def grid_letters(word):
@@ -430,6 +453,7 @@ def main():
     verbs = build_verbs()
     grammar = build_grammar()
     crosswords = build_crosswords()
+    daily = build_daily()
     for puzzle in crosswords:
         check_crossword(puzzle)
 
@@ -437,6 +461,7 @@ def main():
     write("verbs.json", verbs)
     write("grammar.json", grammar)
     write("crosswords.json", crosswords)
+    write("daily.json", daily)
 
     words = sum(len(lesson["words"]) for theme in vocabulary for lesson in theme["lessons"])
     print(f"Vocabulario: {len(vocabulary)} temas, "
@@ -448,6 +473,7 @@ def main():
           f"{sum(len(lesson['items']) for group in grammar for lesson in group['lessons'])} frases")
     sizes = ", ".join(f"{puzzle['cols']}x{puzzle['rows']}" for puzzle in crosswords)
     print(f"Crucigramas: {len(crosswords)} ({sizes})")
+    print(f"Palabra del día: {len(daily['words'])} palabras, {len(daily['expressions'])} expresiones")
 
 
 if __name__ == "__main__":

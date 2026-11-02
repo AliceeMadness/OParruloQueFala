@@ -132,6 +132,21 @@ export function isSyncFailing() {
   return syncFailed;
 }
 
+// Brings in the other profiles' progress, only to show it: it is never uploaded from here.
+export async function refreshOtherProfiles() {
+  if (!syncEnabled) return;
+  const others = PROFILES.filter((profile) => profile.id !== state.active);
+  await Promise.all(others.map(async ({ id }) => {
+    try {
+      const remote = await readRemote(id);
+      state.progress[id] = mergeProgress(progressOf(id), remote);
+    } catch (error) {
+      console.warn("Non se puido ler o perfil", id, error);
+    }
+  }));
+  saveLocally();
+}
+
 // Profiles and progress ---------------------------------------------------------
 
 export function activeProfile() {
@@ -142,6 +157,15 @@ export function selectProfile(id) {
   pushPendingNow();
   state.active = id;
   saveLocally();
+}
+
+// Null when this device has never been able to read that profile's progress.
+export function completedBy(profileId, lessonKeys, crosswordIds) {
+  const saved = state.progress[profileId];
+  if (!saved) return null;
+  const lessons = lessonKeys.filter((key) => saved.lessons?.[key] !== undefined).length;
+  const puzzles = crosswordIds.filter((id) => saved.crosswords?.[id]?.done).length;
+  return lessons + puzzles;
 }
 
 export function bestScore(lessonKey) {

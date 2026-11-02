@@ -1,9 +1,10 @@
+import { dailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView, reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
-import { activeProfile, bestScore, collection, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, selectProfile, startSync } from "./store.js";
+import { activeProfile, bestScore, collection, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
 import { avatar, catalogueView, el } from "./ui.js";
 
 const app = document.getElementById("app");
@@ -28,7 +29,55 @@ function countDone(mode) {
   return { done, total };
 }
 
-function homeView({ vocabulary, verbs, grammar, crosswords }) {
+function lessonKeysOf(mode) {
+  return mode.groups.flatMap((group) => group.lessons.map((lesson) => `${mode.path}/${group.id}/${lesson.id}`));
+}
+
+// Rounds down, so that 100% only appears when everything is really done.
+function percentLabel(done, total) {
+  if (done > 0 && done * 100 < total) return "<1%";
+  return `${Math.floor((done * 100) / total)}%`;
+}
+
+function standingsPanel(site) {
+  const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
+  const crosswordIds = site.crosswords.map((puzzle) => puzzle.id);
+  const total = lessonKeys.length + crosswordIds.length;
+  const list = el("ul", { class: "standings" });
+
+  function draw() {
+    const active = activeProfile();
+    list.replaceChildren(...PROFILES.map((profile) => {
+      const done = completedBy(profile.id, lessonKeys, crosswordIds);
+      const label = done === null ? "—" : percentLabel(done, total);
+      return el(
+        "li",
+        { class: profile === active ? "current" : null },
+        el("div", { class: "standing-name" }, avatar(profile), el("span", {}, profile.name), el("span", { class: "standing-percent" }, label)),
+        el(
+          "div",
+          {
+            class: "standing-bar",
+            role: "progressbar",
+            "aria-label": `Progreso de ${profile.name}`,
+            "aria-valuemin": 0,
+            "aria-valuemax": total,
+            "aria-valuenow": done ?? 0,
+            title: done === null ? "Aínda non hai datos deste perfil" : `${done} de ${total} completados`,
+          },
+          el("div", { style: `width: ${((done ?? 0) * 100) / total}%` })
+        )
+      );
+    }));
+  }
+
+  draw();
+  refreshOtherProfiles().then(draw);
+  return el("aside", { class: "side-panel" }, el("h2", {}, "Progreso total"), list);
+}
+
+function homeView(site) {
+  const { vocabulary, verbs, grammar, crosswords } = site;
   const card = (href, title, text, { done, total }) => el(
     "a",
     { class: "mode-card", href },
@@ -41,7 +90,11 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
 
   return el(
     "div",
-    {},
+    { class: "home-layout" },
+    standingsPanel(site),
+    el(
+    "div",
+    { class: "home-main" },
     el(
       "div",
       { class: "hero" },
@@ -50,7 +103,7 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
         "div",
         {},
         el("h1", {}, "Aprende galego co parrulo"),
-        el("p", { class: "lead" }, "Vocabulario, verbos, gramática e encrucillados, do máis sinxelo ao máis atrevido. O teu progreso gárdase neste navegador.")
+        el("p", { class: "lead" }, "Vocabulario, verbos, gramática e encrucillados, do máis sinxelo ao máis atrevido. O teu progreso vai contigo en calquera dispositivo.")
       )
     ),
     el(
@@ -79,6 +132,8 @@ function homeView({ vocabulary, verbs, grammar, crosswords }) {
           el("a", { class: "button", href: "#/repaso" }, "Repasar")
         )
       : null
+    ),
+    dailyPanel(site.daily)
   );
 }
 
@@ -88,7 +143,7 @@ function profileView(site) {
     "div",
     { class: "narrow" },
     el("h1", {}, "Quen vai xogar?"),
-    el("p", { class: "lead" }, "Cada perfil garda o seu propio progreso neste navegador."),
+    el("p", { class: "lead" }, "Cada perfil garda o seu propio progreso, entres desde onde entres."),
     el(
       "div",
       { class: "profile-grid" },
@@ -183,8 +238,8 @@ function render(site) {
 async function main() {
   showSplash();
   try {
-    const [vocabulary, verbData, grammar, crosswords] = await Promise.all(
-      ["vocabulary", "verbs", "grammar", "crosswords"].map(fetchJson)
+    const [vocabulary, verbData, grammar, crosswords, daily] = await Promise.all(
+      ["vocabulary", "verbs", "grammar", "crosswords", "daily"].map(fetchJson)
     );
     const site = {
       vocabulary: vocabularyMode(vocabulary),
@@ -192,6 +247,7 @@ async function main() {
       verbData,
       grammar: grammarMode(grammar),
       crosswords,
+      daily,
     };
     window.addEventListener("hashchange", () => render(site));
     startSync({

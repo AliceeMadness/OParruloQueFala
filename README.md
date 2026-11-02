@@ -15,6 +15,8 @@ A free website for Spanish speakers to learn Galician through short games.
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
 | **A miña colección** | Words you save | While doing vocabulary, press *Engadir á miña colección* on any word you don't know. Each profile has its own collection, studied 20 random words at a time, and words stay until you remove them. |
 
+The home page also has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day.
+
 Scores are colour-coded in the lesson lists: green for 100%, yellow from 70%, orange from 50% and red below that.
 
 The interface, titles and rules are in Galician. Spanish appears only where an exercise needs it: words to translate, verb meanings, sentence translations and some crossword clues.
@@ -82,6 +84,7 @@ The local site uses the same database as the published one, so anything you do i
 | `content/verbs/lessons.txt` | `# Theme \| level \| tenses`, then `Group name: verb, verb, verb`. Each group and tense becomes a lesson. |
 | `content/grammar.txt` | `# Group \| level`, then `## Lesson`, then `> Rule`, then `Sentence with ___ \| right \| wrong \| [wrong] \| Explanation`, followed by `= Spanish translation` on the next line. |
 | `content/crosswords.txt` | `# Number \| Title`, then `WORD = Clue`. The grid is generated automatically. |
+| `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. Every fifth day shows an expression. |
 
 Levels go from 1 to 4, and themes must be in ascending order. Lines starting with `//` are comments.
 
