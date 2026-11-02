@@ -64,7 +64,7 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
           "div",
           { class: "feedback right" },
           el("p", {}, el("strong", {}, "Correcto!")),
-          note === "accent" ? el("p", {}, "Ollo: fíxate nos tiles.") : null
+          note === "accent" ? el("p", {}, "Ollo: fíxate nos tiles. Escríbese ", el("strong", { lang: "gl" }, item.answer), ".") : null
         ));
       } else {
         failed.add(item);

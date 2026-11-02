@@ -343,6 +343,7 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 
 .conjugation label { color: var(--muted); }
 .conjugation .fix { grid-column: 2; margin-top: -.3rem; color: var(--bad); font-size: .95rem; font-weight: 600; }
+.conjugation .fix.accent { color: var(--score-mid); }
 
 /* Grammar */
 .options { display: grid; gap: .5rem; }

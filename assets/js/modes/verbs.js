@@ -108,7 +108,11 @@ export function verbLessonView(mode, data, groupId, lessonId) {
           const result = checkAnswer(input.value, [form]);
           input.readOnly = true;
           input.classList.add(result.ok ? "right" : "wrong");
-          if (result.note) accentSlip = true;
+          // A missing or wrong accent still counts, but the right spelling is shown.
+          if (result.note) {
+            accentSlip = true;
+            fixes[index] = el("div", { class: "fix accent", lang: "gl" }, form);
+          }
           if (!result.ok) {
             allRight = false;
             fixes[index] = el("div", { class: "fix", lang: "gl" }, form);
