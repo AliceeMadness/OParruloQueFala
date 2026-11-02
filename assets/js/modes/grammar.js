@@ -27,9 +27,13 @@ function sentence(text, filled) {
   );
 }
 
+const collectSentence = (item) => collectButton("grammar", grammarId(item), item);
+
 // Sentences answered wrong come back at the end of the queue until they are right.
-// In hard mode the player types the missing word instead of choosing it.
-export function runSentences(container, { items, title, hard, key, backHref, backText, nextHref, restart }) {
+// In hard mode the player types the missing word instead of choosing it. An item is
+// { text, answer, wrong, why, es }, plus `answers` when more than one is right and
+// `hintLang` when the line under the sentence isn't a Spanish translation.
+export function runSentences(container, { items, title, hard, key, backHref, backText, nextHref, restart, collect = collectSentence }) {
   const queue = [...items];
   const failed = new Set();
   let cleared = 0;
@@ -51,9 +55,9 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
     const item = queue[0];
     const feedback = el("div", { "aria-live": "polite" });
     const heading = el("div", {});
-    const collect = collectButton("grammar", grammarId(item), item);
+    const saveButton = collect(item);
     const next = el("button", { class: "button", type: "button", onclick: showItem });
-    const actions = el("div", { class: "actions" }, collect);
+    const actions = el("div", { class: "actions" }, saveButton);
 
     // Records the answer and shows the rule when it was wrong.
     function settle(right, note) {
@@ -82,14 +86,14 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
     const panelBody = [
       el("p", { class: "prompt-label" }, title),
       heading,
-      el("p", { class: "translation", lang: "es" }, item.es),
+      el("p", { class: "translation", lang: item.hintLang ?? "es" }, item.es),
     ];
 
     if (hard) {
       const input = answerInput({ class: "gap-input", "aria-label": "A palabra que falta" });
       const check = el("button", { class: "button", type: "submit" }, "Comprobar");
       heading.replaceChildren(sentence(item.text, input));
-      actions.replaceChildren(check, collect);
+      actions.replaceChildren(...[check, saveButton].filter(Boolean));
       let answered = false;
 
       replace(
@@ -108,7 +112,7 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
               if (!input.value.trim()) return;
               answered = true;
               input.readOnly = true;
-              const result = checkAnswer(input.value, [item.answer]);
+              const result = checkAnswer(input.value, item.answers ?? [item.answer]);
               input.classList.add(result.ok ? "right" : "wrong");
               settle(result.ok, result.note);
               check.textContent = next.textContent;
@@ -133,7 +137,7 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
       if (option !== item.answer) button.classList.add("wrong");
       settle(option === item.answer);
       heading.replaceChildren(sentence(item.text, item.answer));
-      actions.replaceChildren(next, collect);
+      actions.replaceChildren(...[next, saveButton].filter(Boolean));
       focusSoon(next);
     }
 

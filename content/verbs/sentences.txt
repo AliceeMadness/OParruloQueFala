@@ -1,0 +1,776 @@
+// Frases para completar con el verbo adecuado de cada grupo de lessons.txt.
+// Cada grupo va bajo «# Tema» y «## Grupo», con los mismos nombres que en lessons.txt.
+//
+// «verbo | persona | frase»: vale para todos los tiempos del grupo. build.py añade delante
+//   Hoxe, Onte, Antes, Mañá, «Nese caso,», Oxalá o «É mellor» según el tiempo.
+// «verbo | persona | tiempo | frase»: solo para ese tiempo, sin añadir nada delante. Si un
+//   verbo tiene frases propias para un tiempo, en ese tiempo no se usan las generales.
+// «verbo/otro | ...»: el primero es la respuesta; la forma del otro verbo también vale.
+//
+// La respuesta no se escribe: sale de las conjugaciones de verbs.txt.
+// Personas: eu, ti, el, ela, nós, vós, eles, elas. Cada verbo necesita al menos dos frases
+// en cada tiempo de su grupo.
+
+# Os imprescindibles
+
+## Ser, estar e ter
+ser | eu | eu ___ o primeiro da fila.
+ser | vós | vós ___ os gañadores do concurso.
+estar | nós | nós ___ moi cansos despois do partido.
+estar | el | o meu irmán ___ na casa da avoa.
+ter | ti | ti ___ moito traballo na oficina.
+ter | eles | os nenos ___ fame á hora da merenda.
+
+## Ir e vir
+ir | nós | nós ___ á praia en bicicleta.
+ir | ti | ti ___ ao mercado coa túa nai.
+vir | eles | os primos ___ aquí desde Ourense para a festa.
+vir | eu | eu ___ aquí en autobús.
+haber | eu | eu ___ de chamar á miña nai.
+haber | vós | vós ___ de estudar máis para o exame.
+
+## Facer e dicir
+facer | eu | eu ___ a cama antes de almorzar.
+facer | eles | os veciños ___ moito ruído.
+dicir | ti | ti ___ a verdade aos teus pais.
+dicir | ela | a mestra ___ que o exame é fácil.
+poder | nós | nós non ___ saír por culpa da choiva.
+poder | vós | vós ___ durmir no sofá.
+
+## Poñer, querer e saber
+poñer | eu | eu ___ a mesa para a cea.
+poñer | ela | a avoa ___ flores na fiestra.
+querer | ti | ti ___ un café con leite?
+querer | eles | os nenos ___ un xeado de chocolate.
+saber | nós | nós ___ a resposta do problema.
+saber | vós | vós ___ o camiño ata a praia.
+
+## Dar e ver
+dar | eu | eu ___ un paseo polo porto.
+dar | el | o avó ___ caramelos aos netos.
+ver | nós | nós ___ unha película na televisión.
+ver | ti | ti ___ os teus amigos na praza.
+oír | eu | eu ___ música no coche.
+oír | eles | os veciños ___ o ruído da rúa.
+
+# Presentarse e falar
+
+## Falar e escoitar
+falar | eu | eu ___ galego coa miña avoa.
+falar | vós | vós ___ moito por teléfono.
+escoitar | ti | ti ___ a radio no coche.
+escoitar | nós | nós ___ con atención a mestra.
+preguntar | el | o turista ___ polo camiño á catedral.
+preguntar | eles | os alumnos ___ a hora á profesora.
+
+## Vivir e coñecer
+vivir | nós | nós ___ un día inesquecible.
+vivir | eu | eu ___ unha aventura en Santiago.
+coñecer | ti | ti ___ moita xente nova na festa.
+coñecer | ela | a miña irmá ___ o seu mozo no instituto.
+chamar | eu | eu ___ o médico por teléfono.
+chamar | eles | os meus pais ___ o fontaneiro.
+
+## Entender e responder
+entender | eu | eu non ___ a pregunta do exame.
+entender | vós | vós ___ ben as explicacións.
+responder | ti | ti ___ todas as mensaxes.
+responder | el | o alumno ___ á pregunta da mestra.
+repetir | nós | nós ___ a canción dúas veces.
+repetir | eles | os nenos ___ o exercicio desde o principio.
+
+# A rutina diaria
+
+## Pola mañá
+despertar | eu | eu ___ ás sete en punto.
+despertar | el | o can ___ a toda a familia.
+erguer | ti | ti ___ a persiana do cuarto.
+erguer | nós | nós ___ a mesa pesada entre os dous.
+almorzar | nós | nós ___ torradas con manteiga.
+almorzar | vós | vós ___ na cafetaría da esquina.
+
+## Durante o día
+traballar | eu | eu ___ oito horas na oficina.
+traballar | eles | os meus pais ___ nun hospital.
+estudar | ti | ti ___ para o exame de matemáticas.
+estudar | nós | nós ___ galego na biblioteca.
+xantar | vós | vós ___ caldo e empanada.
+xantar | el | o avó ___ no restaurante do porto.
+
+## Pola noite
+cear | nós | nós ___ unha tortilla de patacas.
+cear | ti | ti ___ moi tarde.
+ler | eu | eu ___ un libro antes de durmir.
+ler | ela | a miña nai ___ o xornal no sofá.
+durmir | vós | vós ___ oito horas seguidas.
+durmir | eles | os nenos ___ na casa dos avós.
+
+## Hábitos
+levar | eu | eu ___ os nenos ao colexio.
+levar | ti | ti ___ un paraugas na mochila.
+tomar | nós | nós ___ un café na terraza.
+tomar | el | o meu pai ___ un té con limón.
+vestir | ela | a miña irmá ___ un vestido vermello.
+vestir | vós | vós ___ roupa de abrigo.
+
+# Comer e beber
+
+## Na mesa
+comer | nós | nós ___ polbo á feira.
+comer | ti | ti ___ moita froita.
+beber | eu | eu ___ auga do grifo.
+beber | eles | os rapaces ___ zume de laranxa.
+merendar | vós | vós ___ pan con chocolate.
+merendar | el | o neno ___ no parque.
+
+## No restaurante
+pedir | eu | eu ___ a carta ao camareiro.
+pedir | vós | vós ___ unha ración de croquetas.
+pagar | ti | ti ___ a conta con tarxeta.
+pagar | nós | nós ___ a cea entre todos.
+servir | el | o camareiro ___ o viño.
+servir | eles | os cociñeiros ___ a sopa moi quente.
+
+## Con fame
+probar | eu | eu ___ o queixo de tetilla.
+probar | ti | ti ___ a empanada de zamburiñas.
+gustar | eu | presente | Eu ___ moito do caldo galego.
+gustar | eles | presente | Os meus fillos ___ de comer peixe.
+gustar | ti | preterito | Onte ti ___ moito da sobremesa.
+gustar | nós | preterito | Nós ___ moito do restaurante novo.
+gustar | eu | copreterito | De pequena, eu ___ moito de comer castañas.
+gustar | vós | copreterito | Antes vós ___ moito dos doces de crema.
+deixar | nós | nós ___ comida no prato.
+deixar | el | o can ___ os ósos no xardín.
+
+# A cociña
+
+## Preparar a comida
+cociñar/preparar | eu | eu ___ con aceite de oliva.
+cociñar/preparar | nós | nós ___ o polbo durante unha hora.
+preparar | ti | ti ___ a mesa para a festa.
+preparar | vós | vós ___ os ingredientes antes de comezar.
+cortar | el | o cociñeiro ___ a cebola en anacos.
+cortar | eles | os nenos ___ o pan con coidado.
+
+## Ao lume
+ferver | el | a auga ___ na pota.
+ferver | nós | nós ___ o leite para o café.
+asar | eu | eu ___ castañas na lareira.
+asar | vós | vós ___ a carne na grella.
+fritir | ti | ti ___ os ovos con moito aceite.
+fritir | eles | os cociñeiros ___ as patacas en aceite novo.
+
+## Mesturar
+mesturar | eu | eu ___ a fariña co azucre.
+mesturar | vós | vós ___ os ingredientes nunha cunca.
+engadir | ti | ti ___ un pouco de sal ao caldo.
+engadir | el | o cociñeiro ___ pementa á salsa.
+quentar | nós | nós ___ a sopa no microondas.
+quentar | eles | os avós ___ a casa coa lareira.
+
+## Conservar
+gardar | eu | eu ___ as sobras na neveira.
+gardar | ti | ti ___ o pan nunha bolsa de tea.
+encher | nós | nós ___ a xerra de auga.
+encher | el | o camareiro ___ os vasos de viño.
+cocer | vós | vós ___ as patacas con pel.
+cocer | eles | os pescadores ___ o marisco con auga de mar.
+
+# A casa e as tarefas
+
+## Limpeza
+lavar | eu | eu ___ a roupa á man.
+lavar/limpar | vós | vós ___ o coche no garaxe.
+limpar | ti | ti ___ o po dos mobles.
+limpar/lavar | nós | nós ___ o baño a fondo.
+varrer | el | o porteiro ___ o portal.
+varrer | eles | os veciños ___ as follas do xardín.
+
+## Roupa e pratos
+fregar | eu | eu ___ os pratos despois de comer.
+fregar | ti | ti ___ o chan da cociña.
+tender | nós | nós ___ a roupa no balcón.
+tender | ela | a avoa ___ as sabas ao sol.
+coser | vós | vós ___ un botón da camisa.
+coser | elas | as costureiras ___ os traxes de festa.
+
+## Orde
+ordenar | eu | eu ___ os libros por cores.
+ordenar | ti | ti ___ o teu cuarto.
+colgar | nós | nós ___ os cadros na parede.
+colgar | el | o meu pai ___ o abrigo no colgadoiro.
+tirar | vós | vós ___ o lixo ao colector.
+tirar | eles | os nenos ___ papeis ao chan.
+
+## Arranxos
+amañar | eu | eu ___ a billa da cociña.
+amañar | el | o mecánico ___ o coche.
+pegar | ti | ti ___ as fotos no álbum.
+pegar | nós | nós ___ a cunca rota con cola.
+romper | vós | vós ___ un vaso sen querer.
+romper | eles | os nenos ___ o cristal coa pelota.
+
+# De compras
+
+## Na tenda
+mercar | eu | eu ___ pan na panadaría.
+mercar | nós | nós ___ un regalo para a avoa.
+vender | el | o froiteiro ___ mazás moi boas.
+vender | eles | os labregos ___ verduras na feira.
+gastar | ti | ti ___ moito diñeiro en roupa.
+gastar | vós | vós ___ todo o soldo en viaxes.
+
+## O diñeiro
+aforrar | eu | eu ___ para mercar unha bicicleta.
+aforrar | nós | nós ___ un pouco cada mes.
+gañar | ti | ti ___ a lotaría de Nadal.
+gañar | eles | os meus pais ___ un bo soldo.
+perder | el | o meu irmán ___ a carteira no autobús.
+perder | vós | vós ___ as chaves da casa.
+
+## Escoller
+escoller | eu | eu ___ entre o vermello e o azul.
+escoller | vós | vós ___ o mellor sabor de xeado.
+buscar | ti | ti ___ as túas lentes por toda a casa.
+buscar/atopar | eles | os turistas ___ un hotel barato.
+atopar | nós | nós ___ por fin as chaves debaixo do sofá.
+atopar | el | o can ___ unha pelota no xardín.
+
+## Encargos
+encher | eu | eu ___ o carro da compra.
+encher | eles | os meus pais ___ o depósito de gasolina.
+cargar | ti | ti ___ as bolsas ata o coche.
+cargar | nós | nós ___ o móbil antes de saír.
+sacar | el | o caixeiro ___ o tícket da caixa.
+sacar | vós | vós ___ diñeiro do caixeiro automático.
+
+# Moverse pola cidade
+
+## Andar
+camiñar | eu | eu ___ amodo porque teño o pé ferido.
+camiñar | nós | nós ___ descalzos pola area.
+pasear | ti | ti ___ o can polo parque.
+pasear | eles | os avós ___ pola alameda.
+correr | el | o atleta ___ moi rápido.
+correr | vós | vós ___ para coller o autobús.
+
+## En coche
+conducir | eu | eu ___ con moito coidado.
+conducir | ti | ti ___ o coche da túa nai.
+aparcar | nós | nós ___ diante da casa.
+aparcar | el | o taxista ___ en dobre fila.
+parar | vós | vós ___ no semáforo vermello.
+parar | eles | os autobuses ___ na praza.
+
+## Xirar e cruzar
+cruzar | eu | eu ___ a rúa polo paso de peóns.
+cruzar | eles | os nenos ___ a ponte.
+xirar | ti | ti ___ á dereita na rotonda.
+xirar | nós | nós ___ á esquerda despois da igrexa.
+seguir | el | o can ___ o seu dono.
+seguir | vós | vós ___ recto ata o final da rúa.
+
+## Entrar e saír
+entrar | eu | eu ___ na tenda.
+entrar | eles | os alumnos ___ na aula.
+saír | ti | ti ___ da casa moi cedo.
+saír | nós | nós ___ do cine ás once.
+subir | el | o carteiro ___ ao quinto andar.
+subir | vós | vós ___ as escaleiras correndo.
+
+## Chegar
+chegar | eu | eu ___ tarde ao traballo.
+chegar | eles | os meus amigos ___ en tren.
+quedar | ti | ti ___ con Lois na praza.
+quedar | nós | nós ___ na casa por culpa da choiva.
+agardar | el | o avó ___ o autobús na parada.
+agardar | vós | vós ___ media hora na cola.
+
+# As viaxes
+
+## Preparativos
+viaxar | eu | eu ___ a Portugal en tren.
+viaxar | nós | nós ___ por toda Galicia.
+reservar/alugar | ti | ti ___ unha habitación no hotel.
+reservar | eles | os meus pais ___ mesa no restaurante.
+alugar/reservar | el | o meu tío ___ un coche no aeroporto.
+alugar | vós | vós ___ bicicletas para percorrer a illa.
+
+## En ruta
+visitar | eu | eu ___ a catedral de Santiago.
+visitar | vós | vós ___ os vosos avós en Lugo.
+levar/traer | ti | ti ___ a mochila ás costas.
+levar | nós | nós ___ os nenos á praia.
+traer | el | o meu irmán ___ agasallos de Londres.
+traer | eles | os amigos ___ viño para a cea.
+
+## Pasar e navegar
+pasar | eu | eu ___ as vacacións en Ribadeo.
+pasar | eles | os meus primos ___ o verán na aldea.
+cruzar | ti | ti ___ a fronteira con Portugal.
+cruzar | nós | nós ___ a ría en barco.
+navegar | el | o barco ___ cara ás illas Cíes.
+navegar | vós | vós ___ pola Costa da Morte.
+
+## Equipaxe
+meter | eu | eu ___ a roupa na maleta.
+meter | vós | vós ___ os documentos na carteira.
+coller | ti | ti ___ o avión ás seis.
+coller | eles | os viaxeiros ___ o tren das nove.
+enviar | nós | nós ___ unha postal á familia.
+enviar | el | o hotel ___ a factura por correo.
+
+# Sentimentos
+
+## Amar e odiar
+amar | eles | os mariñeiros ___ o mar.
+amar | ti | ti ___ a túa familia por riba de todo.
+amar | el | preterito | Romeo ___ a Xulieta ata o final.
+amar | eu | preterito | Eu ___ aquela casa durante anos.
+odiar | nós | nós ___ os luns pola mañá.
+odiar | vós | vós ___ as películas de medo.
+odiar | eu | preterito | Eu ___ aquel traballo desde o primeiro día.
+odiar | eles | preterito | De nenos, os meus irmáns ___ a sopa de verduras.
+desexar | eu | eu ___ unhas vacacións longas.
+desexar | el | o meu irmán ___ un can.
+desexar | ti | preterito | Ti ___ sorte a todos antes do partido.
+desexar | vós | preterito | Vós ___ un bo ano aos veciños.
+
+## Emocións
+chorar | eu | eu ___ coa película.
+chorar | eles | os bebés ___ de fame.
+rir | ti | ti ___ moito cos chistes do avó.
+rir | nós | nós ___ a gargalladas.
+sufrir | el | o equipo ___ moito no partido.
+sufrir | vós | vós ___ coa calor do verán.
+
+## Sentir
+sentir | eu | eu ___ frío nas mans.
+sentir | ela | a miña nai ___ moita alegría.
+temer | ti | ti ___ a escuridade.
+temer | nós | nós ___ a tormenta.
+temer | ti | preterito | Ti ___ o peor cando non chegaron.
+temer | nós | preterito | Nós ___ a tormenta toda a noite.
+soñar | vós | vós ___ cun mundo mellor.
+soñar | eles | os nenos ___ con dragóns.
+
+## Agarimo
+bicar | eu | eu ___ a miña nai na meixela.
+bicar | eles | os avós ___ os netos.
+abrazar/apertar | ti | ti ___ o teu irmán con forza.
+abrazar/apertar | nós | nós ___ os amigos ao chegar.
+apertar | el | o condutor ___ o botón de parada.
+apertar | vós | vós ___ os cordóns dos zapatos.
+
+# A mente
+
+## Pensar e lembrar
+pensar | eu | eu ___ moito en ti.
+pensar | eles | os alumnos ___ antes de responder.
+lembrar | ti | ti ___ ben o nome de todos os veciños.
+lembrar | nós | nós ___ con cariño os veráns na aldea.
+esquecer | el | o meu pai ___ as chaves dentro do coche.
+esquecer | vós | vós ___ o paraugas no bar.
+
+## Crer e comprender
+crer | eu | eu ___ en ti.
+crer | eles | os nenos ___ nas meigas.
+crer | eu | preterito | Eu ___ todo o que me dixeches.
+crer | eles | preterito | Os nenos ___ a historia do avó.
+parecer | ti | ti ___ moi canso.
+parecer | el | o exame ___ fácil.
+comprender | nós | nós ___ a explicación da mestra.
+comprender | vós | vós ___ o problema.
+
+## Decidir
+decidir | eu | eu ___ estudar medicina.
+decidir | eles | os veciños ___ pintar o portal.
+elixir | ti | ti ___ o camiño máis curto.
+elixir | nós | nós ___ un nome para o can.
+permitir | el | o profesor ___ usar o dicionario.
+permitir | vós | vós non ___ fumar na casa.
+
+## Descubrir
+descubrir | eu | eu ___ unha praia secreta.
+descubrir | eles | os científicos ___ unha nova especie.
+aprender | ti | ti ___ a nadar no río.
+aprender | nós | nós ___ moitas palabras novas.
+coñecer | el | o meu irmán ___ ben a cidade.
+coñecer | vós | vós ___ ben esta zona.
+coñecer | el | preterito | O meu irmán ___ a súa noiva nunha festa.
+coñecer | nós | preterito | Nós ___ os novos veciños na escaleira.
+
+# A escola
+
+## Aprender
+aprender | eu | eu ___ a tocar a gaita.
+aprender/estudar | eles | os nenos ___ as táboas de multiplicar.
+estudar | ti | ti ___ na biblioteca toda a tarde.
+estudar | nós | nós ___ para o exame de historia.
+ensinar | el | o mestre ___ a ler aos nenos.
+ensinar | vós | vós ___ galego aos estranxeiros.
+
+## Escribir
+escribir | eu | eu ___ unha carta á miña avoa.
+escribir | ti | ti ___ un poema para a clase.
+ler | nós | nós ___ un conto en voz alta.
+ler | eles | os alumnos ___ un libro de Castelao.
+debuxar | el | o neno ___ un dinosauro.
+debuxar | vós | vós ___ un mapa de Galicia.
+
+## Explicar
+explicar | eu | eu ___ a lección aos meus compañeiros.
+explicar | ela | a mestra ___ as regras do xogo.
+contar | ti | ti ___ un conto ao teu irmán.
+contar | nós | nós ___ ata cen en galego.
+traducir | el | o meu pai ___ o texto ao inglés.
+traducir | vós | vós ___ a canción do castelán ao galego.
+
+## Na clase
+asistir | eu | eu ___ a todas as clases.
+asistir | eles | os pais ___ á reunión do colexio.
+repetir | ti | ti ___ a pregunta en voz alta.
+repetir | nós | nós ___ o exercicio dúas veces.
+dividir | el | o mestre ___ a clase en grupos.
+dividir | vós | vós ___ a pizza en oito anacos.
+
+# O traballo
+
+## Na oficina
+traballar | eu | eu ___ nunha empresa de software.
+traballar | eles | os meus compañeiros ___ desde a casa.
+organizar | ti | ti ___ a reunión do martes.
+organizar | nós | nós ___ unha cea para o equipo.
+presentar | el | o xefe ___ o novo proxecto.
+presentar | vós | vós ___ o informe ao cliente.
+
+## Comezar e rematar
+comezar | eu | eu ___ a traballar ás oito.
+comezar | elas | as obras ___ en xaneiro.
+rematar | ti | ti ___ o informe antes do mediodía.
+rematar | nós | nós ___ de traballar moi tarde.
+cambiar | el | o meu irmán ___ de traballo.
+cambiar | vós | vós ___ os horarios da tenda.
+
+## Colaborar
+axudar | eu | eu ___ os meus compañeiros co proxecto.
+axudar | eles | os veciños ___ a apagar o lume.
+compartir | ti | ti ___ despacho cunha compañeira.
+compartir | nós | nós ___ as ideas co equipo.
+dirixir | ela | a miña nai ___ unha escola.
+dirixir | vós | vós ___ o proxecto desde Vigo.
+
+## Diñeiro e deberes
+decidir | eu | eu ___ pedir un aumento de soldo.
+decidir | eles | os socios ___ abrir unha nova tenda.
+recibir | ti | ti ___ o soldo a fin de mes.
+recibir | nós | nós ___ un correo do banco.
+producir | ela | a fábrica ___ mil coches ao día.
+producir | vós | vós ___ viño na vosa adega.
+
+# O campo
+
+## Sementar
+plantar | eu | eu ___ unha árbore no xardín.
+plantar | eles | os veciños ___ castiñeiros no monte.
+regar | ti | ti ___ as flores pola tarde.
+regar | nós | nós ___ a horta coa mangueira.
+sementar/plantar | el | o labrego ___ millo no campo.
+sementar | vós | vós ___ trigo na leira.
+
+## A terra
+sachar | eu | eu ___ a horta antes de plantar.
+sachar | eles | os avós ___ as patacas.
+coller | ti | ti ___ mazás da árbore.
+coller | nós | nós ___ as uvas na vendima.
+cortar | el | o meu tío ___ a herba do prado.
+cortar | vós | vós ___ leña para o inverno.
+
+## Os animais
+coidar | eu | eu ___ as galiñas da avoa.
+coidar/gardar | eles | os pastores ___ o rabaño.
+levar | ti | ti ___ as vacas ao prado.
+levar | nós | nós ___ o cabalo ao veterinario.
+gardar/coidar | el | o can ___ a casa.
+gardar | vós | vós ___ a palla no palleiro.
+
+## As estacións
+medrar/crecer | el | o millo ___ moi rápido.
+medrar/crecer | eles | os tomates ___ ao sol.
+crecer/medrar | nós | nós ___ xuntos na mesma aldea.
+crecer/medrar | ela | a miña filla ___ moi rápido.
+nacer | eles | presente | Cada primavera ___ os años na granxa.
+nacer | eles | presente | Neste hospital ___ moitos bebés.
+nacer | eu | preterito | Eu ___ en Lugo nun día de choiva.
+nacer | eles | preterito | Os meus fillos ___ en Vigo.
+nacer | eles | copreterito | Antes os becerros ___ na corte da casa.
+nacer | eles | copreterito | Antes os nenos ___ na casa, non no hospital.
+nacer | eles | futuro | Mañá ___ os pitos da galiña.
+nacer | el | futuro | O bebé da miña irmá ___ en maio.
+
+# O mar
+
+## Pescar
+pescar | eu | eu ___ unha robaliza enorme.
+pescar | eles | os mariñeiros ___ polbo na ría.
+navegar | ti | ti ___ ata as illas Cíes.
+navegar | nós | nós ___ nun veleiro.
+coller | el | o mariscador ___ ameixas na praia.
+coller | vós | vós ___ cunchas na area.
+
+## Nadar
+nadar | eu | eu ___ ata a boia.
+nadar | eles | os golfiños ___ xunto ao barco.
+saltar | ti | ti ___ desde as rochas á auga.
+saltar | nós | nós ___ as ondas na beira.
+mover | el | o vento ___ o barco.
+mover | vós | vós ___ os brazos para flotar.
+
+## Temporal
+romper | el | o temporal ___ as redes.
+romper | elas | as ondas ___ contra o peirao.
+afogar | eu | eu case ___ nunha onda xigante.
+afogar | elas | as plantas ___ con tanta choiva.
+fuxir | ti | ti ___ da tormenta no teu barco.
+fuxir | nós | nós ___ da praia por culpa do temporal.
+
+# Deporte e xogos
+
+## Xogar
+xogar | eu | eu ___ ao fútbol cos amigos.
+xogar | eles | os nenos ___ ás cartas.
+gañar | ti | ti ___ a medalla de ouro.
+gañar | nós | nós ___ a liga por primeira vez.
+perder | el | o noso equipo ___ por tres goles a cero.
+perder | vós | vós ___ a pelota no río.
+
+## Adestrar
+adestrar | eu | eu ___ no ximnasio.
+adestrar | ela | a adestradora ___ o equipo de baloncesto.
+correr | ti | ti ___ unha maratón.
+correr | eles | os atletas ___ os cen metros.
+saltar | nós | nós ___ á corda no patio.
+saltar | el | o atleta ___ dous metros de altura.
+
+## Competir
+vencer | eu | eu ___ o campión do mundo.
+vencer | eles | os nosos ___ na final.
+loitar | ti | ti ___ ata o último minuto.
+loitar | nós | nós ___ polo título.
+defender | el | o porteiro ___ a portería.
+defender | vós | vós ___ ben a vosa área.
+
+# Arte e música
+
+## Música
+cantar | eu | eu ___ no coro da igrexa.
+cantar | eles | os nenos ___ panxoliñas.
+bailar | ti | ti ___ unha muiñeira na festa.
+bailar | nós | nós ___ toda a noite.
+tocar | el | o meu avó ___ a gaita.
+tocar | vós | vós ___ o piano moi ben.
+
+## Pintar
+pintar | eu | eu ___ a parede de azul.
+pintar | eles | os artistas ___ un mural na praza.
+debuxar | ti | ti ___ un retrato a lapis.
+debuxar | nós | nós ___ cómics no caderno.
+gravar | el | o grupo ___ un disco novo.
+gravar | vós | vós ___ un vídeo para a festa.
+
+## Crear
+producir | eu | eu ___ un documental sobre o mar.
+producir | eles | os estudos ___ a película en Galicia.
+construír | ti | ti ___ unha casa de madeira.
+construír | nós | nós ___ un castelo de area.
+tecer | el | o avó ___ cestas de vimbio.
+tecer | vós | vós ___ unha manta de la.
+
+# A tecnoloxía
+
+## Ordenador
+programar | eu | eu ___ un xogo para o móbil.
+programar | eles | os enxeñeiros ___ o robot.
+imprimir | ti | ti ___ as entradas do concerto.
+imprimir | nós | nós ___ o traballo en cor.
+descargar | el | o meu irmán ___ unha aplicación nova.
+descargar | vós | vós ___ as fotos ao ordenador.
+
+## Móbil
+chamar | eu | eu ___ a miña nai por teléfono.
+chamar | eles | os meus amigos ___ ás dez da noite.
+enviar | ti | ti ___ unha mensaxe ao grupo.
+enviar | nós | nós ___ as fotos por correo.
+recibir | el | o meu pai ___ moitos correos.
+recibir | vós | vós ___ unha chamada da escola.
+
+## Máquinas
+acender | eu | eu ___ a luz para ler.
+acender | eles | os veciños ___ a lareira para quentar a casa.
+apagar | ti | ti ___ o ordenador antes de durmir.
+apagar | nós | nós ___ as velas do bolo.
+usar | el | o meu avó ___ o móbil para ver fotos.
+usar | vós | vós ___ a impresora da biblioteca.
+
+# Saúde e corpo
+
+## No médico
+curar | el | o médico ___ a ferida.
+curar | elas | as enfermeiras ___ os pacientes.
+ferir | eu | eu ___ a man cun coitelo.
+ferir | ti | ti ___ o xeonllo xogando ao fútbol.
+medir | nós | nós ___ a febre ao neno.
+medir | vós | vós ___ a altura dos alumnos.
+
+## Medrar
+nacer | eles | presente | Neste hospital ___ moitos bebés.
+nacer | el | presente | Cada día ___ un neno novo na vila.
+nacer | eu | preterito | Eu ___ en Ourense.
+nacer | elas | preterito | As miñas fillas ___ no mesmo hospital.
+nacer | eles | copreterito | Antes os nenos ___ na casa.
+nacer | el | copreterito | Antigamente o bebé ___ coa axuda da parteira.
+nacer | el | subxuntivo | Oxalá o bebé ___ san.
+nacer | eles | subxuntivo | Oxalá os años ___ antes da primavera.
+crecer | el | o neno ___ moi rápido.
+crecer | elas | as plantas ___ coa luz do sol.
+envellecer | eu | eu ___ con saúde.
+envellecer | nós | nós ___ xuntos.
+envellecer | el | preterito | O meu avó ___ moi ben.
+envellecer | eles | preterito | Os meus pais ___ na súa aldea.
+
+## Vida e morte
+vivir | eu | eu ___ nunha casa preto do río.
+vivir | eles | os meus tíos ___ en Buenos Aires.
+vivir | eu | preterito | Eu ___ cinco anos en Madrid.
+vivir | eles | preterito | Os meus avós ___ toda a vida na aldea.
+morrer | el | o peixe ___ fóra da auga.
+morrer | elas | as flores ___ coa xeada.
+cubrir | ti | ti ___ o neno cunha manta.
+cubrir | nós | nós ___ as plantas cun plástico.
+
+# Relacións sociais
+
+## Saudar
+saudar | eu | eu ___ os veciños con alegría.
+saudar | eles | os alumnos ___ a directora.
+acompañar | ti | ti ___ a túa avoa ao médico.
+acompañar | nós | nós ___ os nenos ao colexio.
+presentar | el | o meu irmán ___ a súa noiva á familia.
+presentar | vós | vós ___ os vosos amigos aos meus pais.
+
+## Axudar
+axudar | eu | eu ___ a miña veciña coa compra.
+axudar | eles | os rapaces ___ os maiores.
+agradecer | ti | ti ___ o agasallo aos teus tíos.
+agradecer | nós | nós ___ a axuda de todos.
+ofrecer | el | o camareiro ___ un café aos clientes.
+ofrecer | vós | vós ___ a vosa casa aos amigos.
+
+## Discutir
+discutir | eu | eu ___ co meu irmán por calquera cousa.
+discutir | eles | os veciños ___ polo aparcamento.
+insistir | ti | ti ___ en pagar a conta.
+insistir | nós | nós ___ en ir á praia.
+mentir | el | o neno ___ sobre os deberes.
+mentir | vós | vós ___ para non ir á escola.
+
+## Casar
+casar | eu | eu ___ na igrexa da miña aldea.
+casar | eles | os meus amigos ___ en setembro.
+unir | ti | ti ___ as pezas do crebacabezas.
+unir | nós | nós ___ as dúas mesas para a cea.
+merecer | el | o equipo ___ a vitoria.
+merecer | vós | vós ___ un descanso.
+
+# Sociedade e política
+
+## Votar
+votar | eu | eu ___ nas eleccións.
+votar | eles | os cidadáns ___ un novo alcalde.
+gobernar | el | o partido ___ con maioría.
+gobernar | vós | vós ___ a cidade con xustiza.
+mandar | ti | ti ___ unha carta ao alcalde.
+mandar | nós | nós ___ os documentos ao ministerio.
+
+## Loitar
+loitar | eu | eu ___ polos dereitos de todos.
+loitar | eles | os traballadores ___ por un soldo digno.
+defender | ti | ti ___ a túa opinión con argumentos.
+defender | nós | nós ___ a lingua galega.
+vencer | el | o candidato ___ nas eleccións.
+vencer | vós | vós ___ o medo a falar en público.
+
+## Existir
+existir | eles | presente | Os dragóns non ___.
+existir | elas | presente | Aquí ___ moitas asociacións veciñais.
+existir | eles | preterito | Os dinosauros ___ hai millóns de anos.
+existir | ela | preterito | Esta rúa non ___ ata o ano 1990.
+existir | ela | condicional | Sen auga, a vida non ___.
+existir | ela | condicional | Sen xornalistas, a liberdade de prensa non ___.
+existir | elas | subxuntivo | Oxalá non ___ as guerras.
+existir | ela | subxuntivo | Non creo que ___ unha solución fácil.
+existir | elas | infinitivo | É importante ___ asociacións veciñais.
+existir | elas | infinitivo | É bo ___ leis xustas.
+aparecer | eu | eu ___ na foto do xornal.
+aparecer | eles | os nomes dos gañadores ___ na lista.
+desaparecer | el | o mago ___ detrás da cortina.
+desaparecer | vós | vós ___ da festa sen dicir nada.
+
+## Reducir
+reducir | el | o goberno ___ os impostos.
+reducir | nós | nós ___ o consumo de plástico.
+producir | elas | as fábricas ___ moito fume.
+producir | eu | eu ___ enerxía con paneis solares.
+dividir | ti | ti ___ o traballo en tres partes.
+dividir | vós | vós ___ os gastos entre todos.
+
+# Os irregulares a fondo
+
+## Os máis usados
+ser | eu | eu ___ o primeiro en chegar.
+ser | vós | vós ___ máis puntuais.
+estar | nós | nós ___ tranquilos antes do exame.
+estar | eles | os nenos ___ na cama ás dez.
+ter | ti | ti ___ paciencia co teu irmán.
+ter | el | o can ___ auga fresca.
+
+## Movemento
+ir | nós | nós ___ ao concerto en tren.
+ir | ti | ti ___ á praia con eles.
+vir | eles | os teus primos ___ aquí para o Nadal.
+vir | vós | vós ___ aquí á cea.
+saír | eu | eu ___ da oficina antes das cinco.
+saír | el | o tren ___ á hora.
+
+## Facer e dicir
+facer | eu | eu ___ os deberes pola tarde.
+facer | vós | vós ___ a cea para todos.
+dicir | ti | ti ___ a verdade ao teu pai.
+dicir | eles | os nenos ___ «bos días» ao entrar.
+poñer | nós | nós ___ a mesa para a cea.
+poñer | el | o neno ___ o abrigo antes de saír.
+
+## Saber e poder
+saber | eu | eu ___ a resposta correcta.
+saber | eles | os alumnos ___ a lección de memoria.
+poder/querer | ti | ti ___ vir á festa.
+poder/querer | nós | nós ___ axudar os veciños.
+querer | el | o neno ___ un xeado de chocolate.
+querer | vós | vós ___ un can para a casa.
+
+## Outros irregulares
+dar | eu | eu ___ un agasallo á miña nai.
+dar | eles | os avós ___ diñeiro aos netos.
+ver | ti | ti ___ a película do sábado.
+ver | nós | nós ___ o mar desde a fiestra.
+ler | el | o meu pai ___ o xornal no café.
+ler | vós | vós ___ este libro de poesía.
+
+## Os máis difíciles
+traer | eu | eu ___ o viño para a cea.
+traer | eles | os amigos ___ a sobremesa á festa.
+caer | ti | ti ___ da bicicleta.
+caer | el | o vaso ___ ao chan.
+valer | nós | nós ___ para este traballo.
+valer | eles | estes zapatos ___ moito diñeiro.

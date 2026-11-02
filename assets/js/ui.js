@@ -191,7 +191,9 @@ export function replace(container, ...nodes) {
 }
 
 // Saves something the player doesn't know yet in their collection, or takes it out.
+// Without a profile there is no collection, so there is no button.
 export function collectButton(kind, id, value, { small = false } = {}) {
+  if (activeProfile()?.guest) return null;
   const button = el("button", { class: small ? "collect-mini" : "button secondary collect", type: "button" });
   function draw() {
     const added = inCollection(kind, id);

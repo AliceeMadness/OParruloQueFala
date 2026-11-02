@@ -26,6 +26,18 @@ TENSES = {
     "infinitivo": "Infinitivo conxugado",
 }
 PERSONS = ["eu", "ti", "el/ela", "nós", "vós", "eles/elas"]
+PERSON_NAMES = {"eu": 0, "ti": 1, "el": 2, "ela": 2, "nós": 3, "vós": 4, "eles": 5, "elas": 5}
+# Put before a sentence that works in every tense, so the tense is clear from the sentence.
+TENSE_MARKERS = {
+    "presente": "Hoxe",
+    "preterito": "Onte",
+    "copreterito": "Antes",
+    "futuro": "Mañá",
+    "condicional": "Nese caso,",
+    "subxuntivo": "Oxalá",
+    "infinitivo": "É mellor",
+}
+MIN_SENTENCES_PER_VERB = 2
 
 
 class ContentError(Exception):
@@ -148,6 +160,72 @@ def conjugate(infinitive, overrides):
     return forms
 
 
+def read_verb_sentences():
+    """Returns {(theme, group): [sentence]} from sentences.txt."""
+    groups, theme, key = {}, None, None
+    for number, line in lines_of(CONTENT / "verbs" / "sentences.txt"):
+        where = f"sentences.txt:{number}"
+        if line.startswith("## "):
+            if theme is None:
+                raise ContentError(f"{where}: grupo antes de cualquier tema")
+            key = (theme, line[3:].strip())
+            if key in groups:
+                raise ContentError(f"{where}: grupo repetido {key[1]}")
+            groups[key] = []
+            continue
+        if line.startswith("# "):
+            theme, key = line[2:].strip(), None
+            continue
+        if key is None:
+            raise ContentError(f"{where}: frase fuera de un grupo")
+        parts = [part.strip() for part in line.split("|")]
+        if len(parts) == 3:
+            verbs, person, text = parts
+            tense = None
+        elif len(parts) == 4:
+            verbs, person, tense, text = parts
+            if tense not in TENSES:
+                raise ContentError(f"{where}: tiempo desconocido {tense}")
+        else:
+            raise ContentError(f"{where}: formato incorrecto")
+        if person not in PERSON_NAMES:
+            raise ContentError(f"{where}: persona desconocida {person}")
+        if text.count("___") != 1:
+            raise ContentError(f"{where}: la frase necesita un solo hueco ___")
+        groups[key].append({
+            "verbs": [verb.strip() for verb in verbs.split("/")],
+            "person": PERSON_NAMES[person],
+            "tense": tense,
+            "text": text,
+            "where": where,
+        })
+    return groups
+
+
+def lesson_sentences(sentences, group, tense, verbs, where):
+    """The sentences of one lesson, with their answers taken from the conjugations."""
+    result = []
+    for verb in group:
+        own = [s for s in sentences if s["verbs"][0] == verb and s["tense"] == tense]
+        general = [s for s in sentences if s["verbs"][0] == verb and s["tense"] is None]
+        chosen = own or general
+        if len(chosen) < MIN_SENTENCES_PER_VERB:
+            raise ContentError(f"{where}: faltan frases de {verb} en {tense} "
+                               f"(hay {len(chosen)}, hacen falta {MIN_SENTENCES_PER_VERB})")
+        for sentence in chosen:
+            for other in sentence["verbs"]:
+                if other not in group:
+                    raise ContentError(f"{sentence['where']}: {other} no está en el grupo")
+            text = sentence["text"] if sentence["tense"] else f"{TENSE_MARKERS[tense]} {sentence['text']}"
+            result.append({
+                "text": text,
+                "verb": verb,
+                "person": sentence["person"],
+                "answers": [verbs[other]["forms"][tense][sentence["person"]] for other in sentence["verbs"]],
+            })
+    return result
+
+
 def build_verbs():
     verbs = {}
     for number, line in lines_of(CONTENT / "verbs" / "verbs.txt"):
@@ -166,6 +244,8 @@ def build_verbs():
             overrides[tense] = forms
         verbs[infinitive] = {"es": translation, "forms": conjugate(infinitive, overrides)}
 
+    sentences = read_verb_sentences()
+    unused = set(sentences)
     themes, used = [], set()
     pending = None
     for number, line in lines_of(CONTENT / "verbs" / "lessons.txt"):
@@ -184,13 +264,22 @@ def build_verbs():
                 if verb not in verbs:
                     raise ContentError(f"{where}: verbo sin definir {verb}")
                 used.add(verb)
+            key = (themes[-1]["title"], name.strip())
+            if key not in sentences:
+                raise ContentError(f"sentences.txt: falta el grupo «{key[1]}» del tema «{key[0]}»")
+            unused.discard(key)
             for tense in pending:
                 themes[-1]["lessons"].append({
                     "id": slug(f"{name} {tense}"),
                     "title": name.strip(),
                     "tense": tense,
                     "verbs": group,
+                    "sentences": lesson_sentences(sentences[key], group, tense, verbs, f"{key[1]} ({key[0]})"),
                 })
+
+    if unused:
+        theme, group = sorted(unused)[0]
+        raise ContentError(f"sentences.txt: el grupo «{group}» del tema «{theme}» no está en lessons.txt")
 
     # Easiest tenses first inside each theme; the sort is stable, so groups keep their order.
     order = list(TENSES)
@@ -479,7 +568,8 @@ def main():
     print(f"Vocabulario: {len(vocabulary)} temas, "
           f"{sum(len(theme['lessons']) for theme in vocabulary)} lecciones, {words} palabras")
     print(f"Verbos: {len(verbs['themes'])} temas, "
-          f"{sum(len(theme['lessons']) for theme in verbs['themes'])} lecciones, {len(verbs['verbs'])} verbos")
+          f"{sum(len(theme['lessons']) for theme in verbs['themes'])} lecciones, {len(verbs['verbs'])} verbos, "
+          f"{sum(len(lesson['sentences']) for theme in verbs['themes'] for lesson in theme['lessons'])} frases")
     print(f"Gramática: {len(grammar)} grupos, "
           f"{sum(len(group['lessons']) for group in grammar)} lecciones, "
           f"{sum(len(lesson['items']) for group in grammar for lesson in group['lessons'])} frases")

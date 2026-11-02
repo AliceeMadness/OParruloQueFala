@@ -939,3 +939,24 @@ button.profile-chip {
 .collection-section .actions { margin-top: .5rem; }
 .collection-section > h2 { display: flex; align-items: baseline; gap: .6rem; }
 .collection-section > h2 small { color: var(--muted); font-family: system-ui, sans-serif; font-size: .9rem; font-weight: 400; }
+
+/* Passwords and playing without a profile */
+.profile-option.chosen { border-color: var(--accent); }
+
+.password-form { display: grid; gap: .5rem; margin-top: 1rem; }
+.password-form label { font-weight: 600; }
+.password-form .feedback, .password-form .actions { margin: 0; }
+
+.password-form input[type="password"] {
+  width: 100%;
+  padding: .7rem .8rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 1.1rem;
+}
+
+.guest-option { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 2rem; }
+.guest-option small { flex: 1 1 16rem; color: var(--muted); }

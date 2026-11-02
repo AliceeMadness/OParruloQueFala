@@ -7,21 +7,31 @@ const KEY_BEFORE_PROFILES = "oparrulo.v1";
 const DEVICE_KEY = "oparrulo.device";
 const PUSH_DELAY_MS = 1500;
 
+// `password` is the SHA-256 of the lowercase password. It only keeps players out of each
+// other's profiles by accident: the site has no server, so it can't stop anyone determined.
 export const PROFILES = [
-  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m" },
-  { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f" },
-  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f" },
+  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m", password: "f87ac4b3744c6502ed82045e47e54013b22e74bca3d335e6b500c3532ff7dd73" },
+  { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f", password: "3502a3532fd3bb73baa9cfdae8bbeab9c35763303014f1cdf282d8f1af9ae9e2" },
+  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "69ae21032b31212b723fa825f9da68ab1caec9ab753457b12fcaeaf3f1024576" },
 ];
+
+// Playing without a profile: progress stays in this browser, and there is no collection.
+export const GUEST = { id: "convidado", name: "Sen perfil", color: "#efe9db", duck: "assets/img/parrulo.svg", guest: true };
 
 function load() {
   try {
     const saved = JSON.parse(localStorage.getItem(KEY));
-    if (saved) return saved;
+    if (saved) {
+      // A profile opened before passwords existed has to be opened again with its password.
+      if (!saved.passwords) saved.active = null;
+      saved.passwords = true;
+      return saved;
+    }
     // Progress saved before profiles existed goes to the first profile.
     const old = JSON.parse(localStorage.getItem(KEY_BEFORE_PROFILES));
-    return { active: null, progress: old ? { [PROFILES[0].id]: old } : {} };
+    return { active: null, passwords: true, progress: old ? { [PROFILES[0].id]: old } : {} };
   } catch {
-    return { active: null, progress: {} };
+    return { active: null, passwords: true, progress: {} };
   }
 }
 
@@ -113,8 +123,12 @@ function pushPendingNow() {
   push(id);
 }
 
+function syncsActive() {
+  return syncEnabled && state.active !== null && state.active !== GUEST.id;
+}
+
 function schedulePush() {
-  if (!syncEnabled) return;
+  if (!syncsActive()) return;
   if (pushTimer) clearTimeout(pushTimer.handle);
   const id = state.active;
   const handle = setTimeout(() => {
@@ -133,7 +147,7 @@ function save() {
 // Brings in what other devices saved, and sends what this device has that they lack.
 export async function pullProgress() {
   const id = state.active;
-  if (!syncEnabled || !id) return;
+  if (!syncsActive()) return;
   try {
     const remote = await readRemote(id);
     const before = JSON.stringify(progressOf(id));
@@ -182,7 +196,15 @@ export async function refreshOtherProfiles() {
 // Profiles and progress ---------------------------------------------------------
 
 export function activeProfile() {
+  if (state.active === GUEST.id) return GUEST;
   return PROFILES.find((profile) => profile.id === state.active) ?? null;
+}
+
+export async function checkPassword(profile, text) {
+  const bytes = new TextEncoder().encode(text.trim().toLowerCase());
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const hex = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  return hex === profile.password;
 }
 
 export function selectProfile(id) {

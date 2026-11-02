@@ -9,7 +9,7 @@ A free website for Spanish speakers to learn Galician through short games.
 | Mode | Content | How it works |
 |---|---|---|
 | **Vocabulario** | 1,531 words in 82 lessons | Type the Galician word for a Spanish one. Lessons have 20 words at most and go from easiest to hardest, grouped by theme. |
-| **Verbos** | 203 verbs in 337 lessons | Conjugate the six persons of a verb, by theme and tense. |
+| **Verbos** | 203 verbs in 337 lessons, 2,022 sentences | Each lesson has two ways to play: conjugate the six persons of each verb, or complete sentences with the right verb of the group in the lesson's tense. |
 | **Gramática** | 394 sentences in 49 lessons | Fill the gap by choosing the word (easy mode) or typing it (hard mode). A wrong answer explains the rule. Every sentence shows its Spanish translation. |
 | **Encrucillados** | 60 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
@@ -27,12 +27,14 @@ The Galician content was written with AI assistance and checked against a spelli
 
 ## Profiles and progress
 
-Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile has its own progress, which follows it to any device.
+Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile has its own password and its own progress, which follows it to any device. Once a profile is open, the browser stays in it until someone changes profile.
+
+**Xogar sen perfil** opens everything except the collection, with no password. That progress stays in the browser and is never uploaded.
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
 - **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, and each crossword, the review list, the collection and the profile details keep their most recent version.
 - **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
-- **No passwords:** anyone with access to the site can open any profile and change its progress. Store only game progress in it, never personal data.
+- **Passwords only prevent mistakes:** they stop someone opening the wrong profile by accident, not someone determined. The site has no server, so the check runs in the browser, and the database accepts changes from anyone. Store only game progress in a profile, never personal data. Passwords are stored as SHA-256 hashes in `assets/js/store.js` and ignore upper and lower case.
 
 ## How it's built
 
@@ -81,6 +83,8 @@ The local site uses the same database as the published one, so anything you do i
    python tools/build.py
    ```
 
+   It needs Python 3.10 or later.
+
 3. Commit both `content/` and `data/`.
 
 | File | Format |
@@ -88,6 +92,7 @@ The local site uses the same database as the published one, so anything you do i
 | `content/vocabulary/*.txt` | `# Theme \| level`, then `## Lesson`, then `el perro = o can`. Separate alternative answers with ` / `. |
 | `content/verbs/verbs.txt` | `falar = hablar`. Regular verbs conjugate automatically. For irregular tenses, add `\| presente: eu, ti, el, nós, vós, eles`. |
 | `content/verbs/lessons.txt` | `# Theme \| level \| tenses`, then `Group name: verb, verb, verb`. Each group and tense becomes a lesson. |
+| `content/verbs/sentences.txt` | `# Theme` and `## Group`, as in `lessons.txt`, then `verb \| person \| sentence with ___`. The answer comes from the conjugations. A sentence without a tense is used for every tense of the group, after *Hoxe*, *Onte*, *Mañá* or similar; `verb \| person \| tense \| sentence` is for that tense only. Each verb needs two sentences per tense. |
 | `content/grammar.txt` | `# Group \| level`, then `## Lesson`, then `> Rule`, then `Sentence with ___ \| right \| wrong \| [wrong] \| Explanation`, followed by `= Spanish translation` on the next line. |
 | `content/crosswords.txt` | `# Number \| Title \| level` (1 easy, 2 medium, 3 hard), then `WORD = Clue`. The grid is generated automatically. Never renumber a crossword, because the number identifies its saved progress. |
 | `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. See [Daily words](#daily-words) before adding entries. |
@@ -119,7 +124,7 @@ The list has 300 words and 51 expressions, and one new entry is unlocked each da
 
 ## Adding a profile
 
-Draw its duck as `assets/img/pato-<id>.svg`, starting from one of the existing ducks so it keeps the same look. Add the profile, with that image as `duck`, to `PROFILES` in `assets/js/store.js`, and add it to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
+Draw its duck as `assets/img/pato-<id>.svg`, starting from one of the existing ducks so it keeps the same look. Add the profile, with that image as `duck` and the SHA-256 of its lowercase password as `password`, to `PROFILES` in `assets/js/store.js`, and add it to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
 
 ## How sync works
 

@@ -8,8 +8,8 @@ import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView } from "./modes/collection.js";
 import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
 import { startPlayTimer } from "./playtime.js";
-import { activeProfile, bestScore, collectionSize, completedBy, crosswordState, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
-import { avatar, catalogueView, el } from "./ui.js";
+import { activeProfile, bestScore, checkPassword, collectionSize, completedBy, crosswordState, GUEST, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
+import { avatar, catalogueView, el, focusSoon, replace } from "./ui.js";
 
 const app = document.getElementById("app");
 const progressPanel = document.getElementById("panel-progress");
@@ -116,7 +116,7 @@ function homeView(site) {
         done: crosswords.filter((puzzle) => crosswordState(puzzle.id).done).length,
         total: crosswords.length,
       }),
-      el(
+      activeProfile().guest ? null : el(
         "a",
         { class: "mode-card", href: "#/coleccion" },
         el("h2", {}, "A miña colección"),
@@ -137,31 +137,73 @@ function homeView(site) {
 
 function chooseProfileView(site) {
   const active = activeProfile();
+  const login = el("div", {});
+
+  async function enter(id) {
+    selectProfile(id);
+    await pullWithLimit();
+    refreshPanels(site);
+    checkAchievements(site);
+    if (location.hash.startsWith("#/cambiar-perfil")) location.hash = "#/";
+    else render(site);
+  }
+
+  function askPassword(profile) {
+    for (const option of options) option.classList.toggle("chosen", option.dataset.id === profile.id);
+    const input = el("input", {
+      id: "profile-password",
+      type: "password",
+      autocomplete: "current-password",
+      autocapitalize: "none",
+      spellcheck: false,
+    });
+    const error = el("p", { class: "feedback wrong", hidden: true, "aria-live": "polite" }, "Contrasinal incorrecto.");
+    replace(login, el(
+      "form",
+      {
+        class: "panel password-form",
+        async onsubmit(event) {
+          event.preventDefault();
+          if (await checkPassword(profile, input.value)) {
+            await enter(profile.id);
+          } else {
+            error.hidden = false;
+            input.select();
+          }
+        },
+      },
+      el("label", { htmlFor: "profile-password" }, `Contrasinal de ${profile.name}`),
+      input,
+      error,
+      el("div", { class: "actions" }, el("button", { class: "button", type: "submit" }, "Entrar"))
+    ));
+    focusSoon(input);
+  }
+
+  const options = PROFILES.map((profile) => el(
+    "button",
+    {
+      class: `profile-option${profile === active ? " current" : ""}`,
+      type: "button",
+      "data-id": profile.id,
+      onclick: () => askPassword(profile),
+    },
+    avatar(profile),
+    profile.name
+  ));
+
   return el(
     "div",
     { class: "narrow" },
     el("h1", {}, "Quen vai xogar?"),
     el("p", { class: "lead" }, "Cada perfil garda o seu propio progreso, entres desde onde entres."),
+    el("div", { class: "profile-grid" }, ...options),
+    login,
     el(
       "div",
-      { class: "profile-grid" },
-      ...PROFILES.map((profile) => el(
-        "button",
-        {
-          class: `profile-option${profile === active ? " current" : ""}`,
-          type: "button",
-          async onclick() {
-            selectProfile(profile.id);
-            await pullWithLimit();
-            refreshPanels(site);
-            checkAchievements(site);
-            if (location.hash.startsWith("#/cambiar-perfil")) location.hash = "#/";
-            else render(site);
-          },
-        },
-        avatar(profile),
-        profile.name
-      ))
+      { class: "guest-option" },
+      el("button", { class: "button secondary", type: "button", onclick: () => enter(GUEST.id) }, "Xogar sen perfil"),
+      el("small", {}, "Podes xogar a todo, pero sen a túa colección, e o progreso só se garda neste navegador.")
     )
   );
 }
@@ -192,6 +234,7 @@ function updateProfileChip() {
   const chip = document.getElementById("profile-chip");
   const profile = activeProfile();
   chip.hidden = !profile;
+  document.getElementById("nav-collection").hidden = Boolean(profile?.guest);
   chip.replaceChildren(...(profile ? [avatar(profile), profile.name] : []));
   if (profile && isSyncFailing()) {
     chip.append(el("span", {
@@ -228,6 +271,16 @@ function refreshPanels(site) {
   refreshOtherProfiles().then(() => updatePanels(site));
 }
 
+function guestCollectionView() {
+  return el(
+    "div",
+    { class: "narrow" },
+    el("h1", {}, "A miña colección"),
+    el("p", { class: "lead" }, "A colección é de cada perfil. Entra co teu para gardar as palabras, verbos e frases que non saibas."),
+    el("a", { class: "button", href: "#/cambiar-perfil" }, "Escoller perfil")
+  );
+}
+
 function notFoundView() {
   return el(
     "div",
@@ -249,6 +302,7 @@ function route(site, parts) {
   if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
   if (section === "palabras-do-dia") return dailyListView(site.daily);
+  if (section === "coleccion" && activeProfile().guest) return guestCollectionView();
   if (section === "coleccion") {
     // "estudar" is the address the collection had when it only held vocabulary.
     if (first === "estudar") return collectionStudyView("vocabulario");

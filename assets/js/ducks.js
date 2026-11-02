@@ -93,7 +93,7 @@ const SAYINGS = [
 // The home page duck greets the player and says something new on every click.
 export function talkingDuck() {
   const profile = activeProfile();
-  const bubble = el("p", { class: "bubble", "aria-live": "polite" }, profile ? `Ola, ${profile.name}!` : "Ola!");
+  const bubble = el("p", { class: "bubble", "aria-live": "polite" }, profile && !profile.guest ? `Ola, ${profile.name}!` : "Ola!");
   let last = -1;
   const button = el(
     "button",

@@ -1,11 +1,12 @@
-import { checkAnswer } from "../text.js";
+import { checkAnswer, shuffled } from "../text.js";
+import { runSentences } from "./grammar.js";
 import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
 
 export function verbsMode(data) {
   return {
     path: "verbos",
     title: "Verbos",
-    intro: "Conxuga cada verbo nas seis persoas. Só traballamos os tempos que se usan de verdade, agrupados por temas.",
+    intro: "Conxuga cada verbo nas seis persoas, ou completa frases co verbo axeitado do grupo. Só traballamos os tempos que se usan de verdade, agrupados por temas.",
     groups: data.themes,
     describe: (lesson) => data.tenses[lesson.tense],
   };
@@ -22,6 +23,42 @@ export function verbLessonView(mode, data, groupId, lessonId) {
   const { group, lesson, key, backHref, nextHref } = found;
   const tenseName = data.tenses[lesson.tense];
   const container = el("div", {});
+
+  // What a saved form needs to be studied later from the collection.
+  function collectForm(name, index) {
+    const form = data.verbs[name].forms[lesson.tense][index];
+    return collectButton(
+      "verbs",
+      verbFormId(name, lesson.tense, index),
+      { verb: name, es: data.verbs[name].es, tense: tenseName, person: data.persons[index], form },
+      { small: true }
+    );
+  }
+
+  // Sentences to complete with the right verb of the group, in the lesson's tense.
+  function playSentences() {
+    const hint = lesson.verbs.map((name) => {
+      const { es } = data.verbs[name];
+      return es === name ? name : `${name} (${es})`;
+    }).join(" · ");
+    runSentences(container, {
+      items: shuffled(lesson.sentences).map((sentence) => ({
+        ...sentence,
+        answer: sentence.answers[0],
+        why: `Verbo ${sentence.verb}, ${tenseName.toLowerCase()}, ${data.persons[sentence.person]}.`,
+        es: `${tenseName}: ${hint}`,
+        hintLang: "gl",
+      })),
+      title: `${group.title} · ${lesson.title}`,
+      hard: true,
+      key,
+      backHref,
+      backText: "Volver ás leccións",
+      nextHref,
+      restart: playSentences,
+      collect: (item) => collectForm(item.verb, item.person),
+    });
+  }
 
   function start() {
     const queue = [...lesson.verbs];
@@ -60,12 +97,7 @@ export function verbLessonView(mode, data, groupId, lessonId) {
       }));
       const rows = el("div", { class: "conjugation" });
       const fixes = forms.map(() => null);
-      const collects = forms.map((form, index) => collectButton(
-        "verbs",
-        verbFormId(name, lesson.tense, index),
-        { verb: name, es: verb.es, tense: tenseName, person: data.persons[index], form },
-        { small: true }
-      ));
+      const collects = forms.map((_, index) => collectForm(name, index));
       function drawRows() {
         rows.replaceChildren(...data.persons.flatMap((person, index) => [
           el("label", { htmlFor: `person-${index}`, lang: "gl" }, person),
@@ -162,6 +194,23 @@ export function verbLessonView(mode, data, groupId, lessonId) {
     showVerb();
   }
 
-  start();
+  const conjugate = el("button", { class: "button", type: "button", onclick: start }, "Conxugar");
+  replace(
+    container,
+    el(
+      "div",
+      { class: "panel" },
+      el("p", { class: "prompt-label" }, `${group.title} · ${tenseName}`),
+      el("h1", {}, lesson.title),
+      el("p", {}, lesson.verbs.map((name) => (data.verbs[name].es === name ? name : `${name} (${data.verbs[name].es})`)).join(" · ")),
+      el(
+        "div",
+        { class: "modes" },
+        el("div", {}, conjugate, el("small", {}, "Escribe as seis persoas de cada verbo.")),
+        el("div", {}, el("button", { class: "button secondary", type: "button", onclick: playSentences }, "Frases"), el("small", {}, "Completa frases co verbo axeitado."))
+      )
+    )
+  );
+  focusSoon(conjugate);
   return el("div", { class: "narrow" }, backLink(backHref, "Volver ás leccións"), container);
 }
