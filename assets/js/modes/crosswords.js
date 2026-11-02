@@ -125,6 +125,14 @@ export function crosswordView(puzzles, id) {
     refreshClues();
   }
 
+  function switchDirection(key) {
+    const entries = cellEntries.get(key);
+    if (entries.length > 1) {
+      current = entries.find((entry) => entry !== current);
+      refreshClues();
+    }
+  }
+
   function buildCell(row, col) {
     const key = `${row},${col}`;
     if (!solution.has(key)) return el("div", { class: "cell block" });
@@ -145,14 +153,17 @@ export function crosswordView(puzzles, id) {
         input.select();
       },
       onclick() {
-        const entries = cellEntries.get(key);
-        if (entries.length > 1 && clickedBefore === key) {
-          current = entries.find((entry) => entry !== current);
-          refreshClues();
-        }
+        if (clickedBefore === key) switchDirection(key);
         clickedBefore = key;
       },
-      oninput() {
+      oninput(event) {
+        // Phone keyboards may not report the key press, only the text it adds.
+        if (event.data === " ") {
+          input.value = letters[key] ?? "";
+          input.select();
+          switchDirection(key);
+          return;
+        }
         const letter = gridLetter(input.value);
         setLetter(key, letter);
         if (letter) {
@@ -161,7 +172,10 @@ export function crosswordView(puzzles, id) {
         }
       },
       onkeydown(event) {
-        if (event.key === "Backspace" && !input.value) {
+        if (event.key === " ") {
+          event.preventDefault();
+          switchDirection(key);
+        } else if (event.key === "Backspace" && !input.value) {
           event.preventDefault();
           moveWithin(key, -1);
         } else if (event.key === "Tab") {
