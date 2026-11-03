@@ -7,9 +7,10 @@ import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { otherProfileView, profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView } from "./modes/collection.js";
-import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
+import { reviewView } from "./modes/review.js";
+import { vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
 import { startPlayTimer } from "./playtime.js";
-import { activeProfile, bestScore, checkPassword, collectionSize, completedBy, crosswordState, GUEST, isSyncFailing, mistakes, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
+import { activeProfile, bestScore, checkPassword, collectionSize, completedBy, crosswordState, GUEST, isSyncFailing, mistakeCount, PROFILES, pullProgress, refreshOtherProfiles, selectProfile, startSync } from "./store.js";
 import { avatar, catalogueView, el, focusSoon, replace } from "./ui.js";
 
 const app = document.getElementById("app");
@@ -100,7 +101,7 @@ function homeView(site) {
     el("p", {}, text),
     el("span", { class: "count" }, `${done} de ${total} completados`)
   );
-  const pending = mistakes().length;
+  const pending = mistakeCount();
   const saved = collectionSize();
 
   return el(
@@ -154,7 +155,7 @@ function homeView(site) {
       ? el(
           "div",
           { class: "review-banner" },
-          el("span", {}, `Tes ${pending} ${pending === 1 ? "palabra" : "palabras"} para repasar.`),
+          el("span", {}, `Tes ${pending} ${pending === 1 ? "erro" : "erros"} para repasar.`),
           el("a", { class: "button", href: "#/repaso" }, "Repasar")
         )
       : null

@@ -1,4 +1,4 @@
-import { addMistake, clearMistake, mistakes } from "../store.js";
+import { addMistake, clearMistake } from "../store.js";
 import { checkAnswer } from "../text.js";
 import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
 
@@ -18,11 +18,13 @@ export function vocabularyMode(themes) {
 }
 
 const collectWord = (word) => collectButton("words", word.es, word.gl);
+const rememberWord = (word) => ({ kind: "words", id: word.es, value: word.gl });
 
 // Words answered wrong come back at the end of the queue until they are right.
 // A word is { es, gl }, plus `hint` and `lang` when the prompt isn't a Spanish word.
-// `remember` keeps the vocabulary mistakes that the review brings back.
-export function runWords(container, { words, title, key, backHref, backText, nextHref, restart, collect = collectWord, remember = true }) {
+// `remember(word)` says what the review keeps of a word answered wrong: { kind, id, value }.
+// It leaves the review once answered right without failing it in the same go.
+export function runWords(container, { words, title, key, backHref, backText, nextHref, restart, collect = collectWord, remember = rememberWord }) {
   const queue = [...words];
   const failed = new Map();
   let cleared = 0;
@@ -64,10 +66,11 @@ export function runWords(container, { words, title, key, backHref, backText, nex
       queue.shift();
 
       const result = checkAnswer(input.value, word.gl);
+      const memo = remember(word);
       if (result.ok) {
         cleared++;
         input.classList.add("right");
-        if (remember && !failed.has(word.es)) clearMistake(word);
+        if (!failed.has(memo.id)) clearMistake(memo.kind, memo.id);
         feedback.replaceChildren(el(
           "div",
           { class: "feedback right" },
@@ -77,8 +80,8 @@ export function runWords(container, { words, title, key, backHref, backText, nex
         ));
       } else {
         queue.push(word);
-        failed.set(word.es, word);
-        if (remember) addMistake(word);
+        failed.set(memo.id, word);
+        addMistake(memo.kind, memo.id, memo.value);
         input.classList.add("wrong");
         feedback.replaceChildren(el(
           "div",
@@ -147,28 +150,4 @@ export function vocabularyLessonView(mode, groupId, lessonId) {
   focusSoon(begin);
 
   return el("div", { class: "narrow" }, backLink(backHref, "Volver ás leccións"), container);
-}
-
-export function reviewView() {
-  const container = el("div", {});
-  function start() {
-    if (!mistakes().length) {
-      replace(
-        container,
-        el("h1", {}, "Repaso"),
-        el("p", { class: "lead" }, "Non tes palabras pendentes. As que falles no vocabulario aparecerán aquí."),
-        el("a", { class: "button", href: "#/vocabulario" }, "Ir ao vocabulario")
-      );
-      return;
-    }
-    runWords(container, {
-      words: mistakes().slice(0, 20),
-      title: "Repaso dos teus fallos",
-      backHref: "#/",
-      backText: "Volver ao inicio",
-      restart: start,
-    });
-  }
-  start();
-  return el("div", { class: "narrow" }, backLink("#/", "Volver ao inicio"), container);
 }

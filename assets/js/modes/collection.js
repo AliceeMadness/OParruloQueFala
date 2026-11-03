@@ -112,7 +112,7 @@ export function collectionStudyView(name, level) {
       runWords(container, {
         ...common,
         restart: start,
-        remember: false,
+        remember: (word) => ({ kind: "verbs", id: word.id, value: word.value }),
         words: picked.map(({ id, value }) => ({
           id,
           value,

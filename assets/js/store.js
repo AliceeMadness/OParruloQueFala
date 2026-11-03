@@ -65,6 +65,8 @@ function emptyProgress() {
   return {
     lessons: {},
     mistakes: {},
+    mistakesVerbs: {},
+    mistakesGrammar: {},
     mistakesAt: 0,
     collection: {},
     collectionVerbs: {},
@@ -236,24 +238,35 @@ export function recordScore(lessonKey, percent) {
   save();
 }
 
-export function addMistake(word) {
+// What the review brings back, by kind as in the collection: vocabulary stays in `mistakes`,
+// where it was saved before verbs and grammar joined. A word is saved as its Spanish and
+// its answers, a verb form and a sentence as the collection saves them.
+const MISTAKE_FIELDS = { words: "mistakes", verbs: "mistakesVerbs", grammar: "mistakesGrammar" };
+
+export function addMistake(kind, id, value) {
   const current = progress();
-  current.mistakes[word.es] = word.gl;
+  current[MISTAKE_FIELDS[kind]][id] = value;
   current.mistakesAt = Date.now();
   save();
 }
 
-export function clearMistake(word) {
+export function clearMistake(kind, id) {
   const current = progress();
-  if (word.es in current.mistakes) {
-    delete current.mistakes[word.es];
+  const saved = current[MISTAKE_FIELDS[kind]];
+  if (id in saved) {
+    delete saved[id];
     current.mistakesAt = Date.now();
     save();
   }
 }
 
-export function mistakes() {
-  return Object.entries(progress().mistakes).map(([es, gl]) => ({ es, gl }));
+// Returns [{ id, value }], oldest first.
+export function mistakes(kind) {
+  return Object.entries(progress()[MISTAKE_FIELDS[kind]]).map(([id, value]) => ({ id, value }));
+}
+
+export function mistakeCount() {
+  return Object.keys(MISTAKE_FIELDS).reduce((total, kind) => total + mistakes(kind).length, 0);
 }
 
 // Vocabulary stays in `collection`, where it was saved before verbs and grammar joined.

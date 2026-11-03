@@ -1,3 +1,4 @@
+import { addMistake, clearMistake } from "../store.js";
 import { checkAnswer, shuffled } from "../text.js";
 import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace } from "../ui.js";
 
@@ -29,11 +30,18 @@ export function sentence(text, filled) {
 
 const collectSentence = (item) => collectButton("grammar", grammarId(item), item);
 
+// A sentence answered wrong goes to the review, and leaves it once right without failing it here.
+function rememberSentence(item, right, failedBefore) {
+  if (!right) addMistake("grammar", grammarId(item), item);
+  else if (!failedBefore) clearMistake("grammar", grammarId(item));
+}
+
 // Sentences answered wrong come back at the end of the queue until they are right.
 // In hard mode the player types the missing word instead of choosing it. An item is
 // { text, answer, wrong, why, es }, plus `answers` when more than one is right and
 // `hintLang` when the line under the sentence isn't a Spanish translation.
-export function runSentences(container, { items, title, hard, key, backHref, backText, nextHref, restart, collect = collectSentence }) {
+// `remember(item, right, failedBefore)` keeps the mistakes for the review.
+export function runSentences(container, { items, title, hard, key, backHref, backText, nextHref, restart, collect = collectSentence, remember = rememberSentence }) {
   const queue = [...items];
   const failed = new Set();
   let cleared = 0;
@@ -62,6 +70,7 @@ export function runSentences(container, { items, title, hard, key, backHref, bac
     // Records the answer and shows the rule when it was wrong.
     function settle(right, note) {
       queue.shift();
+      remember(item, right, failed.has(item));
       if (right) {
         cleared++;
         feedback.replaceChildren(el(

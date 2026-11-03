@@ -1,3 +1,4 @@
+import { addMistake, clearMistake } from "../store.js";
 import { checkAnswer, shuffled } from "../text.js";
 import { runSentences } from "./grammar.js";
 import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
@@ -17,6 +18,12 @@ export function verbFormId(name, tense, index) {
   return `${name}/${tense}/${index}`;
 }
 
+// What the collection and the review keep of a form, so it can be studied without the lesson.
+export function verbFormValue(data, name, tense, index) {
+  const verb = data.verbs[name];
+  return { verb: name, es: verb.es, tense: data.tenses[tense], person: data.persons[index], form: verb.forms[tense][index] };
+}
+
 export function verbLessonView(mode, data, groupId, lessonId) {
   const found = findLesson(mode, groupId, lessonId);
   if (!found) return null;
@@ -24,19 +31,25 @@ export function verbLessonView(mode, data, groupId, lessonId) {
   const tenseName = data.tenses[lesson.tense];
   const container = el("div", {});
 
-  // What a saved form needs to be studied later from the collection.
   function collectForm(name, index) {
-    const form = data.verbs[name].forms[lesson.tense][index];
-    return collectButton(
-      "verbs",
-      verbFormId(name, lesson.tense, index),
-      { verb: name, es: data.verbs[name].es, tense: tenseName, person: data.persons[index], form },
-      { small: true }
-    );
+    return collectButton("verbs", verbFormId(name, lesson.tense, index), verbFormValue(data, name, lesson.tense, index), { small: true });
+  }
+
+  // A form answered wrong goes to the review, and leaves it once right without failing it here.
+  const failedForms = new Set();
+  function rememberForm(name, index, right) {
+    const id = verbFormId(name, lesson.tense, index);
+    if (right) {
+      if (!failedForms.has(id)) clearMistake("verbs", id);
+    } else {
+      failedForms.add(id);
+      addMistake("verbs", id, verbFormValue(data, name, lesson.tense, index));
+    }
   }
 
   // Sentences to complete with the right verb of the group, in the lesson's tense.
   function playSentences() {
+    failedForms.clear();
     const hint = lesson.verbs.map((name) => {
       const { es } = data.verbs[name];
       return es === name ? name : `${name} (${es})`;
@@ -57,10 +70,12 @@ export function verbLessonView(mode, data, groupId, lessonId) {
       nextHref,
       restart: playSentences,
       collect: (item) => collectForm(item.verb, item.person),
+      remember: (item, right) => rememberForm(item.verb, item.person, right),
     });
   }
 
   function start() {
+    failedForms.clear();
     const queue = [...lesson.verbs];
     const failed = new Set();
     let cleared = 0;
@@ -138,6 +153,7 @@ export function verbLessonView(mode, data, groupId, lessonId) {
         forms.forEach((form, index) => {
           const input = inputs[index];
           const result = checkAnswer(input.value, [form]);
+          rememberForm(name, index, result.ok);
           input.readOnly = true;
           input.classList.add(result.ok ? "right" : "wrong");
           // A missing or wrong accent still counts, but the right spelling is shown.

@@ -58,8 +58,10 @@ export function mergeProgress(local, remote) {
   return {
     lessons,
     crosswords,
-    mistakes: remoteIsNewer ? remote.mistakes : local.mistakes,
-    mistakesAt: remoteIsNewer ? remote.mistakesAt : local.mistakesAt,
+    mistakes: (remoteIsNewer ? remote.mistakes : local.mistakes) ?? {},
+    mistakesVerbs: (remoteIsNewer ? remote.mistakesVerbs : local.mistakesVerbs) ?? {},
+    mistakesGrammar: (remoteIsNewer ? remote.mistakesGrammar : local.mistakesGrammar) ?? {},
+    mistakesAt: (remoteIsNewer ? remote.mistakesAt : local.mistakesAt) ?? 0,
     collection: (remoteCollectionIsNewer ? remote.collection : local.collection) ?? {},
     collectionVerbs: (remoteCollectionIsNewer ? remote.collectionVerbs : local.collectionVerbs) ?? {},
     collectionGrammar: (remoteCollectionIsNewer ? remote.collectionGrammar : local.collectionGrammar) ?? {},
