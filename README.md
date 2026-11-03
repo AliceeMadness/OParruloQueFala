@@ -145,7 +145,7 @@ The page waits up to 4 seconds for the download on opening or choosing a profile
 **When progress is uploaded:**
 
 - 1.5 seconds after a change, so that several quick changes become one upload.
-- Straight away when there is a pending change and the player leaves the tab or page, or switches profile.
+- Straight away when there is a pending change and the player leaves the tab or page, or switches profile. Closing the page can cut this upload short, because it reads the database before writing. Nothing is lost: the change stays in the browser and is uploaded the next time the site opens on that device.
 - After a download, if this device has something the database lacks.
 
 Each upload reads the latest version from the database first and merges it, so that it doesn't overwrite what another device saved in the meantime. This isn't an atomic transaction, so two devices uploading at the same moment could still lose a change from one of them.
@@ -215,3 +215,9 @@ Every push to `main` reaches the PWA and the APK without reinstalling. It isn't 
 ## Publishing
 
 In the repository on GitHub, go to **Settings > Pages** and set the source to **Deploy from a branch**, branch `main`, folder `/ (root)`. After that, every push to `main` updates the site.
+
+## Ideas
+
+Ideas for later. None of them is planned yet.
+
+- **Accounts and friends:** real accounts instead of the three fixed profiles, so anyone can sign up and add friends. It could use Firebase Authentication in the same project, with one document per account that only its owner can change. That would also stop anyone from overwriting a profile, which the current rules allow. The three current profiles would need a way to bring their progress over. Friends would send and accept requests, and "Progreso total" would show you and your friends instead of the fixed list, with a public summary so friends see your progress but not your whole collection.
