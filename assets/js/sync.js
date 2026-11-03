@@ -2,6 +2,10 @@ import { SYNC_URL } from "./config.js";
 
 export const syncEnabled = Boolean(SYNC_URL);
 
+// A question, or its answer, that came up in an exam stays out of the next ones this long.
+// Older entries are dropped when merging too, or the other copy would bring them back.
+export const EXAM_FRESH_MS = 6 * 3600000;
+
 // Larger requests cannot use keepalive, which lets a save finish as the page closes.
 const KEEPALIVE_LIMIT = 60000;
 
@@ -26,7 +30,8 @@ export async function writeRemote(profileId, progress) {
 
 // Devices can play offline, so their progress is joined rather than overwritten:
 // the best score of each lesson, every achievement earned on any device, each device's
-// play time, and the most recent version of everything else.
+// play time, the latest exam, every question asked in recent exams, and the most recent
+// version of everything else.
 export function mergeProgress(local, remote) {
   if (!remote) return local;
   const lessons = { ...local.lessons };
@@ -40,6 +45,11 @@ export function mergeProgress(local, remote) {
   const playTime = { ...local.playTime };
   for (const [device, ms] of Object.entries(remote.playTime ?? {})) {
     playTime[device] = Math.max(ms, playTime[device] ?? 0);
+  }
+  const forgetBefore = Date.now() - EXAM_FRESH_MS;
+  const examSeen = {};
+  for (const [key, at] of [...Object.entries(local.examSeen ?? {}), ...Object.entries(remote.examSeen ?? {})]) {
+    if (at >= forgetBefore) examSeen[key] = Math.max(at, examSeen[key] ?? 0);
   }
   const remoteIsNewer = (remote.mistakesAt ?? 0) > (local.mistakesAt ?? 0);
   const remoteCollectionIsNewer = (remote.collectionAt ?? 0) > (local.collectionAt ?? 0);
@@ -58,5 +68,7 @@ export function mergeProgress(local, remote) {
     detailsAt: (remoteDetailsAreNewer ? remote.detailsAt : local.detailsAt) ?? 0,
     achievements: hasAchievements ? { ...remote.achievements, ...local.achievements } : null,
     playTime,
+    examAt: Math.max(local.examAt ?? 0, remote.examAt ?? 0),
+    examSeen,
   };
 }

@@ -13,9 +13,10 @@ A free website for Spanish speakers to learn Galician through short games.
 | **Gramática** | 394 sentences in 49 lessons | Fill the gap by choosing the word (easy mode) or typing it (hard mode). A wrong answer explains the rule. Every sentence shows its Spanish translation. |
 | **Encrucillados** | 60 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Vocabulary you got wrong comes back here until you get it right. |
+| **Non hai que esquecer o aprendido** | What you've done | An exam of up to 20 random questions from the vocabulary, verb and grammar lessons already done, mixing the three. It can be played as often as you like, and is different every time: no word, verb or sentence comes up twice in one exam, and nothing asked in the last 6 hours comes up again, with the same question or the same answer. When few new questions are left, the exam is shorter instead. The mistakes are listed at the end, and vocabulary mistakes also go to the review. It has a card on the home page once a profile has done 3 lessons, and a reminder every 3 days (`EXAM_EVERY_MS`, `EXAM_FRESH_MS` and `MIN_DONE_LESSONS` in `assets/js/modes/exam.js`). |
 | **A miña colección** | What you save | Save what you don't know yet: vocabulary words and grammar sentences with *Engadir á miña colección*, and single verb forms with the *+* next to each person. The collection has a section for each, studied 20 random items at a time, and items stay until you remove them. Each profile has its own. |
 
-Every page has two side panels. **Progreso total** shows how much of the site each profile has completed, and **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
+Every page has two side panels. **Progreso total** shows how much of the site each profile has completed. Clicking a name opens that profile's page to look at, without changing profile: its progress, number of achievements, play time, description and favourite word. **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
 
 The profile picture at the top right opens a menu with **Perfil** (progress, description and favourite word), **Logros** (achievements) and **Cambiar de perfil**.
 
@@ -32,8 +33,8 @@ Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile
 **Xogar sen perfil** opens everything except the collection, with no password. That progress stays in the browser and is never uploaded.
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
-- **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, and each crossword, the review list, the collection and the profile details keep their most recent version.
-- **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
+- **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, the latest exam counts on every device, and each crossword, the review list, the collection and the profile details keep their most recent version.
+- **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review, the exam and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
 - **Passwords only prevent mistakes:** they stop someone opening the wrong profile by accident, not someone determined. The site has no server, so the check runs in the browser, and the database accepts changes from anyone. Store only game progress in a profile, never personal data. Passwords are stored as SHA-256 hashes in `assets/js/store.js` and ignore upper and lower case.
 
 ## How it's built
@@ -103,7 +104,7 @@ Renaming a lesson changes its address, which resets its saved progress.
 
 ## Achievements
 
-There are 33 achievements, defined in `assets/js/achievements.js`. Those not yet earned appear faded in **Logros**, and those earned have a rainbow border. Earning one shows a pop-up at the top of the page.
+There are 33 achievements, defined in `assets/js/achievements.js`. Those not yet earned appear faded in **Logros**, and those earned have a rainbow border. Earning one shows a pop-up at the top of the page. When several are earned at once, each pop-up waits until the previous one has faded away.
 
 - **What counts:** a lesson counts once it is finished, whatever its score, and a crossword once it is solved.
 - **Permanent:** an achievement stays earned even if adding lessons later lowers a percentage, or if words leave the collection.

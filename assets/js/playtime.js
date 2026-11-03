@@ -11,12 +11,12 @@ let pending = 0;
 let lastTick = Date.now();
 let lastActivity = Date.now();
 
-// Lessons, crosswords, the review and studying the collection; not lists or menus.
+// Lessons, crosswords, the review, the exam and studying the collection; not lists or menus.
 function isExercisePage() {
   const [section, ...rest] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (["vocabulario", "verbos", "gramatica"].includes(section)) return rest.length === 2;
   if (["encrucillados", "coleccion"].includes(section)) return rest.length > 0;
-  return section === "repaso";
+  return section === "repaso" || section === "exame";
 }
 
 function isPlaying(now) {

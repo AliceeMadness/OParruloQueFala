@@ -2,6 +2,9 @@ import { addEarnedAchievements, activeProfile, bestScore, collectionSize, crossw
 import { el } from "./ui.js";
 
 const TOAST_MS = 5000;
+// Matches toast-out in styles.css: the next toast waits until this one has faded away.
+const TOAST_FADE_MS = 400;
+const TOAST_GAP_MS = 250;
 
 function lessonKeys(mode, level) {
   return mode.groups
@@ -146,6 +149,7 @@ function showNextToast() {
   }
   showing = true;
   let timer = null;
+  let closing = false;
   const toast = el(
     "button",
     {
@@ -160,9 +164,14 @@ function showNextToast() {
   );
 
   function close() {
+    if (closing) return;
+    closing = true;
     clearTimeout(timer);
-    toast.remove();
-    showNextToast();
+    toast.classList.add("leaving");
+    setTimeout(() => {
+      toast.remove();
+      setTimeout(showNextToast, TOAST_GAP_MS);
+    }, TOAST_FADE_MS);
   }
 
   document.getElementById("achievement-toasts").append(toast);
@@ -189,9 +198,9 @@ export function checkAchievements(site) {
   }
 }
 
-export function achievementCounts(site) {
+// `earned` defaults to the active profile's, and can be another profile's to show it.
+export function achievementCounts(site, earned = earnedAchievements() ?? {}) {
   const all = site.achievements.flatMap((group) => group.items);
-  const earned = earnedAchievements() ?? {};
   return { done: all.filter((achievement) => earned[achievement.id]).length, total: all.length };
 }
 

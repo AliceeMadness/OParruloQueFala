@@ -16,7 +16,7 @@ export function grammarId(item) {
   return `${item.text}|${item.answer}`;
 }
 
-function sentence(text, filled) {
+export function sentence(text, filled) {
   const [before, after] = text.split("___");
   return el(
     "p",

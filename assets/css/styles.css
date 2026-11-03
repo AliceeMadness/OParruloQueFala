@@ -199,6 +199,9 @@ main {
   border-radius: 12px;
 }
 
+.exam-banner { border-left: 5px solid var(--duck); }
+.exam-banner strong { font-family: var(--serif); font-size: 1.15rem; }
+
 /* Catalogue */
 details.group {
   margin-bottom: .75rem;
@@ -688,7 +691,8 @@ input[type="text"].wrong { border-color: var(--bad); background: var(--bad-bg); 
 .standings { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
 .standings .current .standing-name { font-weight: 700; }
 
-.standing-name { display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem; }
+.standing-name { display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem; color: inherit; text-decoration: none; }
+.standing-name:hover .standing-profile, .standing-name:focus-visible .standing-profile { text-decoration: underline; }
 .standing-percent { margin-left: auto; color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
 
 .standing-bar { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
@@ -813,6 +817,9 @@ button.profile-chip {
 .profile-fields label { font-weight: 600; }
 .profile-fields input + p, .profile-fields p { margin: .25rem 0 0; font-size: .9rem; }
 .profile-fields textarea + label { margin-top: .75rem; }
+.profile-fields .profile-field-name { margin: 0; font-family: inherit; font-size: 1rem; font-weight: 600; }
+.profile-fields p + .profile-field-name { margin-top: .75rem; }
+.profile-fields .profile-value { font-size: 1rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 
 .profile-fields textarea {
   width: 100%;
@@ -898,12 +905,19 @@ button.profile-chip {
 .achievement-toast-label { color: var(--muted); font-size: .8rem; }
 .achievement-toast strong { font-family: var(--serif); font-size: 1.2rem; }
 
+.achievement-toast.leaving { animation: toast-out .4s ease-in forwards; pointer-events: none; }
+
 @keyframes toast-in {
   from { opacity: 0; transform: translateY(-1rem); }
 }
 
+@keyframes toast-out {
+  to { opacity: 0; transform: translateY(-1rem); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .achievement-toast { animation: none; }
+  .achievement-toast.leaving { animation: none; opacity: 0; }
 }
 
 /* Collection buttons in verbs */

@@ -12,7 +12,7 @@ const PUSH_DELAY_MS = 1500;
 export const PROFILES = [
   { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m", password: "f87ac4b3744c6502ed82045e47e54013b22e74bca3d335e6b500c3532ff7dd73" },
   { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f", password: "3502a3532fd3bb73baa9cfdae8bbeab9c35763303014f1cdf282d8f1af9ae9e2" },
-  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "69ae21032b31212b723fa825f9da68ab1caec9ab753457b12fcaeaf3f1024576" },
+  { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "4a35fd50a93246799566b9f331f629d520ed70190d3b7d7a3f0f10c35a77c721" },
 ];
 
 // Playing without a profile: progress stays in this browser, and there is no collection.
@@ -75,6 +75,8 @@ function emptyProgress() {
     detailsAt: 0,
     achievements: null,
     playTime: {},
+    examAt: 0,
+    examSeen: {},
   };
 }
 
@@ -104,7 +106,9 @@ function setSyncFailed(value) {
 
 async function push(id) {
   try {
-    const merged = mergeProgress(progressOf(id), await readRemote(id));
+    const remote = await readRemote(id);
+    // Merged only once the read is back, so it includes whatever changed while waiting.
+    const merged = mergeProgress(progressOf(id), remote);
     state.progress[id] = merged;
     saveLocally();
     await writeRemote(id, merged);
@@ -316,8 +320,39 @@ export function addPlayTime(ms) {
   save();
 }
 
-export function totalPlayTime() {
-  return Object.values(progress().playTime).reduce((total, ms) => total + ms, 0);
+export function totalPlayTime(profileId = state.active) {
+  return Object.values(state.progress[profileId]?.playTime ?? {}).reduce((total, ms) => total + ms, 0);
+}
+
+// What this device last read of a profile, only to show it: null if it never could.
+export function savedProgress(profileId) {
+  const saved = state.progress[profileId];
+  return saved ? { ...emptyProgress(), ...saved } : null;
+}
+
+// When the profile last finished the exam of what it has learned, or 0 if never.
+export function lastExamAt() {
+  return progress().examAt;
+}
+
+export function recordExam() {
+  progress().examAt = Date.now();
+  save();
+}
+
+// When each question or answer last came up in an exam, so the next exams can leave it out.
+export function examSeen() {
+  return progress().examSeen;
+}
+
+// Entries older than `forgetBefore` are dropped, so the list only covers the last few hours.
+export function markExamSeen(keys, forgetBefore) {
+  const current = progress();
+  const now = Date.now();
+  const seen = Object.fromEntries(Object.entries(current.examSeen).filter(([, at]) => at >= forgetBefore));
+  for (const key of keys) seen[key] = now;
+  current.examSeen = seen;
+  save();
 }
 
 export function crosswordState(id) {

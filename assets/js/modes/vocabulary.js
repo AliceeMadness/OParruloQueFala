@@ -43,7 +43,7 @@ export function runWords(container, { words, title, key, backHref, backText, nex
     }
 
     const word = queue[0];
-    const input = answerInput({ "aria-label": `«${word.es}» en gallego` });
+    const input = answerInput({ "aria-label": `«${word.es}» en galego` });
     const feedback = el("div", { "aria-live": "polite" });
     const check = el("button", { class: "button", type: "submit" }, "Comprobar");
 

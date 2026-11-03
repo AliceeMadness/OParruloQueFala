@@ -2,8 +2,9 @@ import { achievementsView, buildAchievements, checkAchievements } from "./achiev
 import { dailyListView, drawDailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
+import { EXAM_TITLE, examAvailable, examDue, examView } from "./modes/exam.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
-import { profilePageView } from "./modes/profile.js";
+import { otherProfileView, profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
 import { collectionStudyView, collectionView } from "./modes/collection.js";
 import { reviewView, vocabularyLessonView, vocabularyMode } from "./modes/vocabulary.js";
@@ -58,7 +59,17 @@ function buildProgressPanel(site) {
       return el(
         "li",
         { class: profile === active ? "current" : null },
-        el("div", { class: "standing-name" }, avatar(profile), el("span", {}, profile.name), el("span", { class: "standing-percent" }, label)),
+        el(
+          "a",
+          {
+            class: "standing-name",
+            href: profile === active ? "#/perfil" : `#/perfil/${profile.id}`,
+            title: profile === active ? "O teu perfil" : `Ver o perfil de ${profile.name}`,
+          },
+          avatar(profile),
+          el("span", { class: "standing-profile" }, profile.name),
+          el("span", { class: "standing-percent" }, label)
+        ),
         el(
           "div",
           {
@@ -116,6 +127,13 @@ function homeView(site) {
         done: crosswords.filter((puzzle) => crosswordState(puzzle.id).done).length,
         total: crosswords.length,
       }),
+      examAvailable(site) ? el(
+        "a",
+        { class: "mode-card", href: "#/exame" },
+        el("h2", {}, EXAM_TITLE),
+        el("p", {}, "Un exame ao chou do que xa aprendiches en vocabulario, verbos e gramática. Cada vez é distinto."),
+        el("span", { class: "count" }, "Xoga cantas veces queiras")
+      ) : null,
       activeProfile().guest ? null : el(
         "a",
         { class: "mode-card", href: "#/coleccion" },
@@ -124,6 +142,14 @@ function homeView(site) {
         el("span", { class: "count" }, `${saved} ${saved === 1 ? "palabra" : "palabras"}`)
       )
     ),
+    examDue(site)
+      ? el(
+          "div",
+          { class: "review-banner exam-banner" },
+          el("span", {}, el("strong", {}, EXAM_TITLE), el("br"), "Un exame curto do que xa aprendiches en vocabulario, verbos e gramática."),
+          el("a", { class: "button", href: "#/exame" }, "Facer o exame")
+        )
+      : null,
     pending
       ? el(
           "div",
@@ -250,10 +276,10 @@ function pullWithLimit() {
   return Promise.race([pullProgress(), new Promise((resolve) => setTimeout(resolve, PULL_LIMIT_MS))]);
 }
 
-// Lessons in progress and typed searches keep their state, so only other pages are redrawn.
+// Lessons in progress, typed searches and passwords keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && !["repaso", "palabras-do-dia", "perfil"].includes(parts[0]);
+  return parts.length <= 1 && !["repaso", "exame", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
 }
 
 function updatePanels(site) {
@@ -295,12 +321,17 @@ function route(site, parts) {
   const [section, first, second] = parts;
   if (!activeProfile() || section === "cambiar-perfil") return chooseProfileView(site);
   if (!section) return homeView(site);
+  if (section === "perfil" && first && first !== activeProfile().id) {
+    const profile = PROFILES.find((candidate) => candidate.id === first);
+    return profile ? otherProfileView(site, profile) : null;
+  }
   if (section === "perfil") {
     const { lessonKeys, crosswordIds, total } = site.activities;
     return profilePageView(site, { done: completedBy(activeProfile().id, lessonKeys, crosswordIds) ?? 0, total });
   }
   if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
+  if (section === "exame") return examView(site);
   if (section === "palabras-do-dia") return dailyListView(site.daily);
   if (section === "coleccion" && activeProfile().guest) return guestCollectionView();
   if (section === "coleccion") {
