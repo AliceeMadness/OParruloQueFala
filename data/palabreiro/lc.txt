@@ -1,0 +1,10 @@
+lcc
+lcd
+lce
+lcf
+lch
+lcl
+lcm
+lcp
+lcq
+lcs

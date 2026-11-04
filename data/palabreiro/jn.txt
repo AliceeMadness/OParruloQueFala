@@ -1,0 +1,7 @@
+jna
+jnd
+jng
+jni
+jnj
+jnl
+jns

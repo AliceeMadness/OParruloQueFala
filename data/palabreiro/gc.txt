@@ -1,0 +1,8 @@
+gcc
+gcd
+gce
+gcf
+gcl
+gcn
+gcr
+gct

@@ -1,0 +1,14 @@
+lda
+ldb
+ldd
+ldg
+ldh
+ldi
+ldj
+ldk
+ldl
+ldm
+ldn
+ldo
+ldp
+ldq

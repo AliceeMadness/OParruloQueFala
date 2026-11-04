@@ -1,0 +1,15 @@
+xcb
+xcc
+xce
+xcg
+xch
+xcl
+xcm
+xcn
+xco
+xcr
+xct
+xcu
+xcv
+xcw
+xcy

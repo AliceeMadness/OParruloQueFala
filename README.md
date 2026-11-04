@@ -15,6 +15,7 @@ A free website for Spanish speakers to learn Galician through short games.
 | **Repaso** | Your mistakes | Words, verb forms and grammar sentences you got wrong, in lessons, the exam or the collection, come back here until you get them right. It mixes the three, 20 at a time, oldest first, and you type every answer. Something leaves the review when you answer it right without having failed it in the same go, wherever that happens. |
 | **Non hai que esquecer o aprendido** | What you've done | An exam of up to 20 random questions from the vocabulary, verb and grammar lessons already done, mixing the three. It can be played as often as you like, and is different every time: no word, verb or sentence comes up twice in one exam, and nothing asked in the last 6 hours comes up again, with the same question or the same answer. When few new questions are left, the exam is shorter instead. A question answered wrong comes back at the end of the exam until it is answered right, as in the lessons; the score counts the first go. The mistakes are listed at the end, and also go to the review. It has a card on the home page once a profile has done 3 lessons, and a reminder every 3 days (`EXAM_EVERY_MS`, `EXAM_FRESH_MS` and `MIN_DONE_LESSONS` in `assets/js/modes/exam.js`). |
 | **Dudoiro** | 170 words | Does it have an «i»? Galician words ending in *-eiro*, *-eira*, *-oiro* and similar, mixed with words spelt as in Spanish, such as *neveira* but *lavadora*. Each round has 20 random words, dealt so none repeats until all have come up. Choose between the right spelling and the same word with an «i» too many or too few; a word answered wrong comes back at the end of the round until it is right. |
+| **Palabreiro** | 393,000 Galician words | A word board game for 2 to 4 profiles, played by turns. Each player has 7 tiles and forms words on a 15×15 board, across or down, touching the words already there. Squares marked L×2 and L×3 multiply a letter, and P×2 and P×3 the whole word; using all 7 tiles in one move adds 50 points. There are 100 tiles, with no J, K, W or Y, an Ñ and 2 blanks, and accents don't matter. Players can also swap tiles, pass or resign. The game ends when someone uses their last tile with the bag empty, which adds the others' remaining tiles to their score, or when every player has passed twice in a row. Words are checked against a dictionary (see [Palabreiro word list](#palabreiro-word-list)). The menu shows how many games are waiting for your move, and an open game refreshes every few seconds. |
 | **A miña colección** | What you save | Save what you don't know yet: vocabulary words and grammar sentences with *Engadir á miña colección*, and single verb forms with the *+* next to each person. The collection has a section for each, studied 20 random items at a time, and items stay until you remove them. Each profile has its own. |
 
 Every page has two side panels. **Progreso total** shows how much of the site each profile has completed. Clicking a name opens that profile's page to look at, without changing profile: its progress, number of achievements, play time, description and favourite word. **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
@@ -130,11 +131,21 @@ The list has 300 words and 51 expressions, and one new entry is unlocked each da
 
 Draw its duck as `assets/img/pato-<id>.svg`, starting from one of the existing ducks so it keeps the same look. Add the profile, with that image as `duck` and the SHA-256 of its lowercase password as `password`, to `PROFILES` in `assets/js/store.js`, and add it to both lists in `firestore.rules`. Then paste the updated rules into the Firebase console and publish them.
 
+## Palabreiro word list
+
+The dictionary is `data/palabreiro/*.txt`, one file per first two letters, so a move only downloads the files of the words it forms. It is generated from the Galician spell-checking dictionary of [Proxecto Trasno](https://github.com/LibreOffice/dictionaries/tree/master/gl), the one LibreOffice uses, which is under the GPLv3; the word list is therefore under the GPLv3 too. To regenerate it, download `gl_ES.aff` and `gl_ES.dic` and run:
+
+```
+python tools/palabreiro_words.py gl_ES.aff gl_ES.dic
+```
+
+It keeps every word with its plurals, feminines and verb forms, but not verb forms with pronouns attached (*dígocho*), which would make the list 15 million words long. Proper names and abbreviations are left out, and accents are removed because tiles have none.
+
 ## How sync works
 
 The browser talks directly to the Firestore REST API, with no server or SDK in between. `assets/js/store.js` decides when to sync and `assets/js/sync.js` makes the requests. The site uses the Firebase project `oparrulo-cd79d`.
 
-**What is stored:** each profile is one document, `profiles/<id>` (for example `profiles/alice`), with a single text field, `progress`. That field holds the profile's scores, review list, collection, crosswords, description, favourite word and achievements as JSON. A copy is also kept in the browser's `localStorage`, which is what lets the site work offline.
+**What is stored:** each Palabreiro game is one document, `games/<id>`, with the whole game as JSON in a `game` field. Every move first reads the game and then saves it on condition that nobody saved it in between, so two players can't overwrite each other's moves. Each profile is one document, `profiles/<id>` (for example `profiles/alice`), with a single text field, `progress`. That field holds the profile's scores, review list, collection, crosswords, description, favourite word and achievements as JSON. A copy is also kept in the browser's `localStorage`, which is what lets the site work offline.
 
 **When progress is downloaded:**
 

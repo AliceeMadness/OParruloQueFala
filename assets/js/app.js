@@ -4,6 +4,7 @@ import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { DUDOIRO_TITLE, dudoiroView } from "./modes/dudoiro.js";
 import { EXAM_TITLE, examAvailable, examDue, examView } from "./modes/exam.js";
+import { gamesWaiting, PALABREIRO_TITLE, palabreiroGameView, palabreiroListView, palabreiroNewView } from "./modes/palabreiro.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { otherProfileView, profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
@@ -136,6 +137,13 @@ function homeView(site) {
         el("p", {}, "Neveira ou nevera? Lavadora ou lavadoira? Escolle se a palabra leva «i» ou non."),
         el("span", { class: "count" }, `${site.dudoiro.length} palabras, 20 por rolda`)
       ),
+      activeProfile().guest ? null : el(
+        "a",
+        { class: "mode-card", href: "#/palabreiro" },
+        el("h2", {}, PALABREIRO_TITLE),
+        el("p", {}, "Forma palabras en galego no taboleiro e reta aos demais perfís, de dous a catro xogadores."),
+        el("span", { class: "count" }, "Partidas por quendas")
+      ),
       examAvailable(site) ? el(
         "a",
         { class: "mode-card", href: "#/exame" },
@@ -179,6 +187,7 @@ function chooseProfileView(site) {
     await pullWithLimit();
     refreshPanels(site);
     checkAchievements(site);
+    updatePalabreiroBadge();
     if (location.hash.startsWith("#/cambiar-perfil")) location.hash = "#/";
     else render(site);
   }
@@ -265,11 +274,22 @@ function setUpProfileMenu() {
   });
 }
 
+// The menu shows how many Palabreiro games are waiting for this profile's move.
+function updatePalabreiroBadge() {
+  const link = document.getElementById("nav-palabreiro");
+  link.hidden = Boolean(activeProfile()?.guest);
+  gamesWaiting().then((count) => {
+    link.textContent = count ? `${PALABREIRO_TITLE} (${count})` : PALABREIRO_TITLE;
+    link.classList.toggle("has-turns", count > 0);
+  }).catch((error) => console.warn("Non se puideron ler as partidas", error));
+}
+
 function updateProfileChip() {
   const chip = document.getElementById("profile-chip");
   const profile = activeProfile();
   chip.hidden = !profile;
   document.getElementById("nav-collection").hidden = Boolean(profile?.guest);
+  document.getElementById("nav-palabreiro").hidden = Boolean(profile?.guest);
   chip.replaceChildren(...(profile ? [avatar(profile), profile.name] : []));
   if (profile && isSyncFailing()) {
     chip.append(el("span", {
@@ -288,7 +308,7 @@ function pullWithLimit() {
 // Lessons in progress, typed searches and passwords keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && !["repaso", "exame", "dudoiro", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
+  return parts.length <= 1 && !["repaso", "exame", "dudoiro", "palabreiro", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
 }
 
 function updatePanels(site) {
@@ -342,6 +362,8 @@ function route(site, parts) {
   if (section === "repaso") return reviewView();
   if (section === "exame") return examView(site);
   if (section === "dudoiro") return dudoiroView(site.dudoiro);
+  if (section === "palabreiro" && first === "nova") return palabreiroNewView();
+  if (section === "palabreiro") return first ? palabreiroGameView(first) : palabreiroListView();
   if (section === "palabras-do-dia") return dailyListView(site.daily);
   if (section === "coleccion" && activeProfile().guest) return guestCollectionView();
   if (section === "coleccion") {
@@ -415,11 +437,15 @@ async function main() {
       },
     });
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible" && activeProfile()) refreshPanels(site);
+      if (document.visibilityState === "visible" && activeProfile()) {
+        refreshPanels(site);
+        updatePalabreiroBadge();
+      }
     });
     await pullWithLimit();
     render(site);
     if (activeProfile()) refreshPanels(site);
+    updatePalabreiroBadge();
     checkAchievements(site);
   } catch (error) {
     console.error(error);

@@ -1,0 +1,5 @@
+hsb
+hsh
+hsl
+hsn
+hss

@@ -1,0 +1,8 @@
+ws
+wsa
+wsi
+wsk
+wsr
+wss
+wsu
+wsv

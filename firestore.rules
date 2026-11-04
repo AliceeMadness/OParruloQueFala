@@ -10,5 +10,12 @@ service cloud.firestore {
         && request.resource.data.progress is string
         && request.resource.data.progress.size() < 300000;
     }
+    // Palabreiro games, one document each, shared by the profiles that play them.
+    match /games/{game} {
+      allow get, list: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['game'])
+        && request.resource.data.game is string
+        && request.resource.data.game.size() < 100000;
+    }
   }
 }
