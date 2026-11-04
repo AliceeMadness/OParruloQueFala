@@ -103,12 +103,17 @@ export function crosswordView(puzzles, id) {
     inputs.get(key ?? entry.cells.find((cell) => !letters[cell]) ?? entry.cells[0]).focus();
   }
 
-  // Letters already placed by a crossing word are jumped over, not overwritten.
+  // While typing, letters already placed by a crossing word are jumped over, not overwritten.
+  // Going back never jumps, so a whole word can be deleted square by square.
+  // Returns the square it moved to, or null at the edge of the word.
   function moveWithin(key, step) {
     const isCrossingLetter = (cell) => letters[cell] && cellEntries.get(cell).length > 1;
     let index = current.cells.indexOf(key) + step;
-    while (current.cells[index] && isCrossingLetter(current.cells[index])) index += step;
-    if (current.cells[index]) inputs.get(current.cells[index]).focus();
+    while (step > 0 && current.cells[index] && isCrossingLetter(current.cells[index])) index += step;
+    const target = current.cells[index];
+    if (!target) return null;
+    inputs.get(target).focus();
+    return target;
   }
 
   function checkFinished() {
@@ -183,9 +188,18 @@ export function crosswordView(puzzles, id) {
         if (event.key === " ") {
           event.preventDefault();
           switchDirection(key);
-        } else if (event.key === "Backspace" && !input.value) {
+        } else if (event.key === "Backspace") {
+          // A filled square is cleared; an empty one goes back and clears the one before.
           event.preventDefault();
-          moveWithin(key, -1);
+          if (letters[key]) {
+            setLetter(key, "");
+          } else {
+            const previous = moveWithin(key, -1);
+            if (previous) setLetter(previous, "");
+          }
+        } else if (event.key === "Delete") {
+          event.preventDefault();
+          setLetter(key, "");
         } else if (event.key === "Tab") {
           event.preventDefault();
           const index = puzzle.entries.indexOf(current);
