@@ -1,7 +1,7 @@
 // "Non hai que esquecer o aprendido": an exam of random questions from the vocabulary, verb
 // and grammar lessons the profile has already done, with a reminder every few days.
 import { celebrate, duckOf } from "../ducks.js";
-import { activeProfile, bestScore, examSeen, lastExamAt, markExamSeen, mistakeCount, recordExam } from "../store.js";
+import { activeProfile, bestScore, countEvent, examSeen, lastExamAt, markExamSeen, mistakeCount, recordExam } from "../store.js";
 import { EXAM_FRESH_MS } from "../sync.js";
 import { shuffled } from "../text.js";
 import { backLink, el, focusSoon, replace, wordTable } from "../ui.js";
@@ -39,11 +39,16 @@ function vocabularyQuestions(site) {
 
 function verbQuestions(site) {
   const data = site.verbData;
-  return doneLessons(site.verbs).flatMap(({ lesson }) => lesson.verbs.flatMap((name) =>
-    data.persons.map((_, index) => verbQuestion(
-      verbFormId(name, lesson.tense, index),
-      verbFormValue(data, name, lesson.tense, index)
-    ))
+  // Periphrases are sentences with a gap, and the imperative leaves some persons empty.
+  return doneLessons(site.verbs).flatMap(({ lesson }) => (lesson.items
+    ? lesson.items.map((item) => grammarQuestion(item, lesson.title))
+    : lesson.verbs.flatMap((name) => data.persons
+      .map((_, index) => index)
+      .filter((index) => data.verbs[name].forms[lesson.tense][index])
+      .map((index) => verbQuestion(
+        verbFormId(name, lesson.tense, index),
+        verbFormValue(data, name, lesson.tense, index)
+      )))
   ));
 }
 
@@ -95,6 +100,8 @@ function runExam(container, site) {
 
   function finish(failed) {
     recordExam();
+    countEvent("exames");
+    if (!failed.length) countEvent("examesPerfectos");
     const right = questions.length - failed.length;
     const percent = Math.round((right * 100) / questions.length);
     const success = percent >= SUCCESS;
@@ -121,6 +128,7 @@ function runExam(container, site) {
 
   runQuestions(container, questions, {
     numbered: true,
+    repeat: true,
     onAnswer: (question) => markExamSeen(question.keys, Date.now() - EXAM_FRESH_MS),
     onFinish: finish,
   });
@@ -144,7 +152,7 @@ export function examView(site) {
         { class: "panel" },
         el("p", { class: "prompt-label" }, "Exame"),
         el("h1", {}, EXAM_TITLE),
-        el("p", {}, `Ata ${EXAM_SIZE} preguntas ao chou das leccións que xa fixeches, de vocabulario, verbos e gramática. Cada vez é distinto, e cada pregunta só sae unha vez: o que falles verás ao final.`),
+        el("p", {}, `Ata ${EXAM_SIZE} preguntas ao chou das leccións que xa fixeches, de vocabulario, verbos e gramática. Cada vez é distinto, e o que falles volverá saír ao final ata que o acertes.`),
         el("div", { class: "actions" }, begin)
       )
     );

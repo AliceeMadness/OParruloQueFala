@@ -1,15 +1,15 @@
 import { addMistake, clearMistake } from "../store.js";
-import { checkAnswer, shuffled } from "../text.js";
-import { runSentences } from "./grammar.js";
+import { checkAnswer } from "../text.js";
+import { grammarLessonView } from "./grammar.js";
 import { answerInput, backLink, collectButton, el, findLesson, finishPanel, focusSoon, progressBar, replace, wordTable } from "../ui.js";
 
 export function verbsMode(data) {
   return {
     path: "verbos",
     title: "Verbos",
-    intro: "Conxuga cada verbo nas seis persoas, ou completa frases co verbo axeitado do grupo. Só traballamos os tempos que se usan de verdade, agrupados por temas.",
+    intro: "Primeiro, un verbo regular de cada conxugación en todos os tempos, para aprender as terminacións. Despois, os irregulares, un por un, e por último as perífrases e outras expresións.",
     groups: data.themes,
-    describe: (lesson) => data.tenses[lesson.tense],
+    describe: (lesson) => (lesson.items ? `${lesson.items.length} frases` : "Conxugar"),
   };
 }
 
@@ -27,6 +27,8 @@ export function verbFormValue(data, name, tense, index) {
 export function verbLessonView(mode, data, groupId, lessonId) {
   const found = findLesson(mode, groupId, lessonId);
   if (!found) return null;
+  // Periphrases are sentences with a gap, played as in grammar.
+  if (found.lesson.items) return grammarLessonView(mode, groupId, lessonId);
   const { group, lesson, key, backHref, nextHref } = found;
   const tenseName = data.tenses[lesson.tense];
   const container = el("div", {});
@@ -47,33 +49,6 @@ export function verbLessonView(mode, data, groupId, lessonId) {
     }
   }
 
-  // Sentences to complete with the right verb of the group, in the lesson's tense.
-  function playSentences() {
-    failedForms.clear();
-    const hint = lesson.verbs.map((name) => {
-      const { es } = data.verbs[name];
-      return es === name ? name : `${name} (${es})`;
-    }).join(" · ");
-    runSentences(container, {
-      items: shuffled(lesson.sentences).map((sentence) => ({
-        ...sentence,
-        answer: sentence.answers[0],
-        why: `Verbo ${sentence.verb}, ${tenseName.toLowerCase()}, ${data.persons[sentence.person]}.`,
-        es: `${tenseName}: ${hint}`,
-        hintLang: "gl",
-      })),
-      title: `${group.title} · ${lesson.title}`,
-      hard: true,
-      key,
-      backHref,
-      backText: "Volver ás leccións",
-      nextHref,
-      restart: playSentences,
-      collect: (item) => collectForm(item.verb, item.person),
-      remember: (item, right) => rememberForm(item.verb, item.person, right),
-    });
-  }
-
   function start() {
     failedForms.clear();
     const queue = [...lesson.verbs];
@@ -88,7 +63,7 @@ export function verbLessonView(mode, data, groupId, lessonId) {
           failed: failed.size,
           failedRows: [...failed].map((name) => [
             `${name} (${data.verbs[name].es})`,
-            data.verbs[name].forms[lesson.tense].join(", "),
+            data.verbs[name].forms[lesson.tense].filter(Boolean).join(", "),
           ]),
           backHref,
           backText: "Volver ás leccións",
@@ -101,12 +76,15 @@ export function verbLessonView(mode, data, groupId, lessonId) {
       const name = queue[0];
       const verb = data.verbs[name];
       const forms = verb.forms[lesson.tense];
+      // The imperative has only «ti» and «vós»: the other persons are empty and not asked.
+      const asked = forms.map((form, index) => (form ? index : -1)).filter((index) => index >= 0);
       const inputs = forms.map((_, index) => answerInput({
         id: `person-${index}`,
         onkeydown(event) {
-          if (event.key === "Enter" && index < forms.length - 1 && !answered) {
+          const after = asked[asked.indexOf(index) + 1];
+          if (event.key === "Enter" && after !== undefined && !answered) {
             event.preventDefault();
-            inputs[index + 1].focus();
+            inputs[after].focus();
           }
         },
       }));
@@ -114,8 +92,8 @@ export function verbLessonView(mode, data, groupId, lessonId) {
       const fixes = forms.map(() => null);
       const collects = forms.map((_, index) => collectForm(name, index));
       function drawRows() {
-        rows.replaceChildren(...data.persons.flatMap((person, index) => [
-          el("label", { htmlFor: `person-${index}`, lang: "gl" }, person),
+        rows.replaceChildren(...asked.flatMap((index) => [
+          el("label", { htmlFor: `person-${index}`, lang: "gl" }, data.persons[index]),
           inputs[index],
           collects[index],
           fixes[index],
@@ -125,7 +103,7 @@ export function verbLessonView(mode, data, groupId, lessonId) {
 
       const feedback = el("div", { "aria-live": "polite" });
       const check = el("button", { class: "button", type: "submit" }, "Comprobar");
-      const table = wordTable(data.persons.map((person, index) => [person, forms[index]]));
+      const table = wordTable(asked.map((index) => [data.persons[index], forms[index]]));
       table.hidden = true;
       const hint = el("button", {
         class: "button secondary",
@@ -150,7 +128,8 @@ export function verbLessonView(mode, data, groupId, lessonId) {
 
         let allRight = true;
         let accentSlip = false;
-        forms.forEach((form, index) => {
+        asked.forEach((index) => {
+          const form = forms[index];
           const input = inputs[index];
           const result = checkAnswer(input.value, [form]);
           rememberForm(name, index, result.ok);
@@ -204,27 +183,25 @@ export function verbLessonView(mode, data, groupId, lessonId) {
           el("div", { class: "actions" }, check, hint)
         )
       );
-      focusSoon(inputs[0]);
+      focusSoon(inputs[asked[0]]);
     }
 
     showVerb();
   }
 
   const conjugate = el("button", { class: "button", type: "button", onclick: start }, "Conxugar");
+  const persons = data.verbs[lesson.verbs[0]].forms[lesson.tense].filter(Boolean).length;
   replace(
     container,
     el(
       "div",
       { class: "panel" },
-      el("p", { class: "prompt-label" }, `${group.title} · ${tenseName}`),
-      el("h1", {}, lesson.title),
-      el("p", {}, lesson.verbs.map((name) => (data.verbs[name].es === name ? name : `${name} (${data.verbs[name].es})`)).join(" · ")),
-      el(
-        "div",
-        { class: "modes" },
-        el("div", {}, conjugate, el("small", {}, "Escribe as seis persoas de cada verbo.")),
-        el("div", {}, el("button", { class: "button secondary", type: "button", onclick: playSentences }, "Frases"), el("small", {}, "Completa frases co verbo axeitado."))
-      )
+      el("p", { class: "prompt-label" }, `${group.section} · ${group.title}`),
+      el("h1", {}, tenseName),
+      el("p", {}, persons === 6
+        ? "Escribe as seis persoas. O que falles volverá ao final ata que o acertes."
+        : "O imperativo só ten «ti» e «vós». O que falles volverá ao final ata que o acertes."),
+      el("div", { class: "actions" }, conjugate)
     )
   );
   focusSoon(conjugate);

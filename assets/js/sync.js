@@ -30,7 +30,7 @@ export async function writeRemote(profileId, progress) {
 
 // Devices can play offline, so their progress is joined rather than overwritten:
 // the best score of each lesson, every achievement earned on any device, each device's
-// play time, the latest exam, every question asked in recent exams, and the most recent
+// play time and counts, every day played, the latest exam, every question asked in recent exams, and the most recent
 // version of everything else.
 export function mergeProgress(local, remote) {
   if (!remote) return local;
@@ -45,6 +45,12 @@ export function mergeProgress(local, remote) {
   const playTime = { ...local.playTime };
   for (const [device, ms] of Object.entries(remote.playTime ?? {})) {
     playTime[device] = Math.max(ms, playTime[device] ?? 0);
+  }
+  const counts = { ...local.counts };
+  for (const [device, theirs] of Object.entries(remote.counts ?? {})) {
+    const mine = { ...counts[device] };
+    for (const [name, value] of Object.entries(theirs)) mine[name] = Math.max(value, mine[name] ?? 0);
+    counts[device] = mine;
   }
   const forgetBefore = Date.now() - EXAM_FRESH_MS;
   const examSeen = {};
@@ -70,6 +76,8 @@ export function mergeProgress(local, remote) {
     detailsAt: (remoteDetailsAreNewer ? remote.detailsAt : local.detailsAt) ?? 0,
     achievements: hasAchievements ? { ...remote.achievements, ...local.achievements } : null,
     playTime,
+    playDays: { ...remote.playDays, ...local.playDays },
+    counts,
     examAt: Math.max(local.examAt ?? 0, remote.examAt ?? 0),
     examSeen,
   };

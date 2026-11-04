@@ -203,6 +203,8 @@ main {
 .exam-banner strong { font-family: var(--serif); font-size: 1.15rem; }
 
 /* Catalogue */
+.catalogue-section { margin: 1.75rem 0 .6rem; font-size: 1.25rem; }
+
 details.group {
   margin-bottom: .75rem;
   background: var(--surface);

@@ -1,224 +1,48 @@
 // Verbos que usan las lecciones: «infinitivo = traducción».
 // Los regulares se conjugan solos (tools/build.py). Solo se escriben a mano los
 // tiempos irregulares, tras una barra: «| tiempo: eu, ti, el, nós, vós, eles».
-// El subjuntivo se deduce de la primera persona del presente salvo que se indique.
+// El presente de subjuntivo sale de la primera persona del presente salvo que se indique.
+// Antepretérito, pretérito y futuro de subjuntivo salen de «eles» del pretérito
+// (estiveron: estivera, estivese, estiver). El imperativo sale del presente (ti: el sen
+// cambios, vós: sen a «s» final); «imperativo: ti, vós» lo cambia e «imperativo: -» lo quita.
+// Tiempos: presente, preterito, copreterito, antepreterito, futuro, condicional,
+// subxuntivo, preteritosubx, futurosubx, imperativo, infinitivo
 
-// Irregulares fundamentales
-ser = ser | presente: son, es, é, somos, sodes, son | copreterito: era, eras, era, eramos, erades, eran | preterito: fun, fuches, foi, fomos, fostes, foron | subxuntivo: sexa, sexas, sexa, sexamos, sexades, sexan
+// Regulares, un modelo de cada conxugación
+falar = hablar
+comer = comer
+partir = partir
+
+// Irregulares básicos
+ser = ser | presente: son, es, é, somos, sodes, son | copreterito: era, eras, era, eramos, erades, eran | preterito: fun, fuches, foi, fomos, fostes, foron | subxuntivo: sexa, sexas, sexa, sexamos, sexades, sexan | imperativo: sé, sede
 estar = estar | presente: estou, estás, está, estamos, estades, están | preterito: estiven, estiveches, estivo, estivemos, estivestes, estiveron | subxuntivo: estea, esteas, estea, esteamos, esteades, estean
 ter = tener | presente: teño, tes, ten, temos, tedes, teñen | copreterito: tiña, tiñas, tiña, tiñamos, tiñades, tiñan | preterito: tiven, tiveches, tivo, tivemos, tivestes, tiveron
-haber = haber | presente: hei, has, ha, habemos, habedes, han | preterito: houben, houbeches, houbo, houbemos, houbestes, houberon | subxuntivo: haxa, haxas, haxa, haxamos, haxades, haxan
+haber = haber | presente: hei, has, ha, habemos, habedes, han | preterito: houben, houbeches, houbo, houbemos, houbestes, houberon | subxuntivo: haxa, haxas, haxa, haxamos, haxades, haxan | imperativo: -
 ir = ir | presente: vou, vas, vai, imos, ides, van | copreterito: ía, ías, ía, iamos, iades, ían | preterito: fun, fuches, foi, fomos, fostes, foron | subxuntivo: vaia, vaias, vaia, vaiamos, vaiades, vaian
-vir = venir | presente: veño, vés, vén, vimos, vindes, veñen | copreterito: viña, viñas, viña, viñamos, viñades, viñan | preterito: vin, viñeches, veu, viñemos, viñestes, viñeron
+vir = venir | presente: veño, vés, vén, vimos, vindes, veñen | copreterito: viña, viñas, viña, viñamos, viñades, viñan | preterito: vin, viñeches, veu, viñemos, viñestes, viñeron | imperativo: ven, vinde
 facer = hacer | presente: fago, fas, fai, facemos, facedes, fan | preterito: fixen, fixeches, fixo, fixemos, fixestes, fixeron | futuro: farei, farás, fará, faremos, faredes, farán | condicional: faría, farías, faría, fariamos, fariades, farían
 dicir = decir | presente: digo, dis, di, dicimos, dicides, din | preterito: dixen, dixeches, dixo, dixemos, dixestes, dixeron | futuro: direi, dirás, dirá, diremos, diredes, dirán | condicional: diría, dirías, diría, diriamos, diriades, dirían
-poder = poder | presente: podo, podes, pode, podemos, podedes, poden | preterito: puiden, puideches, puido, puidemos, puidestes, puideron | subxuntivo: poida, poidas, poida, poidamos, poidades, poidan
+poder = poder | presente: podo, podes, pode, podemos, podedes, poden | preterito: puiden, puideches, puido, puidemos, puidestes, puideron | subxuntivo: poida, poidas, poida, poidamos, poidades, poidan | imperativo: -
 poñer = poner | presente: poño, pos, pon, poñemos, poñedes, poñen | preterito: puxen, puxeches, puxo, puxemos, puxestes, puxeron | futuro: porei, porás, porá, poremos, poredes, porán | condicional: poría, porías, poría, poriamos, poriades, porían
 querer = querer | presente: quero, queres, quere, queremos, queredes, queren | preterito: quixen, quixeches, quixo, quixemos, quixestes, quixeron | subxuntivo: queira, queiras, queira, queiramos, queirades, queiran
 saber = saber | presente: sei, sabes, sabe, sabemos, sabedes, saben | preterito: souben, soubeches, soubo, soubemos, soubestes, souberon | subxuntivo: saiba, saibas, saiba, saibamos, saibades, saiban
 dar = dar | presente: dou, dás, dá, damos, dades, dan | preterito: dei, deches, deu, demos, destes, deron | subxuntivo: dea, deas, dea, deamos, deades, dean
 ver = ver | presente: vexo, ves, ve, vemos, vedes, ven | copreterito: vía, vías, vía, viamos, viades, vían | preterito: vin, viches, viu, vimos, vistes, viron
-ler = leer | presente: leo, les, le, lemos, ledes, len | copreterito: lía, lías, lía, liamos, liades, lían | preterito: lin, liches, leu, lemos, lestes, leron
-crer = creer | presente: creo, cres, cre, cremos, credes, cren | copreterito: cría, crías, cría, criamos, criades, crían | preterito: crin, criches, creu, cremos, crestes, creron
-oír = oír | presente: oio, oes, oe, oímos, oídes, oen | copreterito: oía, oías, oía, oïamos, oïades, oían | preterito: oín, oíches, oíu, oímos, oístes, oíron
-saír = salir | presente: saio, saes, sae, saímos, saídes, saen | copreterito: saía, saías, saía, saïamos, saïades, saían | preterito: saín, saíches, saíu, saímos, saístes, saíron
+
+// Irregulares avanzados
 traer = traer | presente: traio, traes, trae, traemos, traedes, traen | copreterito: traía, traías, traía, traïamos, traïades, traían | preterito: trouxen, trouxeches, trouxo, trouxemos, trouxestes, trouxeron
 caer = caer | presente: caio, caes, cae, caemos, caedes, caen | copreterito: caía, caías, caía, caïamos, caïades, caían | preterito: caín, caíches, caeu, caemos, caestes, caeron
+saír = salir | presente: saio, saes, sae, saímos, saídes, saen | copreterito: saía, saías, saía, saïamos, saïades, saían | preterito: saín, saíches, saíu, saímos, saístes, saíron
+oír = oír | presente: oio, oes, oe, oímos, oídes, oen | copreterito: oía, oías, oía, oïamos, oïades, oían | preterito: oín, oíches, oíu, oímos, oístes, oíron
+ler = leer | presente: leo, les, le, lemos, ledes, len | copreterito: lía, lías, lía, liamos, liades, lían | preterito: lin, liches, leu, lemos, lestes, leron
+crer = creer | presente: creo, cres, cre, cremos, credes, cren | copreterito: cría, crías, cría, criamos, criades, crían | preterito: crin, criches, creu, cremos, crestes, creron
 rir = reír | presente: río, ris, ri, rimos, rides, rin | copreterito: ría, rías, ría, riamos, riades, rían | preterito: rin, riches, riu, rimos, ristes, riron | subxuntivo: ría, rías, ría, riamos, riades, rían
 valer = valer | presente: vallo, vales, vale, valemos, valedes, valen
-construír = construir | presente: constrúo, constrúes, constrúe, construímos, construídes, constrúen | copreterito: construía, construías, construía, construïamos, construïades, construían | preterito: construín, construíches, construíu, construímos, construístes, construíron | subxuntivo: constrúa, constrúas, constrúa, construamos, construades, constrúan
-
-// Cambio de vocal en el presente
+caber = caber | presente: caibo, cabes, cabe, cabemos, cabedes, caben | preterito: couben, coubeches, coubo, coubemos, coubestes, couberon | imperativo: -
 durmir = dormir | presente: durmo, dormes, dorme, durmimos, durmides, dormen
-subir = subir | presente: subo, sobes, sobe, subimos, subides, soben
-fuxir = huir | presente: fuxo, foxes, foxe, fuximos, fuxides, foxen
-cubrir = cubrir | presente: cubro, cobres, cobre, cubrimos, cubrides, cobren
 sentir = sentir | presente: sinto, sentes, sente, sentimos, sentides, senten
-mentir = mentir | presente: minto, mentes, mente, mentimos, mentides, menten
-servir = servir | presente: sirvo, serves, serve, servimos, servides, serven
-vestir = vestir | presente: visto, vistes, viste, vestimos, vestides, visten
-seguir = seguir | presente: sigo, segues, segue, seguimos, seguides, seguen
-conseguir = conseguir | presente: consigo, consegues, consegue, conseguimos, conseguides, conseguen
 pedir = pedir | presente: pido, pides, pide, pedimos, pedides, piden
-medir = medir | presente: mido, mides, mide, medimos, medides, miden
-ferir = herir | presente: firo, feres, fere, ferimos, ferides, feren
-erguer = levantar | presente: ergo, ergues, ergue, erguemos, erguedes, erguen
-enviar = enviar | presente: envío, envías, envía, enviamos, enviades, envían | subxuntivo: envíe, envíes, envíe, enviemos, enviedes, envíen
-
-// Regulares en -ar
-falar = hablar
-traballar = trabajar
-estudar = estudiar
-escoitar = escuchar
-mirar = mirar
-cantar = cantar
-bailar = bailar
-camiñar = caminar
-pasear = pasear
-viaxar = viajar
-levar = llevar
-mercar = comprar
-pagar = pagar
-gastar = gastar
-aforrar = ahorrar
-cociñar = cocinar
-xantar = almorzar
-cear = cenar
-almorzar = desayunar
-merendar = merendar
-lavar = lavar
-limpar = limpiar
-varrer = barrer
-fregar = fregar
-tender = tender
-gardar = guardar
-preparar = preparar
-cortar = cortar
-asar = asar
-mesturar = mezclar
-probar = probar
-quentar = calentar
-despertar = despertar
-lembrar = recordar
-esquecer = olvidar
-pensar = pensar
-amar = amar
-odiar = odiar
-gustar = gustar
-chorar = llorar
-soñar = soñar
-desexar = desear
-chegar = llegar
-entrar = entrar
-quedar = quedar
-parar = parar
-cruzar = cruzar
-xirar = girar
-aparcar = aparcar
-conducir = conducir
-nadar = nadar
-saltar = saltar
-xogar = jugar
-gañar = ganar
-adestrar = entrenar
-pescar = pescar
-navegar = navegar
-plantar = plantar
-regar = regar
-sementar = sembrar
-sachar = cavar
-coidar = cuidar
-curar = curar
-tocar = tocar
-pintar = pintar
-debuxar = dibujar
-buscar = buscar
-atopar = encontrar
-axudar = ayudar
-preguntar = preguntar
-explicar = explicar
-ensinar = enseñar
-contar = contar
-chamar = llamar
-tomar = tomar
-deixar = dejar
-pasar = pasar
-comezar = empezar
-rematar = terminar
-cambiar = cambiar
-usar = usar
-votar = votar
-gobernar = gobernar
-loitar = luchar
-ordenar = ordenar
-organizar = organizar
-imprimir = imprimir
-programar = programar
-descargar = descargar
-gravar = grabar
-presentar = presentar
-acompañar = acompañar
-agardar = esperar
-alugar = alquilar
-reservar = reservar
-cargar = cargar
-tirar = tirar
-empurrar = empujar
-apagar = apagar
-acender = encender
-amañar = arreglar
-pegar = pegar
-colgar = colgar
-mandar = mandar
-sacar = sacar
-visitar = visitar
-casar = casar
-bicar = besar
-abrazar = abrazar
-apertar = apretar
-saudar = saludar | presente: saúdo, saúdas, saúda, saudamos, saudades, saúdan | subxuntivo: saúde, saúdes, saúde, saudemos, saudedes, saúden
-medrar = crecer
-afogar = ahogar
-
-// Regulares en -er
-comer = comer
-beber = beber
-vender = vender
-aprender = aprender
-responder = responder
-correr = correr
-romper = romper
-meter = meter
-coller = coger
-escoller = elegir
-mover = mover
-coser = coser
-ferver = hervir
-perder = perder
-nacer = nacer
-crecer = crecer
-vencer = vencer
-coñecer = conocer
-parecer = parecer
-ofrecer = ofrecer
-merecer = merecer
-agradecer = agradecer
-aparecer = aparecer
-desaparecer = desaparecer
-envellecer = envejecer
-entender = entender
-comprender = comprender
-defender = defender
-temer = temer
-encher = llenar
-bater = golpear
-tecer = tejer
-torcer = torcer
-cocer = cocer
-morrer = morir
-
-// Regulares en -ir
-vivir = vivir
-escribir = escribir
-abrir = abrir
-partir = partir
-decidir = decidir
-permitir = permitir
-repetir = repetir | presente: repito, repites, repite, repetimos, repetides, repiten
-sufrir = sufrir | presente: sufro, sofres, sofre, sufrimos, sufrides, sofren
-unir = unir
-dividir = dividir
-fritir = freír
-engadir = añadir
-reducir = reducir
-producir = producir
-traducir = traducir
-existir = existir
-insistir = insistir
-asistir = asistir
-recibir = recibir
-elixir = elegir
-dirixir = dirigir
-descubrir = descubrir | presente: descubro, descobres, descobre, descubrimos, descubrides, descobren
-compartir = compartir
-discutir = discutir
+seguir = seguir | presente: sigo, segues, segue, seguimos, seguides, seguen
+fuxir = huir | presente: fuxo, foxes, foxe, fuximos, fuxides, foxen
+subir = subir | presente: subo, sobes, sobe, subimos, subides, soben
+construír = construir | presente: constrúo, constrúes, constrúe, construímos, construídes, constrúen | copreterito: construía, construías, construía, construïamos, construïades, construían | preterito: construín, construíches, construíu, construímos, construístes, construíron | subxuntivo: constrúa, constrúas, constrúa, construamos, construades, constrúan

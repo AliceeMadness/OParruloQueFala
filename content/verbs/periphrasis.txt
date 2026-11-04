@@ -1,0 +1,164 @@
+// Perífrases e outras expresións, co mesmo formato que grammar.txt:
+// «# Grupo | nivel», «## Lección», «> texto de introducción» e logo
+// «Frase con ___ | resposta correcta | opción falsa | [outra falsa] | Explicación»
+// e na liña seguinte «= Tradución ao castelán da frase completa».
+
+# Perífrases básicas | 2
+## Ir + infinitivo
+> Para falar do que vai pasar axiña úsase «ir + infinitivo», sen preposición: «vou comer», non «vou a comer».
+Mañá ___ comer á casa da avoa. | imos | imos a | Con «ir + infinitivo» non se pon «a»: «imos comer».
+= Mañana vamos a comer a casa de la abuela.
+Eu ___ chamar ao médico agora. | vou | vou a | Sen «a» entre «ir» e o infinitivo: «vou chamar».
+= Yo voy a llamar al médico ahora.
+Que ___ facer ti esta fin de semana? | vas | vas a | En galego dise «vas facer», sen «a».
+= ¿Qué vas a hacer tú este fin de semana?
+Está nubrado: ___ chover. | vai | vai a | «Vai chover»: o infinitivo vai xusto despois de «ir».
+= Está nublado: va a llover.
+Esta noite ___ ver unha película. | imos | imos a | «Imos ver», sen preposición.
+= Esta noche vamos a ver una película.
+Vós ___ chegar tarde se non vos dades présa. | ides | ides a | «Ides chegar»: «ir + infinitivo», sen «a».
+= Vosotros vais a llegar tarde si no os dais prisa.
+Ela ___ cumprir trinta anos en maio. | vai | vai a | «Vai cumprir», sen «a».
+= Ella va a cumplir treinta años en mayo.
+Eles ___ mercar un coche novo. | van | van a | «Van mercar»: o galego non pon «a» nesta perífrase.
+= Ellos van a comprar un coche nuevo.
+
+## Ter que + infinitivo
+> A obriga exprésase con «ter que + infinitivo»: «teño que ir». Ollo coas formas de «ter»: teño, tes, ten, temos, tedes, teñen.
+Eu ___ que traballar mañá. | teño | tengo | «Tengo» é castelán: en galego, «teño».
+= Yo tengo que trabajar mañana.
+Ti ___ que estudar máis. | tes | tienes | A segunda persoa de «ter» é «tes».
+= Tú tienes que estudiar más.
+Nós ___ que saír cedo. | temos | tenemos | «Temos», sen o «-ne-» do castelán.
+= Nosotros tenemos que salir temprano.
+Vós ___ que facer os deberes. | tedes | tenedes | A forma de «vós» é «tedes».
+= Vosotros tenéis que hacer los deberes.
+Eles ___ que coller o tren das oito. | teñen | tenen | «Teñen», con «ñ» coma «teño».
+= Ellos tienen que coger el tren de las ocho.
+Onte eu ___ que ir ao dentista. | tiven | tuven | O pretérito de «ter» é «tiven», con «i».
+= Ayer tuve que ir al dentista.
+Ela ___ que pagar a multa. | tivo | tuvo | «Tivo», non «tuvo».
+= Ella tuvo que pagar la multa.
+Mañá ___ que madrugar. | teremos | tendremos | O futuro de «ter» é regular: «teremos».
+= Mañana tendremos que madrugar.
+
+## Estar a + infinitivo
+> Para algo que está a pasar agora mesmo, o galego prefire «estar a + infinitivo»: «estou a ler». Sen o «a», a frase non funciona.
+Agora mesmo estou ___ un libro. | a ler | ler | A perífrase leva «a»: «estou a ler».
+= Ahora mismo estoy leyendo un libro.
+Non fagas ruído, que o bebé está ___. | a durmir | de durmir | É «estar a + infinitivo», non «estar de».
+= No hagas ruido, que el bebé está durmiendo.
+Que estás ___? | a facer | facer | Falta o «a»: «que estás a facer?».
+= ¿Qué estás haciendo?
+Estamos ___ a cea. | a preparar | de preparar | «Estamos a preparar», coa preposición «a».
+= Estamos preparando la cena.
+Está ___ moito desde onte. | a chover | chover | «Está a chover»: sen «a» non hai perífrase.
+= Está lloviendo mucho desde ayer.
+Os rapaces están ___ ao fútbol. | a xogar | xogar | «Están a xogar».
+= Los chicos están jugando al fútbol.
+Estaba ___ cando me chamaches. | a cear | de cear | Tamén en pasado: «estaba a cear».
+= Estaba cenando cuando me llamaste.
+
+## Acabar de e deixar de
+> «Acabar de + infinitivo» é algo que pasou hai moi pouco: «acabo de chegar». «Deixar de + infinitivo» é parar de facer algo: «deixei de fumar».
+Acabo ___ chegar da viaxe. | de | a | «Acabar de» indica que acaba de pasar.
+= Acabo de llegar del viaje.
+Deixei ___ fumar o ano pasado. | de | a | Para parar de facer algo: «deixar de».
+= Dejé de fumar el año pasado.
+A película acaba ___ comezar. | de | a | «Acaba de comezar»: comezou hai un momento.
+= La película acaba de empezar.
+Non deixa ___ chover. | de | a | «Deixar de chover»: parar de chover.
+= No deja de llover.
+Acabamos ___ comer agora mesmo. | de | a | «Acabamos de comer».
+= Acabamos de comer ahora mismo.
+Deixa ___ molestar á túa irmá! | de | a | «Deixa de molestar»: para de facelo.
+= ¡Deja de molestar a tu hermana!
+Os teus amigos acaban ___ marchar. | de | a | «Acaban de marchar»: hai un intre.
+= Tus amigos acaban de marcharse.
+
+# Outras expresións | 2
+## Gustar, doer e parecer
+> Con «gustar», «doer», «parecer» ou «apetecer», a persoa vai no pronome e, se nada o atrae, detrás do verbo: «gústame o café». O verbo concorda co que gusta: «gústanme os doces».
+___ moito o chocolate. | Gústame | Me gusta | A frase non pode comezar por pronome átono: «gústame».
+= Me gusta mucho el chocolate.
+___ a cabeza. | Dóeme | Me doe | O pronome vai detrás: «dóeme».
+= Me duele la cabeza.
+Non ___ nada esa película. | me gustou | gustoume | «Non» atrae o pronome, que pasa a ir diante do verbo.
+= No me gustó nada esa película.
+___ as túas botas novas. | Gústannos | Nos gustan | Concorda con «as botas» (plural) e o pronome vai detrás.
+= Nos gustan tus botas nuevas.
+Que ___ o meu corte de pelo? | che parece | paréceche | Os interrogativos coma «que» atraen o pronome.
+= ¿Qué te parece mi corte de pelo?
+___ un café? | Apetéceche | Che apetece | Sen nada diante, o pronome vai detrás: «apetéceche».
+= ¿Te apetece un café?
+A Xan ___ as pernas despois do partido. | dóenlle | lle doen | «A Xan» non atrae o pronome, e «as pernas» é plural: «dóenlle».
+= A Xan le duelen las piernas después del partido.
+Nunca ___ as verduras. | me gustaron | gustáronme | «Nunca» é negativo e atrae o pronome.
+= Nunca me gustaron las verduras.
+
+## Hai, fai e houbo
+> Para dicir que algo existe úsase «haber» só en singular: «hai», «había», «houbo». Para o tempo atmosférico úsase «facer»: «fai frío», «fixo calor».
+___ moita xente na praia. | Hai | Hay | En galego escríbese «hai», con «i».
+= Hay mucha gente en la playa.
+Onte ___ un concerto na praza. | houbo | hubo | O pretérito de «haber» é «houbo».
+= Ayer hubo un concierto en la plaza.
+Na festa ___ moitos nenos. | había | habían | Este «haber» vai sempre en singular, aínda que «nenos» sexa plural.
+= En la fiesta había muchos niños.
+Hoxe ___ moito frío. | fai | hace | «Facer» no presente: «fai frío».
+= Hoy hace mucho frío.
+Onte ___ moita calor. | fixo | hizo | O pretérito de «facer» é «fixo».
+= Ayer hizo mucho calor.
+Mañá ___ sol. | fará | hará | O futuro de «facer» é «fará».
+= Mañana hará sol.
+___ dous anos que vivo aquí. | Hai | Hace | Para o tempo que pasou: «hai dous anos».
+= Hace dos años que vivo aquí.
+
+# Perífrases avanzadas | 4
+## Haber de + infinitivo
+> «Haber de + infinitivo» expresa unha obriga suave ou algo que pasará seguro: «hei de ir». As formas son hei, has, ha, habemos, habedes, han.
+___ de chamarte mañá. | Hei | He | A primeira persoa de «haber» en galego é «hei».
+= Te tengo que llamar mañana.
+Ti ___ de vir á festa. | has | hais | A segunda persoa é «has».
+= Tú tienes que venir a la fiesta.
+Nós ___ de visitar a avoa. | habemos | hemos | En galego, «habemos».
+= Nosotros tenemos que visitar a la abuela.
+Vós ___ de estudar máis. | habedes | habéis | A forma de «vós» é «habedes».
+= Vosotros tenéis que estudiar más.
+Eles ___ de saber a verdade. | han | hain | A terceira persoa do plural é «han».
+= Ellos tienen que saber la verdad.
+Algún día ___ de aprender a nadar. | hei | he | «Hei de aprender»: unha intención firme.
+= Algún día aprenderé a nadar.
+
+## Deber e deber de
+> «Deber + infinitivo» é unha obriga: «debes estudar». «Deber de + infinitivo» é unha suposición: «debe de ser tarde».
+Xa ___ ser as dez, que hai moita xente. | deben de | deben | É unha suposición sobre a hora: «deber de».
+= Ya deben de ser las diez, que hay mucha gente.
+Ti ___ respectar as normas. | debes | debes de | É unha obriga: sen «de».
+= Tú debes respetar las normas.
+Non contesta: ___ estar a durmir. | debe de | debe | Supoñemos que dorme: «deber de».
+= No contesta: debe de estar durmiendo.
+Os nenos ___ lavar as mans antes de comer. | deben | deben de | É unha obriga: «deben lavar».
+= Los niños deben lavarse las manos antes de comer.
+Esta casa ___ ser moi vella. | debe de | debe | É unha suposición: «debe de ser».
+= Esta casa debe de ser muy vieja.
+Vós ___ chegar á hora. | debedes | debedes de | É unha obriga: sen «de».
+= Vosotros debéis llegar a la hora.
+Ela ___ ter uns corenta anos. | debe de | debe | Calculamos a idade: suposición, «deber de».
+= Ella debe de tener unos cuarenta años.
+
+## Poñerse a, botar a e romper a
+> Para o comezo dunha acción úsanse «poñerse a» (púxose a ler), «botar a» (botou a correr) e «romper a», sobre todo con chorar, rir ou chover (rompeu a chorar).
+Cando o viu, ___ a correr. | botou | botó | O pretérito de «botar» é «botou».
+= Cuando lo vio, echó a correr.
+O neno ___ a chorar. | rompeu | rompió | O pretérito de «romper» é «rompeu».
+= El niño rompió a llorar.
+Despois de cear ___ a ver a tele. | puxémonos | nos puxemos | Nada atrae o pronome, así que vai detrás: «puxémonos».
+= Después de cenar nos pusimos a ver la tele.
+De súpeto ___ a chover. | púxose | se puxo | Sen nada que o atraia, o pronome vai detrás: «púxose».
+= De repente se puso a llover.
+Ela ___ a rir sen motivo. | rompeu | rompió | «Rompeu a rir», co pretérito galego «rompeu».
+= Ella rompió a reír sin motivo.
+Mañá ___ a estudar en serio. | póñome | me poño | «Mañá» non atrae o pronome: «póñome».
+= Mañana me pongo a estudiar en serio.
+Os cans ___ a ladrar. | botaron | echaron | En galego, «botar a + infinitivo»: «botaron a ladrar».
+= Los perros echaron a ladrar.

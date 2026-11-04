@@ -62,7 +62,7 @@ export function grammarQuestion(item, lessonTitle) {
 // A question answered wrong goes to the review, and leaves it when answered right without
 // having failed it in the same go. With `repeat`, wrong answers also come back at the end of
 // the queue until they are right, as in the lessons; without it, each question comes up
-// once, as in an exam. `onFinish` receives the questions answered wrong.
+// once. `onFinish` receives the questions answered wrong.
 export function runQuestions(container, questions, { repeat, numbered, onAnswer = () => {}, onFinish }) {
   const queue = [...questions];
   const failed = new Set();
@@ -75,6 +75,12 @@ export function runQuestions(container, questions, { repeat, numbered, onAnswer 
     }
     const question = queue[0];
     const position = questions.length - queue.length;
+    // A question coming back after a mistake keeps no number: the count is of the first go.
+    const numberOf = (asked) => {
+      if (!numbered) return asked.label;
+      if (failed.has(asked)) return `Outra vez · ${asked.label}`;
+      return `${questions.indexOf(asked) + 1}/${questions.length} · ${asked.label}`;
+    };
     const input = answerInput(question.text
       ? { class: "gap-input", "aria-label": "A palabra que falta" }
       : { "aria-label": `Resposta para «${question.prompt}»` });
@@ -130,7 +136,7 @@ export function runQuestions(container, questions, { repeat, numbered, onAnswer 
       el(
         "form",
         { class: "panel", onsubmit: submit },
-        el("p", { class: "prompt-label" }, numbered ? `${position + 1}/${questions.length} · ${question.label}` : question.label),
+        el("p", { class: "prompt-label" }, numberOf(question)),
         ...body,
         feedback,
         el("div", { class: "actions" }, check, question.collect())

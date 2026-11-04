@@ -2,6 +2,7 @@ import { achievementsView, buildAchievements, checkAchievements } from "./achiev
 import { dailyListView, drawDailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
+import { DUDOIRO_TITLE, dudoiroView } from "./modes/dudoiro.js";
 import { EXAM_TITLE, examAvailable, examDue, examView } from "./modes/exam.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { otherProfileView, profilePageView } from "./modes/profile.js";
@@ -122,12 +123,19 @@ function homeView(site) {
       "div",
       { class: "mode-grid" },
       card("#/vocabulario", "Vocabulario", "Escribe en galego as palabras que che damos en castelán.", countDone(vocabulary)),
-      card("#/verbos", "Verbos", "Conxuga as seis persoas dos verbos, por temas e tempos.", countDone(verbs)),
+      card("#/verbos", "Verbos", "Un modelo de cada conxugación, os irregulares un por un e as perífrases, en todos os tempos.", countDone(verbs)),
       card("#/gramatica", "Gramática", "Completa frases e aprende, por fin, onde van os pronomes.", countDone(grammar)),
       card("#/encrucillados", "Encrucillados", `Para os máis atrevidos: ${crosswords.length} retos con palabras novas.`, {
         done: crosswords.filter((puzzle) => crosswordState(puzzle.id).done).length,
         total: crosswords.length,
       }),
+      el(
+        "a",
+        { class: "mode-card", href: "#/dudoiro" },
+        el("h2", {}, DUDOIRO_TITLE),
+        el("p", {}, "Neveira ou nevera? Lavadora ou lavadoira? Escolle se a palabra leva «i» ou non."),
+        el("span", { class: "count" }, `${site.dudoiro.length} palabras, 20 por rolda`)
+      ),
       examAvailable(site) ? el(
         "a",
         { class: "mode-card", href: "#/exame" },
@@ -280,7 +288,7 @@ function pullWithLimit() {
 // Lessons in progress, typed searches and passwords keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && !["repaso", "exame", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
+  return parts.length <= 1 && !["repaso", "exame", "dudoiro", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
 }
 
 function updatePanels(site) {
@@ -333,6 +341,7 @@ function route(site, parts) {
   if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
   if (section === "exame") return examView(site);
+  if (section === "dudoiro") return dudoiroView(site.dudoiro);
   if (section === "palabras-do-dia") return dailyListView(site.daily);
   if (section === "coleccion" && activeProfile().guest) return guestCollectionView();
   if (section === "coleccion") {
@@ -373,8 +382,8 @@ function render(site) {
 async function main() {
   showSplash();
   try {
-    const [vocabulary, verbData, grammar, crosswords, daily] = await Promise.all(
-      ["vocabulary", "verbs", "grammar", "crosswords", "daily"].map(fetchJson)
+    const [vocabulary, verbData, grammar, crosswords, daily, dudoiro] = await Promise.all(
+      ["vocabulary", "verbs", "grammar", "crosswords", "daily", "dudoiro"].map(fetchJson)
     );
     const site = {
       vocabulary: vocabularyMode(vocabulary),
@@ -383,6 +392,7 @@ async function main() {
       grammar: grammarMode(grammar),
       crosswords,
       daily,
+      dudoiro,
     };
     const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
     const crosswordIds = crosswords.map((puzzle) => puzzle.id);

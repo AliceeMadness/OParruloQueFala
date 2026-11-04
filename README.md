@@ -9,11 +9,12 @@ A free website for Spanish speakers to learn Galician through short games.
 | Mode | Content | How it works |
 |---|---|---|
 | **Vocabulario** | 1,531 words in 82 lessons | Type the Galician word for a Spanish one. Lessons have 20 words at most and go from easiest to hardest, grouped by theme. |
-| **Verbos** | 203 verbs in 337 lessons, 2,022 sentences | Each lesson has two ways to play: conjugate the six persons of each verb, or complete sentences with the right verb of the group in the lesson's tense. |
+| **Verbos** | 33 verbs in 360 lessons, plus 9 lessons of periphrases | Four sections: one regular model verb for each conjugation (*falar*, *comer*, *partir*), basic irregular verbs and advanced irregular verbs, each verb with a lesson for every tense (11: presente, pretérito, copretérito, antepretérito, futuro, condicional, the three subjunctive tenses, imperativo and infinitivo conxugado). Type the six persons, or just *ti* and *vós* in the imperative; a verb answered wrong comes back at the end. The last section, **Perífrases e outras expresións**, has sentences with a gap played as in grammar: *ir + infinitivo*, *ter que*, *estar a*, *haber de*, *deber de*, *gústame*, *hai*… |
 | **Gramática** | 394 sentences in 49 lessons | Fill the gap by choosing the word (easy mode) or typing it (hard mode). A wrong answer explains the rule. Every sentence shows its Spanish translation. |
 | **Encrucillados** | 60 crosswords | Clues start with Spanish translations and move to Galician definitions as puzzles get harder. |
 | **Repaso** | Your mistakes | Words, verb forms and grammar sentences you got wrong, in lessons, the exam or the collection, come back here until you get them right. It mixes the three, 20 at a time, oldest first, and you type every answer. Something leaves the review when you answer it right without having failed it in the same go, wherever that happens. |
-| **Non hai que esquecer o aprendido** | What you've done | An exam of up to 20 random questions from the vocabulary, verb and grammar lessons already done, mixing the three. It can be played as often as you like, and is different every time: no word, verb or sentence comes up twice in one exam, and nothing asked in the last 6 hours comes up again, with the same question or the same answer. When few new questions are left, the exam is shorter instead. The mistakes are listed at the end, and also go to the review. It has a card on the home page once a profile has done 3 lessons, and a reminder every 3 days (`EXAM_EVERY_MS`, `EXAM_FRESH_MS` and `MIN_DONE_LESSONS` in `assets/js/modes/exam.js`). |
+| **Non hai que esquecer o aprendido** | What you've done | An exam of up to 20 random questions from the vocabulary, verb and grammar lessons already done, mixing the three. It can be played as often as you like, and is different every time: no word, verb or sentence comes up twice in one exam, and nothing asked in the last 6 hours comes up again, with the same question or the same answer. When few new questions are left, the exam is shorter instead. A question answered wrong comes back at the end of the exam until it is answered right, as in the lessons; the score counts the first go. The mistakes are listed at the end, and also go to the review. It has a card on the home page once a profile has done 3 lessons, and a reminder every 3 days (`EXAM_EVERY_MS`, `EXAM_FRESH_MS` and `MIN_DONE_LESSONS` in `assets/js/modes/exam.js`). |
+| **Dudoiro** | 170 words | Does it have an «i»? Galician words ending in *-eiro*, *-eira*, *-oiro* and similar, mixed with words spelt as in Spanish, such as *neveira* but *lavadora*. Each round has 20 random words, dealt so none repeats until all have come up. Choose between the right spelling and the same word with an «i» too many or too few; a word answered wrong comes back at the end of the round until it is right. |
 | **A miña colección** | What you save | Save what you don't know yet: vocabulary words and grammar sentences with *Engadir á miña colección*, and single verb forms with the *+* next to each person. The collection has a section for each, studied 20 random items at a time, and items stay until you remove them. Each profile has its own. |
 
 Every page has two side panels. **Progreso total** shows how much of the site each profile has completed. Clicking a name opens that profile's page to look at, without changing profile: its progress, number of achievements, play time, description and favourite word. **Palabra do día** shows a different Galician word or expression every day. It links to a list where the ones already shown are visible and the rest appear as question marks, so a new one is unlocked each day (see [Daily words](#daily-words)).
@@ -28,13 +29,13 @@ The Galician content was written with AI assistance and checked against a spelli
 
 ## Profiles and progress
 
-Players choose a profile when they arrive: Alice, Raquel or Marina. Each profile has its own password and its own progress, which follows it to any device. Once a profile is open, the browser stays in it until someone changes profile.
+Players choose a profile when they arrive: Alice, Raquel, Marina or Japolo. Each profile has its own password and its own progress, which follows it to any device. Once a profile is open, the browser stays in it until someone changes profile.
 
 **Xogar sen perfil** opens everything except the collection, with no password. That progress stays in the browser and is never uploaded.
 
 - **Offline play:** progress is saved in the browser first. If the connection fails, a ⚠ appears next to the profile name, and progress is uploaded when the connection returns.
 - **Playing on several devices:** progress is combined. Each lesson keeps its best score, achievements earned on any device are kept, the latest exam counts on every device, and each crossword, the review list, the collection and the profile details keep their most recent version.
-- **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review, the exam and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
+- **Play time:** the profile page shows the time spent doing exercises: lessons, crosswords, the review, the exam, Dudoiro and studying the collection. Lists and menus don't count, and neither does time with the tab hidden or more than 2 minutes without pressing a key or tapping. Each device keeps its own count, and the profile shows them added up.
 - **Passwords only prevent mistakes:** they stop someone opening the wrong profile by accident, not someone determined. The site has no server, so the check runs in the browser, and the database accepts changes from anyone. Store only game progress in a profile, never personal data. Passwords are stored as SHA-256 hashes in `assets/js/store.js` and ignore upper and lower case.
 
 ## How it's built
@@ -91,11 +92,12 @@ The local site uses the same database as the published one, so anything you do i
 | File | Format |
 |---|---|
 | `content/vocabulary/*.txt` | `# Theme \| level`, then `## Lesson`, then `el perro = o can`. Separate alternative answers with ` / `. |
-| `content/verbs/verbs.txt` | `falar = hablar`. Regular verbs conjugate automatically. For irregular tenses, add `\| presente: eu, ti, el, nós, vós, eles`. |
-| `content/verbs/lessons.txt` | `# Theme \| level \| tenses`, then `Group name: verb, verb, verb`. Each group and tense becomes a lesson. |
-| `content/verbs/sentences.txt` | `# Theme` and `## Group`, as in `lessons.txt`, then `verb \| person \| sentence with ___`. The answer comes from the conjugations. A sentence without a tense is used for every tense of the group, after *Hoxe*, *Onte*, *Mañá* or similar; `verb \| person \| tense \| sentence` is for that tense only. Each verb needs two sentences per tense. |
+| `content/verbs/verbs.txt` | `falar = hablar`. Regular verbs conjugate automatically. For irregular tenses, add `\| presente: eu, ti, el, nós, vós, eles`. The antepretérito and the past and future subjunctive come from *eles* in the pretérito, so an irregular pretérito fixes them too. The imperative comes from the present; `\| imperativo: ti, vós` changes it and `\| imperativo: -` removes it. |
+| `content/verbs/lessons.txt` | `= Section`, then one `verb \| level` per line. Each verb becomes a group with a lesson for every tense it has. |
+| `content/verbs/periphrasis.txt` | Same format as `content/grammar.txt`. Its groups come after the verbs, in their own section. |
 | `content/grammar.txt` | `# Group \| level`, then `## Lesson`, then `> Rule`, then `Sentence with ___ \| right \| wrong \| [wrong] \| Explanation`, followed by `= Spanish translation` on the next line. |
 | `content/crosswords.txt` | `# Number \| Title \| level` (1 easy, 2 medium, 3 hard), then `WORD = Clue`. The grid is generated automatically. Never renumber a crossword, because the number identifies its saved progress. |
+| `content/dudoiro.txt` | `Spanish = Galician \| trap`, where the trap is the same word with an «i» too many or too few. `#` lines only group the words. |
 | `content/daily.txt` | Under `# Palabras` or `# Expresións`: `Galician \| Definition in Galician \| Spanish translation`. See [Daily words](#daily-words) before adding entries. |
 
 Levels go from 1 to 4, and themes must be in ascending order. Lines starting with `//` are comments.
@@ -104,12 +106,13 @@ Renaming a lesson changes its address, which resets its saved progress.
 
 ## Achievements
 
-There are 33 achievements, defined in `assets/js/achievements.js`. Those not yet earned appear faded in **Logros**, and those earned have a rainbow border. Earning one shows a pop-up at the top of the page. When several are earned at once, each pop-up waits until the previous one has faded away.
+There are 81 achievements, defined in `assets/js/achievements.js`: by section and level, by share of the site done, and for streaks of days in a row, days and hours played, playing late at night or early in the morning, lessons done and lessons at 100%, the exam and Dudoiro rounds. Those not yet earned appear faded in **Logros**, and those earned have a rainbow border. Earning one shows a pop-up at the top of the page. When several are earned at once, each pop-up waits until the previous one has faded away.
 
 - **What counts:** a lesson counts once it is finished, whatever its score, and a crossword once it is solved.
 - **Permanent:** an achievement stays earned even if adding lessons later lowers a percentage, or if words leave the collection.
 - **First check:** the first time a profile is checked, whatever it had already reached is recorded without any pop-ups.
 - **Epic achievement:** "Cando sae o Galego 2??" requires a score of 100% in every lesson and every crossword solved.
+- **Days and counts:** a day counts as played when exercises are done that day, by the device's local date. Each profile keeps the days it has played, and each device counts its own exams and Dudoiro rounds, added up like the play time. Neither was recorded before these achievements existed, so they start from zero.
 - **Titles by profile:** the `gender` of each profile in `PROFILES` decides the grammatical form of titles such as "Sabio" or "Sabia" and "Rei" or "Raíña".
 - **Grammar and crosswords:** "Sabio" requires the advanced level, and "Rei" or "Raíña" requires the whole section.
 

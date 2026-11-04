@@ -106,7 +106,11 @@ export function catalogueView(mode) {
     {},
     el("h1", {}, mode.title),
     el("p", { class: "lead" }, mode.intro),
-    ...groups.map(({ group, total, done, worst }) =>
+    // Groups with a `section` (as in verbs) get its title above the first group of each.
+    ...groups.flatMap(({ group, total, done, worst }, index) => [
+      group.section && group.section !== groups[index - 1]?.group.section
+        ? el("h2", { class: "catalogue-section" }, group.section)
+        : null,
       el(
         "details",
         { class: `group${done === total ? ` group-done${scoreClass(worst)}` : ""}`, open: firstOpen && firstOpen.group === group },
@@ -130,8 +134,8 @@ export function catalogueView(mode) {
             );
           })
         )
-      )
-    )
+      ),
+    ].filter(Boolean))
   );
 }
 

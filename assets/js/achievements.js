@@ -1,4 +1,4 @@
-import { addEarnedAchievements, activeProfile, bestScore, collectionSize, crosswordState, earnedAchievements } from "./store.js";
+import { addEarnedAchievements, activeProfile, bestScore, collectionSize, crosswordState, earnedAchievements, eventCount, playDays, totalPlayTime } from "./store.js";
 import { el } from "./ui.js";
 
 const TOAST_MS = 5000;
@@ -40,6 +40,25 @@ function withFeminine(goal, feminine) {
   };
 }
 
+// Anything counted, reached once `value()` gets to `target`.
+function countGoal(id, title, description, value, target) {
+  return { id, title, description, reached: () => value() >= target };
+}
+
+// The longest run of days played one after another.
+function longestStreak() {
+  const days = playDays().map((day) => Date.parse(`${day}T00:00:00Z`) / 86400000).sort((a, b) => a - b);
+  let best = 0;
+  let run = 0;
+  days.forEach((day, index) => {
+    run = index > 0 && day - days[index - 1] === 1 ? run + 1 : 1;
+    best = Math.max(best, run);
+  });
+  return best;
+}
+
+const HOUR_MS = 3600000;
+
 function puzzleGoal(id, title, description, puzzles, percent = 100) {
   return { id, title, description, reached: () => reachedShare(donePuzzles(puzzles), puzzles.length, percent) };
 }
@@ -57,6 +76,17 @@ export function buildAchievements(site) {
     reached: () => reachedShare(doneLessons(allKeys) + donePuzzles(crosswords), total, percent),
   });
   const puzzlesOf = (level) => crosswords.filter((puzzle) => puzzle.level === level);
+  const perfect = (keys) => keys.filter((key) => bestScore(key) === 100).length;
+  const verbSection = (section) => verbs.groups
+    .filter((group) => group.section === section)
+    .flatMap((group) => group.lessons.map((lesson) => `${verbs.path}/${group.id}/${lesson.id}`));
+  const regularVerbs = ["Primeira conxugación (-ar)", "Segunda conxugación (-er)", "Terceira conxugación (-ir)"].flatMap(verbSection);
+  const streak = (id, title, days) => countGoal(id, title, `Fai exercicios ${days} días seguidos.`, longestStreak, days);
+  const daysPlayed = (id, title, days) => countGoal(id, title, `Fai exercicios ${days} días distintos.`, () => playDays().length, days);
+  const hours = (id, title, count) => countGoal(id, title, `Fai exercicios durante ${count} ${count === 1 ? "hora" : "horas"} en total.`, () => totalPlayTime() / HOUR_MS, count);
+  const lessonsDone = (id, title, count) => countGoal(id, title, `Completa ${count} ${count === 1 ? "lección" : "leccións"}, de vocabulario, verbos ou gramática.`, () => doneLessons(allKeys), count);
+  const lessonsPerfect = (id, title, count) => countGoal(id, title, `Consegue un 100 % en ${count} ${count === 1 ? "lección" : "leccións"}.`, () => perfect(allKeys), count);
+  const allPerfect = (id, title, what, keys) => ({ id, title, description: `Consegue un 100 % en todas as leccións de ${what}.`, reached: () => keys.length > 0 && perfect(keys) === keys.length });
 
   return [
     {
@@ -109,7 +139,85 @@ export function buildAchievements(site) {
       title: "A miña colección",
       items: [
         { id: "coleccion-1", title: "Gústame esta palabra", description: "Engade unha palabra á túa colección.", reached: () => collectionSize() >= 1 },
+        countGoal("coleccion-10", "Isto vai para a libreta", "Ten 10 palabras na túa colección.", collectionSize, 10),
+        countGoal("coleccion-50", "Colecciono palabras coma quen colecciona selos", "Ten 50 palabras na túa colección.", collectionSize, 50),
         { id: "coleccion-100", title: "Esta última si que non a sabía", description: "Ten 100 palabras na túa colección.", reached: () => collectionSize() >= 100 },
+        countGoal("coleccion-250", "A miña colección ten colección", "Ten 250 palabras na túa colección.", collectionSize, 250),
+      ],
+    },
+    {
+      title: "Constancia",
+      items: [
+        streak("racha-2", "Volvín!", 2),
+        streak("racha-3", "Isto vai en serio", 3),
+        streak("racha-7", "Unha semana enteiriña", 7),
+        streak("racha-14", "Dúas semanas sen faltar á cita", 14),
+        streak("racha-30", "Un mes sen saltar nin un día", 30),
+        streak("racha-100", "Cen días seguidos: isto xa é vicio", 100),
+        daysPlayed("dias-10", "Dez días de galego", 10),
+        daysPlayed("dias-50", "Medio cento de días", 50),
+        daysPlayed("dias-100", "Cen días de parrulo", 100),
+        daysPlayed("dias-365", "Un ano de galego", 365),
+      ],
+    },
+    {
+      title: "Tempo de xogo",
+      items: [
+        hours("horas-1", "Unha horiña de nada", 1),
+        hours("horas-5", "Xa levo un anaco", 5),
+        hours("horas-10", "Dez horas de parrulo", 10),
+        hours("horas-24", "Un día enteiro falando galego", 24),
+        hours("horas-50", "Isto xa é un máster", 50),
+        hours("horas-100", "Cen horas: o parrulo es ti", 100),
+        countGoal("noite", "Parrulo noctámbulo", "Fai exercicios entre a medianoite e as cinco da mañá.", () => eventCount("noite"), 1),
+        withFeminine(countGoal("madrugada", "Madrugador", "Fai exercicios entre as cinco e as sete da mañá.", () => eventCount("madrugada"), 1), "Madrugadora"),
+      ],
+    },
+    {
+      title: "Leccións",
+      items: [
+        lessonsDone("leccions-1", "O primeiro paso", 1),
+        lessonsDone("leccions-10", "Quentando motores", 10),
+        lessonsDone("leccions-50", "Xa non hai quen me pare", 50),
+        lessonsDone("leccions-100", "Cen leccións e subindo", 100),
+        lessonsDone("leccions-250", "Isto é unha maratón", 250),
+        lessonsDone("leccions-500", "Medio milleiro", 500),
+      ],
+    },
+    {
+      title: "Ao 100 %",
+      items: [
+        lessonsPerfect("perfectas-1", "O primeiro 100 %", 1),
+        lessonsPerfect("perfectas-10", "Dez de dez", 10),
+        lessonsPerfect("perfectas-25", "Sen un erro", 25),
+        lessonsPerfect("perfectas-50", "Perfeccionista", 50),
+        lessonsPerfect("perfectas-100", "Cen veces perfecto", 100),
+        lessonsPerfect("perfectas-250", "Isto xa é obsesión", 250),
+        allPerfect("perfecto-vocabulario", "Dicionario con patas", "vocabulario", vocabularyKeys),
+        allPerfect("perfecto-verbos", "Conxugo ata durmindo", "verbos", verbKeys),
+        allPerfect("perfecto-gramatica", "Nin unha coma fóra do sitio", "gramática", lessonKeys(grammar)),
+      ],
+    },
+    {
+      title: "Verbos por partes",
+      items: [
+        lessonGoal("verbos-regulares", "Falo, como e parto", "Completa todos os tempos de falar, comer e partir.", regularVerbs),
+        lessonGoal("verbos-basicos", "Irregular, pero meu", "Completa todos os verbos irregulares básicos.", verbSection("Verbos irregulares básicos")),
+        lessonGoal("verbos-avanzados", "Os irregulares non me asustan", "Completa todos os verbos irregulares avanzados.", verbSection("Verbos irregulares avanzados")),
+        lessonGoal("verbos-perifrases", "Perifrasticamente falando", "Completa todas as perífrases e outras expresións.", verbSection("Perífrases e outras expresións")),
+      ],
+    },
+    {
+      title: "Exame e Dudoiro",
+      items: [
+        countGoal("exame-1", "Non esquecín nada... creo", "Remata un exame de «Non hai que esquecer o aprendido».", () => eventCount("exames"), 1),
+        countGoal("exame-10", "Exame tras exame", "Remata 10 exames.", () => eventCount("exames"), 10),
+        countGoal("exame-perfecto", "Memoria de elefante", "Acerta todas as preguntas dun exame á primeira.", () => eventCount("examesPerfectos"), 1),
+        countGoal("dudoiro-1", "Dubido, logo existo", "Remata unha rolda do Dudoiro.", () => eventCount("dudoiro"), 1),
+        countGoal("dudoiro-10", "Xa non dubido tanto", "Remata 10 roldas do Dudoiro.", () => eventCount("dudoiro"), 10),
+        countGoal("dudoiro-50", "Dudoiro profesional", "Remata 50 roldas do Dudoiro.", () => eventCount("dudoiro"), 50),
+        countGoal("dudoiro-perfecto", "Nin unha i fóra do sitio", "Acerta as 20 palabras dunha rolda do Dudoiro á primeira.", () => eventCount("dudoiroPerfecto"), 1),
+        withFeminine(countGoal("dudoiro-perfecto-10", "O rei da i", "Fai 10 roldas perfectas do Dudoiro.", () => eventCount("dudoiroPerfecto"), 10), "A raíña da i"),
       ],
     },
     {

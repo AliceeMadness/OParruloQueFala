@@ -13,6 +13,7 @@ export const PROFILES = [
   { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m", password: "f87ac4b3744c6502ed82045e47e54013b22e74bca3d335e6b500c3532ff7dd73" },
   { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f", password: "3502a3532fd3bb73baa9cfdae8bbeab9c35763303014f1cdf282d8f1af9ae9e2" },
   { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "4a35fd50a93246799566b9f331f629d520ed70190d3b7d7a3f0f10c35a77c721" },
+  { id: "japolo", name: "Japolo", color: "#dcdcd6", duck: "assets/img/pato-japolo.svg", gender: "m", password: "d70e819bfca5121ec77a57aa4f6b7b4a07127fbcd6874305f8eb92fad2505457" },
 ];
 
 // Playing without a profile: progress stays in this browser, and there is no collection.
@@ -77,6 +78,8 @@ function emptyProgress() {
     detailsAt: 0,
     achievements: null,
     playTime: {},
+    playDays: {},
+    counts: {},
     examAt: 0,
     examSeen: {},
   };
@@ -327,10 +330,43 @@ export function addEarnedAchievements(ids) {
   save();
 }
 
+// The local date, so a day runs from midnight to midnight where the player is.
+function today() {
+  const now = new Date();
+  return [now.getFullYear(), now.getMonth() + 1, now.getDate()].map((part) => String(part).padStart(2, "0")).join("-");
+}
+
+// Playing also marks the day as played, and the late and early hours for their achievements.
 export function addPlayTime(ms) {
-  const { playTime } = progress();
-  playTime[DEVICE] = (playTime[DEVICE] ?? 0) + ms;
+  const current = progress();
+  current.playTime[DEVICE] = (current.playTime[DEVICE] ?? 0) + ms;
+  current.playDays[today()] = true;
+  const hour = new Date().getHours();
+  if (hour < 5) bump(current, "noite");
+  else if (hour < 7) bump(current, "madrugada");
   save();
+}
+
+// Days with exercises, as "YYYY-MM-DD".
+export function playDays() {
+  return Object.keys(progress().playDays);
+}
+
+// Counts are kept per device, like the play time, so two devices never overwrite each other's.
+function bump(current, name) {
+  const mine = { ...current.counts[DEVICE] };
+  mine[name] = (mine[name] ?? 0) + 1;
+  current.counts[DEVICE] = mine;
+}
+
+// Exams, Dudoiro rounds and the like, added up on every device.
+export function countEvent(name) {
+  bump(progress(), name);
+  save();
+}
+
+export function eventCount(name) {
+  return Object.values(progress().counts).reduce((total, device) => total + (device[name] ?? 0), 0);
 }
 
 export function totalPlayTime(profileId = state.active) {

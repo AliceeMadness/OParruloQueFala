@@ -4,8 +4,8 @@ service cloud.firestore {
     // Only the known profiles exist, and each one holds a bounded block of progress.
     // Keep this list in step with PROFILES in assets/js/store.js.
     match /profiles/{profile} {
-      allow get: if profile in ['alice', 'raquel', 'marina'];
-      allow create, update: if profile in ['alice', 'raquel', 'marina']
+      allow get: if profile in ['alice', 'raquel', 'marina', 'japolo'];
+      allow create, update: if profile in ['alice', 'raquel', 'marina', 'japolo']
         && request.resource.data.keys().hasOnly(['progress'])
         && request.resource.data.progress is string
         && request.resource.data.progress.size() < 300000;
