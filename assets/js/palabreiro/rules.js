@@ -7,8 +7,12 @@
 
 export const SIZE = 15;
 export const CENTER = 7 * SIZE + 7;
-export const RACK_SIZE = 7;
-export const ALL_TILES_BONUS = 50;
+export const RACK_SIZE = 10;
+// Placing this many tiles or more in one move earns the bonus.
+export const BONUS_TILES = 7;
+export const BONUS = 50;
+// Swapping needs this many tiles left in the bag.
+export const SWAP_MIN = 7;
 export const BLANK = "?";
 
 // Letters of the Galician alphabet, with how many tiles of each and their points.
@@ -165,7 +169,7 @@ export function evaluate(board, placed) {
     word: positions.map((at) => cells[at].toLowerCase()).join(""),
     score: scoreWord(cells, positions, fresh),
   }));
-  const bonus = placed.length === RACK_SIZE ? ALL_TILES_BONUS : 0;
+  const bonus = placed.length >= BONUS_TILES ? BONUS : 0;
   return { words, bonus, score: words.reduce((total, word) => total + word.score, 0) + bonus };
 }
 
@@ -235,9 +239,8 @@ export function passMove(game, player) {
   scoreless(game);
 }
 
-// Swapping needs a full rack's worth of tiles left in the bag.
 export function canSwap(game) {
-  return game.bag.length >= RACK_SIZE;
+  return game.bag.length >= SWAP_MIN;
 }
 
 export function swapMove(game, player, tiles) {

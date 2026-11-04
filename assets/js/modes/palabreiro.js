@@ -4,7 +4,7 @@ import { unknownWords } from "../palabreiro/dictionary.js";
 import { GameChanged, gamesEnabled, listGames, readGame, writeGame } from "../palabreiro/games.js";
 import {
   BLANK, CENTER, LETTERS, PREMIUM, PREMIUM_LABELS, SIZE, activePlayers, canSwap, currentPlayer, evaluate,
-  newGame, passMove, playMove, resignMove, shuffled, swapMove, value,
+  newGame, passMove, playMove, resignMove, shuffled, SWAP_MIN, swapMove, value,
 } from "../palabreiro/rules.js";
 import { activeProfile, PROFILES } from "../store.js";
 import { avatar, backLink, el, focusSoon, replace } from "../ui.js";
@@ -114,7 +114,7 @@ export function palabreiroListView() {
     "div",
     { class: "palabreiro" },
     el("h1", {}, PALABREIRO_TITLE),
-    el("p", { class: "lead" }, "Forma palabras en galego no taboleiro, por quendas, contra os demais perfís. As casillas L×2 e L×3 multiplican a letra, e P×2 e P×3 a palabra enteira. Usar as sete fichas dunha vez dá 50 puntos máis."),
+    el("p", { class: "lead" }, "Forma palabras en galego no taboleiro, por quendas, contra os demais perfís. As casillas L×2 e L×3 multiplican a letra, e P×2 e P×3 a palabra enteira. Cada xogador ten 10 fichas, e poñer 7 ou máis dunha vez dá 50 puntos extra."),
     el("div", { class: "actions" }, el("a", { class: "button", href: "#/palabreiro/nova" }, "Nova partida")),
     list
   );
@@ -187,7 +187,7 @@ export function palabreiroNewView() {
 function describeMove(move) {
   const who = nameOf(move.player);
   if (move.kind === "play") {
-    const bonus = move.bonus ? ` (inclúe ${move.bonus} por usar as sete fichas)` : "";
+    const bonus = move.bonus ? ` (inclúe ${move.bonus} por poñer 7 fichas ou máis)` : "";
     return `${who}: ${move.words.map((word) => word.toUpperCase()).join(", ")} · +${move.score}${bonus}`;
   }
   if (move.kind === "swap") return `${who} cambiou ${move.count} ${move.count === 1 ? "ficha" : "fichas"}`;
@@ -305,8 +305,81 @@ export function palabreiroGameView(gameId) {
     draw();
   }
 
+  // Tiles can be dragged with a mouse or a finger: the tile follows the pointer and lands on
+  // the square under it. A press that doesn't move is a tap, handled by the click handlers.
+  let drag = null;
+  let justDragged = false;
+
+  function squareAt(x, y) {
+    return document.elementFromPoint(x, y)?.closest(".pb-square") ?? null;
+  }
+
+  function startDrag(event, source) {
+    if (busy || swapping || !myTurn(game, me) || event.button > 0) return;
+    drag = { source, x: event.clientX, y: event.clientY, ghost: null, over: null };
+    window.addEventListener("pointermove", moveDrag, { passive: false });
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", stopDrag);
+  }
+
+  function moveDrag(event) {
+    if (!drag) return;
+    if (!drag.ghost) {
+      if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 6) return;
+      drag.ghost = el("div", { class: "pb-ghost", "aria-hidden": "true" }, tileFace(drag.source.tile));
+      document.body.append(drag.ghost);
+      choosingBlank = null;
+    }
+    event.preventDefault();
+    drag.ghost.style.left = `${event.clientX}px`;
+    drag.ghost.style.top = `${event.clientY}px`;
+    const over = squareAt(event.clientX, event.clientY);
+    if (over !== drag.over) {
+      drag.over?.classList.remove("drop");
+      over?.classList.add("drop");
+      drag.over = over;
+    }
+  }
+
+  function stopDrag() {
+    window.removeEventListener("pointermove", moveDrag);
+    window.removeEventListener("pointerup", endDrag);
+    window.removeEventListener("pointercancel", stopDrag);
+    drag?.ghost?.remove();
+    drag?.over?.classList.remove("drop");
+    const current = drag;
+    drag = null;
+    return current;
+  }
+
+  function endDrag(event) {
+    const current = stopDrag();
+    if (!current?.ghost) return;
+    justDragged = true;
+    setTimeout(() => { justDragged = false; }, 0);
+    const square = squareAt(event.clientX, event.clientY);
+    const index = square ? Number(square.dataset.index) : null;
+    const free = index !== null && game.board[index] === "." && !pending.some((tile) => tile.index === index);
+    const { source } = current;
+    if (source.pending) {
+      // A tile already put down this turn moves to another square, or back to the rack.
+      if (free) source.pending.index = index;
+      else if (!square) pending.splice(pending.indexOf(source.pending), 1);
+      draw();
+      return;
+    }
+    if (!free) return;
+    selected = source.slot;
+    if (rack[selected] === BLANK) {
+      choosingBlank = index;
+      draw();
+      return;
+    }
+    placeAt(index, rack[selected]);
+  }
+
   function clickSquare(index) {
-    if (busy || !myTurn(game, me)) return;
+    if (justDragged || busy || !myTurn(game, me)) return;
     const own = pending.findIndex((tile) => tile.index === index);
     if (own >= 0) {
       pending.splice(own, 1);
@@ -324,7 +397,7 @@ export function palabreiroGameView(gameId) {
   }
 
   function clickRack(slot) {
-    if (busy) return;
+    if (justDragged || busy) return;
     if (swapping) {
       if (swapping.has(slot)) swapping.delete(slot);
       else swapping.add(slot);
@@ -361,7 +434,9 @@ export function palabreiroGameView(gameId) {
             choosingBlank === index ? "choosing" : "",
           ].filter(Boolean).join(" "),
           "aria-label": `Fila ${Math.floor(index / SIZE) + 1}, columna ${(index % SIZE) + 1}: ${label}`,
+          "data-index": index,
           onclick: () => clickSquare(index),
+          onpointerdown: mine ? (event) => startDrag(event, { pending: mine, tile: mine.tile }) : null,
         },
         placedTile ? tileFace(placedTile)
           : mine ? tileFace(mine.tile, " pending")
@@ -378,6 +453,7 @@ export function palabreiroGameView(gameId) {
         "aria-pressed": String(selected === slot || Boolean(swapping?.has(slot))),
         disabled: game.over || game.resigned.includes(me),
         onclick: () => clickRack(slot),
+        onpointerdown: (event) => startDrag(event, { slot, tile }),
       },
       tileFace(tile)
     ))).filter(Boolean);
@@ -421,7 +497,7 @@ export function palabreiroGameView(gameId) {
             type: "button",
             class: "button secondary",
             disabled: busy || !canSwap(game),
-            title: canSwap(game) ? null : "Só se pode cambiar se quedan polo menos 7 fichas na bolsa",
+            title: canSwap(game) ? null : `Só se pode cambiar se quedan polo menos ${SWAP_MIN} fichas na bolsa`,
             onclick() { pending = []; selected = null; swapping = new Set(); draw(); },
           }, "Cambiar fichas"),
           el("button", {
@@ -435,7 +511,7 @@ export function palabreiroGameView(gameId) {
     }
 
     const previewLine = preview
-      ? el("p", { class: preview.error ? "pb-preview wrong" : "pb-preview" }, preview.error ?? `Esta xogada: ${preview.score} puntos${preview.bonus ? " (con 50 por usar as sete fichas)" : ""}`)
+      ? el("p", { class: preview.error ? "pb-preview wrong" : "pb-preview" }, preview.error ?? `Esta xogada: ${preview.score} puntos${preview.bonus ? ` (con ${preview.bonus} por poñer 7 fichas ou máis)` : ""}`)
       : null;
 
     const result = game.over ? el(
@@ -476,7 +552,7 @@ export function palabreiroGameView(gameId) {
           },
         }, "Mesturar")
       ),
-      turn && !swapping ? el("p", { class: "muted pb-help" }, "Toca unha ficha e despois a casilla onde a queres. Toca unha ficha do taboleiro para recollela.") : null,
+      turn && !swapping ? el("p", { class: "muted pb-help" }, "Arrastra as fichas ao taboleiro, ou tócaas e despois toca a casilla. Para recoller unha, arrástraa de volta ou tócaa.") : null,
       swapping ? el("p", { class: "muted pb-help" }, "Escolle as fichas que queres cambiar. Perdes a quenda.") : null,
       previewLine,
       message ? el("p", { class: `feedback ${message.kind === "wrong" ? "wrong" : "right"}`, "aria-live": "polite" }, message.text) : null,
@@ -533,7 +609,7 @@ export function palabreiroGameView(gameId) {
       clearInterval(poll);
       return;
     }
-    if (busy || !game || document.visibilityState !== "visible" || (myTurn(game, me) && pending.length)) return;
+    if (busy || drag || !game || document.visibilityState !== "visible" || (myTurn(game, me) && pending.length)) return;
     try {
       const latest = await readGame(gameId);
       if (latest && latest.version !== version) {

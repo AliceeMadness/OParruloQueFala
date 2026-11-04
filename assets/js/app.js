@@ -2,7 +2,7 @@ import { achievementsView, buildAchievements, checkAchievements } from "./achiev
 import { dailyListView, drawDailyPanel } from "./daily.js";
 import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
-import { DUDOIRO_TITLE, dudoiroView } from "./modes/dudoiro.js";
+import { DUBIDOIRO_TITLE, dubidoiroView } from "./modes/dubidoiro.js";
 import { EXAM_TITLE, examAvailable, examDue, examView } from "./modes/exam.js";
 import { gamesWaiting, PALABREIRO_TITLE, palabreiroGameView, palabreiroListView, palabreiroNewView } from "./modes/palabreiro.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
@@ -132,10 +132,10 @@ function homeView(site) {
       }),
       el(
         "a",
-        { class: "mode-card", href: "#/dudoiro" },
-        el("h2", {}, DUDOIRO_TITLE),
+        { class: "mode-card", href: "#/dubidoiro" },
+        el("h2", {}, DUBIDOIRO_TITLE),
         el("p", {}, "Neveira ou nevera? Lavadora ou lavadoira? Escolle se a palabra leva «i» ou non."),
-        el("span", { class: "count" }, `${site.dudoiro.length} palabras, 20 por rolda`)
+        el("span", { class: "count" }, `${site.dubidoiro.length} palabras, 20 por rolda`)
       ),
       activeProfile().guest ? null : el(
         "a",
@@ -308,7 +308,7 @@ function pullWithLimit() {
 // Lessons in progress, typed searches and passwords keep their state, so only other pages are redrawn.
 function isSafeToRedraw() {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return parts.length <= 1 && !["repaso", "exame", "dudoiro", "palabreiro", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
+  return parts.length <= 1 && !["repaso", "exame", "dubidoiro", "palabreiro", "palabras-do-dia", "perfil", "cambiar-perfil"].includes(parts[0]);
 }
 
 function updatePanels(site) {
@@ -361,7 +361,8 @@ function route(site, parts) {
   if (section === "logros") return achievementsView(site);
   if (section === "repaso") return reviewView();
   if (section === "exame") return examView(site);
-  if (section === "dudoiro") return dudoiroView(site.dudoiro);
+  // "dudoiro" is the address it had before it was renamed.
+  if (section === "dubidoiro" || section === "dudoiro") return dubidoiroView(site.dubidoiro);
   if (section === "palabreiro" && first === "nova") return palabreiroNewView();
   if (section === "palabreiro") return first ? palabreiroGameView(first) : palabreiroListView();
   if (section === "palabras-do-dia") return dailyListView(site.daily);
@@ -404,8 +405,8 @@ function render(site) {
 async function main() {
   showSplash();
   try {
-    const [vocabulary, verbData, grammar, crosswords, daily, dudoiro] = await Promise.all(
-      ["vocabulary", "verbs", "grammar", "crosswords", "daily", "dudoiro"].map(fetchJson)
+    const [vocabulary, verbData, grammar, crosswords, daily, dubidoiro] = await Promise.all(
+      ["vocabulary", "verbs", "grammar", "crosswords", "daily", "dubidoiro"].map(fetchJson)
     );
     const site = {
       vocabulary: vocabularyMode(vocabulary),
@@ -414,7 +415,7 @@ async function main() {
       grammar: grammarMode(grammar),
       crosswords,
       daily,
-      dudoiro,
+      dubidoiro,
     };
     const lessonKeys = [site.vocabulary, site.verbs, site.grammar].flatMap(lessonKeysOf);
     const crosswordIds = crosswords.map((puzzle) => puzzle.id);

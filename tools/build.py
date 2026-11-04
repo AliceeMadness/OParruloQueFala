@@ -494,13 +494,13 @@ def check_crossword(puzzle):
         raise ContentError(f"{puzzle['id']}: la cuadrícula está partida")
 
 
-# Dudoiro ---------------------------------------------------------------------
+# Dubidoiro ---------------------------------------------------------------------
 
-def build_dudoiro():
+def build_dubidoiro():
     """Returns [{es, gl, trap}]: a Galician word and the same word with an «i» too many or too few."""
     words = []
-    for number, line in lines_of(CONTENT / "dudoiro.txt"):
-        where = f"dudoiro.txt:{number}"
+    for number, line in lines_of(CONTENT / "dubidoiro.txt"):
+        where = f"dubidoiro.txt:{number}"
         if line.startswith("#"):
             continue
         match = re.fullmatch(r"(.+?)\s*=\s*(.+?)\s*\|\s*(.+)", line)
@@ -512,7 +512,7 @@ def build_dudoiro():
         words.append({"es": es, "gl": gl, "trap": trap})
     repeated = {word["gl"] for word in words if [other["gl"] for other in words].count(word["gl"]) > 1}
     if repeated:
-        raise ContentError(f"dudoiro.txt: repetido {sorted(repeated)}")
+        raise ContentError(f"dubidoiro.txt: repetido {sorted(repeated)}")
     return words
 
 
@@ -530,7 +530,7 @@ def main():
     grammar = build_grammar()
     crosswords = build_crosswords()
     daily = build_daily()
-    dudoiro = build_dudoiro()
+    dubidoiro = build_dubidoiro()
     for puzzle in crosswords:
         check_crossword(puzzle)
 
@@ -539,7 +539,7 @@ def main():
     write("grammar.json", grammar)
     write("crosswords.json", crosswords)
     write("daily.json", daily)
-    write("dudoiro.json", dudoiro)
+    write("dubidoiro.json", dubidoiro)
 
     words = sum(len(lesson["words"]) for theme in vocabulary for lesson in theme["lessons"])
     print(f"Vocabulario: {len(vocabulary)} temas, "
@@ -551,8 +551,8 @@ def main():
           f"{sum(len(lesson['items']) for group in grammar for lesson in group['lessons'])} frases")
     sizes = ", ".join(f"{puzzle['cols']}x{puzzle['rows']}" for puzzle in crosswords)
     print(f"Crucigramas: {len(crosswords)} ({sizes})")
-    print(f"Dudoiro: {sum(word['gl'].count('i') > word['trap'].count('i') for word in dudoiro)} con «i», "
-          f"{sum(word['gl'].count('i') < word['trap'].count('i') for word in dudoiro)} sin ella")
+    print(f"Dubidoiro: {sum(word['gl'].count('i') > word['trap'].count('i') for word in dubidoiro)} con «i», "
+          f"{sum(word['gl'].count('i') < word['trap'].count('i') for word in dubidoiro)} sin ella")
     print(f"Palabra del día: {len(daily['words'])} palabras, {len(daily['expressions'])} expresiones")
 
 

@@ -1,11 +1,11 @@
-// Dudoiro: words where it is easy to doubt whether there is an «i», such as «neveira» but
+// Dubidoiro: words where it is easy to doubt whether there is an «i», such as «neveira» but
 // «lavadora». Rounds of 20 random words; each one is chosen between the right spelling and
 // the same word with an «i» too many or too few.
 import { countEvent } from "../store.js";
 import { shuffled } from "../text.js";
 import { backLink, el, finishPanel, focusSoon, progressBar, replace } from "../ui.js";
 
-export const DUDOIRO_TITLE = "Dudoiro";
+export const DUBIDOIRO_TITLE = "Dubidoiro";
 const ROUND_SIZE = 20;
 
 // Words are dealt from a shuffled deck, so no word repeats until all of them have come up.
@@ -33,6 +33,7 @@ function runRound(container, words, restart) {
 
   function showWord() {
     if (!queue.length) {
+      // Counted under its old name, so the rounds played before the rename still count.
       countEvent("dudoiro");
       if (!failed.size) countEvent("dudoiroPerfecto");
       replace(container, finishPanel({
@@ -101,7 +102,7 @@ function runRound(container, words, restart) {
   showWord();
 }
 
-export function dudoiroView(words) {
+export function dubidoiroView(words) {
   const container = el("div", {});
   const start = () => runRound(container, words, start);
   const begin = el("button", { class: "button", type: "button", onclick: start }, "Comezar");
@@ -110,7 +111,7 @@ export function dudoiroView(words) {
     "div",
     { class: "panel" },
     el("p", { class: "prompt-label" }, "Con «i» ou sen ela?"),
-    el("h1", {}, DUDOIRO_TITLE),
+    el("h1", {}, DUBIDOIRO_TITLE),
     el("p", {}, "«Neveira», pero «lavadora». «Loureiro», pero «primavera». Dámosche a palabra en castelán e ti escolles como se escribe en galego."),
     el("p", { class: "muted" }, `Roldas de ${ROUND_SIZE} palabras ao chou entre ${words.length}: ${withI} levan «i» e ${words.length - withI} non. O que falles volverá saír ao final ata que o acertes.`),
     el("div", { class: "actions" }, begin)

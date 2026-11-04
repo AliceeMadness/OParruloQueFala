@@ -208,16 +208,16 @@ export function buildAchievements(site) {
       ],
     },
     {
-      title: "Exame e Dudoiro",
+      title: "Exame e Dubidoiro",
       items: [
         countGoal("exame-1", "Non esquecín nada... creo", "Remata un exame de «Non hai que esquecer o aprendido».", () => eventCount("exames"), 1),
         countGoal("exame-10", "Exame tras exame", "Remata 10 exames.", () => eventCount("exames"), 10),
         countGoal("exame-perfecto", "Memoria de elefante", "Acerta todas as preguntas dun exame á primeira.", () => eventCount("examesPerfectos"), 1),
-        countGoal("dudoiro-1", "Dubido, logo existo", "Remata unha rolda do Dudoiro.", () => eventCount("dudoiro"), 1),
-        countGoal("dudoiro-10", "Xa non dubido tanto", "Remata 10 roldas do Dudoiro.", () => eventCount("dudoiro"), 10),
-        countGoal("dudoiro-50", "Dudoiro profesional", "Remata 50 roldas do Dudoiro.", () => eventCount("dudoiro"), 50),
-        countGoal("dudoiro-perfecto", "Nin unha i fóra do sitio", "Acerta as 20 palabras dunha rolda do Dudoiro á primeira.", () => eventCount("dudoiroPerfecto"), 1),
-        withFeminine(countGoal("dudoiro-perfecto-10", "O rei da i", "Fai 10 roldas perfectas do Dudoiro.", () => eventCount("dudoiroPerfecto"), 10), "A raíña da i"),
+        countGoal("dudoiro-1", "Dubido, logo existo", "Remata unha rolda do Dubidoiro.", () => eventCount("dudoiro"), 1),
+        countGoal("dudoiro-10", "Xa non dubido tanto", "Remata 10 roldas do Dubidoiro.", () => eventCount("dudoiro"), 10),
+        countGoal("dudoiro-50", "Dubidoiro profesional", "Remata 50 roldas do Dubidoiro.", () => eventCount("dudoiro"), 50),
+        countGoal("dudoiro-perfecto", "Nin unha i fóra do sitio", "Acerta as 20 palabras dunha rolda do Dubidoiro á primeira.", () => eventCount("dudoiroPerfecto"), 1),
+        withFeminine(countGoal("dudoiro-perfecto-10", "O rei da i", "Fai 10 roldas perfectas do Dubidoiro.", () => eventCount("dudoiroPerfecto"), 10), "A raíña da i"),
       ],
     },
     {

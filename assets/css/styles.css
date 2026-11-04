@@ -1069,6 +1069,22 @@ button.profile-chip {
 .pb-rack-tile .pb-letter { font-size: 1.3rem; }
 .pb-rack-tile .pb-points { font-size: .6rem; }
 .pb-rack-tile.selected { border-color: var(--accent); transform: translateY(-3px); }
+/* Dragging: without this, a finger on a tile would scroll the page instead. */
+.pb-rack-tile, .pb-square.pending { touch-action: none; }
+.pb-square.drop { outline: 3px solid var(--accent); outline-offset: -1px; }
+.pb-ghost {
+  position: fixed;
+  z-index: 50;
+  width: 2.8rem;
+  height: 2.8rem;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .3));
+}
+.pb-ghost .pb-letter { font-size: 1.3rem; }
+@media (max-width: 30rem) {
+  .pb-rack-tile { width: 2.3rem; height: 2.3rem; }
+}
 .pb-rack-tile.swap { border-color: var(--bad); opacity: .7; }
 .pb-rack-tile:disabled { cursor: default; }
 .pb-shuffle { padding: .45rem .8rem; }

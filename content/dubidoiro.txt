@@ -1,4 +1,4 @@
-// Dudoiro: con «i» ou sen ela? Cada liña é «castelán = galego correcto | trampa».
+// Dubidoiro: con «i» ou sen ela? Cada liña é «castelán = galego correcto | trampa».
 // A trampa é a mesma palabra coa «i» que lle sobra ou que lle falta.
 
 # Con i

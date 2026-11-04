@@ -360,7 +360,7 @@ function bump(current, name) {
   current.counts[DEVICE] = mine;
 }
 
-// Exams, Dudoiro rounds and the like, added up on every device.
+// Exams, Dubidoiro rounds and the like, added up on every device.
 export function countEvent(name) {
   bump(progress(), name);
   save();
