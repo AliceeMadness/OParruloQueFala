@@ -12,6 +12,7 @@ import { avatar, backLink, el, focusSoon, replace } from "../ui.js";
 export const PALABREIRO_TITLE = "Palabreiro";
 const POLL_MS = 8000;
 const FINISHED_SHOWN = 10;
+const MAX_RIVALS = 3;
 
 const profileOf = (id) => PROFILES.find((profile) => profile.id === id) ?? { id, name: id, color: "#ddd", duck: "assets/img/parrulo.svg" };
 const nameOf = (id) => profileOf(id).name;
@@ -140,6 +141,10 @@ export function palabreiroNewView() {
         button.setAttribute("aria-pressed", String(chosen.has(profile.id)));
         button.classList.toggle("chosen", chosen.has(profile.id));
         start.disabled = chosen.size === 0;
+        // Up to four players: once three rivals are chosen, the others wait.
+        for (const option of options) {
+          option.disabled = chosen.size >= MAX_RIVALS && option.getAttribute("aria-pressed") !== "true";
+        }
       },
     }, avatar(profile), profile.name);
     return button;
@@ -169,7 +174,7 @@ export function palabreiroNewView() {
       "form",
       { class: "panel", onsubmit: create },
       el("h1", {}, "Nova partida"),
-      el("p", {}, "Escolle contra quen xogas: unha, dúas ou as tres persoas. A orde das quendas sortéase."),
+      el("p", {}, `Escolle contra quen xogas: de unha a ${MAX_RIVALS} persoas. A orde das quendas sortéase.`),
       el("div", { class: "profile-grid" }, ...options),
       error,
       el("div", { class: "actions" }, start)

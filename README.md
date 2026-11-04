@@ -30,7 +30,7 @@ The Galician content was written with AI assistance and checked against a spelli
 
 ## Profiles and progress
 
-Players choose a profile when they arrive: Alice, Raquel, Marina or Japolo. Each profile has its own password and its own progress, which follows it to any device. Once a profile is open, the browser stays in it until someone changes profile.
+Players choose a profile when they arrive: Alice, Raquel, Marina, Japolo or Diana. Each profile has its own password and its own progress, which follows it to any device. Once a profile is open, the browser stays in it until someone changes profile.
 
 **Xogar sen perfil** opens everything except the collection, with no password. That progress stays in the browser and is never uploaded.
 

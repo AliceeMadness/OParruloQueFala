@@ -14,6 +14,7 @@ export const PROFILES = [
   { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f", password: "3502a3532fd3bb73baa9cfdae8bbeab9c35763303014f1cdf282d8f1af9ae9e2" },
   { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "4a35fd50a93246799566b9f331f629d520ed70190d3b7d7a3f0f10c35a77c721" },
   { id: "japolo", name: "Japolo", color: "#dcdcd6", duck: "assets/img/pato-japolo.svg", gender: "m", password: "d70e819bfca5121ec77a57aa4f6b7b4a07127fbcd6874305f8eb92fad2505457" },
+  { id: "diana", name: "Diana", color: "#f4c6c6", duck: "assets/img/pato-diana.svg", gender: "f", password: "95c572150a5228ac0d08a598df5f3a18451f6e0d9d1775559ca551ee99922d3f" },
 ];
 
 // Playing without a profile: progress stays in this browser, and there is no collection.
