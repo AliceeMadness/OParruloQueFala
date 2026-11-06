@@ -9,7 +9,7 @@ import {
 import { activeProfile, PROFILES } from "../store.js";
 import { avatar, backLink, el, focusSoon, replace } from "../ui.js";
 
-export const PALABREIRO_TITLE = "Palabreiro";
+export const PALABREIRO_TITLE = "Palabroiro";
 const POLL_MS = 8000;
 const FINISHED_SHOWN = 10;
 const MAX_RIVALS = 3;
@@ -39,7 +39,7 @@ function unavailable() {
     );
   }
   if (!gamesEnabled) {
-    return el("div", { class: "narrow" }, el("h1", {}, PALABREIRO_TITLE), el("p", { class: "lead" }, "O Palabreiro precisa a base de datos en liña, e esta copia da web non a ten."));
+    return el("div", { class: "narrow" }, el("h1", {}, PALABREIRO_TITLE), el("p", { class: "lead" }, "O Palabroiro precisa a base de datos en liña, e esta copia da web non a ten."));
   }
   return null;
 }

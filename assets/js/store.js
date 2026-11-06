@@ -10,7 +10,7 @@ const PUSH_DELAY_MS = 1500;
 // `password` is the SHA-256 of the lowercase password. It only keeps players out of each
 // other's profiles by accident: the site has no server, so it can't stop anyone determined.
 export const PROFILES = [
-  { id: "alice", name: "Alice", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m", password: "f87ac4b3744c6502ed82045e47e54013b22e74bca3d335e6b500c3532ff7dd73" },
+  { id: "alice", name: "Alejandro", color: "#bfe3f2", duck: "assets/img/pato-alice.svg", gender: "m", password: "f87ac4b3744c6502ed82045e47e54013b22e74bca3d335e6b500c3532ff7dd73" },
   { id: "raquel", name: "Raquel", color: "#f7c9d9", duck: "assets/img/pato-raquel.svg", gender: "f", password: "3502a3532fd3bb73baa9cfdae8bbeab9c35763303014f1cdf282d8f1af9ae9e2" },
   { id: "marina", name: "Marina", color: "#c5e8c9", duck: "assets/img/pato-marina.svg", gender: "f", password: "4a35fd50a93246799566b9f331f629d520ed70190d3b7d7a3f0f10c35a77c721" },
   { id: "japolo", name: "Japolo", color: "#dcdcd6", duck: "assets/img/pato-japolo.svg", gender: "m", password: "d70e819bfca5121ec77a57aa4f6b7b4a07127fbcd6874305f8eb92fad2505457" },
