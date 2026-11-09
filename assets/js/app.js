@@ -4,7 +4,7 @@ import { showSplash, talkingDuck } from "./ducks.js";
 import { crosswordListView, crosswordView } from "./modes/crosswords.js";
 import { DUBIDOIRO_TITLE, dubidoiroView } from "./modes/dubidoiro.js";
 import { EXAM_TITLE, examAvailable, examDue, examView } from "./modes/exam.js";
-import { gamesWaiting, PALABREIRO_TITLE, palabreiroGameView, palabreiroListView, palabreiroNewView } from "./modes/palabreiro.js";
+import { GAMES_CHANGED, gamesWaiting, PALABREIRO_TITLE, palabreiroGameView, palabreiroListView, palabreiroNewView } from "./modes/palabreiro.js";
 import { grammarLessonView, grammarMode } from "./modes/grammar.js";
 import { otherProfileView, profilePageView } from "./modes/profile.js";
 import { verbLessonView, verbsMode } from "./modes/verbs.js";
@@ -423,7 +423,11 @@ async function main() {
     site.achievements = buildAchievements(site);
     site.drawProgress = buildProgressPanel(site);
     setUpProfileMenu();
-    window.addEventListener("hashchange", () => render(site));
+    window.addEventListener("hashchange", () => {
+      render(site);
+      if (activeProfile()) updatePalabreiroBadge();
+    });
+    window.addEventListener(GAMES_CHANGED, updatePalabreiroBadge);
     startPlayTimer();
     startSync({
       onProgressChange() {

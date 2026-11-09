@@ -17,6 +17,9 @@ const MAX_RIVALS = 3;
 const profileOf = (id) => PROFILES.find((profile) => profile.id === id) ?? { id, name: id, color: "#ddd", duck: "assets/img/parrulo.svg" };
 const nameOf = (id) => profileOf(id).name;
 const isMine = (game, me) => game.players.includes(me);
+// Tells the menu to count the waiting games again after a move.
+export const GAMES_CHANGED = "palabreiro-changed";
+const announceChange = () => window.dispatchEvent(new Event(GAMES_CHANGED));
 const myTurn = (game, me) => !game.over && currentPlayer(game) === me;
 
 // How many games are waiting for the active profile, for the menu.
@@ -255,6 +258,7 @@ export function palabreiroGameView(gameId) {
       move(latest.game);
       version = await writeGame(latest.game, latest.version);
       game = latest.game;
+      announceChange();
       resetTurn();
     } catch (error) {
       if (error instanceof GameChanged) {
@@ -589,6 +593,7 @@ export function palabreiroGameView(gameId) {
         resignMove(latest.game, me);
         version = await writeGame(latest.game, latest.version);
         game = latest.game;
+        announceChange();
         break;
       } catch (error) {
         if (!(error instanceof GameChanged)) {
