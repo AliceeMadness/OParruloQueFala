@@ -82,6 +82,7 @@ export function newGame(id, playerIds) {
     board: ".".repeat(SIZE * SIZE),
     turn: 0,
     passes: 0,
+    passStreak: 0,
     moves: [],
     over: false,
   };
@@ -185,7 +186,8 @@ function nextTurn(game) {
 }
 
 // The game ends when someone uses their last tile with the bag empty, when every player has
-// gone two turns in a row without scoring, or when only one player is left.
+// gone two turns in a row without scoring, when every player passes one after another, or when
+// only one player is left.
 function finish(game, closer) {
   game.over = true;
   if (closer) {
@@ -210,9 +212,12 @@ function log(game, move) {
   game.updatedAt = Date.now();
 }
 
-function scoreless(game) {
+function scoreless(game, passed) {
   game.passes++;
-  if (game.passes >= 2 * activePlayers(game).length) finish(game, null);
+  // Games saved before the pass streak existed have no count yet.
+  game.passStreak = passed ? (game.passStreak ?? 0) + 1 : 0;
+  const players = activePlayers(game).length;
+  if (game.passStreak >= players || game.passes >= 2 * players) finish(game, null);
   else nextTurn(game);
 }
 
@@ -228,6 +233,7 @@ export function playMove(game, player, placed, result) {
   game.board = cells.join("");
   game.scores[player] += result.score;
   game.passes = 0;
+  game.passStreak = 0;
   draw(game, player);
   log(game, { player, kind: "play", words: result.words.map((word) => word.word), score: result.score, bonus: result.bonus });
   if (!rack.length && !game.bag.length) finish(game, player);
@@ -236,7 +242,7 @@ export function playMove(game, player, placed, result) {
 
 export function passMove(game, player) {
   log(game, { player, kind: "pass", score: 0 });
-  scoreless(game);
+  scoreless(game, true);
 }
 
 export function canSwap(game) {
@@ -249,7 +255,7 @@ export function swapMove(game, player, tiles) {
   draw(game, player);
   game.bag = shuffled([...game.bag, ...tiles]);
   log(game, { player, kind: "swap", count: tiles.length, score: 0 });
-  scoreless(game);
+  scoreless(game, false);
 }
 
 export function resignMove(game, player) {

@@ -52,15 +52,19 @@ export function verbLessonView(mode, data, groupId, lessonId) {
   function start() {
     failedForms.clear();
     const queue = [...lesson.verbs];
+    // Verbs to show again at the end, and each form missed at the first try, which is what the score counts.
     const failed = new Set();
+    const missedForms = new Set();
+    const askedOf = (name) => data.verbs[name].forms[lesson.tense].filter(Boolean).length;
+    const totalForms = lesson.verbs.reduce((sum, name) => sum + askedOf(name), 0);
     let cleared = 0;
 
     function showVerb() {
       if (!queue.length) {
         replace(container, finishPanel({
           key,
-          total: lesson.verbs.length,
-          failed: failed.size,
+          total: totalForms,
+          failed: missedForms.size,
           failedRows: [...failed].map((name) => [
             `${name} (${data.verbs[name].es})`,
             data.verbs[name].forms[lesson.tense].filter(Boolean).join(", "),
@@ -110,7 +114,10 @@ export function verbLessonView(mode, data, groupId, lessonId) {
         type: "button",
         onclick() {
           table.hidden = !table.hidden;
-          if (!table.hidden) failed.add(name);
+          if (!table.hidden) {
+            failed.add(name);
+            asked.forEach((index) => missedForms.add(verbFormId(name, lesson.tense, index)));
+          }
         },
       }, "Ver a conxugación");
 
@@ -133,6 +140,7 @@ export function verbLessonView(mode, data, groupId, lessonId) {
           const input = inputs[index];
           const result = checkAnswer(input.value, [form]);
           rememberForm(name, index, result.ok);
+          if (!result.ok) missedForms.add(verbFormId(name, lesson.tense, index));
           input.readOnly = true;
           input.classList.add(result.ok ? "right" : "wrong");
           // A missing or wrong accent still counts, but the right spelling is shown.
